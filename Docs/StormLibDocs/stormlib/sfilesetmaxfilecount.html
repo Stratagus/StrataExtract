@@ -1,0 +1,58 @@
+<!doctype html public "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>MPQ Archives - StormLib</title>
+  <link rel="stylesheet" type="text/css" href="../../../include/styles.css" />
+</head>
+
+<body>
+
+<!-- Title -->
+<p class="title">StormLib API Reference</p>
+<p class="subtitle">SFileSetMaxFileCount</p>
+
+<h2>Description</h2>
+<pre><b>bool WINAPI SFileSetMaxFileCount(</b>
+  <b>HANDLE</b> <i>hMpq</i>,                    // Handle to an open archive
+  <b>DWORD</b> <i>dwMaxFileCount</i>            // New limit of file count in the MPQ
+<b>);</b></pre>
+<p>Function <b>SFileSetMaxFileCount</b> changes the limit for number of files that can be
+stored in the archive. No files are changed during this operation.</p>
+
+<h2>Parameters</h2>
+<dl>
+  <dt>hMpq</dt>
+    <dd>[in] Handle to an open archive. This handle must have been obtained by <a href="sfileopenarchive.html">SFileOpenArchive</a> or <a href="sfilecreatearchive.html">SFileCreateArchive</a>.</dd>
+  <dt>dwMaxFileCount</dt>
+    <dd>[in] New size of the hash table. This parameter must be in range of HASH_TABLE_SIZE_MIN and HASH_TABLE_SIZE_MAX (defined in StormLib.h).</dd>
+</dl>
+
+<h2>Return Value</h2>
+<p>When the function succeeds, it returns nonzero. On an error, the function returns false and <b>GetLastError</b> gives the error code.</p>
+
+<h2>Remarks</h2>
+<p><b>SFileSetMaxFileCount</b> rebuilds the entire hash table and HET table in the MPQ. To succeed, all files
+in the MPQ must be known by name. Before any changes, <b>SFileSetMaxFileCount</b> verifies if it can calculate
+hash table indexes for each file in the archive. If that check fails, the function returns error. No changes
+to the MPQ are done if the function fails.</p>
+
+<h2>Availability in Storm.dll</h2>
+<table width="50%" cellspacing="0" border="1">
+<tr valign="top">
+  <td align="left" width="60%">Available in Storm.dll</td>
+  <td align="left" width="40%">No</td>
+</tr>
+<tr>
+  <td align="left">Ordinal number in Storm.dll 1.00</td>
+  <td align="left">N/A</td>
+</tr>
+<tr>
+  <td align="left">Ordinal number in Storm.dll 1.09</td>
+  <td align="left">N/A</td>
+</tr>
+</table>
+
+<!-- Page footer -->
+<p class="copyright">Copyright (c) Ladislav Zezula 2003 - 2011</p>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!doctype html public "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>MPQ Archives - StormLib</title>
+  <link rel="stylesheet" type="text/css" href="../../../include/styles.css" />
+</head>
+
+<body>
+
+<!-- Title -->
+<p class="title">StormLib API Reference</p>
+<p class="subtitle">SFileOpenPatchArchive</p>
+
+<h2>Description</h2>
+<pre><b>bool WINAPI SFileOpenPatchArchive(</b>
+  <b>HANDLE</b> <i>hMpq</i>,                      // Handle to an open MPQ (primary MPQ)
+  <b>const char *</b> <i>szMpqName</i>,           // Patch archive file name
+  <b>const char *</b> <i>szPatchPathPrefix</i>,   // Prefix for patch file names
+  <b>DWORD</b> <i>dwFlags</i>                     // Reserved
+<b>);</b></pre>
+<p>Function <b>SFileOpenPatchArchive</b> adds a patch archive to the existing open MPQ.
+The MPQ must have been open by <a href="sfileopenarchive.html">SFileOpenArchive</a>,
+and also with MPQ_OPEN_READ_ONLY specified. The patch archive is added to the list of patches
+that belong to the primary MPQ. No handle is returned, and the patch(es) is closed when
+the primary MPQ handle is closed. The patch MPQ opened during the process is maintained
+internally by StormLib and cannot be accessed directly.</p>
+
+<h2>Parameters</h2>
+<dl>
+  <dt>hMpq</dt>
+    <dd>[in] Handle to a MPQ that serves as primary MPQ when patched.</dd>
+  <dt>szMpqName</dt>
+    <dd>[in] Name of the patch MPQ to be added.</dd>
+  <dt>szPatchPathPrefix</dt>
+    <dd>[in] Pointer to patch prefix for file names. This parameter can be NULL, which makes StormLib to determine patch prefix for the specific combination of names of the base MPQ and patch MPQ.</dd>
+  <dt>dwFlags</dt>
+    <dd>[in] Reserved for future use.</dd>
+</dl>
+
+<h2>Return Value</h2>
+<p>When the function succeeds, it returns nonzero. When the archive cannot be added as patch archive,
+function returns false and <b>GetLastError</b> gives the error code.</p>
+
+<h2>Remarks</h2>
+<p>The following table shows how patch prefix works:</p>
+<ul>
+  <li>Base MPQ: locale-enGB.MPQ</li>
+  <li>Patch MPQ: wow-update-12694.MPQ</li>
+  <li>File in main MPQ: DBFilesClient\Achievement.dbc</li>
+  <li>File in patch MPQ: enGB\DBFilesClient\Achievement.dbc</li>
+  <li>Path prefix needed: <b>enGB</b></li>
+</ul>
+
+<ul>
+  <li>Main MPQ: expansion1.MPQ</li>
+  <li>Patch MPQ: wow-update-12694.MPQ</li>
+  <li>File in main MPQ: CREATURE\BoundEarthElemental\BoundEarthElemental.M2</li>
+  <li>File in patch MPQ: base\CREATURE\BoundEarthElemental\BoundEarthElemental.M2</li>
+  <li>Path prefix needed: <b>base</b></li>
+</ul>
+<p>&nbsp;</p>
+
+<h2>Availability in Storm.dll</h2>
+<table width="50%" cellspacing="0" border="1">
+<tr valign="top">
+  <td align="left" width="60%">Available in Storm.dll</td>
+  <td align="left" width="40%">No</td>
+</tr>
+<tr>
+  <td align="left">Ordinal number in Storm.dll 1.00</td>
+  <td align="left">N/A</td>
+</tr>
+<tr>
+  <td align="left">Ordinal number in Storm.dll 1.09</td>
+  <td align="left">N/A</td>
+</tr>
+</table>
+
+<!-- Page footer -->
+<p class="copyright">Copyright (c) Ladislav Zezula 2003 - 2010</p>
+</body>
+</html>

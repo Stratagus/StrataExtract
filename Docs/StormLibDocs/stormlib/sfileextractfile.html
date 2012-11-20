@@ -1,0 +1,60 @@
+<!doctype html public "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>MPQ Archives - StormLib</title>
+  <link rel="stylesheet" type="text/css" href="../../../include/styles.css" />
+</head>
+
+<body>               
+
+<!-- Title -->
+<p class="title">StormLib API Reference</p>
+<p class="subtitle">SFileExtractFile</p>
+
+<h2>Description</h2>
+<pre><b>bool WINAPI SFileExtractFile(</b>
+  <b>HANDLE</b> <i>hMpq</i>,                      // Handle to a file or archive
+  <b>const char *</b> <i>szToExtract</i>,         // Name of the file to extract
+  <b>const char *</b> <i>szExtracted</i>          // Name of local file
+  <b>DWORD</b> <i>dwSearchScope</i>               // Search scope
+<b>);</b></pre>
+<p>Function <b>SFileExtractFile</b> extracts one file from an MPQ archive.</p>
+
+<h2>Parameters</h2>
+<dl>
+  <dt>hMpq</dt>
+    <dd>[in] Handle to an open MPQ archive.</dd>
+  <dt>szToExtract</dt>
+    <dd>[in] Name of a file within the MPQ that is to be extracted.</dd>
+  <dt>szExtracted</dt>
+    <dd>[in] Specifies the name of a local file that will be created and will contain data from the extracted MPQ file.</dd>
+  <dt>dwSearchScope</dt>
+    <dd>[in] This parameter refines the definition of what to extract. If you want ot extract an unpatched file,
+      use SFILE_OPEN_FROM_MPQ (this is the default parameter). If you want to extract patched version of the file,
+      use SFILE_OPEN_PATCHED_FILE.</dd>
+</dl>
+
+<h2>Return Value</h2>
+<p>If the MPQ file has been successfully extracted into the target file, the function returns true. 
+On an error, the function returns false and <b>GetLastError</b> returns an error code.</p>
+
+<h2>Availability in Storm.dll</h2>
+<table width="50%" cellspacing="0" border="1">
+<tr valign="top">
+  <td align="left" width="60%">Available in Storm.dll</td>
+  <td align="left" width="40%">No</td>
+</tr>
+<tr>
+  <td align="left">Ordinal number in Storm.dll 1.00</td>
+  <td align="left">N/A</td>
+</tr>
+<tr>
+  <td align="left">Ordinal number in Storm.dll 1.09</td>
+  <td align="left">N/A</td>
+</tr>
+</table>
+
+<!-- Page footer -->
+<p class="copyright">Copyright (c) Ladislav Zezula 2003 - 2010</p>
+</body>
+</html>

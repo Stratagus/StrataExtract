@@ -1,0 +1,61 @@
+<!doctype html public "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>MPQ Archives - StormLib</title>
+  <link rel="stylesheet" type="text/css" href="../../../include/styles.css" />
+</head>
+
+<body>
+
+<!-- Title -->
+<p class="title">StormLib API Reference</p>
+<p class="subtitle">SFileEnumLocales</p>
+
+<h2>Description</h2>
+<pre><b>int WINAPI SFileEnumLocales(</b>
+  <b>HANDLE</b> <i>hMpq</i>,                      // MPQ handle
+  <b>const char *</b> <i>szFileName</i>,          // Name of the file to enum
+  <b>LCID *</b> <i>plcLocales</i>,                // Array of file locales
+  <b>DWORD *</b> <i>pdwMaxLocales</i>,            // Maximum number of locales
+  <b>DWORD</b> <i>dwSearchScope</i>               // Ignored
+<b>);</b></pre>
+<p>Function <b>SFileEnumLocales</b> enumerates all locales for the given file that are present in the MPQ.</p>
+
+<h2>Parameters</h2>
+<dl>
+  <dt>hMpq</dt>
+    <dd>[in] Handle to a MPQ.</dd>
+  <dt>szFileName</dt>
+    <dd>[in] Name of a file to enumerate the locales.</dd>
+  <dt>plcLocales</dt>
+    <dd>[out] An array of LCIDs that will receive locales. This parameter can be NULL if <i>pdwMaxLocales</i> points to zero.</dd>
+  <dt>pdwMaxLocales</dt>
+    <dd>[in, out] On input, this argument must point to a variable that contains maximum number of entries in <i>plcLocales</i> array.
+        On output, this variable receives number of locales that are for the file. This argument cannot be NULL.</dd>
+  <dt>dwSearchScope</dt>
+    <dd>[in] This parameter is ignored.</dd>
+</dl>
+
+<h2>Return Value</h2>
+<p>When the function succeeds, it returns ERROR_SUCCESS. On an error, the function returns an error code.</p>
+
+<h2>Availability in Storm.dll</h2>
+<table width="50%" cellspacing="0" border="1">
+<tr valign="top">
+  <td align="left" width="60%">Available in Storm.dll</td>
+  <td align="left" width="40%">No</td>
+</tr>
+<tr>
+  <td align="left">Ordinal number in Storm.dll 1.00</td>
+  <td align="left">N/A</td>
+</tr>
+<tr>
+  <td align="left">Ordinal number in Storm.dll 1.09</td>
+  <td align="left">N/A</td>
+</tr>
+</table>
+
+<!-- Page footer -->
+<p class="copyright">Copyright (c) Ladislav Zezula 2003 - 2010</p>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!doctype html public "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>MPQ Archives - StormLib</title>
+  <link rel="stylesheet" type="text/css" href="../../../include/styles.css" />
+</head>
+
+<body>               
+
+<!-- Title -->
+<p class="title">StormLib API Reference</p>
+<p class="subtitle">SFileGetFileName</p>
+
+<h2>Description</h2>
+<pre><b>bool WINAPI SFileGetFileName(</b>
+  <b>HANDLE</b> <i>hFile</i>,                     // File handle
+  <b>char *</b> <i>szFileName</i>                 // Pointer to buffer that receives file name
+<b>);</b></pre>
+<p>Function <b>SFileGetFileName</b> retrieves the name of an open file.</p>
+
+<h2>Parameters</h2>
+<dl>
+  <dt>hFile</dt>
+    <dd>[in] Handle to an open file. The file handle must have been created by <a href="sfileopenfileex.html">SFileOpenFileEx</a>.</dd>
+  <dt>szFileName</dt>
+    <dd>[out] Receives the file name. The buffer must be at least MAX_PATH characters long.</dd>
+</dl>
+
+<h2>Return Value</h2>
+<p>When the function succeeds, it returns true and buffer pointed by <i>szFileName</i> contains name of the file.
+On an error, the function returns false and <b>GetLastError</b> returns an error code.</p>
+
+<h2>Remarks</h2>
+<p>This function doesn't support local files open by <a href="sfileopenfileex.html">SFileOpenFileEx</a>.
+If the file has been open with a pseudo file name, the function returns this name. If the file name is
+not known and the extension can be determined by file content, the returned pseudo file name also contains
+the proper extension. The pseudo name can be passed to <a href="sfileopenfileex.html">SFileOpenFileEx</a>.</p>
+
+<h2>Availability in Storm.dll</h2>
+<table width="50%" cellspacing="0" border="1">
+<tr valign="top">
+  <td align="left" width="60%">Available in Storm.dll</td>
+  <td align="left" width="40%">No</td>
+</tr>
+<tr>
+  <td align="left">Ordinal number in Storm.dll 1.00</td>
+  <td align="left">N/A</td>
+</tr>
+<tr>
+  <td align="left">Ordinal number in Storm.dll 1.09</td>
+  <td align="left">N/A</td>
+</tr>
+</table>
+
+<!-- Page footer -->
+<p class="copyright">Copyright (c) Ladislav Zezula 2003 - 2010</p>
+</body>
+</html>

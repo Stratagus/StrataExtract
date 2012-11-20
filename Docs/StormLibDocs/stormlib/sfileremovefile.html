@@ -1,0 +1,61 @@
+<!doctype html public "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>MPQ Archives - StormLib</title>
+  <link rel="stylesheet" type="text/css" href="../../../include/styles.css" />
+</head>
+
+<body>
+
+<!-- Title -->
+<p class="title">StormLib API Reference</p>
+<p class="subtitle">SFileRemoveFile</p>
+
+<h2>Description</h2>
+<pre><b>bool WINAPI SFileRemoveFile(</b>
+  <b>HANDLE</b> <i>hMpq</i>,                      // Handle to the MPQ
+  <b>const char *</b> <i>szFileName</i>,          // The name of a file to be removed
+  <b>DWORD</b> <i>dwSearchScope</i>               // Ignored
+<b>);</b></pre>
+<p>Function <b>SFileRemoveFile</b> removes a file from MPQ. The MPQ must have been open
+by <a href="sfileopenarchive.html">SFileOpenArchive</a> or created by <a href="sfilecreatearchive.html">SFileCreateArchive</a>.
+Note that this operation leaves a gap in the MPQ file. To reduce size of the MPQ, use <a href="sfilecompactarchive.html">SFileCompactArchive</a>.</p>
+
+<h2>Parameters</h2>
+<dl>
+  <dt>hMpq</dt>
+    <dd>[in] Handle to an open MPQ. This handle must have been obtained by calling <a href="sfileopenarchive.html">SFileOpenArchive</a> or <a href="sfilecreatearchive.html">SFileCreateArchive</a>.</dd>
+  <dt>szFileName</dt>
+    <dd>[in] Name of a file to be removed.</dd>
+  <dt>dwSearchScope</dt>
+    <dd>[in] This parameter is ignored in the current version of StormLib.</dd>
+</dl>
+
+<h2>Return Value</h2>
+<p>When the function succeeds, it returns nonzero. On an error, the function returns false and <b>GetLastError</b> gives the error code.</p>
+
+<h2>Remarks</h2>
+<p>The function only removes file with the specified locale. Unlike <a href="sfileopenfileex.html">SFileOpenFileEx</a>,
+if the file with preset locale doesn't exist in the MPQ, the function fails. For more informations about preset locale,
+see <a href="sfilesetlocale.html">SFileSetLocale</a>.</p>
+
+<h2>Availability in Storm.dll</h2>
+<table width="50%" cellspacing="0" border="1">
+<tr valign="top">
+  <td align="left" width="60%">Available in Storm.dll</td>
+  <td align="left" width="40%">No</td>
+</tr>
+<tr>
+  <td align="left">Ordinal number in Storm.dll 1.00</td>
+  <td align="left">N/A</td>
+</tr>
+<tr>
+  <td align="left">Ordinal number in Storm.dll 1.09</td>
+  <td align="left">N/A</td>
+</tr>
+</table>
+
+<!-- Page footer -->
+<p class="copyright">Copyright (c) Ladislav Zezula 2003 - 2010</p>
+</body>
+</html>
