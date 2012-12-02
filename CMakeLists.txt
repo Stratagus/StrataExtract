@@ -25,7 +25,7 @@ set(StrataExtractMain-Source
 
 
 #Find required libraries for the project
-find_package(Boost REQUIRED)
+find_package(Boost REQUIRED COMPONENTS thread filesystem exception)
 find_package(FFMPEG REQUIRED)
 find_package(Magick++ REQUIRED)
 
@@ -48,8 +48,9 @@ endif()
 
 #Allows us to link dependancies to StrataExtract
 link_libraries (
-	boost_system-mt
-	boost_filesystem-mt
+	${Boost_LIBRARIES}
+    ${Magick++_LIBRARIES}
+    ${FFMPEG_LIBAVCODEC_LIBRARIES}
 )
 
 # Now we define what makes our executable.  First thing is the name,
