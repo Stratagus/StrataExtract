@@ -26,6 +26,7 @@ set(StrataExtractMain-Source
 
 #Find required libraries for the project
 find_package(Boost REQUIRED)
+find_package(FFMPEG REQUIRED)
 find_package(Magick++ REQUIRED)
 
 
