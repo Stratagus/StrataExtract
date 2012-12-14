@@ -25,7 +25,7 @@ set(StrataExtractMain-Source
 
 
 #Find required libraries for the project
-find_package(Boost REQUIRED COMPONENTS thread filesystem exception)
+find_package(Boost REQUIRED COMPONENTS system thread filesystem exception)
 find_package(FFMPEG REQUIRED)
 find_package(Magick++ REQUIRED)
 
