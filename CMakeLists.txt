@@ -1,33 +1,69 @@
-# StrataExtract
+# The StrataExtract cmake configuration file, it should
+#be well documented. If you have any questions be it in
+#design or general inquiry visit the homepage @
+#https://github.com/bradc6/StrataExtract
 cmake_minimum_required (VERSION 2.6)
 project (StrataExtract)
 
 
-#Sets the directory for cmake to search for packages
-set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules ${CMAKE_MODULE_PATH})
+#Sets the directory for cmake to find Cmake configration packages,
+#these packages allow for cmake to find libraries that are not included
+#in the standard installation of Cmake. The standard packages can be
+#found @ /usr/share/cmake-2.8/Modules
+set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules
+                      ${CMAKE_MODULE_PATH})
 
-#Source directory variable
-set (SOURCE_DIR "./Source")
-set (UNITTEST_DIR "./UnitTesting")
-
-# Recurse into the "Hello" and "Demo" subdirectories. This does not actually
-# cause another cmake executable to run. The same process will walk through
-# the project's entire directory structure.
-#add_subdirectory (Hello)
-
-#List out the different source files
-set(StrataExtractMain-Source
-	${SOURCE_DIR}/main.cpp
-	)
-
-#Simplify Source Code Groupings
-    source_group(Main FILES ${StrataExtractMain-Source})
-
-
-#Find required libraries for the project
+#Search for the required libraries for the project to properly
+#link and compile. Boost is absolutly essential as it controls the
+#process of Threads, Filesystem, Exception Handling, Hashing and Compression
+#FFMPEG is the main library for multimedia transcoding from whatever the
+#inputted format maybe to OGG Vorbis(Audio) and OGG Theora(Video).
+#Magick++ (C++ Bindings to ImageMagick) allows for image conversion
+#from whatever the input type to png (Portable Network Graphic)
 find_package(Boost REQUIRED COMPONENTS system thread filesystem exception)
 find_package(FFMPEG REQUIRED)
 find_package(Magick++ REQUIRED)
+
+#Source directory variables
+#These allow for folders in the source and unittesting to be moved
+#without having to manually change each individual filepath, they
+#also act as shortcuts.
+set (SOURCE_DIR "./Source")
+set (CONVERSION_DIR ${SOURCE_DIR}/Conversion)
+set (CONFIGURATION_DIR ${SOURCE}/Configuration)
+set (UNITTEST_DIR "./UnitTesting")
+
+#Set of included libraries if the user does not have
+#a packaged version installed via DEB/RPM/Macports
+set (LIBRARIES_DIR "./Libraries")
+set (STORMLIB_DIR ${LIBRARIES_DIR}/StormLib)
+
+#Include internal library directories if a package was not found
+#grab versions included with this tool.
+add_subdirectory("${STORMLIB_DIR}")
+
+include_directories("${STORMLIB_DIR}/src/"
+                    "${STORMLIB_DIR}/include/")
+
+#Set the actual Cpp & Hpp files in which are to be included
+#into this tool. The actual code of the tool, not outside libraries.
+set(StrataExtractMain-Source
+	${SOURCE_DIR}/main.hpp
+	${SOURCE_DIR}/main.cpp
+	)
+set(StrataExtractAudioConversion-Source)
+set(StrataExtractImageConversion-Source)
+set(StrataExtractVideoConversion-Source)
+set(StrataExtractConfiguration-Source)
+
+#Code groupings allow for IDEs to put files into collections
+#instead of simply throwing all files into a pile. This should
+#allow for easy navigation through the code base for novice and
+#heavy contributors.
+source_group(Main FILES ${StrataExtractMain-Source})
+source_group(Conversion FILES ${StrataExtractAudioConversion}
+                                  ${StrataExtractImageConversion}
+                                  ${StrataExtractVideoConversion})
 
 
 # on OS X we also have to add '-framework Cocoa' as library.  This is
@@ -38,15 +74,13 @@ if (APPLE)
     set(EXTRA_LIBS ${EXTRA_LIBS} "-framework Cocoa")
     include_directories("/opt/local/include")
     link_directories("/opt/local/lib")
-
 endif()
 
 #Compile the Library for X use
-#add_library(Library
-#			
-#			)
+#add_library(Library)
 
-#Allows us to link dependancies to StrataExtract
+#Links the libraries to the executable as to actually call
+#the library dependancy.
 link_libraries (
 	${Boost_LIBRARIES}
     ${Magick++_LIBRARIES}
@@ -74,3 +108,10 @@ add_executable(
 #	StrataExtract
 #	)
 
+
+# Set the RPATH (ie Hack Soup for the moment)
+if (APPLE)
+    set_target_properties(StrataExtract PROPERTIES LINK_FLAGS "-Wl,-rpath,@loader_path/.")
+elseif (UNIX)
+    set_target_properties(StrataExtract PROPERTIES INSTALL_RPATH ".")
+endif()
