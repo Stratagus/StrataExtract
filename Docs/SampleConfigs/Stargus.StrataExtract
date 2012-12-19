@@ -1,0 +1,223 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <game>
+ 	<name>Stargus</name>
+ 	<version>CD-EN-US</version>
+ 	<Archive name="INSTALL.EXE" type="MPQ" depends="null">
+ 	<!-- Extract & Convert to Stratagus Map Format -->
+ 	<MapAssets>
+ 		<!-- Multiplayer Maps -->
+	 		<!-- 2 Player Maps -->
+			 	<map name="Challenger" path="multimaps/(2)Challenger.scm" destination="Maps/2/">
+				<map name="River Crossing" path="multimaps/(2)River Crossing.scm" destination="Maps/2/">
+				<map name="Road War" path="multimaps/(2)Road War.scm" destination="Maps/2/">
+				<map name="Space Madness" path="multimaps/(2)Space Madness.scm" destination="Maps/2/">
+				<map name="The Small Divide" path="multimaps/(2)The Small Divide.scm" destination="Maps/2/">
+				<map name="Volcanis" path="multimaps/(2)Volcanis.scm" destination="Maps/2/">
+			<!-- 3 Player Maps -->
+				<map name="Holy Ground" path="multimaps/(3)Holy Ground.scm" destination="Maps/3/">
+				<map name="Meltdown" path="multimaps/(3)Meltdown.scm" destination="Maps/3/">
+				<map name="Three Kingdoms" path="multimaps/(3)Three Kingdoms.scm" destination="Maps/3/">
+				<map name="Triumvirate" path="multimaps/(3)Triumvirate.scm" destination="Maps/3/">
+			<!-- 4 Player Maps -->
+				<map name="Alpha Draconis" path="multimaps/(4)Alpha Draconis.scm" destination="Maps/4/">
+				<map name="Blood Bath" path="multimaps/(4)Blood Bath.scm" destination="Maps/4/">
+				<map name="Bridge Too Near" path="multimaps/(4)Bridge Too Near.scm" destination="Maps/4/">
+				<map name="Cyclone" path="multimaps/(4)Cyclone.scm" destination="Maps/4/">
+				<map name="Dark Crystal" path="multimaps/(4)Dark Crystal.scm" destination="Maps/4/">
+				<map name="Dark Star" path="multimaps/(4)Dark Star.scm" destination="Maps/4/">
+				<map name="Lost Civilization" path="multimaps/(4)Lost Civilization.scm" destination="Maps/4/">
+				<map name="Opposing City States '98" path="multimaps/(4)Opposing City States '98.scm" destination="Maps/4/">
+				<map name="Orbital Relay" path="multimaps/(4)Orbital Relay.scm" destination="Maps/4/">
+				<map name="Power Lines" path="multimaps/(4)Power Lines.scm" destination="Maps/4/">
+				<map name="Ruins of the Ancients" path="multimaps/(4)Ruins of the Ancients.scm" destination="Maps/4/">
+				<map name="Tarsonis Orbital" path="multimaps/(4)Tarsonis Orbital.scm" destination="Maps/4/">
+			<!-- 5 Player Maps -->
+				<map name="Diablo" path="multimaps/(5)Diablo.scm" destination="Maps/5/">
+				<map name="Island Hop" path="multimaps/(5)Island Hop.scm" destination="Maps/5/">
+				<map name="Jeweled River" path="multimaps/(5)Jeweled River.scm" destination="Maps/5/">
+				<map name="Sherwood Forest" path="multimaps/(5)Sherwood Forest.scm" destination="Maps/5/">
+			<!-- 6 Player Maps -->
+				<map name="Ground Zero" path="multimaps/(6)Ground Zero.scm" destination="Maps/6/">
+				<map name="Hidden Shrine" path="multimaps/(6)Hidden Shrine.scm" destination="Maps/6/">
+				<map name="New Gettysburg" path="multimaps/(6)New Gettysburg.scm" destination="Maps/6/">
+			<!-- 7 Player Maps -->
+				<map name="Continental Divide" path="multimaps/(7)Continental Divide.scm" destination="Maps/7/">
+				<map name="River War" path="multimaps/(7)River War.scm" destination="Maps/7/">
+			<!-- 8 Player Maps -->
+				<map name="Bridge to Bridge '98" path="multimaps/(8)Bridge to Bridge '98.scm" destination="Maps/8/">
+				<map name="Char Magma" path="multimaps/(8)Char Magma.scm" destination="Maps/8/">
+				<map name="Homeworld" path="multimaps/(8)Homeworld.scm" destination="Maps/8/">
+				<map name="Killing Fields" path="multimaps/(8)Killing Fields.scm" destination="Maps/8/">
+				<map name="Orbital Death" path="multimaps/(8)Orbital Death.scm" destination="Maps/8/">
+				<map name="Plains of Snow '98" path="multimaps/(8)Plains of Snow '98.scm" destination="Maps/8/">
+				<map name="Station Unrest" path="multimaps/(8)Station Unrest.scm" destination="Maps/8/">
+				<map name="The Hunters" path="multimaps/(8)The Hunters.scm" destination="Maps/8/">
+ 	</MapAssets>
+ 	<!-- Extract & Convert to PNG -->
+ 	<ImageAssets>
+ 	</ImageAssets>
+ 	<!-- Extract & Convert to OGG Vorbis -->
+ 	<AudioAssets>
+ 		<!-- Zerg SoundEffects -->
+	 		<!-- Zerg Advisor -->
+				<audio name="require minerals" path="sound/zerg/advisor/zaderr00.wav" destination="Audio/SoundEffects/Zerg/Advisor/">
+				<audio name="require gas" path="sound/zerg/advisor/zaderr01.wav" destination="Audio/SoundEffects/Zerg/Advisor/">
+				<audio name="spawn overlords" path="sound/zerg/advisor/zaderr02.wav" destination="Audio/SoundEffects/Zerg/Advisor/">
+				<audio name="not enough energy" path="sound/Zerg/Advisor/ZAdErr06.wav" destination="Audio/SoundEffects/Zerg/Advisor/">
+				<audio name="base attacked" path="sound/zerg/advisor/zadupd00.wav" destination="Audio/SoundEffects/Zerg/Advisor/">
+				<audio name="units attacked" path="sound/zerg/advisor/zadupd01.wav" destination="Audio/SoundEffects/Zerg/Advisor/">
+				<audio name="evolution complete" path="sound/zerg/advisor/zadupd02.wav" destination="Audio/SoundEffects/Zerg/Advisor/">
+				<audio name="nuclear launch" path="sound/zerg/advisor/zadupd04.wav" destination="Audio/SoundEffects/Zerg/Advisor/">
+			<!-- Zerg Buildings -->
+				<audio name="building death" path="sound/zerg/bldg/zbldgdth.wav" destination="Audio/SoundEffects/Zerg/Buildings/">
+				<audio name="cb" path="sound/Zerg/Bldg/ZCbWht00.wav" destination="Audio/SoundEffects/Zerg/Buildings/">
+				<audio name="morph complete" path="sound/zerg/bldg/zchrdy00.wav" destination="Audio/SoundEffects/Zerg/Buildings/">
+				<audio name="spawning pool selected" path="sound/zerg/bldg/zchwht00.wav" destination="Audio/SoundEffects/Zerg/Buildings/">
+				<audio name="evolution chamber selected" path="sound/zerg/bldg/zevwht00.wav" destination="Audio/SoundEffects/Zerg/Buildings/">
+				<audio name="creep colony selected" path="sound/zerg/bldg/zfcwht00.wav" destination="Audio/SoundEffects/Zerg/Buildings/">
+				<audio name="hatchery selected" path="sound/zerg/bldg/zhawht00.wav" destination="Audio/SoundEffects/Zerg/Buildings/">
+				<audio name="lair selected" path="sound/zerg/bldg/zhiwht00.wav" destination="Audio/SoundEffects/Zerg/Buildings/">
+				<audio name="extractor selected" path="sound/zerg/bldg/zigwht00.wav" destination="Audio/SoundEffects/Zerg/Buildings/">
+				<audio name="hive selected" path="sound/zerg/bldg/zlrwht00.wav" destination="Audio/SoundEffects/Zerg/Buildings/">
+				<audio name="sunken colony selected" path="sound/zerg/bldg/zluwht00.wav" destination="Audio/SoundEffects/Zerg/Buildings/">
+				<audio name="greater spire selected" path="sound/zerg/bldg/zmcwht00.wav" destination="Audio/SoundEffects/Zerg/Buildings/">
+				<audio name="defiler mound selected" path="sound/zerg/bldg/zmhwht00.wav" destination="Audio/SoundEffects/Zerg/Buildings/">
+				<audio name="queens nest selected" path="sound/zerg/bldg/znewht00.wav" destination="Audio/SoundEffects/Zerg/Buildings/">
+				<audio name="nydus canal selected" path="sound/zerg/bldg/znywht00.wav" destination="Audio/SoundEffects/Zerg/Buildings/">
+				<audio name="o1" path="sound/zerg/bldg/zo1wht00.wav" destination="Audio/SoundEffects/Zerg/Buildings/">
+				<audio name="ultralisk cavern selected" path="sound/zerg/bldg/zrcwht00.wav" destination="Audio/SoundEffects/Zerg/Buildings/">
+				<audio name="hydralisk den selected" path="sound/zerg/bldg/zsbwht00.wav" destination="Audio/SoundEffects/Zerg/Buildings/">
+				<audio name="spore colony selected" path="sound/zerg/bldg/zscwht00.wav" destination="Audio/SoundEffects/Zerg/Buildings/">
+				<audio name="spire selected" path="sound/zerg/bldg/zspwht00.wav" destination="Audio/SoundEffects/Zerg/Buildings/">
+			<!-- Zerg Larva SoundEffects -->
+				<audio name="death" path="sound/zerg/larva/zladth00.wav" destination="Audio/SoundEffects/Zerg/Units/Larva/">
+				<audio name="pissed" path="sound/zerg/larva/zlapss00.wav" destination="Audio/SoundEffects/Zerg/Units/Larva/">
+				<audio name="selected" path="sound/zerg/larva/zlawht00.wav" destination="Audio/SoundEffects/Zerg/Units/Larva/">
+			<!-- Zerg Egg SoundEffects -->
+				<audio name="death" path="sound/zerg/egg/zegdth00.wav" destination="Audio/SoundEffects/Zerg/Units/Egg/">
+				<audio name="pissed" path="sound/Zerg/Egg/ZEgPss00.wav" destination="Audio/SoundEffects/Zerg/Units/Egg/">
+				<audio name="ready" path="sound/zerg/egg/zegrdy00.wav" destination="Audio/SoundEffects/Zerg/Units/Egg/">
+				<audio name="selected1" path="sound/zerg/egg/zegwht00.wav" destination="Audio/SoundEffects/Zerg/Units/Egg/Selected/">
+				<audio name="selected2" path="sound/zerg/egg/zegwht01.wav" destination="Audio/SoundEffects/Zerg/Units/Egg/Selected/">
+			<!-- Zerg Drone SoundEffects -->
+				<audio name="ready" path="sound/zerg/drone/zdrrdy00.wav" destination="Audio/SoundEffects/Zerg/Units/Drone/">
+				<audio name="death" path="sound/Zerg/drone/ZDrDth00.wav" destination="Audio/SoundEffects/Zerg/Units/Drone/">
+				<audio name="error" path="sound/zerg/drone/zdrerr00.wav" destination="Audio/SoundEffects/Zerg/Units/Drone/">
+				<audio name="min00" path="sound/zerg/drone/zdrmin00.wav" destination="Audio/SoundEffects/Zerg/Units/Drone/">
+				<audio name="pissed1" path="sound/Zerg/drone/ZDrPss00.wav" destination="Audio/SoundEffects/Zerg/Units/Drone/Pissed/">
+				<audio name="pissed2" path="sound/Zerg/drone/ZDrPss01.wav" destination="Audio/SoundEffects/Zerg/Units/Drone/Pissed/">
+				<audio name="pissed3" path="sound/Zerg/drone/ZDrPss02.wav" destination="Audio/SoundEffects/Zerg/Units/Drone/Pissed/">
+				<audio name="selected1" path="sound/zerg/drone/zdrwht00.wav" destination="Audio/SoundEffects/Zerg/Units/Drone/Selected/">
+				<audio name="selected2" path="sound/zerg/drone/zdrwht01.wav" destination="Audio/SoundEffects/Zerg/Units/Drone/Selected/">
+				<audio name="selected3" path="sound/zerg/drone/zdrwht02.wav" destination="Audio/SoundEffects/Zerg/Units/Drone/Selected/">
+				<audio name="selected4" path="sound/zerg/drone/zdrwht03.wav" destination="Audio/SoundEffects/Zerg/Units/Drone/Selected/">
+				<audio name="selected5" path="sound/zerg/drone/zdrwht04.wav" destination="Audio/SoundEffects/Zerg/Units/Drone/Selected/">
+				<audio name="acknowledgement1" path="sound/zerg/drone/zdryes00.wav" destination="Audio/SoundEffects/Zerg/Units/Drone/Acknowledgement/">
+				<audio name="acknowledgement2" path="sound/zerg/drone/zdryes01.wav" destination="Audio/SoundEffects/Zerg/Units/Drone/Acknowledgement/">
+				<audio name="acknowledgement3" path="sound/zerg/drone/zdryes02.wav" destination="Audio/SoundEffects/Zerg/Units/Drone/Acknowledgement/">
+				<audio name="acknowledgement4" path="sound/zerg/drone/zdryes03.wav" destination="Audio/SoundEffects/Zerg/Units/Drone/Acknowledgement/">
+				<audio name="acknowledgement5" path="sound/zerg/drone/zdryes04.wav" destination="Audio/SoundEffects/Zerg/Units/Drone/Acknowledgement/">
+			<!-- Zerg Scourge SoundEffects -->
+				<audio name="attack" path="sound/Zerg/AVENGER/ZAvAtt00.wav" destination="Audio/SoundEffects/Zerg/Units/Scourge/">
+				<audio name="death" path="sound/zerg/avenger/zavdth00.wav" destination="Audio/SoundEffects/Zerg/Units/Scourge/">
+				<audio name="hit" path="sound/Zerg/AVENGER/ZAvHit00.wav" destination="Audio/SoundEffects/Zerg/Units/Scourge/">
+				<audio name="pissed1" path="sound/zerg/avenger/zavpss00.wav" destination="Audio/SoundEffects/Zerg/Units/Scourge/Pissed/">
+				<audio name="pissed2" path="sound/zerg/avenger/zavpss01.wav" destination="Audio/SoundEffects/Zerg/Units/Scourge/Pissed/">
+				<audio name="ready" path="sound/zerg/avenger/zavrdy00.wav" destination="Audio/SoundEffects/Zerg/Units/Scourge/">
+				<audio name="select1" path="sound/zerg/avenger/zavwht00.wav" destination="Audio/SoundEffects/Zerg/Units/Scourge/Select/">
+				<audio name="select2" path="sound/zerg/avenger/zavwht01.wav" destination="Audio/SoundEffects/Zerg/Units/Scourge/Select/">
+				<audio name="acknowledgement1" path="sound/zerg/avenger/zavyes00.wav" destination="Audio/SoundEffects/Zerg/Units/Scourge/Acknowledgement/">
+				<audio name="acknowledgement2" path="sound/zerg/avenger/zavyes01.wav" destination="Audio/SoundEffects/Zerg/Units/Scourge/Acknowledgement/">
+			<!-- Zerg Guardian SoundEffects -->
+				<audio name="ready" path="sound/zerg/guardian/zgurdy00.wav" destination="Audio/SoundEffects/Zerg/Units/Guardian/">
+				<audio name="death" path="sound/zerg/guardian/zgudth00.wav" destination="Audio/SoundEffects/Zerg/Units/Guardian/">
+				<audio name="pissed1" path="sound/zerg/guardian/zgupss00.wav" destination="Audio/SoundEffects/Zerg/Units/Guardian/Pissed/">
+				<audio name="pissed2" path="sound/zerg/guardian/zgupss01.wav" destination="Audio/SoundEffects/Zerg/Units/Guardian/Pissed/">
+				<audio name="pissed3" path="sound/zerg/guardian/zgupss02.wav" destination="Audio/SoundEffects/Zerg/Units/Guardian/Pissed/">
+				<audio name="pissed4" path="sound/zerg/guardian/zgupss03.wav" destination="Audio/SoundEffects/Zerg/Units/Guardian/Pissed/">
+				<audio name="selected1" path="sound/zerg/guardian/zguwht00.wav" destination="Audio/SoundEffects/Zerg/Units/Guardian/Selected/">
+				<audio name="selected2" path="sound/zerg/guardian/zguwht01.wav" destination="Audio/SoundEffects/Zerg/Units/Guardian/Selected/">
+				<audio name="selected3" path="sound/zerg/guardian/zguwht02.wav" destination="Audio/SoundEffects/Zerg/Units/Guardian/Selected/">
+				<audio name="selected4" path="sound/zerg/guardian/zguwht03.wav" destination="Audio/SoundEffects/Zerg/Units/Guardian/Selected/">
+				<audio name="acknowledgement1" path="sound/zerg/guardian/zguyes00.wav" destination="Audio/SoundEffects/Zerg/Units/Guardian/Acknowledgement/">
+				<audio name="acknowledgement2" path="sound/zerg/guardian/zguyes01.wav" destination="Audio/SoundEffects/Zerg/Units/Guardian/Acknowledgement/">
+				<audio name="acknowledgement3" path="sound/zerg/guardian/zguyes02.wav" destination="Audio/SoundEffects/Zerg/Units/Guardian/Acknowledgement/">
+				<audio name="acknowledgement4" path="sound/zerg/guardian/zguyes03.wav" destination="Audio/SoundEffects/Zerg/Units/Guardian/Acknowledgement/">
+			<!-- Zerg Broodling SoundEffects -->
+				<audio name="attack" path="sound/zerg/broodling/zbratt00.wav" destination="Audio/SoundEffects/Zerg/Units/Broodling/">
+				<audio name="death" path="sound/zerg/broodling/zbrdth00.wav" destination="Audio/SoundEffects/Zerg/Units/Broodling/">
+				<audio name="pissed1" path="sound/zerg/broodling/zbrpss00.wav" destination="Audio/SoundEffects/Zerg/Units/Broodling/Pissed/">
+				<audio name="pissed2" path="sound/zerg/broodling/zbrpss01.wav" destination="Audio/SoundEffects/Zerg/Units/Broodling/Pissed/">
+				<audio name="pissed3" path="sound/zerg/broodling/zbrpss02.wav" destination="Audio/SoundEffects/Zerg/Units/Broodling/Pissed/">
+				<audio name="pissed4" path="sound/zerg/broodling/zbrpss03.wav" destination="Audio/SoundEffects/Zerg/Units/Broodling/Pissed/">
+				<audio name="ready" path="sound/zerg/broodling/zbrrdy00.wav" destination="Audio/SoundEffects/Zerg/Units/Broodling/">
+				<audio name="selected1" path="sound/zerg/broodling/zbrwht00.wav" destination="Audio/SoundEffects/Zerg/Units/Broodling/Selected/">
+				<audio name="selected2" path="sound/zerg/broodling/zbrwht01.wav" destination="Audio/SoundEffects/Zerg/Units/Broodling/Selected/">
+				<audio name="selected3" path="sound/zerg/broodling/zbrwht02.wav" destination="Audio/SoundEffects/Zerg/Units/Broodling/Selected/">
+				<audio name="selected4" path="sound/zerg/broodling/zbrwht03.wav" destination="Audio/SoundEffects/Zerg/Units/Broodling/Selected/">
+				<audio name="acknowledgement1" path="sound/zerg/broodling/zbryes00.wav" destination="Audio/SoundEffects/Zerg/Units/Broodling/Acknowledgement/">
+				<audio name="acknowledgement2" path="sound/zerg/broodling/zbryes01.wav" destination="Audio/SoundEffects/Zerg/Units/Broodling/Acknowledgement/">
+				<audio name="acknowledgement3" path="sound/zerg/broodling/zbryes02.wav" destination="Audio/SoundEffects/Zerg/Units/Broodling/Acknowledgement/">
+				<audio name="acknowledgement4" path="sound/zerg/broodling/zbryes03.wav" destination="Audio/SoundEffects/Zerg/Units/Broodling/Acknowledgement/">
+			<!-- Zerg Infested Terran -->
+				<!-- !!!Death Sound NOT FOUND!!! -->
+				<audio name="pissed1" path="sound/zerg/bugguy/zbgpss00.wav" destination="Audio/SoundEffects/Zerg/Units/Infested Terran/Pissed/">
+				<audio name="pissed2" path="sound/zerg/bugguy/zbgpss01.wav" destination="Audio/SoundEffects/Zerg/Units/Infested Terran/Pissed/">
+				<audio name="pissed3" path="sound/zerg/bugguy/zbgpss02.wav" destination="Audio/SoundEffects/Zerg/Units/Infested Terran/Pissed/">
+				<audio name="pissed4" path="sound/zerg/bugguy/zbgpss03.wav" destination="Audio/SoundEffects/Zerg/Units/Infested Terran/Pissed/">
+				<audio name="ready" path="sound/zerg/bugguy/zbgrdy00.wav" destination="Audio/SoundEffects/Zerg/Units/Infested Terran/">
+				<audio name="selected1" path="sound/zerg/bugguy/zbgwht00.wav" destination="Audio/SoundEffects/Zerg/Units/Infested Terran/Selected/">
+				<audio name="selected2" path="sound/zerg/bugguy/zbgwht01.wav" destination="Audio/SoundEffects/Zerg/Units/Infested Terran/Selected/">
+				<audio name="selected3" path="sound/zerg/bugguy/zbgwht02.wav" destination="Audio/SoundEffects/Zerg/Units/Infested Terran/Selected/">
+				<audio name="selected4" path="sound/zerg/bugguy/zbgwht03.wav" destination="Audio/SoundEffects/Zerg/Units/Infested Terran/Selected/">
+				<audio name="acknowledgement1" path="sound/zerg/bugguy/zbgyes00.wav" destination="Audio/SoundEffects/Zerg/Units/Infested Terran/Acknowledgement/">
+				<audio name="acknowledgement2" path="sound/zerg/bugguy/zbgyes01.wav" destination="Audio/SoundEffects/Zerg/Units/Infested Terran/Acknowledgement/">
+				<audio name="acknowledgement3" path="sound/zerg/bugguy/zbgyes02.wav" destination="Audio/SoundEffects/Zerg/Units/Infested Terran/Acknowledgement/">
+				<audio name="acknowledgement4" path="sound/zerg/bugguy/zbgyes03.wav" destination="Audio/SoundEffects/Zerg/Units/Infested Terran/Acknowledgement/">
+			<!-- Zerg Defiler -->
+				<audio name="plague cast" path="sound/zerg/defiler/zdeblo00.wav" destination="Audio/SoundEffects/Zerg/Units/Defiler/">
+				<audio name="plague selected" path="sound/zerg/defiler/zdeblo01.wav" destination="Audio/SoundEffects/Zerg/Units/Defiler/">
+				<audio name="consume" path="sound/zerg/defiler/zdecon00.wav" destination="Audio/SoundEffects/Zerg/Units/Defiler/">
+				<audio name="death" path="sound/zerg/defiler/zdedth00.wav" destination="Audio/SoundEffects/Zerg/Units/Defiler/">
+				<audio name="pissed1" path="sound/zerg/defiler/zdepss00.wav" destination="Audio/SoundEffects/Zerg/Units/Defiler/Pissed/">
+				<audio name="pissed2" path="sound/zerg/defiler/zdepss01.wav" destination="Audio/SoundEffects/Zerg/Units/Defiler/Pissed/">
+				<audio name="pissed3" path="sound/zerg/defiler/zdepss02.wav" destination="Audio/SoundEffects/Zerg/Units/Defiler/Pissed/">
+				<audio name="pissed4" path="sound/zerg/defiler/zdepss03.wav" destination="Audio/SoundEffects/Zerg/Units/Defiler/Pissed/">
+				<audio name="ready" path="sound/zerg/defiler/zderdy00.wav" destination="Audio/SoundEffects/Zerg/Units/Defiler/">
+				<audio name="selected1" path="sound/zerg/defiler/zdewht00.wav" destination="Audio/SoundEffects/Zerg/Units/Defiler/Selected/">
+				<audio name="selected2" path="sound/zerg/defiler/zdewht01.wav" destination="Audio/SoundEffects/Zerg/Units/Defiler/Selected/">
+				<audio name="selected3" path="sound/zerg/defiler/zdewht02.wav" destination="Audio/SoundEffects/Zerg/Units/Defiler/Selected/">
+				<audio name="selected4" path="sound/zerg/defiler/zdewht03.wav" destination="Audio/SoundEffects/Zerg/Units/Defiler/Selected/">
+				<audio name="acknowledgement1" path="sound/zerg/defiler/zdeyes00.wav" destination="Audio/SoundEffects/Zerg/Units/Defiler/Acknowledgement/">
+				<audio name="acknowledgement2" path="sound/zerg/defiler/zdeyes01.wav" destination="Audio/SoundEffects/Zerg/Units/Defiler/Acknowledgement/">
+				<audio name="acknowledgement3" path="sound/zerg/defiler/zdeyes02.wav" destination="Audio/SoundEffects/Zerg/Units/Defiler/Acknowledgement/">
+				<audio name="acknowledgement4" path="sound/zerg/defiler/zdeyes03.wav" destination="Audio/SoundEffects/Zerg/Units/Defiler/Acknowledgement/">
+ 		<!-- Miscellaneous Sound Effects -->
+	 		<audio name="explosion1" path="sound/misc/explo1.wav" destination="Audio/SoundEffects/Misc/">
+			<audio name="explosion2" path="sound/misc/explo2.wav" destination="Audio/SoundEffects/Misc/">
+			<audio name="explosion3" path="sound/misc/explo3.wav" destination="Audio/SoundEffects/Misc/">
+			<audio name="explosion4" path="sound/misc/explo4.wav" destination="Audio/SoundEffects/Misc/">
+			<audio name="explosion5" path="sound/misc/explo5.wav" destination="Audio/SoundEffects/Misc/">
+			<audio name="explosion large" path="sound/misc/explolrg.wav" destination="Audio/SoundEffects/Misc/">
+			<audio name="explosion medium" path="sound/misc/explomed.wav" destination="Audio/SoundEffects/Misc/">
+			<audio name="explosion small" path="sound/misc/explosm.wav" destination="Audio/SoundEffects/Misc/">
+ 	</AudioAssets>
+ 	<!-- Extract & Convert to OGG Theora -->
+ 	<VideoAssets>
+ 	</VideoAssets>
+ 	<!-- Extract & Convert? -->
+ 	<FontAssets>
+		<font name="font8" path="files/font/font8.fnt destination="Fonts/">
+		<font name="font10" path="files/font/font10.fnt destination="Fonts/">
+		<font name="font12" path="files/font/font12.fnt destination="Fonts/">
+		<font name="font14" path="files/font/font14.fnt destination="Fonts/">
+		<font name="font16" path="files/font/font16.fnt destination="Fonts/">
+		<font name="font16x" path="files/font/font16x.fnt destination="Fonts/">
+		<font name="font32" path="files/font/font32.fnt destination="Fonts/">
+		<font name="font50" path="files/font/font50.fnt destination="Fonts/">
+ 	</FontAssets>
+ 	<!-- Simply Extract Objects from Archive -->
+ 	<ExtractAssets>
+ 	</ExtractAssets>
+ 	</Archive>
+ </game>
