@@ -32,6 +32,7 @@ set (SOURCE_DIR "./Source")
 set (ARCHIVES_DIR ${SOURCE_DIR}/Archives)
 set (CONVERSION_DIR ${SOURCE_DIR}/Conversion)
 set (CONFIGURATION_DIR ${SOURCE_DIR}/Configuration)
+set (RUNNER_DIR ${SOURCE_DIR}/AssetManager)
 set (UNITTEST_DIR "./UnitTesting")
 
 #Set of included libraries if the user does not have
@@ -56,7 +57,10 @@ set(StrataExtractConfiguration-Source
     ${CONFIGURATION_DIR}/StrataConfig.hpp
     ${CONFIGURATION_DIR}/StrataConfig.cpp
    )
-
+set(StrataExtractRunner-Source
+    ${RUNNER_DIR}/StrataRunner.hpp
+    ${RUNNER_DIR}/StrataRunner.cpp
+    )
 set(StrataExtractArchives-Source
     ${ARCHIVES_DIR}/StrataArchive.hpp
     ${ARCHIVES_DIR}/StrataArchive.cpp
@@ -78,6 +82,7 @@ set(StrataExtractVideoConversion-Source)
 #heavy contributors.
 source_group(Main FILES ${StrataExtractMain-Source})
 source_group(Configuration FILES ${StrataExtractConfiguration-Source})
+source_group(Runner FILES ${StrataExtractRunner-Source})
 source_group(GUI FILES ${StrataExtractGraphicalInterface})
 source_group(Archives FILES ${StrataExtractArchives-Source})
 source_group(Conversion FILES ${StrataExtractAudioConversion-Source}
@@ -123,6 +128,7 @@ add_executable(
     #MACOSX_BUNDLE
    ${StrataExtractMain-Source}
    ${StrataExtractConfiguration-Source}
+   ${StrataExtractRunner-Source}
    ${StrataExtractGraphicalInterface-Source}
    ${StrataExtractAudioConversion-Source}
    ${StrataExtractImageConversion-Source}

@@ -38,6 +38,7 @@ class StrataConfig
          *  \note*/
         static int GetCPUCores();
         float GetProgess();
+        bool isConfigLoaded();
     
     protected:
         StrataConfig();
@@ -46,6 +47,7 @@ class StrataConfig
         static StrataConfig* ConfigurationInstance;
         int completeObjects;
         int totalObjects;
+        bool configLoaded;
 };
 
 #endif

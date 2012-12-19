@@ -4,6 +4,7 @@ StrataConfig::StrataConfig()
 {
     totalObjects = 0;
     completeObjects = 0;
+    configLoaded = false;
 }
 
 StrataConfig* StrataConfig::ConfigurationInstance = 0;
@@ -32,6 +33,7 @@ void StrataConfig::readConfig(boost::filesystem::path configurationPath)
         
         delete configurationStream;
         configurationStream = NULL;
+        configLoaded = true;
     }
 }
 
@@ -46,4 +48,9 @@ float StrataConfig::GetProgess()
         return -1; //The configration has not been loaded.
     else
         return floor( ((float)completeObjects/ (float)totalObjects) * 10000 ) / 100;
+}
+
+bool StrataConfig::isConfigLoaded()
+{
+    return configLoaded;
 }

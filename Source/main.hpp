@@ -13,6 +13,6 @@
 #ifndef Main_Header
 #define Main_Header
 #include "Configuration/StrataConfig.hpp"
-
+#include "AssetManager/StrataRunner.hpp"
 
 #endif
