@@ -1,7 +1,7 @@
  <xml version="1.0" encoding="UTF-8">
  <game>
  	<name>Stargus</name>
- 	<version>CD-EN-US</version>
+ 	<version>CD-EN-US-Original</version>
  	<Archive name="INSTALL.EXE" type="MPQ" depends="null">
  	<!-- Extract & Convert to Stratagus Map Format -->
  	<MapAssets>
@@ -117,6 +117,63 @@
 				<audio name="acknowledgement3" path="sound/zerg/drone/zdryes02.wav" destination="Audio/SoundEffects/Zerg/Units/Drone/Acknowledgement/" />
 				<audio name="acknowledgement4" path="sound/zerg/drone/zdryes03.wav" destination="Audio/SoundEffects/Zerg/Units/Drone/Acknowledgement/" />
 				<audio name="acknowledgement5" path="sound/zerg/drone/zdryes04.wav" destination="Audio/SoundEffects/Zerg/Units/Drone/Acknowledgement/" />
+			<!-- Zerg Overload SoundEffects -->
+				<audio name="ready" path="sound/zerg/overlord/zovrdy00.wav" destination="Audio/SoundEffects/Zerg/Units/Overlord/" />
+				<audio name="death" path="sound/zerg/overlord/zovdth00.wav" destination="Audio/SoundEffects/Zerg/Units/Overlord/" />
+				<audio name="pissed1" path="sound/zerg/overlord/zovpss00.wav" destination="Audio/SoundEffects/Zerg/Units/Overlord/Pissed/" />
+				<audio name="pissed2" path="sound/zerg/overlord/zovpss01.wav" destination="Audio/SoundEffects/Zerg/Units/Overlord/Pissed/" />
+				<audio name="pissed3" path="sound/zerg/overlord/zovpss02.wav" destination="Audio/SoundEffects/Zerg/Units/Overlord/Pissed/" />
+				<audio name="pissed4" path="sound/zerg/overlord/zovpss03.wav" destination="Audio/SoundEffects/Zerg/Units/Overlord/Pissed/" />
+				<audio name="selected1" path="sound/zerg/overlord/zovwht00.wav" destination="Audio/SoundEffects/Zerg/Units/Overlord/Selected/" />
+				<audio name="selected2" path="sound/zerg/overlord/zovwht01.wav" destination="Audio/SoundEffects/Zerg/Units/Overlord/Selected/" />
+				<audio name="selected3" path="sound/zerg/overlord/zovwht02.wav" destination="Audio/SoundEffects/Zerg/Units/Overlord/Selected/" />
+				<audio name="selected4" path="sound/zerg/overlord/zovwht03.wav" destination="Audio/SoundEffects/Zerg/Units/Overlord/Selected/" />
+				<audio name="acknowledgement1" path="sound/zerg/overlord/zovyes00.wav" destination="Audio/SoundEffects/Zerg/Units/Overlord/Acknowledgement/" />
+				<audio name="acknowledgement2" path="sound/zerg/overlord/zovyes01.wav" destination="Audio/SoundEffects/Zerg/Units/Overlord/Acknowledgement/" />
+				<audio name="acknowledgement3" path="sound/zerg/overlord/zovyes02.wav" destination="Audio/SoundEffects/Zerg/Units/Overlord/Acknowledgement/" />
+				<audio name="acknowledgement4" path="sound/zerg/overlord/zovyes03.wav" destination="Audio/SoundEffects/Zerg/Units/Overlord/Acknowledgement/" />
+			<!-- Zerg Zergling SoundEffects -->
+				<audio name="ready" path="sound/zerg/zergling/zzerdy00.wav" destination="Audio/SoundEffects/Zerg/Units/Zergling/" />
+				<audio name="death" path="sound/zerg/zergling/zzedth00.wav" destination="Audio/SoundEffects/Zerg/Units/Zergling/" />
+				<audio name="pissed1" path="sound/zerg/zergling/zzepss00.wav" destination="Audio/SoundEffects/Zerg/Units/Zergling/Pissed/" />
+				<audio name="pissed2" path="sound/zerg/zergling/zzepss01.wav" destination="Audio/SoundEffects/Zerg/Units/Zergling/Pissed/" />
+				<audio name="pissed3" path="sound/zerg/zergling/zzepss02.wav" destination="Audio/SoundEffects/Zerg/Units/Zergling/Pissed/" />
+				<audio name="selected1" path="sound/zerg/zergling/zzewht00.wav" destination="Audio/SoundEffects/Zerg/Units/Zergling/Selected/" />
+				<audio name="selected2" path="sound/zerg/zergling/zzewht01.wav" destination="Audio/SoundEffects/Zerg/Units/Zergling/Selected/" />
+				<audio name="selected3" path="sound/zerg/zergling/zzewht02.wav" destination="Audio/SoundEffects/Zerg/Units/Zergling/Selected/" />
+				<audio name="selected4" path="sound/zerg/zergling/zzewht03.wav" destination="Audio/SoundEffects/Zerg/Units/Zergling/Selected/" />
+				<audio name="acknowledgement1" path="sound/zerg/zergling/zzeyes00.wav" destination="Audio/SoundEffects/Zerg/Units/Zergling/Acknowledgement/" />
+				<audio name="acknowledgement2" path="sound/zerg/zergling/zzeyes01.wav" destination="Audio/SoundEffects/Zerg/Units/Zergling/Acknowledgement/" />
+				<audio name="acknowledgement3" path="sound/zerg/zergling/zzeyes02.wav" destination="Audio/SoundEffects/Zerg/Units/Zergling/Acknowledgement/" />
+				<audio name="acknowledgement4" path="sound/zerg/zergling/zzeyes03.wav" destination="Audio/SoundEffects/Zerg/Units/Zergling/Acknowledgement/" />
+			<!-- Zerg Hydralisk SoundEffects -->
+				<audio name="ready" path="sound/zerg/hydra/zhyrdy00.wav" destination="Audio/SoundEffects/Zerg/Units/Hydralisk/" />
+				<audio name="attack" path="Sound/Zerg/Hydra/SpiFir00.wav" destination="Audio/SoundEffects/Zerg/Units/Hydralisk/" />
+				<audio name="death" path="sound/zerg/hydra/zhydth00.wav" destination="Audio/SoundEffects/Zerg/Units/Hydralisk/" />
+				<audio name="pissed1" path="sound/zerg/hydra/zhypss00.wav" destination="Audio/SoundEffects/Zerg/Units/Hydralisk/Pissed/" />
+				<audio name="pissed2" path="sound/zerg/hydra/zhypss01.wav" destination="Audio/SoundEffects/Zerg/Units/Hydralisk/Pissed/" />
+				<audio name="selected1" path="sound/zerg/hydra/zhywht00.wav" destination="Audio/SoundEffects/Zerg/Units/Hydralisk/Selected/" />
+				<audio name="selected2" path="sound/zerg/hydra/zhywht01.wav" destination="Audio/SoundEffects/Zerg/Units/Hydralisk/Selected/" />
+				<audio name="selected3" path="sound/zerg/hydra/zhywht02.wav" destination="Audio/SoundEffects/Zerg/Units/Hydralisk/Selected/" />
+				<audio name="acknowledgement1" path="sound/zerg/hydra/zhyyes00.wav" destination="Audio/SoundEffects/Zerg/Units/Hydralisk/Acknowledgement/" />
+				<audio name="acknowledgement2" path="sound/zerg/hydra/zhyyes01.wav" destination="Audio/SoundEffects/Zerg/Units/Hydralisk/Acknowledgement/" />
+				<audio name="acknowledgement3" path="sound/zerg/hydra/zhyyes02.wav" destination="Audio/SoundEffects/Zerg/Units/Hydralisk/Acknowledgement/" />
+				<audio name="acknowledgement4" path="sound/zerg/hydra/zhyyes03.wav" destination="Audio/SoundEffects/Zerg/Units/Hydralisk/Acknowledgement/" />
+			<!-- Zerg Mutalisk SoundEffects -->
+				<audio name="ready" path="sound/zerg/mutalid/zmurdy00.wav" destination="Audio/SoundEffects/Zerg/Units/Mutalisk/" />
+				<audio name="death" path="sound/zerg/mutalid/zmudth00.wav" destination="Audio/SoundEffects/Zerg/Units/Mutalisk/" />
+				<audio name="pissed1" path="sound/zerg/mutalid/zmupss00.wav" destination="Audio/SoundEffects/Zerg/Units/Mutalisk/Pissed" />
+				<audio name="pissed2" path="sound/zerg/mutalid/zmupss01.wav" destination="Audio/SoundEffects/Zerg/Units/Mutalisk/Pissed" />
+				<audio name="pissed3" path="sound/zerg/mutalid/zmupss02.wav" destination="Audio/SoundEffects/Zerg/Units/Mutalisk/Pissed" />
+				<audio name="pissed4" path="sound/zerg/mutalid/zmupss03.wav" destination="Audio/SoundEffects/Zerg/Units/Mutalisk/Pissed" />
+				<audio name="selected1" path="sound/zerg/mutalid/zmuwht00.wav" destination="Audio/SoundEffects/Zerg/Units/Mutalisk/Selected/" />
+				<audio name="selected2" path="sound/zerg/mutalid/zmuwht01.wav" destination="Audio/SoundEffects/Zerg/Units/Mutalisk/Selected/" />
+				<audio name="selected3" path="sound/zerg/mutalid/zmuwht02.wav" destination="Audio/SoundEffects/Zerg/Units/Mutalisk/Selected/" />
+				<audio name="selected4" path="sound/zerg/mutalid/zmuwht03.wav" destination="Audio/SoundEffects/Zerg/Units/Mutalisk/Selected/" />
+				<audio name="acknowledgement1" path="sound/zerg/mutalid/zmuyes00.wav" destination="Audio/SoundEffects/Zerg/Units/Mutalisk/Acknowledgement/" />
+				<audio name="acknowledgement2" path="sound/zerg/mutalid/zmuyes01.wav" destination="Audio/SoundEffects/Zerg/Units/Mutalisk/Acknowledgement/" />
+				<audio name="acknowledgement3" path="sound/zerg/mutalid/zmuyes02.wav" destination="Audio/SoundEffects/Zerg/Units/Mutalisk/Acknowledgement/" />
+				<audio name="acknowledgement4" path="sound/zerg/mutalid/zmuyes03.wav" destination="Audio/SoundEffects/Zerg/Units/Mutalisk/Acknowledgement/" />
 			<!-- Zerg Scourge SoundEffects -->
 				<audio name="attack" path="sound/Zerg/AVENGER/ZAvAtt00.wav" destination="Audio/SoundEffects/Zerg/Units/Scourge/" />
 				<audio name="death" path="sound/zerg/avenger/zavdth00.wav" destination="Audio/SoundEffects/Zerg/Units/Scourge/" />
@@ -159,6 +216,28 @@
 				<audio name="acknowledgement2" path="sound/zerg/broodling/zbryes01.wav" destination="Audio/SoundEffects/Zerg/Units/Broodling/Acknowledgement/" />
 				<audio name="acknowledgement3" path="sound/zerg/broodling/zbryes02.wav" destination="Audio/SoundEffects/Zerg/Units/Broodling/Acknowledgement/" />
 				<audio name="acknowledgement4" path="sound/zerg/broodling/zbryes03.wav" destination="Audio/SoundEffects/Zerg/Units/Broodling/Acknowledgement/" />
+			<!-- Zerg Queen SoundEffects -->
+				<audio name="ready" path="sound/zerg/queen/zqurdy00.wav" destination="Audio/SoundEffects/Zerg/Units/Queen/" />
+				<audio name="death1" path="sound/zerg/queen/zqudth00.wav" destination="Audio/SoundEffects/Zerg/Units/Queen/Death/" />
+				<audio name="death2" path="sound/zerg/queen/zqudth01.wav" destination="Audio/SoundEffects/Zerg/Units/Queen/Death/" />
+				<audio name="death3" path="sound/zerg/queen/zqudth02.wav" destination="Audio/SoundEffects/Zerg/Units/Queen/Death/" />
+				<audio name="ensnare cast" path="sound/Zerg/Queen/ZQuEns00.wav" destination="Audio/SoundEffects/Zerg/Units/Queen/" />
+				<audio name="parasite cast" path="sound/zerg/queen/zqutag01.wav" destination="Audio/SoundEffects/Zerg/Units/Queen/" />
+				<audio name="swm00" path="sound/zerg/queen/zquswm00.wav" destination="Audio/SoundEffects/Zerg/Units/Queen/" />
+				<audio name="swm01" path="sound/zerg/queen/zquswm01.wav" destination="Audio/SoundEffects/Zerg/Units/Queen/" />
+				<audio name="tag00" path="sound/zerg/queen/zqutag00.wav" destination="Audio/SoundEffects/Zerg/Units/Queen/" />
+				<audio name="pissed1" path="sound/zerg/queen/zqupss00.wav" destination="Audio/SoundEffects/Zerg/Units/Queen/Pissed/" />
+				<audio name="pissed2" path="sound/zerg/queen/zqupss01.wav" destination="Audio/SoundEffects/Zerg/Units/Queen/Pissed/" />
+				<audio name="pissed3" path="sound/zerg/queen/zqupss02.wav" destination="Audio/SoundEffects/Zerg/Units/Queen/Pissed/" />
+				<audio name="pissed4" path="sound/zerg/queen/zqupss03.wav" destination="Audio/SoundEffects/Zerg/Units/Queen/Pissed/" />
+				<audio name="selected1" path="sound/zerg/queen/zquwht00.wav" destination="Audio/SoundEffects/Zerg/Units/Queen/Selected/" />
+				<audio name="selected2" path="sound/zerg/queen/zquwht01.wav" destination="Audio/SoundEffects/Zerg/Units/Queen/Selected/" />
+				<audio name="selected3" path="sound/zerg/queen/zquwht02.wav" destination="Audio/SoundEffects/Zerg/Units/Queen/Selected/" />
+				<audio name="selected4" path="sound/zerg/queen/zquwht03.wav" destination="Audio/SoundEffects/Zerg/Units/Queen/Selected/" />
+				<audio name="acknowledgement1" path="sound/zerg/queen/zquyes00.wav" destination="Audio/SoundEffects/Zerg/Units/Queen/Acknowledgement/" />
+				<audio name="acknowledgement2" path="sound/zerg/queen/zquyes01.wav" destination="Audio/SoundEffects/Zerg/Units/Queen/Acknowledgement/" />
+				<audio name="acknowledgement3" path="sound/zerg/queen/zquyes02.wav" destination="Audio/SoundEffects/Zerg/Units/Queen/Acknowledgement/" />
+				<audio name="acknowledgement4" path="sound/zerg/queen/zquyes03.wav" destination="Audio/SoundEffects/Zerg/Units/Queen/Acknowledgement/" />
 			<!-- Zerg Infested Terran -->
 				<!-- !!!Death Sound NOT FOUND!!! -->
 				<audio name="pissed1" path="sound/zerg/bugguy/zbgpss00.wav" destination="Audio/SoundEffects/Zerg/Units/Infested Terran/Pissed/" />
@@ -174,6 +253,26 @@
 				<audio name="acknowledgement2" path="sound/zerg/bugguy/zbgyes01.wav" destination="Audio/SoundEffects/Zerg/Units/Infested Terran/Acknowledgement/" />
 				<audio name="acknowledgement3" path="sound/zerg/bugguy/zbgyes02.wav" destination="Audio/SoundEffects/Zerg/Units/Infested Terran/Acknowledgement/" />
 				<audio name="acknowledgement4" path="sound/zerg/bugguy/zbgyes03.wav" destination="Audio/SoundEffects/Zerg/Units/Infested Terran/Acknowledgement/" />
+			<!-- Zerg Ultralisk -->
+				<audio name="ready" path="sound/zerg/ultra/zulrdy00.wav" destination="Audio/SoundEffects/Zerg/Units/Ultralisk/" />
+				<audio name="death" path="sound/zerg/ultra/zuldth00.wav" destination="Audio/SoundEffects/Zerg/Units/Ultralisk/" />
+				<audio name="roar" path="sound/zerg/ultra/zulror00.wav" destination="Audio/SoundEffects/Zerg/Units/Ultralisk/" />
+				<audio name="attack1" path="sound/zerg/ultra/zulatt00.wav" destination="Audio/SoundEffects/Zerg/Units/Ultralisk/Attack/" />
+				<audio name="attack2" path="sound/zerg/ultra/zulatt01.wav" destination="Audio/SoundEffects/Zerg/Units/Ultralisk/Attack/" />
+				<audio name="attack3" path="sound/zerg/ultra/zulatt02.wav" destination="Audio/SoundEffects/Zerg/Units/Ultralisk/Attack/" />
+				<audio name="hit1" path="sound/zerg/ultra/zulhit00.wav" destination="Audio/SoundEffects/Zerg/Units/Ultralisk/Hit/" />
+				<audio name="hit2" path="sound/zerg/ultra/zulhit01.wav" destination="Audio/SoundEffects/Zerg/Units/Ultralisk/Hit/" />
+				<audio name="pissed1" path="sound/zerg/ultra/zulpss00.wav" destination="Audio/SoundEffects/Zerg/Units/Ultralisk/Pissed/" />
+				<audio name="pissed2" path="sound/zerg/ultra/zulpss01.wav" destination="Audio/SoundEffects/Zerg/Units/Ultralisk/Pissed/" />
+				<audio name="pissed3" path="sound/zerg/ultra/zulpss02.wav" destination="Audio/SoundEffects/Zerg/Units/Ultralisk/Pissed/" />
+				<audio name="selected1" path="sound/zerg/ultra/zulwht00.wav" destination="Audio/SoundEffects/Zerg/Units/Ultralisk/Selected/" />
+				<audio name="selected2" path="sound/zerg/ultra/zulwht01.wav" destination="Audio/SoundEffects/Zerg/Units/Ultralisk/Selected/" />
+				<audio name="selected3" path="sound/zerg/ultra/zulwht02.wav" destination="Audio/SoundEffects/Zerg/Units/Ultralisk/Selected/" />
+				<audio name="selected4" path="sound/zerg/ultra/zulwht03.wav" destination="Audio/SoundEffects/Zerg/Units/Ultralisk/Selected/" />
+				<audio name="acknowledgement1" path="sound/zerg/ultra/zulyes00.wav" destination="Audio/SoundEffects/Zerg/Units/Ultralisk/Acknowledgement/" />
+				<audio name="acknowledgement2" path="sound/zerg/ultra/zulyes01.wav" destination="Audio/SoundEffects/Zerg/Units/Ultralisk/Acknowledgement/" />
+				<audio name="acknowledgement3" path="sound/zerg/ultra/zulyes02.wav" destination="Audio/SoundEffects/Zerg/Units/Ultralisk/Acknowledgement/" />
+				<audio name="acknowledgement4" path="sound/zerg/ultra/zulyes03.wav" destination="Audio/SoundEffects/Zerg/Units/Ultralisk/Acknowledgement/" />
 			<!-- Zerg Defiler -->
 				<audio name="plague cast" path="sound/zerg/defiler/zdeblo00.wav" destination="Audio/SoundEffects/Zerg/Units/Defiler/" />
 				<audio name="plague selected" path="sound/zerg/defiler/zdeblo01.wav" destination="Audio/SoundEffects/Zerg/Units/Defiler/" />
@@ -192,6 +291,20 @@
 				<audio name="acknowledgement2" path="sound/zerg/defiler/zdeyes01.wav" destination="Audio/SoundEffects/Zerg/Units/Defiler/Acknowledgement/" />
 				<audio name="acknowledgement3" path="sound/zerg/defiler/zdeyes02.wav" destination="Audio/SoundEffects/Zerg/Units/Defiler/Acknowledgement/" />
 				<audio name="acknowledgement4" path="sound/zerg/defiler/zdeyes03.wav" destination="Audio/SoundEffects/Zerg/Units/Defiler/Acknowledgement/" />
+			<!-- Zerg Special Kerrigan SoundEffects -->
+				<audio name="death" path="sound/Zerg/ZERGKERRI/UKiDth00.wav" destination="Audio/SoundEffects/Zerg/Units/Special/Kerrigan/" />
+				<audio name="pissed1" path="sound/Zerg/ZERGKERRI/UKiPss00.wav" destination="Audio/SoundEffects/Zerg/Units/Special/Kerrigan/Pissed/" />
+				<audio name="pissed2" path="sound/Zerg/ZERGKERRI/UKiPss01.wav" destination="Audio/SoundEffects/Zerg/Units/Special/Kerrigan/Pissed/" />
+				<audio name="pissed3" path="sound/Zerg/ZERGKERRI/UKiPss02.wav" destination="Audio/SoundEffects/Zerg/Units/Special/Kerrigan/Pissed/" />
+				<audio name="pissed4" path="sound/Zerg/ZERGKERRI/UKiPss03.wav" destination="Audio/SoundEffects/Zerg/Units/Special/Kerrigan/Pissed/" />
+				<audio name="selected1" path="sound/Zerg/ZERGKERRI/UKiWht00.wav" destination="Audio/SoundEffects/Zerg/Units/Special/Kerrigan/Selected/" />
+				<audio name="selected2" path="sound/Zerg/ZERGKERRI/UKiWht01.wav" destination="Audio/SoundEffects/Zerg/Units/Special/Kerrigan/Selected/" />
+				<audio name="selected3" path="sound/Zerg/ZERGKERRI/UKiWht02.wav" destination="Audio/SoundEffects/Zerg/Units/Special/Kerrigan/Selected/" />
+				<audio name="selected4" path="sound/Zerg/ZERGKERRI/UKiWht03.wav" destination="Audio/SoundEffects/Zerg/Units/Special/Kerrigan/Selected/" />
+				<audio name="acknowledgement1" path="sound/Zerg/ZERGKERRI/UKiYes00.wav" destination="Audio/SoundEffects/Zerg/Units/Special/Kerrigan/Acknowledgement/" />
+				<audio name="acknowledgement2" path="sound/Zerg/ZERGKERRI/UKiYes01.wav" destination="Audio/SoundEffects/Zerg/Units/Special/Kerrigan/Acknowledgement/" />
+				<audio name="acknowledgement3" path="sound/Zerg/ZERGKERRI/UKiYes02.wav" destination="Audio/SoundEffects/Zerg/Units/Special/Kerrigan/Acknowledgement/" />
+				<audio name="acknowledgement4" path="sound/Zerg/ZERGKERRI/UKiYes03.wav" destination="Audio/SoundEffects/Zerg/Units/Special/Kerrigan/Acknowledgement/" />
  		<!-- Miscellaneous Sound Effects -->
 	 		<audio name="explosion1" path="sound/misc/explo1.wav" destination="Audio/SoundEffects/Misc/" />
 			<audio name="explosion2" path="sound/misc/explo2.wav" destination="Audio/SoundEffects/Misc/" />

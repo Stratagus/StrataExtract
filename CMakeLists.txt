@@ -21,6 +21,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules
 #Magick++ (C++ Bindings to ImageMagick) allows for image conversion
 #from whatever the input type to png (Portable Network Graphic)
 find_package(Boost REQUIRED COMPONENTS system thread filesystem exception)
+find_package(LibXml2 REQUIRED)
 find_package(FFMPEG REQUIRED)
 find_package(Magick++ REQUIRED)
 
@@ -109,6 +110,7 @@ endif()
 #the library dependancy.
 link_libraries (
 	  ${Boost_LIBRARIES}
+    ${LIBXML2_LIBRARIES}
     ${Magick++_LIBRARIES}
     ${FFMPEG_LIBAVCODEC_LIBRARIES}
 )

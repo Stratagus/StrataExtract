@@ -1,128 +1,320 @@
-<audio name="ready" path="sound/zerg/hydra/zhyrdy00.wav" destination="Audio/SoundEffects/Zerg/Units/Hydralisk/>
-<audio name="attack" path="Sound/Zerg/Hydra/SpiFir00.wav" destination="Audio/SoundEffects/Zerg/Units/Hydralisk/">
-<audio name="death" path="sound/zerg/hydra/zhydth00.wav" destination="Audio/SoundEffects/Zerg/Units/Hydralisk/">
-<audio name="" path="sound/zerg/hydra/zhypss00.wav" destination="Audio/SoundEffects/Zerg/Units/Hydralisk/pissed/1">
-<audio name="" path="sound/zerg/hydra/zhypss01.wav" destination="Audio/SoundEffects/Zerg/Units/Hydralisk/pissed/2">
-<audio name="" path="sound/zerg/hydra/zhywht00.wav" destination="Audio/SoundEffects/Zerg/Units/Hydralisk/selected/1">
-<audio name="" path="sound/zerg/hydra/zhywht01.wav" destination="Audio/SoundEffects/Zerg/Units/Hydralisk/selected/2">
-<audio name="" path="sound/zerg/hydra/zhywht02.wav" destination="Audio/SoundEffects/Zerg/Units/Hydralisk/selected/3">
-<audio name="" path="sound/zerg/hydra/zhyyes00.wav" destination="Audio/SoundEffects/Zerg/Units/Hydralisk/acknowledgement/1">
-<audio name="" path="sound/zerg/hydra/zhyyes01.wav" destination="Audio/SoundEffects/Zerg/Units/Hydralisk/acknowledgement/2">
-<audio name="" path="sound/zerg/hydra/zhyyes02.wav" destination="Audio/SoundEffects/Zerg/Units/Hydralisk/acknowledgement/3">
-<audio name="" path="sound/zerg/hydra/zhyyes03.wav" destination="Audio/SoundEffects/Zerg/Units/Hydralisk/acknowledgement/4">
+	// Protoss sounds
+	{W,0,"protoss/units/advisor/err00","sound/protoss/advisor/paderr00.wav">
+	{W,0,"protoss/units/advisor/err01","sound/protoss/advisor/paderr01.wav">
+	{W,0,"protoss/units/advisor/err02","sound/protoss/advisor/paderr02.wav">
+	{W,0,"protoss/units/advisor/err06","sound/Protoss/Advisor/PAdErr06.wav">
+	{W,0,"protoss/units/advisor/upd00","sound/protoss/advisor/padupd00.wav">
+	{W,0,"protoss/units/advisor/upd01","sound/protoss/advisor/padupd01.wav">
+	{W,0,"protoss/units/advisor/upd02","sound/protoss/advisor/padupd02.wav">
+	{W,0,"protoss/units/advisor/upd04","sound/protoss/advisor/padupd04.wav">
+	{W,0,"protoss/units/advisor/upd06","sound/protoss/advisor/padupd06.wav">
 
+	{W,0,"protoss/units/arbiter/cag00","sound/protoss/arbiter/pabcag00.wav">
+	{W,0,"protoss/units/arbiter/death/1","sound/protoss/arbiter/pabdth00.wav">
+	{W,0,"protoss/units/arbiter/fol00","sound/protoss/arbiter/pabfol00.wav">
+	{W,0,"protoss/units/arbiter/fol01","sound/protoss/arbiter/pabfol01.wav">
+	{W,0,"protoss/units/arbiter/fol02","sound/protoss/arbiter/pabfol02.wav">
+	{W,0,"protoss/units/arbiter/fol03","sound/protoss/arbiter/pabfol03.wav">
+	{W,0,"protoss/units/arbiter/pissed/1","sound/protoss/arbiter/pabpss00.wav">
+	{W,0,"protoss/units/arbiter/pissed/2","sound/protoss/arbiter/pabpss01.wav">
+	{W,0,"protoss/units/arbiter/pissed/3","sound/protoss/arbiter/pabpss02.wav">
+	{W,0,"protoss/units/arbiter/pissed/4","sound/protoss/arbiter/pabpss03.wav">
+	{W,0,"protoss/units/arbiter/pissed/5","sound/protoss/arbiter/pabpss04.wav">
+	{W,0,"protoss/units/arbiter/ready","sound/protoss/arbiter/pabrdy00.wav">
+	{W,0,"protoss/units/arbiter/selected/1","sound/protoss/arbiter/pabwht00.wav">
+	{W,0,"protoss/units/arbiter/selected/2","sound/protoss/arbiter/pabwht01.wav">
+	{W,0,"protoss/units/arbiter/selected/3","sound/protoss/arbiter/pabwht02.wav">
+	{W,0,"protoss/units/arbiter/selected/4","sound/protoss/arbiter/pabwht03.wav">
+	{W,0,"protoss/units/arbiter/acknowledgement/1","sound/protoss/arbiter/pabyes00.wav">
+	{W,0,"protoss/units/arbiter/acknowledgement/2","sound/protoss/arbiter/pabyes01.wav">
+	{W,0,"protoss/units/arbiter/acknowledgement/3","sound/protoss/arbiter/pabyes02.wav">
+//	{W,0,"protoss/units/arbiter/acknowledgement/4","sound/protoss/arbiter/pabyes03.wav">
 
-<audio name="" path="sound/zerg/mutalid/zmudth00.wav" destination="Audio/SoundEffects/Zerg/Units/mutalisk/death/1">
-<audio name="" path="sound/zerg/mutalid/zmupss00.wav" destination="Audio/SoundEffects/Zerg/Units/mutalisk/pissed/1">
-<audio name="" path="sound/zerg/mutalid/zmupss01.wav" destination="Audio/SoundEffects/Zerg/Units/mutalisk/pissed/2">
-<audio name="" path="sound/zerg/mutalid/zmupss02.wav" destination="Audio/SoundEffects/Zerg/Units/mutalisk/pissed/3">
-<audio name="" path="sound/zerg/mutalid/zmupss03.wav" destination="Audio/SoundEffects/Zerg/Units/mutalisk/pissed/4">
-<audio name="" path="sound/zerg/mutalid/zmurdy00.wav" destination="Audio/SoundEffects/Zerg/Units/mutalisk/ready">
-<audio name="" path="sound/zerg/mutalid/zmuwht00.wav" destination="Audio/SoundEffects/Zerg/Units/mutalisk/selected/1">
-<audio name="" path="sound/zerg/mutalid/zmuwht01.wav" destination="Audio/SoundEffects/Zerg/Units/mutalisk/selected/2">
-<audio name="" path="sound/zerg/mutalid/zmuwht02.wav" destination="Audio/SoundEffects/Zerg/Units/mutalisk/selected/3">
-<audio name="" path="sound/zerg/mutalid/zmuwht03.wav" destination="Audio/SoundEffects/Zerg/Units/mutalisk/selected/4">
-<audio name="" path="sound/zerg/mutalid/zmuyes00.wav" destination="Audio/SoundEffects/Zerg/Units/mutalisk/acknowledgement/1">
-<audio name="" path="sound/zerg/mutalid/zmuyes01.wav" destination="Audio/SoundEffects/Zerg/Units/mutalisk/acknowledgement/2">
-<audio name="" path="sound/zerg/mutalid/zmuyes02.wav" destination="Audio/SoundEffects/Zerg/Units/mutalisk/acknowledgement/3">
-<audio name="" path="sound/zerg/mutalid/zmuyes03.wav" destination="Audio/SoundEffects/Zerg/Units/mutalisk/acknowledgement/4">
+	{W,0,"protoss/units/archon/death/1","sound/protoss/archon/pardth00.wav">
+	{W,0,"protoss/units/archon/min00","sound/Protoss/ARCHON/PArMin00.wav">
+	{W,0,"protoss/units/archon/pissed/1","sound/protoss/archon/parpss00.wav">
+	{W,0,"protoss/units/archon/pissed/2","sound/protoss/archon/parpss01.wav">
+	{W,0,"protoss/units/archon/pissed/3","sound/protoss/archon/parpss02.wav">
+	{W,0,"protoss/units/archon/pissed/4","sound/protoss/archon/parpss03.wav">
+	{W,0,"protoss/units/archon/ready","sound/Protoss/ARCHON/PArRdy00.wav">
+	{W,0,"protoss/units/archon/selected/1","sound/protoss/archon/parwht00.wav">
+	{W,0,"protoss/units/archon/selected/2","sound/protoss/archon/parwht01.wav">
+	{W,0,"protoss/units/archon/selected/3","sound/protoss/archon/parwht02.wav">
+	{W,0,"protoss/units/archon/selected/4","sound/protoss/archon/parwht03.wav">
+	{W,0,"protoss/units/archon/acknowledgement/1","sound/protoss/archon/paryes00.wav">
+	{W,0,"protoss/units/archon/acknowledgement/2","sound/protoss/archon/paryes01.wav">
+	{W,0,"protoss/units/archon/acknowledgement/3","sound/protoss/archon/paryes02.wav">
+	{W,0,"protoss/units/archon/acknowledgement/4","sound/protoss/archon/paryes03.wav">
+	{W,0,"protoss/units/archon/fir00","sound/bullet/parfir00.wav">
 
-<audio name="" path="sound/zerg/overlord/zovdth00.wav" destination="Audio/SoundEffects/Zerg/Units/overlord/death/1">
-<audio name="" path="sound/zerg/overlord/zovpss00.wav" destination="Audio/SoundEffects/Zerg/Units/overlord/pissed/1">
-<audio name="" path="sound/zerg/overlord/zovpss01.wav" destination="Audio/SoundEffects/Zerg/Units/overlord/pissed/2">
-<audio name="" path="sound/zerg/overlord/zovpss02.wav" destination="Audio/SoundEffects/Zerg/Units/overlord/pissed/3">
-<audio name="" path="sound/zerg/overlord/zovpss03.wav" destination="Audio/SoundEffects/Zerg/Units/overlord/pissed/4">
-<audio name="" path="sound/zerg/overlord/zovrdy00.wav" destination="Audio/SoundEffects/Zerg/Units/overlord/ready">
-<audio name="" path="sound/zerg/overlord/zovwht00.wav" destination="Audio/SoundEffects/Zerg/Units/overlord/selected/1">
-<audio name="" path="sound/zerg/overlord/zovwht01.wav" destination="Audio/SoundEffects/Zerg/Units/overlord/selected/2">
-<audio name="" path="sound/zerg/overlord/zovwht02.wav" destination="Audio/SoundEffects/Zerg/Units/overlord/selected/3">
-<audio name="" path="sound/zerg/overlord/zovwht03.wav" destination="Audio/SoundEffects/Zerg/Units/overlord/selected/4">
-<audio name="" path="sound/zerg/overlord/zovyes00.wav" destination="Audio/SoundEffects/Zerg/Units/overlord/acknowledgement/1">
-<audio name="" path="sound/zerg/overlord/zovyes01.wav" destination="Audio/SoundEffects/Zerg/Units/overlord/acknowledgement/2">
-<audio name="" path="sound/zerg/overlord/zovyes02.wav" destination="Audio/SoundEffects/Zerg/Units/overlord/acknowledgement/3">
-<audio name="" path="sound/zerg/overlord/zovyes03.wav" destination="Audio/SoundEffects/Zerg/Units/overlord/acknowledgement/4">
+	{W,0,"protoss/units/carrier/death/1","sound/protoss/carrier/pcadth00.wav">
+	{W,0,"protoss/units/carrier/death/2","sound/protoss/carrier/pcadth01.wav">
+	{W,0,"protoss/units/carrier/pissed/1","sound/protoss/carrier/pcapss00.wav">
+	{W,0,"protoss/units/carrier/pissed/2","sound/protoss/carrier/pcapss01.wav">
+	{W,0,"protoss/units/carrier/pissed/3","sound/protoss/carrier/pcapss02.wav">
+	{W,0,"protoss/units/carrier/pissed/4","sound/protoss/carrier/pcapss03.wav">
+	{W,0,"protoss/units/carrier/ready","sound/protoss/carrier/pcardy00.wav">
+	{W,0,"protoss/units/carrier/selected/1","sound/protoss/carrier/pcawht00.wav">
+	{W,0,"protoss/units/carrier/selected/2","sound/protoss/carrier/pcawht01.wav">
+	{W,0,"protoss/units/carrier/selected/3","sound/protoss/carrier/pcawht02.wav">
+	{W,0,"protoss/units/carrier/selected/4","sound/protoss/carrier/pcawht03.wav">
+	{W,0,"protoss/units/carrier/acknowledgement/1","sound/protoss/carrier/pcayes00.wav">
+	{W,0,"protoss/units/carrier/acknowledgement/2","sound/protoss/carrier/pcayes01.wav">
+	{W,0,"protoss/units/carrier/acknowledgement/3","sound/protoss/carrier/pcayes02.wav">
+	{W,0,"protoss/units/carrier/acknowledgement/4","sound/protoss/carrier/pcayes03.wav">
 
-<audio name="" path="sound/zerg/queen/zqudth00.wav" destination="Audio/SoundEffects/Zerg/Units/queen/death/1">
-<audio name="" path="sound/zerg/queen/zqudth01.wav" destination="Audio/SoundEffects/Zerg/Units/queen/death/2">
-<audio name="" path="sound/zerg/queen/zqudth02.wav" destination="Audio/SoundEffects/Zerg/Units/queen/death/3">
-<audio name="" path="sound/Zerg/Queen/ZQuEns00.wav" destination="Audio/SoundEffects/Zerg/Units/queen/ensnare cast">
-<audio name="" path="sound/zerg/queen/zqupss00.wav" destination="Audio/SoundEffects/Zerg/Units/queen/pissed/1">
-<audio name="" path="sound/zerg/queen/zqupss01.wav" destination="Audio/SoundEffects/Zerg/Units/queen/pissed/2">
-<audio name="" path="sound/zerg/queen/zqupss02.wav" destination="Audio/SoundEffects/Zerg/Units/queen/pissed/3">
-<audio name="" path="sound/zerg/queen/zqupss03.wav" destination="Audio/SoundEffects/Zerg/Units/queen/pissed/4">
-<audio name="" path="sound/zerg/queen/zqurdy00.wav" destination="Audio/SoundEffects/Zerg/Units/queen/ready">
-<audio name="" path="sound/zerg/queen/zquswm00.wav" destination="Audio/SoundEffects/Zerg/Units/queen/swm00">
-<audio name="" path="sound/zerg/queen/zquswm01.wav" destination="Audio/SoundEffects/Zerg/Units/queen/swm01">
-<audio name="" path="sound/zerg/queen/zqutag00.wav" destination="Audio/SoundEffects/Zerg/Units/queen/tag00">
-<audio name="" path="sound/zerg/queen/zqutag01.wav" destination="Audio/SoundEffects/Zerg/Units/queen/parasite cast">
-<audio name="" path="sound/zerg/queen/zquwht00.wav" destination="Audio/SoundEffects/Zerg/Units/queen/selected/1">
-<audio name="" path="sound/zerg/queen/zquwht01.wav" destination="Audio/SoundEffects/Zerg/Units/queen/selected/2">
-<audio name="" path="sound/zerg/queen/zquwht02.wav" destination="Audio/SoundEffects/Zerg/Units/queen/selected/3">
-<audio name="" path="sound/zerg/queen/zquwht03.wav" destination="Audio/SoundEffects/Zerg/Units/queen/selected/4">
-<audio name="" path="sound/zerg/queen/zquyes00.wav" destination="Audio/SoundEffects/Zerg/Units/queen/acknowledgement/1">
-<audio name="" path="sound/zerg/queen/zquyes01.wav" destination="Audio/SoundEffects/Zerg/Units/queen/acknowledgement/2">
-<audio name="" path="sound/zerg/queen/zquyes02.wav" destination="Audio/SoundEffects/Zerg/Units/queen/acknowledgement/3">
-<audio name="" path="sound/zerg/queen/zquyes03.wav" destination="Audio/SoundEffects/Zerg/Units/queen/acknowledgement/4">
+	{W,0,"protoss/units/dark templar/death/1","sound/protoss/darktemplar/pdtdth00.wav">
+	{W,0,"protoss/units/dark templar/pissed/1","sound/protoss/darktemplar/pdtpss00.wav">
+	{W,0,"protoss/units/dark templar/pissed/2","sound/protoss/darktemplar/pdtpss01.wav">
+	{W,0,"protoss/units/dark templar/pissed/3","sound/protoss/darktemplar/pdtpss02.wav">
+	{W,0,"protoss/units/dark templar/pissed/4","sound/protoss/darktemplar/pdtpss03.wav">
+	{W,0,"protoss/units/dark templar/selected/1","sound/protoss/darktemplar/pdtwht00.wav">
+	{W,0,"protoss/units/dark templar/selected/2","sound/protoss/darktemplar/pdtwht01.wav">
+	{W,0,"protoss/units/dark templar/selected/3","sound/protoss/darktemplar/pdtwht02.wav">
+	{W,0,"protoss/units/dark templar/selected/4","sound/protoss/darktemplar/pdtwht03.wav">
+	{W,0,"protoss/units/dark templar/acknowledgement/1","sound/protoss/darktemplar/pdtyes00.wav">
+	{W,0,"protoss/units/dark templar/acknowledgement/2","sound/protoss/darktemplar/pdtyes01.wav">
+	{W,0,"protoss/units/dark templar/acknowledgement/3","sound/protoss/darktemplar/pdtyes02.wav">
+	{W,0,"protoss/units/dark templar/acknowledgement/4","sound/protoss/darktemplar/pdtyes03.wav">
 
-<audio name="" path="sound/zerg/ultra/zulatt00.wav" destination="Audio/SoundEffects/Zerg/Units/ultralisk/att00">
-<audio name="" path="sound/zerg/ultra/zulatt01.wav" destination="Audio/SoundEffects/Zerg/Units/ultralisk/att01">
-<audio name="" path="sound/zerg/ultra/zulatt02.wav" destination="Audio/SoundEffects/Zerg/Units/ultralisk/att02">
-<audio name="" path="sound/zerg/ultra/zuldth00.wav" destination="Audio/SoundEffects/Zerg/Units/ultralisk/death/1">
-<audio name="" path="sound/zerg/ultra/zulhit00.wav" destination="Audio/SoundEffects/Zerg/Units/ultralisk/hit00">
-<audio name="" path="sound/zerg/ultra/zulhit01.wav" destination="Audio/SoundEffects/Zerg/Units/ultralisk/hit01">
-<audio name="" path="sound/zerg/ultra/zulpss00.wav" destination="Audio/SoundEffects/Zerg/Units/ultralisk/pissed/1">
-<audio name="" path="sound/zerg/ultra/zulpss01.wav" destination="Audio/SoundEffects/Zerg/Units/ultralisk/pissed/2">
-<audio name="" path="sound/zerg/ultra/zulpss02.wav" destination="Audio/SoundEffects/Zerg/Units/ultralisk/pissed/3">
-<audio name="" path="sound/zerg/ultra/zulrdy00.wav" destination="Audio/SoundEffects/Zerg/Units/ultralisk/ready">
-<audio name="" path="sound/zerg/ultra/zulror00.wav" destination="Audio/SoundEffects/Zerg/Units/ultralisk/ror00">
-<audio name="" path="sound/zerg/ultra/zulwht00.wav" destination="Audio/SoundEffects/Zerg/Units/ultralisk/selected/1">
-<audio name="" path="sound/zerg/ultra/zulwht01.wav" destination="Audio/SoundEffects/Zerg/Units/ultralisk/selected/2">
-<audio name="" path="sound/zerg/ultra/zulwht02.wav" destination="Audio/SoundEffects/Zerg/Units/ultralisk/selected/3">
-<audio name="" path="sound/zerg/ultra/zulwht03.wav" destination="Audio/SoundEffects/Zerg/Units/ultralisk/selected/1">
-<audio name="" path="sound/zerg/ultra/zulyes00.wav" destination="Audio/SoundEffects/Zerg/Units/ultralisk/acknowledgement/1">
-<audio name="" path="sound/zerg/ultra/zulyes01.wav" destination="Audio/SoundEffects/Zerg/Units/ultralisk/acknowledgement/2">
-<audio name="" path="sound/zerg/ultra/zulyes02.wav" destination="Audio/SoundEffects/Zerg/Units/ultralisk/acknowledgement/3">
-<audio name="" path="sound/zerg/ultra/zulyes03.wav" destination="Audio/SoundEffects/Zerg/Units/ultralisk/acknowledgement/4">
+	{W,0,"protoss/units/dragoon/death/1","sound/protoss/dragoon/pdrdth00.wav">
+	{W,0,"protoss/units/dragoon/pissed/1","sound/protoss/dragoon/pdrpss00.wav">
+	{W,0,"protoss/units/dragoon/pissed/2","sound/protoss/dragoon/pdrpss01.wav">
+	{W,0,"protoss/units/dragoon/pissed/3","sound/protoss/dragoon/pdrpss02.wav">
+	{W,0,"protoss/units/dragoon/pissed/4","sound/protoss/dragoon/pdrpss03.wav">
+	{W,0,"protoss/units/dragoon/ready","sound/Protoss/DRAGOON/PDrRdy00.wav">
+	{W,0,"protoss/units/dragoon/selected/1","sound/protoss/dragoon/pdrwht00.wav">
+	{W,0,"protoss/units/dragoon/selected/2","sound/protoss/dragoon/pdrwht01.wav">
+	{W,0,"protoss/units/dragoon/selected/3","sound/protoss/dragoon/pdrwht02.wav">
+	{W,0,"protoss/units/dragoon/selected/4","sound/protoss/dragoon/pdrwht03.wav">
+	{W,0,"protoss/units/dragoon/selected/5","sound/protoss/dragoon/pdrwht04.wav">
+	{W,0,"protoss/units/dragoon/selected/6","sound/protoss/dragoon/pdrwht05.wav">
+	{W,0,"protoss/units/dragoon/selected/7","sound/protoss/dragoon/pdrwht06.wav">
+	{W,0,"protoss/units/dragoon/selected/8","sound/protoss/dragoon/pdrwht07.wav">
+	{W,0,"protoss/units/dragoon/acknowledgement/1","sound/protoss/dragoon/pdryes00.wav">
+	{W,0,"protoss/units/dragoon/acknowledgement/2","sound/protoss/dragoon/pdryes01.wav">
+	{W,0,"protoss/units/dragoon/acknowledgement/3","sound/protoss/dragoon/pdryes02.wav">
+	{W,0,"protoss/units/dragoon/acknowledgement/4","sound/protoss/dragoon/pdryes03.wav">
+	{W,0,"protoss/units/dragoon/acknowledgement/5","sound/protoss/dragoon/pdryes04.wav">
+	{W,0,"protoss/units/dragoon/acknowledgement/6","sound/protoss/dragoon/pdryes05.wav">
+	{W,0,"protoss/units/dragoon/acknowledgement/7","sound/protoss/dragoon/pdryes06.wav">
+	{W,0,"protoss/units/dragoon/bull","sound/bullet/dragbull.wav">
 
-<audio name="" path="sound/Zerg/ZERGKERRI/UKiDth00.wav" destination="Audio/SoundEffects/Zerg/Units/kerrigan/death/1">
-<audio name="" path="sound/Zerg/ZERGKERRI/UKiPss00.wav" destination="Audio/SoundEffects/Zerg/Units/kerrigan/pissed/1">
-<audio name="" path="sound/Zerg/ZERGKERRI/UKiPss01.wav" destination="Audio/SoundEffects/Zerg/Units/kerrigan/pissed/2">
-<audio name="" path="sound/Zerg/ZERGKERRI/UKiPss02.wav" destination="Audio/SoundEffects/Zerg/Units/kerrigan/pissed/3">
-<audio name="" path="sound/Zerg/ZERGKERRI/UKiPss03.wav" destination="Audio/SoundEffects/Zerg/Units/kerrigan/pissed/4">
-<audio name="" path="sound/Zerg/ZERGKERRI/UKiWht00.wav" destination="Audio/SoundEffects/Zerg/Units/kerrigan/selected/1">
-<audio name="" path="sound/Zerg/ZERGKERRI/UKiWht01.wav" destination="Audio/SoundEffects/Zerg/Units/kerrigan/selected/2">
-<audio name="" path="sound/Zerg/ZERGKERRI/UKiWht02.wav" destination="Audio/SoundEffects/Zerg/Units/kerrigan/selected/3">
-<audio name="" path="sound/Zerg/ZERGKERRI/UKiWht03.wav" destination="Audio/SoundEffects/Zerg/Units/kerrigan/selected/4">
-<audio name="" path="sound/Zerg/ZERGKERRI/UKiYes00.wav" destination="Audio/SoundEffects/Zerg/Units/kerrigan/acknowledgement/1">
-<audio name="" path="sound/Zerg/ZERGKERRI/UKiYes01.wav" destination="Audio/SoundEffects/Zerg/Units/kerrigan/acknowledgement/2">
-<audio name="" path="sound/Zerg/ZERGKERRI/UKiYes02.wav" destination="Audio/SoundEffects/Zerg/Units/kerrigan/acknowledgement/3">
-<audio name="" path="sound/Zerg/ZERGKERRI/UKiYes03.wav" destination="Audio/SoundEffects/Zerg/Units/kerrigan/acknowledgement/4">
+	{W,0,"protoss/units/fenixd/pissed/1","sound/protoss/fenixd/ufdpss00.wav">
+	{W,0,"protoss/units/fenixd/pissed/2","sound/protoss/fenixd/ufdpss01.wav">
+	{W,0,"protoss/units/fenixd/pissed/3","sound/protoss/fenixd/ufdpss02.wav">
+	{W,0,"protoss/units/fenixd/pissed/4","sound/protoss/fenixd/ufdpss03.wav">
+	{W,0,"protoss/units/fenixd/selected/1","sound/protoss/fenixd/ufdwht00.wav">
+	{W,0,"protoss/units/fenixd/selected/2","sound/protoss/fenixd/ufdwht01.wav">
+	{W,0,"protoss/units/fenixd/selected/3","sound/protoss/fenixd/ufdwht02.wav">
+	{W,0,"protoss/units/fenixd/selected/4","sound/protoss/fenixd/ufdwht03.wav">
+	{W,0,"protoss/units/fenixd/acknowledgement/1","sound/protoss/fenixd/ufdyes00.wav">
+	{W,0,"protoss/units/fenixd/acknowledgement/2","sound/protoss/fenixd/ufdyes01.wav">
+	{W,0,"protoss/units/fenixd/acknowledgement/3","sound/protoss/fenixd/ufdyes02.wav">
+	{W,0,"protoss/units/fenixd/acknowledgement/4","sound/protoss/fenixd/ufdyes03.wav">
 
-<audio name="" path="sound/zerg/zergling/zzedth00.wav" destination="Audio/SoundEffects/Zerg/Units/zergling/death/1">
-<audio name="" path="sound/zerg/zergling/zzepss00.wav" destination="Audio/SoundEffects/Zerg/Units/zergling/pissed/1">
-<audio name="" path="sound/zerg/zergling/zzepss01.wav" destination="Audio/SoundEffects/Zerg/Units/zergling/pissed/2">
-<audio name="" path="sound/zerg/zergling/zzepss02.wav" destination="Audio/SoundEffects/Zerg/Units/zergling/pissed/3">
-<audio name="" path="sound/zerg/zergling/zzerdy00.wav" destination="Audio/SoundEffects/Zerg/Units/zergling/ready">
-<audio name="" path="sound/zerg/zergling/zzewht00.wav" destination="Audio/SoundEffects/Zerg/Units/zergling/selected/1">
-<audio name="" path="sound/zerg/zergling/zzewht01.wav" destination="Audio/SoundEffects/Zerg/Units/zergling/selected/2">
-<audio name="" path="sound/zerg/zergling/zzewht02.wav" destination="Audio/SoundEffects/Zerg/Units/zergling/selected/3">
-<audio name="" path="sound/zerg/zergling/zzewht03.wav" destination="Audio/SoundEffects/Zerg/Units/zergling/selected/4">
-<audio name="" path="sound/zerg/zergling/zzeyes00.wav" destination="Audio/SoundEffects/Zerg/Units/zergling/acknowledgement/1">
-<audio name="" path="sound/zerg/zergling/zzeyes01.wav" destination="Audio/SoundEffects/Zerg/Units/zergling/acknowledgement/2">
-<audio name="" path="sound/zerg/zergling/zzeyes02.wav" destination="Audio/SoundEffects/Zerg/Units/zergling/acknowledgement/3">
-<audio name="" path="sound/zerg/zergling/zzeyes03.wav" destination="Audio/SoundEffects/Zerg/Units/zergling/acknowledgement/4">
+	{W,0,"protoss/units/fenixz/death/1","sound/protoss/fenixz/ufedth00.wav">
+	{W,0,"protoss/units/fenixz/pissed/1","sound/protoss/fenixz/ufepss00.wav">
+	{W,0,"protoss/units/fenixz/pissed/2","sound/protoss/fenixz/ufepss01.wav">
+	{W,0,"protoss/units/fenixz/pissed/3","sound/protoss/fenixz/ufepss02.wav">
+	{W,0,"protoss/units/fenixz/pissed/4","sound/protoss/fenixz/ufepss03.wav">
+	{W,0,"protoss/units/fenixz/selected/1","sound/protoss/fenixz/ufewht00.wav">
+	{W,0,"protoss/units/fenixz/selected/2","sound/protoss/fenixz/ufewht01.wav">
+	{W,0,"protoss/units/fenixz/selected/3","sound/protoss/fenixz/ufewht02.wav">
+	{W,0,"protoss/units/fenixz/selected/4","sound/protoss/fenixz/ufewht03.wav">
+	{W,0,"protoss/units/fenixz/acknowledgement/1","sound/protoss/fenixz/ufeyes00.wav">
+	{W,0,"protoss/units/fenixz/acknowledgement/2","sound/protoss/fenixz/ufeyes01.wav">
+	{W,0,"protoss/units/fenixz/acknowledgement/3","sound/protoss/fenixz/ufeyes02.wav">
+	{W,0,"protoss/units/fenixz/acknowledgement/4","sound/protoss/fenixz/ufeyes03.wav">
 
-<audio name="" path="sound/Bullet/ZBGHit00.wav" destination="Audio/SoundEffects/Zerg/Units/bghit00">
-<audio name="" path="sound/bullet/zdeatt00.wav" destination="Audio/SoundEffects/Zerg/Units/deatt00">
-<audio name="" path="sound/bullet/zdrhit00.wav" destination="Audio/SoundEffects/Zerg/Units/drhit00">
-<audio name="" path="sound/Bullet/ZGuFir00.wav" destination="Audio/SoundEffects/Zerg/Units/guardian/fir00">
-<audio name="" path="sound/Bullet/ZGuHit00.wav" destination="Audio/SoundEffects/Zerg/Units/guardian/hit00">
-<audio name="" path="sound/bullet/zhyfir00.wav" destination="Audio/SoundEffects/Zerg/Units/hyfir00">
-<audio name="" path="sound/bullet/zhyhit00.wav" destination="Audio/SoundEffects/Zerg/Units/hyhit00">
-<audio name="" path="sound/bullet/zlufir00.wav" destination="Audio/SoundEffects/Zerg/Units/lufir00">
-<audio name="" path="sound/bullet/zluhit00.wav" destination="Audio/SoundEffects/Zerg/Units/luhit00">
-<audio name="" path="sound/bullet/zmufir00.wav" destination="Audio/SoundEffects/Zerg/Units/mutalisk/fir00">
-<audio name="" path="sound/bullet/zqufir00.wav" destination="Audio/SoundEffects/Zerg/Units/qufir00">
-<audio name="" path="sound/bullet/zquhit00.wav" destination="Audio/SoundEffects/Zerg/Units/quhit00">
-<audio name="" path="sound/bullet/zquhit01.wav" destination="Audio/SoundEffects/Zerg/Units/quhit01">
-<audio name="" path="sound/bullet/zquhit02.wav" destination="Audio/SoundEffects/Zerg/Units/quhit02">
+	{W,0,"protoss/units/gantrithor/pissed/1","sound/protoss/gantrithor/utcpss00.wav">
+	{W,0,"protoss/units/gantrithor/pissed/2","sound/protoss/gantrithor/utcpss01.wav">
+	{W,0,"protoss/units/gantrithor/pissed/3","sound/protoss/gantrithor/utcpss02.wav">
+	{W,0,"protoss/units/gantrithor/pissed/4","sound/protoss/gantrithor/utcpss03.wav">
+	{W,0,"protoss/units/gantrithor/selected/1","sound/protoss/gantrithor/utcwht00.wav">
+	{W,0,"protoss/units/gantrithor/selected/2","sound/protoss/gantrithor/utcwht01.wav">
+	{W,0,"protoss/units/gantrithor/selected/3","sound/protoss/gantrithor/utcwht02.wav">
+	{W,0,"protoss/units/gantrithor/selected/4","sound/protoss/gantrithor/utcwht03.wav">
+	{W,0,"protoss/units/gantrithor/acknowledgement/1","sound/protoss/gantrithor/utcyes00.wav">
+	{W,0,"protoss/units/gantrithor/acknowledgement/2","sound/protoss/gantrithor/utcyes01.wav">
+	{W,0,"protoss/units/gantrithor/acknowledgement/3","sound/protoss/gantrithor/utcyes02.wav">
+	{W,0,"protoss/units/gantrithor/acknowledgement/4","sound/protoss/gantrithor/utcyes03.wav">
+
+	{W,0,"protoss/units/interceptor/inlau00","sound/protoss/intercep/pinlau00.wav">
+
+	{W,0,"protoss/units/probe/att00","sound/protoss/probe/ppratt00.wav">
+	{W,0,"protoss/units/probe/att01","sound/protoss/probe/ppratt01.wav">
+	{W,0,"protoss/units/probe/death/1","sound/protoss/probe/pprdth00.wav">
+	{W,0,"protoss/units/probe/err00","sound/protoss/probe/pprerr00.wav">
+	{W,0,"protoss/units/probe/err01","sound/protoss/probe/pprerr01.wav">
+	{W,0,"protoss/units/probe/min00","sound/protoss/probe/pprmin00.wav">
+	{W,0,"protoss/units/probe/pissed/1","sound/protoss/probe/pprpss00.wav">
+	{W,0,"protoss/units/probe/pissed/2","sound/protoss/probe/pprpss01.wav">
+	{W,0,"protoss/units/probe/pissed/3","sound/protoss/probe/pprpss02.wav">
+	{W,0,"protoss/units/probe/pissed/4","sound/protoss/probe/pprpss03.wav">
+	{W,0,"protoss/units/probe/ready","sound/protoss/probe/pprrdy00.wav">
+	{W,0,"protoss/units/probe/selected/1","sound/protoss/probe/pprwht00.wav">
+	{W,0,"protoss/units/probe/selected/2","sound/protoss/probe/pprwht01.wav">
+	{W,0,"protoss/units/probe/selected/3","sound/protoss/probe/pprwht02.wav">
+	{W,0,"protoss/units/probe/selected/4","sound/protoss/probe/pprwht03.wav">
+	{W,0,"protoss/units/probe/acknowledgement/1","sound/protoss/probe/ppryes00.wav">
+	{W,0,"protoss/units/probe/acknowledgement/2","sound/protoss/probe/ppryes01.wav">
+	{W,0,"protoss/units/probe/acknowledgement/3","sound/protoss/probe/ppryes02.wav">
+	{W,0,"protoss/units/probe/acknowledgement/4","sound/protoss/probe/ppryes03.wav">
+
+	{W,0,"protoss/units/scout/death/1","sound/protoss/scout/pscdth00.wav">
+	{W,0,"protoss/units/scout/pissed/1","sound/protoss/scout/pscpss00.wav">
+	{W,0,"protoss/units/scout/pissed/2","sound/protoss/scout/pscpss01.wav">
+	{W,0,"protoss/units/scout/pissed/3","sound/protoss/scout/pscpss02.wav">
+	{W,0,"protoss/units/scout/pissed/4","sound/protoss/scout/pscpss03.wav">
+	{W,0,"protoss/units/scout/pissed/5","sound/protoss/scout/pscpss04.wav">
+	{W,0,"protoss/units/scout/ready","sound/protoss/scout/pscrdy00.wav">
+	{W,0,"protoss/units/scout/selected/1","sound/protoss/scout/pscwht00.wav">
+	{W,0,"protoss/units/scout/selected/2","sound/protoss/scout/pscwht01.wav">
+	{W,0,"protoss/units/scout/selected/3","sound/protoss/scout/pscwht02.wav">
+	{W,0,"protoss/units/scout/selected/4","sound/protoss/scout/pscwht03.wav">
+	{W,0,"protoss/units/scout/acknowledgement/1","sound/protoss/scout/pscyes00.wav">
+	{W,0,"protoss/units/scout/acknowledgement/2","sound/protoss/scout/pscyes01.wav">
+	{W,0,"protoss/units/scout/acknowledgement/3","sound/protoss/scout/pscyes02.wav">
+	{W,0,"protoss/units/scout/acknowledgement/4","sound/protoss/scout/pscyes03.wav">
+
+	{W,0,"protoss/units/shuttle/bld00","sound/protoss/shuttle/pshbld00.wav">
+	{W,0,"protoss/units/shuttle/bld01","sound/protoss/shuttle/pshbld01.wav">
+	{W,0,"protoss/units/shuttle/bld02","sound/protoss/shuttle/pshbld02.wav">
+	{W,0,"protoss/units/shuttle/bld03","sound/protoss/shuttle/pshbld03.wav">
+	{W,0,"protoss/units/shuttle/bld04","sound/protoss/shuttle/pshbld04.wav">
+	{W,0,"protoss/units/shuttle/death/1","sound/protoss/shuttle/pshdth00.wav">
+	{W,0,"protoss/units/shuttle/pissed/1","sound/protoss/shuttle/pshpss00.wav">
+	{W,0,"protoss/units/shuttle/pissed/2","sound/protoss/shuttle/pshpss01.wav">
+	{W,0,"protoss/units/shuttle/pissed/3","sound/protoss/shuttle/pshpss02.wav">
+	{W,0,"protoss/units/shuttle/pissed/4","sound/protoss/shuttle/pshpss03.wav">
+	{W,0,"protoss/units/shuttle/pissed/5","sound/protoss/shuttle/pshpss04.wav">
+	{W,0,"protoss/units/shuttle/ready","sound/protoss/shuttle/pshrdy00.wav">
+	{W,0,"protoss/units/shuttle/selected/1","sound/protoss/shuttle/pshwht00.wav">
+	{W,0,"protoss/units/shuttle/selected/2","sound/protoss/shuttle/pshwht01.wav">
+	{W,0,"protoss/units/shuttle/selected/3","sound/protoss/shuttle/pshwht02.wav">
+	{W,0,"protoss/units/shuttle/selected/4","sound/protoss/shuttle/pshwht03.wav">
+	{W,0,"protoss/units/shuttle/acknowledgement/1","sound/protoss/shuttle/pshyes00.wav">
+	{W,0,"protoss/units/shuttle/acknowledgement/2","sound/protoss/shuttle/pshyes01.wav">
+	{W,0,"protoss/units/shuttle/acknowledgement/3","sound/protoss/shuttle/pshyes02.wav">
+	{W,0,"protoss/units/shuttle/acknowledgement/4","sound/protoss/shuttle/pshyes03.wav">
+
+	{W,0,"protoss/units/tassadar/death/1","sound/protoss/tassadar/utadth00.wav">
+	{W,0,"protoss/units/tassadar/pissed/1","sound/protoss/tassadar/utapss00.wav">
+	{W,0,"protoss/units/tassadar/pissed/2","sound/protoss/tassadar/utapss01.wav">
+	{W,0,"protoss/units/tassadar/pissed/3","sound/protoss/tassadar/utapss02.wav">
+	{W,0,"protoss/units/tassadar/pissed/4","sound/protoss/tassadar/utapss03.wav">
+	{W,0,"protoss/units/tassadar/selected/1","sound/protoss/tassadar/utawht00.wav">
+	{W,0,"protoss/units/tassadar/selected/2","sound/protoss/tassadar/utawht01.wav">
+	{W,0,"protoss/units/tassadar/selected/3","sound/protoss/tassadar/utawht02.wav">
+	{W,0,"protoss/units/tassadar/selected/4","sound/protoss/tassadar/utawht03.wav">
+	{W,0,"protoss/units/tassadar/acknowledgement/1","sound/protoss/tassadar/utayes00.wav">
+	{W,0,"protoss/units/tassadar/acknowledgement/2","sound/protoss/tassadar/utayes01.wav">
+	{W,0,"protoss/units/tassadar/acknowledgement/3","sound/protoss/tassadar/utayes02.wav">
+	{W,0,"protoss/units/tassadar/acknowledgement/4","sound/protoss/tassadar/utayes03.wav">
+
+	{W,0,"protoss/units/templar/death/1","sound/protoss/templar/ptedth00.wav">
+	{W,0,"protoss/units/templar/hal00","sound/protoss/templar/ptehal00.wav">
+	{W,0,"protoss/units/templar/hal01","sound/protoss/templar/ptehal01.wav">
+	{W,0,"protoss/units/templar/mov00","sound/protoss/templar/ptemov00.wav">
+	{W,0,"protoss/units/templar/pissed/1","sound/protoss/templar/ptepss00.wav">
+	{W,0,"protoss/units/templar/pissed/2","sound/protoss/templar/ptepss01.wav">
+	{W,0,"protoss/units/templar/pissed/3","sound/protoss/templar/ptepss02.wav">
+	{W,0,"protoss/units/templar/pissed/4","sound/protoss/templar/ptepss03.wav">
+	{W,0,"protoss/units/templar/ready","sound/protoss/templar/pterdy00.wav">
+	{W,0,"protoss/units/templar/sto00","sound/protoss/templar/ptesto00.wav">
+	{W,0,"protoss/units/templar/sto01","sound/protoss/templar/ptesto01.wav">
+	{W,0,"protoss/units/templar/sum00","sound/protoss/templar/ptesum00.wav">
+	{W,0,"protoss/units/templar/selected/1","sound/protoss/templar/ptewht00.wav">
+	{W,0,"protoss/units/templar/selected/2","sound/protoss/templar/ptewht01.wav">
+	{W,0,"protoss/units/templar/selected/3","sound/protoss/templar/ptewht02.wav">
+	{W,0,"protoss/units/templar/selected/4","sound/protoss/templar/ptewht03.wav">
+	{W,0,"protoss/units/templar/acknowledgement/1","sound/protoss/templar/pteyes00.wav">
+	{W,0,"protoss/units/templar/acknowledgement/2","sound/protoss/templar/pteyes01.wav">
+	{W,0,"protoss/units/templar/acknowledgement/3","sound/protoss/templar/pteyes02.wav">
+	{W,0,"protoss/units/templar/acknowledgement/4","sound/protoss/templar/pteyes03.wav">
+
+	{W,0,"protoss/units/reaver/death/1","sound/protoss/trilobyte/ptrdth00.wav">
+	{W,0,"protoss/units/reaver/pissed/1","sound/protoss/trilobyte/ptrpss00.wav">
+	{W,0,"protoss/units/reaver/pissed/2","sound/protoss/trilobyte/ptrpss01.wav">
+	{W,0,"protoss/units/reaver/pissed/3","sound/protoss/trilobyte/ptrpss02.wav">
+	{W,0,"protoss/units/reaver/ready","sound/protoss/trilobyte/ptrrdy00.wav">
+	{W,0,"protoss/units/reaver/selected/1","sound/protoss/trilobyte/ptrwht00.wav">
+	{W,0,"protoss/units/reaver/selected/2","sound/protoss/trilobyte/ptrwht01.wav">
+	{W,0,"protoss/units/reaver/selected/3","sound/protoss/trilobyte/ptrwht02.wav">
+	{W,0,"protoss/units/reaver/selected/4","sound/protoss/trilobyte/ptrwht03.wav">
+	{W,0,"protoss/units/reaver/acknowledgement/1","sound/protoss/trilobyte/ptryes00.wav">
+	{W,0,"protoss/units/reaver/acknowledgement/2","sound/protoss/trilobyte/ptryes01.wav">
+	{W,0,"protoss/units/reaver/acknowledgement/3","sound/protoss/trilobyte/ptryes02.wav">
+	{W,0,"protoss/units/reaver/acknowledgement/4","sound/protoss/trilobyte/ptryes03.wav">
+
+	{W,0,"protoss/units/observer/death/1","sound/protoss/witness/pwidth00.wav">
+	{W,0,"protoss/units/observer/death/2","sound/protoss/witness/pwidth01.wav">
+	{W,0,"protoss/units/observer/pissed/1","sound/protoss/witness/pwipss00.wav">
+	{W,0,"protoss/units/observer/pissed/2","sound/protoss/witness/pwipss01.wav">
+	{W,0,"protoss/units/observer/pissed/3","sound/protoss/witness/pwipss02.wav">
+	{W,0,"protoss/units/observer/pissed/4","sound/protoss/witness/pwipss03.wav">
+	{W,0,"protoss/units/observer/pissed/5","sound/protoss/witness/pwipss04.wav">
+	{W,0,"protoss/units/observer/ready","sound/protoss/witness/pwirdy00.wav">
+	{W,0,"protoss/units/observer/selected/1","sound/protoss/witness/pwiwht00.wav">
+	{W,0,"protoss/units/observer/selected/2","sound/protoss/witness/pwiwht01.wav">
+	{W,0,"protoss/units/observer/acknowledgement/1","sound/protoss/witness/pwiyes00.wav">
+	{W,0,"protoss/units/observer/acknowledgement/2","sound/protoss/witness/pwiyes01.wav">
+
+	{W,0,"protoss/units/zealot/att00","sound/protoss/zealot/pzeatt00.wav">
+	{W,0,"protoss/units/zealot/att01","sound/protoss/zealot/pzeatt01.wav">
+	{W,0,"protoss/units/zealot/death/1","sound/protoss/zealot/pzedth00.wav">
+	{W,0,"protoss/units/zealot/hit00","sound/protoss/zealot/pzehit00.wav">
+	{W,0,"protoss/units/zealot/pissed/1","sound/protoss/zealot/pzepss00.wav">
+	{W,0,"protoss/units/zealot/pissed/2","sound/protoss/zealot/pzepss01.wav">
+	{W,0,"protoss/units/zealot/pissed/3","sound/protoss/zealot/pzepss02.wav">
+	{W,0,"protoss/units/zealot/rag00","sound/protoss/zealot/pzerag00.wav">
+	{W,0,"protoss/units/zealot/ready","sound/protoss/zealot/pzerdy00.wav">
+	{W,0,"protoss/units/zealot/selected/1","sound/protoss/zealot/pzewht00.wav">
+	{W,0,"protoss/units/zealot/selected/2","sound/protoss/zealot/pzewht01.wav">
+	{W,0,"protoss/units/zealot/selected/3","sound/protoss/zealot/pzewht02.wav">
+	{W,0,"protoss/units/zealot/selected/4","sound/protoss/zealot/pzewht03.wav">
+	{W,0,"protoss/units/zealot/acknowledgement/1","sound/protoss/zealot/pzeyes00.wav">
+	{W,0,"protoss/units/zealot/acknowledgement/2","sound/protoss/zealot/pzeyes01.wav">
+	{W,0,"protoss/units/zealot/acknowledgement/3","sound/protoss/zealot/pzeyes02.wav">
+	{W,0,"protoss/units/zealot/acknowledgement/4","sound/protoss/zealot/pzeyes03.wav">
+
+	{W,0,"protoss/units/zeratul/death/1","sound/protoss/zeratul/uzedth00.wav">
+	{W,0,"protoss/units/zeratul/pissed/1","sound/protoss/zeratul/uzepss00.wav">
+	{W,0,"protoss/units/zeratul/pissed/2","sound/protoss/zeratul/uzepss01.wav">
+	{W,0,"protoss/units/zeratul/pissed/3","sound/protoss/zeratul/uzepss02.wav">
+	{W,0,"protoss/units/zeratul/pissed/4","sound/protoss/zeratul/uzepss03.wav">
+	{W,0,"protoss/units/zeratul/selected/1","sound/protoss/zeratul/uzewht00.wav">
+	{W,0,"protoss/units/zeratul/selected/2","sound/protoss/zeratul/uzewht01.wav">
+	{W,0,"protoss/units/zeratul/selected/3","sound/protoss/zeratul/uzewht02.wav">
+	{W,0,"protoss/units/zeratul/selected/4","sound/protoss/zeratul/uzewht03.wav">
+	{W,0,"protoss/units/zeratul/acknowledgement/1","sound/protoss/zeratul/uzeyes00.wav">
+	{W,0,"protoss/units/zeratul/acknowledgement/2","sound/protoss/zeratul/uzeyes01.wav">
+	{W,0,"protoss/units/zeratul/acknowledgement/3","sound/protoss/zeratul/uzeyes02.wav">
+	{W,0,"protoss/units/zeratul/acknowledgement/4","sound/protoss/zeratul/uzeyes03.wav">
+	
+	{W,0,"protoss/units/acwht00","sound/protoss/bldg/pacwht00.wav">
+	{W,0,"protoss/units/assimilator","sound/protoss/bldg/paswht00.wav">
+	{W,0,"protoss/units/baact00","sound/Protoss/Bldg/PbaAct00.wav">
+	{W,0,"protoss/units/bawht00","sound/protoss/bldg/pbawht00.wav">
+	{W,0,"protoss/units/observatory","sound/protoss/bldg/pbewht00.wav">
+	{W,0,"protoss/units/citadel","sound/protoss/bldg/pciwht00.wav">
+	{W,0,"protoss/units/forge","sound/protoss/bldg/pfowht00.wav">
+	{W,0,"protoss/units/gateway","sound/protoss/bldg/pgawht00.wav">
+	{W,0,"protoss/units/cybernetics core","sound/protoss/bldg/pgcwht00.wav">
+	{W,0,"protoss/units/nawht00","sound/protoss/bldg/pnawht00.wav">
+	{W,0,"protoss/units/nexus","sound/protoss/bldg/pnewht00.wav">
+	{W,0,"protoss/units/pbwht00","sound/protoss/bldg/ppbwht00.wav">
+	{W,0,"protoss/units/pylon","sound/protoss/bldg/ppywht00.wav">
+	{W,0,"protoss/units/robotics facility","sound/protoss/bldg/prowht00.wav">
+	{W,0,"protoss/units/stwht00","sound/protoss/bldg/pstwht00.wav">
+	{W,0,"protoss/units/trwht00","sound/protoss/bldg/ptrwht00.wav">
+	{W,0,"protoss/units/fleet beacon","sound/protoss/bldg/pwawht00.wav">
+	{W,0,"protoss/units/phofir00","sound/Bullet/Phofir00.wav">
+	{W,0,"protoss/units/phohit00","sound/bullet/phohit00.wav">
+	{W,0,"protoss/units/psahit00","sound/bullet/psahit00.wav">
+	{W,0,"protoss/units/pshield","sound/bullet/pshield.wav">
+	{W,0,"protoss/units/psiblade","sound/bullet/psiblade.wav">
+	{W,0,"protoss/units/psibolt","sound/bullet/psibolt.wav">
+	{W,0,"protoss/units/ptrfir00","sound/bullet/ptrfir00.wav">
+	{W,0,"protoss/units/ptrfir01","sound/bullet/ptrfir01.wav">
