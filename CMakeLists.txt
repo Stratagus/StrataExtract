@@ -29,8 +29,9 @@ find_package(Magick++ REQUIRED)
 #without having to manually change each individual filepath, they
 #also act as shortcuts.
 set (SOURCE_DIR "./Source")
+set (ARCHIVES_DIR ${SOURCE_DIR}/Archives)
 set (CONVERSION_DIR ${SOURCE_DIR}/Conversion)
-set (CONFIGURATION_DIR ${SOURCE}/Configuration)
+set (CONFIGURATION_DIR ${SOURCE_DIR}/Configuration)
 set (UNITTEST_DIR "./UnitTesting")
 
 #Set of included libraries if the user does not have
@@ -50,20 +51,40 @@ include_directories("${STORMLIB_DIR}/src/"
 set(StrataExtractMain-Source
 	${SOURCE_DIR}/main.hpp
 	${SOURCE_DIR}/main.cpp
-	)
+	 )
+set(StrataExtractConfiguration-Source
+    ${CONFIGURATION_DIR}/StrataConfig.hpp
+    ${CONFIGURATION_DIR}/StrataConfig.cpp
+   )
+
+set(StrataExtractArchives-Source
+    ${ARCHIVES_DIR}/StrataArchive.hpp
+    ${ARCHIVES_DIR}/StrataArchive.cpp
+    ${ARCHIVES_DIR}/MPQ/MPQArchive.hpp
+    ${ARCHIVES_DIR}/MPQ/MPQArchive.cpp
+    ${ARCHIVES_DIR}/GZIP/GZIPArchive.hpp
+    ${ARCHIVES_DIR}/GZIP/GZIPArchive.cpp
+   )
+set(StrataExtractGraphicalInterface-Source)    
 set(StrataExtractAudioConversion-Source)
 set(StrataExtractImageConversion-Source)
 set(StrataExtractVideoConversion-Source)
-set(StrataExtractConfiguration-Source)
+
+
 
 #Code groupings allow for IDEs to put files into collections
 #instead of simply throwing all files into a pile. This should
 #allow for easy navigation through the code base for novice and
 #heavy contributors.
 source_group(Main FILES ${StrataExtractMain-Source})
-source_group(Conversion FILES ${StrataExtractAudioConversion}
-                                  ${StrataExtractImageConversion}
-                                  ${StrataExtractVideoConversion})
+source_group(Configuration FILES ${StrataExtractConfiguration-Source})
+source_group(GUI FILES ${StrataExtractGraphicalInterface})
+source_group(Archives FILES ${StrataExtractArchives-Source})
+source_group(Conversion FILES ${StrataExtractAudioConversion-Source}
+                                  ${StrataExtractImageConversion-Source}
+                                  ${StrataExtractVideoConversion-Source}
+            )
+
 
 
 # on OS X we also have to add '-framework Cocoa' as library.  This is
@@ -82,7 +103,7 @@ endif()
 #Links the libraries to the executable as to actually call
 #the library dependancy.
 link_libraries (
-	${Boost_LIBRARIES}
+	  ${Boost_LIBRARIES}
     ${Magick++_LIBRARIES}
     ${FFMPEG_LIBAVCODEC_LIBRARIES}
 )
@@ -101,6 +122,12 @@ add_executable(
     WIN32
     #MACOSX_BUNDLE
    ${StrataExtractMain-Source}
+   ${StrataExtractConfiguration-Source}
+   ${StrataExtractGraphicalInterface-Source}
+   ${StrataExtractAudioConversion-Source}
+   ${StrataExtractImageConversion-Source}
+   ${StrataExtractVideoConversion-Source}
+   ${StrataExtractArchives-Source}
 )
 
 #Creates the target libraries to use with other Frontend applications
