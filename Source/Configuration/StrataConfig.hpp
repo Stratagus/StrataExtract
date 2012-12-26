@@ -14,7 +14,12 @@
 #include <boost/filesystem/fstream.hpp>
 #include <boost/thread.hpp>
 #include <boost/exception/all.hpp>
+#include <boost/algorithm/string.hpp>
 #include <math.h>
+#include <string>
+
+#include <libxml/parser.h>
+#include <libxml/xpath.h>
 
 
 
@@ -36,12 +41,33 @@ class StrataConfig
          *  \pre None
          *  \post Return the number of availible cores
          *  \note*/
-        static int GetCPUCores();
+    
+        void GetConversionSettings();
         float GetProgess();
         bool isConfigLoaded();
     
+        void GetDestinationAudioCodec();
+    
+    
+        static void PrintUsage();
+        static int GetCPUCores();
+    
+
+    
     protected:
         StrataConfig();
+    
+        std::string *destinationImageFormat;
+        std::string *destinationVideoFormat;
+
+        xmlNode *rootConfigElement;
+        xmlNode *MapAssetsElement;
+        xmlNode *AudioAssetsElement;
+        xmlNode *ImageAssetsElement;
+        xmlNode *VideoAssetsElement;
+        xmlNode *FontAssestsElement;
+        xmlNode *ExtractAssetsElement;
+    
 
     private:
         static StrataConfig* ConfigurationInstance;
