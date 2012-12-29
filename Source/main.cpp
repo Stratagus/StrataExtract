@@ -12,7 +12,5 @@ int main(int numberOfArguments, char **commandArguments)
     std::cout << "Hardware Cores: " << StrataConfig::GetCPUCores() << '\n';
     Config->readConfig("Stargus.StrataExtract");
 
-    
-    std::cout << "Progress: " << Config->GetProgess();
     return 0;
 }

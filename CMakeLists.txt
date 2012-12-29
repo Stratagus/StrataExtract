@@ -139,9 +139,10 @@ add_executable(
 )
 
 #Creates the target libraries to use with other Frontend applications
-#target_link_libraries (
-#	StrataExtract
-#	)
+target_link_libraries (
+	StrataExtract
+  storm
+	)
 
 
 # Set the RPATH (ie Hack Soup for the moment)

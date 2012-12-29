@@ -22,5 +22,6 @@ void StrataRunner::run()
     if(!config->isConfigLoaded())
     {
         std::cout << "!!!Config NOT Loaded!!!\n";
+        exit(-1);
     }
 }

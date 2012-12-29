@@ -6,6 +6,7 @@
 	<audio name="" path="sound/misc/liftoff.wav" destination="terran/liftoff" />
 	<audio name="" path="sound/misc/tpwrdown.wav" destination="terran/power down" />
 	<audio name="" path="sound/misc/trescue.wav" destination="terran/rescue" />
+
 	<audio name="" path="sound/terran/advisor/taderr00.wav" destination="terran/units/advisor/err00" />
 	<audio name="" path="sound/terran/advisor/taderr01.wav" destination="terran/units/advisor/err01" />
 	<audio name="" path="sound/terran/advisor/taderr02.wav" destination="terran/units/advisor/err02" />
@@ -20,6 +21,7 @@
 	<audio name="" path="sound/terran/advisor/tadupd05.wav" destination="terran/units/advisor/upd05" />
 	<audio name="" path="sound/terran/advisor/tadupd06.wav" destination="terran/units/advisor/upd06" />
 	<audio name="" path="sound/terran/advisor/tadupd07.wav" destination="terran/units/advisor/upd07" />
+
 	<audio name="" path="sound/terran/battle/tbadth00.wav" destination="terran/units/battlecruiser/death/1" />
 	<audio name="" path="sound/terran/battle/tbapss00.wav" destination="terran/units/battlecruiser/pissed/1" />
 	<audio name="" path="sound/terran/battle/tbapss01.wav" destination="terran/units/battlecruiser/pissed/2" />
@@ -38,6 +40,7 @@
 	<audio name="" path="sound/Terran/BATTLE/tbayes02.wav" destination="terran/units/battlecruiser/acknowledgement/3" />
 	<audio name="" path="sound/terran/battle/tbayes03.wav" destination="terran/units/battlecruiser/acknowledgement/4" />
 	<audio name="" path="sound/Bullet/tbaYam00.wav" destination="terran/units/battlecruiser/yamato" />
+
 	<audio name="" path="sound/terran/civilian/tcvdth00.wav" destination="terran/units/civilian/death/1" />
 	<audio name="" path="sound/terran/civilian/tcvpss00.wav" destination="terran/units/civilian/pissed/1" />
 	<audio name="" path="sound/terran/civilian/tcvpss01.wav" destination="terran/units/civilian/pissed/2" />
@@ -54,6 +57,7 @@
 	<audio name="" path="sound/terran/civilian/tcvyes02.wav" destination="terran/units/civilian/acknowledgement/3" />
 	<audio name="" path="sound/terran/civilian/tcvyes03.wav" destination="terran/units/civilian/acknowledgement/4" />
 	<audio name="" path="sound/terran/civilian/tcvyes04.wav" destination="terran/units/civilian/acknowledgement/5" />
+
 	<audio name="" path="sound/terran/dropship/tdrdth00.wav" destination="terran/units/dropship/death/1" />
 	<audio name="" path="sound/terran/dropship/tdrpss00.wav" destination="terran/units/dropship/pissed/1" />
 	<audio name="" path="sound/terran/dropship/tdrpss01.wav" destination="terran/units/dropship/pissed/2" />
@@ -72,6 +76,7 @@
 	<audio name="" path="sound/terran/dropship/tdryes05.wav" destination="terran/units/dropship/acknowledgement/6" />
 	<audio name="" path="sound/Misc/TDrTra00.wav" destination="terran/units/dropship/load" />
 	<audio name="" path="sound/Misc/TDrTra01.wav" destination="terran/units/dropship/unload" />
+
 	<audio name="" path="sound/terran/dukeb/ududth00.wav" destination="terran/units/dukeb/death/1" />
 	<audio name="" path="sound/terran/dukeb/udupss00.wav" destination="terran/units/dukeb/pissed/1" />
 	<audio name="" path="sound/terran/dukeb/udupss01.wav" destination="terran/units/dukeb/pissed/2" />
@@ -86,6 +91,7 @@
 	<audio name="" path="sound/terran/dukeb/uduyes01.wav" destination="terran/units/dukeb/acknowledgement/2" />
 	<audio name="" path="sound/terran/dukeb/uduyes02.wav" destination="terran/units/dukeb/acknowledgement/3" />
 	<audio name="" path="sound/terran/dukeb/uduyes03.wav" destination="terran/units/dukeb/acknowledgement/4" />
+
 	<audio name="" path="sound/terran/duket/udtdth00.wav" destination="terran/units/dukeb/death/1" />
 	<audio name="" path="sound/terran/duket/udtpss00.wav" destination="terran/units/dukeb/pissed/1" />
 	<audio name="" path="sound/terran/duket/udtpss01.wav" destination="terran/units/dukeb/pissed/2" />
@@ -100,6 +106,7 @@
 	<audio name="" path="sound/terran/duket/udtyes01.wav" destination="terran/units/dukeb/acknowledgement/2" />
 	<audio name="" path="sound/terran/duket/udtyes02.wav" destination="terran/units/dukeb/acknowledgement/3" />
 	<audio name="" path="sound/terran/duket/udtyes03.wav" destination="terran/units/dukeb/acknowledgement/4" />
+
 	<audio name="" path="sound/terran/firebat/tfbdth00.wav" destination="terran/units/firebat/death/1" />
 	<audio name="" path="sound/terran/firebat/tfbdth01.wav" destination="terran/units/firebat/death/2" />
 	<audio name="" path="sound/terran/firebat/tfbdth02.wav" destination="terran/units/firebat/death/3" />
@@ -121,6 +128,7 @@
 	<audio name="" path="sound/terran/firebat/tfbyes01.wav" destination="terran/units/firebat/acknowledgement/2" />
 	<audio name="" path="sound/terran/firebat/tfbyes02.wav" destination="terran/units/firebat/acknowledgement/3" />
 	<audio name="" path="sound/terran/firebat/tfbyes03.wav" destination="terran/units/firebat/acknowledgement/4" />
+
 	<audio name="" path="sound/terran/ghost/tghdth00.wav" destination="terran/units/ghost/death/1" />
 	<audio name="" path="sound/terran/ghost/tghdth01.wav" destination="terran/units/ghost/death/2" />
 	<audio name="" path="sound/terran/ghost/tghlas00.wav" destination="terran/units/ghost/las00" />
@@ -139,6 +147,7 @@
 	<audio name="" path="sound/terran/ghost/tghyes02.wav" destination="terran/units/ghost/acknowledgement/3" />
 	<audio name="" path="sound/terran/ghost/tghyes03.wav" destination="terran/units/ghost/acknowledgement/4" />
 	<audio name="" path="sound/bullet/tghfir00.wav" destination="terran/units/ghost/fire" />
+
 	<audio name="" path="sound/terran/goliath/tgodth00.wav" destination="terran/units/goliath/death/1" />
 	<audio name="" path="sound/terran/goliath/tgopss00.wav" destination="terran/units/goliath/pissed/1" />
 	<audio name="" path="sound/terran/goliath/tgopss01.wav" destination="terran/units/goliath/pissed/2" />
@@ -158,6 +167,7 @@
 	<audio name="" path="sound/bullet/tgofi200.wav" destination="terran/units/goliath/fire2" />
 	<audio name="" path="sound/bullet/tgofir00.wav" destination="terran/units/goliath/fire" />
 	<audio name="" path="sound/bullet/hkmissle.wav" destination="terran/units/goliath/hkmissile" />
+
 	<audio name="" path="sound/terran/kerrigan/ukedth00.wav" destination="terran/units/kerrigan/death/1" />
 	<audio name="" path="sound/terran/kerrigan/ukedth01.wav" destination="terran/units/kerrigan/death/2" />
 	<audio name="" path="sound/terran/kerrigan/ukepss00.wav" destination="terran/units/kerrigan/pissed/1" />
@@ -173,6 +183,7 @@
 	<audio name="" path="sound/terran/kerrigan/ukeyes01.wav" destination="terran/units/kerrigan/acknowledgement/2" />
 	<audio name="" path="sound/terran/kerrigan/ukeyes02.wav" destination="terran/units/kerrigan/acknowledgement/3" />
 	<audio name="" path="sound/terran/kerrigan/ukeyes03.wav" destination="terran/units/kerrigan/acknowledgement/4" />
+
 	<audio name="" path="sound/terran/marine/tmadth00.wav" destination="terran/units/marine/death/1" />
 	<audio name="" path="sound/terran/marine/tmadth01.wav" destination="terran/units/marine/death/2" />
 	<audio name="" path="sound/terran/marine/tmapss00.wav" destination="terran/units/marine/pissed/1" />
@@ -194,6 +205,7 @@
 	<audio name="" path="sound/terran/marine/tmayes02.wav" destination="terran/units/marine/acknowledgement/3" />
 	<audio name="" path="sound/terran/marine/tmayes03.wav" destination="terran/units/marine/acknowledgement/4" />
 	<audio name="" path="sound/bullet/tmafir00.wav" destination="terran/units/marine/fire" />
+
 	<audio name="" path="sound/terran/phoenix/tphclo00.wav" destination="terran/units/wraith/clo00" />
 	<audio name="" path="sound/terran/phoenix/tphclo01.wav" destination="terran/units/wraith/clo01" />
 	<audio name="" path="sound/terran/phoenix/tphdth00.wav" destination="terran/units/wraith/death/1" />
@@ -216,6 +228,7 @@
 	<audio name="" path="sound/bullet/tphfi100.wav" destination="terran/units/wraith/fire100" />
 	<audio name="" path="sound/bullet/tphfi200.wav" destination="terran/units/wraith/fire200" />
 	<audio name="" path="sound/bullet/tphfi201.wav" destination="terran/units/wraith/fire201" />
+
 	<audio name="" path="sound/terran/raynorm/uradth00.wav" destination="terran/units/raynorm/death/1" />
 	<audio name="" path="sound/Terran/RAYNORM/URaDth01.wav" destination="terran/units/raynorm/death/2" />
 	<audio name="" path="sound/terran/raynorm/urapss00.wav" destination="terran/units/raynorm/pissed/1" />
@@ -230,6 +243,7 @@
 	<audio name="" path="sound/terran/raynorm/urayes01.wav" destination="terran/units/raynorm/acknowledgement/2" />
 	<audio name="" path="sound/terran/raynorm/urayes02.wav" destination="terran/units/raynorm/acknowledgement/3" />
 	<audio name="" path="sound/terran/raynorm/urayes03.wav" destination="terran/units/raynorm/acknowledgement/4" />
+
 	<audio name="" path="sound/terran/raynorv/urvdth00.wav" destination="terran/units/raynorv/death/1" />
 	<audio name="" path="sound/terran/raynorv/urvpss00.wav" destination="terran/units/raynorv/pissed/1" />
 	<audio name="" path="sound/terran/raynorv/urvpss01.wav" destination="terran/units/raynorv/pissed/2" />
@@ -243,6 +257,7 @@
 	<audio name="" path="sound/terran/raynorv/urvyes01.wav" destination="terran/units/raynorv/acknowledgement/2" />
 	<audio name="" path="sound/terran/raynorv/urvyes02.wav" destination="terran/units/raynorv/acknowledgement/3" />
 	<audio name="" path="sound/terran/raynorv/urvyes03.wav" destination="terran/units/raynorv/acknowledgement/4" />
+
 	<audio name="" path="sound/terran/scv/edrrep00.wav" destination="terran/units/scv/edrrep00" />
 	<audio name="" path="sound/terran/scv/edrrep01.wav" destination="terran/units/scv/edrrep01" />
 	<audio name="" path="sound/terran/scv/edrrep02.wav" destination="terran/units/scv/edrrep02" />
@@ -271,6 +286,7 @@
 	<audio name="" path="sound/terran/scv/tscyes01.wav" destination="terran/units/scv/acknowledgement/2" />
 	<audio name="" path="sound/terran/scv/tscyes02.wav" destination="terran/units/scv/acknowledgement/3" />
 	<audio name="" path="sound/terran/scv/tscyes03.wav" destination="terran/units/scv/acknowledgement/4" />
+
 	<audio name="" path="sound/terran/tank/ttadth00.wav" destination="terran/units/tank/death/1" />
 	<audio name="" path="sound/terran/tank/ttapss00.wav" destination="terran/units/tank/pissed/1" />
 	<audio name="" path="sound/terran/tank/ttapss01.wav" destination="terran/units/tank/pissed/2" />
@@ -291,6 +307,7 @@
 	<audio name="" path="sound/Bullet/TTaFir00.wav" destination="terran/units/tank/fire" />
 	<audio name="" path="sound/bullet/TTaHi200.wav" destination="terran/units/tank/hit2" />
 	<audio name="" path="sound/bullet/TTahit00.wav" destination="terran/units/tank/hit" />
+
 	<audio name="" path="sound/terran/vessel/tvedef00.wav" destination="terran/units/science vessel/def00" />
 	<audio name="" path="sound/terran/vessel/tvedth00.wav" destination="terran/units/science vessel/death/1" />
 	<audio name="" path="sound/terran/vessel/tveemp00.wav" destination="terran/units/science vessel/emp00" />
@@ -311,6 +328,7 @@
 	<audio name="" path="sound/terran/vessel/tveyes01.wav" destination="terran/units/science vessel/acknowledgement/2" />
 	<audio name="" path="sound/terran/vessel/tveyes02.wav" destination="terran/units/science vessel/acknowledgement/3" />
 	<audio name="" path="sound/terran/vessel/tveyes03.wav" destination="terran/units/science vessel/acknowledgement/4" />
+
 	<audio name="" path="sound/terran/vulture/tvudth00.wav" destination="terran/units/vulture/death/1" />
 	<audio name="" path="sound/terran/vulture/tvumin00.wav" destination="terran/units/vulture/min00" />
 	<audio name="" path="sound/terran/vulture/tvumin01.wav" destination="terran/units/vulture/min01" />
@@ -331,6 +349,7 @@
 	<audio name="" path="sound/bullet/tvuhit00.wav" destination="terran/units/vulture/hit" />
 	<audio name="" path="sound/bullet/tvuhit01.wav" destination="terran/units/vulture/hit1" />
 	<audio name="" path="sound/bullet/tvuhit02.wav" destination="terran/units/vulture/hit2" />
+
 	<audio name="" path="sound/terran/bldg/tacwht00.wav" destination="terran/units/academy" />
 	<audio name="" path="sound/terran/bldg/tclwht00.wav" destination="terran/units/armory" />
 	<audio name="" path="sound/terran/bldg/tcssca00.wav" destination="terran/units/science facility" />
@@ -346,6 +365,7 @@
 	<audio name="" path="sound/terran/bldg/trfwht00.wav" destination="terran/units/rf" />
 	<audio name="" path="sound/terran/bldg/trlwht00.wav" destination="terran/units/factory" />
 	<audio name="" path="sound/terran/bldg/twpwht00.wav" destination="terran/units/engineering bay" />
+	
 	<audio name="" path="sound/bullet/tnsfir00.wav" destination="terran/units/nuclear silo/fire" />
 	<audio name="" path="sound/bullet/tnshit00.wav" destination="terran/units/nuclear silo/hit" />
 	<audio name="" path="sound/bullet/tscfir00.wav" destination="terran/units/tscfir00" />

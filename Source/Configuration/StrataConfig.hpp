@@ -21,8 +21,6 @@
 #include <libxml/parser.h>
 #include <libxml/xpath.h>
 
-
-
 class StrataConfig
 {
     public:
@@ -53,20 +51,19 @@ class StrataConfig
         static int GetCPUCores();
     
 
+    void
+    print_xpath_nodes(xmlNodeSetPtr nodes, FILE* output);
     
     protected:
         StrataConfig();
     
         std::string *destinationImageFormat;
         std::string *destinationVideoFormat;
-
-        xmlNode *rootConfigElement;
-        xmlNode *MapAssetsElement;
-        xmlNode *AudioAssetsElement;
-        xmlNode *ImageAssetsElement;
-        xmlNode *VideoAssetsElement;
-        xmlNode *FontAssestsElement;
-        xmlNode *ExtractAssetsElement;
+        xmlXPathObjectPtr audioAssetObjects;
+        xmlXPathObjectPtr mapAssetObjects;
+        xmlXPathObjectPtr fontAssetObjects;
+        xmlXPathObjectPtr videoAssetObjects;
+        xmlXPathObjectPtr tilesetAssetObjects;
     
 
     private:
@@ -74,6 +71,8 @@ class StrataConfig
         int completeObjects;
         int totalObjects;
         bool configLoaded;
+    
+        std::string gameName;
 };
 
 #endif
