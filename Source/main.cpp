@@ -12,5 +12,7 @@ int main(int numberOfArguments, char **commandArguments)
     std::cout << "Hardware Cores: " << StrataConfig::GetCPUCores() << '\n';
     Config->readConfig("Stargus.StrataExtract");
 
+    
+    std::cout << "\n" << StrataConfig::FindGameHash("/Volumes/STARCRAFT");
     return 0;
 }

@@ -29,9 +29,9 @@ void StrataConfig::readConfig(boost::filesystem::path configurationPath)
     {
         //The XML document file
         xmlDoc *configurationDocument = NULL;
-        //The root of our configuration tree
         
-        configurationDocument = xmlReadFile(configurationPath.string().c_str(), NULL, 0);
+        //The root of our configuration tree
+        configurationDocument = xmlReadFile(configurationPath.string().c_str(), NULL, 33);
         if(configurationDocument == NULL)
         {
             std::cerr << "Error: Unable to parse file: " << configurationPath << '\n';
@@ -54,7 +54,7 @@ void StrataConfig::readConfig(boost::filesystem::path configurationPath)
             
             audioAssetObjects = xmlXPathEval((const xmlChar *) "//audio", xPathContext);
             mapAssetObjects = xmlXPathEval((const xmlChar *) "//map", xPathContext);
-            fontAssetObjects = xmlXPathEval((const xmlChar *) "//fonts", xPathContext);
+            fontAssetObjects = xmlXPathEval((const xmlChar *) "//font", xPathContext);
             videoAssetObjects = xmlXPathEval((const xmlChar *) "//video", xPathContext);
             tilesetAssetObjects = xmlXPathEval((const xmlChar *) "//tileset", xPathContext);
             
@@ -74,6 +74,7 @@ void StrataConfig::readConfig(boost::filesystem::path configurationPath)
                          + videoAssetObjects->nodesetval->nodeNr
                          + tilesetAssetObjects->nodesetval->nodeNr;
             std::cout << "Total Asset Objects: " << totalObjects;
+
             
             configLoaded = true;
         }
@@ -122,6 +123,65 @@ void StrataConfig::GetDestinationAudioCodec()
         
         std::cout << "Destination Audio Codec:  ";
     }
+}
+
+std::string StrataConfig::FindGameHash(boost::filesystem::path gamePath)
+{
+    boost::uuids::detail::sha1 myHash;
+    std::stringstream finalHash;
+    std::string hello = "Hello World";
+    char hash[20];
+    
+    try
+    {
+        if(boost::filesystem::exists(gamePath))
+        {
+            if(boost::filesystem::is_regular_file(gamePath))
+               {
+                   std::cout << gamePath << " size of file " << boost::filesystem::file_size(gamePath) << '\n';
+                   
+               }
+            else if(boost::filesystem::is_directory(gamePath))
+            {
+                std::cout << gamePath << " is a directory containing:\n";
+            }
+           
+            std::copy(boost::filesystem::directory_iterator(gamePath), boost::filesystem::directory_iterator(),  // directory_iterator::value_type
+                      std::ostream_iterator<boost::filesystem::directory_entry>(std::cout, "\n"));  // is directory_entry, which is
+            // converted to a path by the
+            // path stream inserter
+        }
+        else
+            std::cout << gamePath << " exists, but is neither a regular file nor a directory\n";
+        
+    }
+    catch (const boost::filesystem::filesystem_error& ex)
+    {
+        std::cout << ex.what() << '\n';
+    }
+    
+    myHash.process_bytes(hello.c_str(), hello.size());
+    
+    
+    unsigned int digest[5];
+    myHash.get_digest(digest);
+    for(int i = 0; i < 5; ++i)
+    {
+        const char* tmp = reinterpret_cast<char*>(digest);
+        hash[i*4] = tmp[i*4+3];
+        hash[i*4+1] = tmp[i*4+2];
+        hash[i*4+2] = tmp[i*4+1];
+        hash[i*4+3] = tmp[i*4];
+    }
+    
+    finalHash << std::hex;
+    for(int i = 0; i < 20; ++i)
+    {
+        finalHash << ((hash[i] & 0x000000F0) >> 4)
+        << (hash[i] & 0x0000000F);
+    }
+    std::cout << finalHash.str();
+    return "";
 }
 
 /**

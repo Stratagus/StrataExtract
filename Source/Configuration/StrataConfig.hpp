@@ -15,8 +15,11 @@
 #include <boost/thread.hpp>
 #include <boost/exception/all.hpp>
 #include <boost/algorithm/string.hpp>
+#include <boost/uuid/sha1.hpp>
+
 #include <math.h>
 #include <string>
+#include <iterator>
 
 #include <libxml/parser.h>
 #include <libxml/xpath.h>
@@ -49,6 +52,7 @@ class StrataConfig
     
         static void PrintUsage();
         static int GetCPUCores();
+        static std::string FindGameHash(boost::filesystem::path gamePath);
     
 
     void
@@ -67,7 +71,7 @@ class StrataConfig
     
 
     private:
-        static StrataConfig* ConfigurationInstance;
+        static StrataConfig *ConfigurationInstance;
         int completeObjects;
         int totalObjects;
         bool configLoaded;

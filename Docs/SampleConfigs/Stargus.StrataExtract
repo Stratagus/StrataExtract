@@ -1,63 +1,174 @@
- <xml version="1.0" encoding="UTF-8">
+<StrataExtractConfig>
  <game>
  	<name>Stargus</name>
- 	<version>CD-EN-US-Original</version>
- 	<Archive name="INSTALL.EXE" type="MPQ" depends="null">
- 	<!-- Extract & Convert to Stratagus Map Format -->
- 	<MapAssets>
- 		<!-- Multiplayer Maps -->
-	 		<!-- 2 Player Maps -->
-			 	<map name="Challenger" path="multimaps/(2)Challenger.scm" destination="Maps/2/" />
-				<map name="River Crossing" path="multimaps/(2)River Crossing.scm" destination="Maps/2/" />
-				<map name="Road War" path="multimaps/(2)Road War.scm" destination="Maps/2/" />
-				<map name="Space Madness" path="multimaps/(2)Space Madness.scm" destination="Maps/2/" />
-				<map name="The Small Divide" path="multimaps/(2)The Small Divide.scm" destination="Maps/2/" />
-				<map name="Volcanis" path="multimaps/(2)Volcanis.scm" destination="Maps/2/" />
-			<!-- 3 Player Maps -->
-				<map name="Holy Ground" path="multimaps/(3)Holy Ground.scm" destination="Maps/3/" />
-				<map name="Meltdown" path="multimaps/(3)Meltdown.scm" destination="Maps/3/" />
-				<map name="Three Kingdoms" path="multimaps/(3)Three Kingdoms.scm" destination="Maps/3/" />
-				<map name="Triumvirate" path="multimaps/(3)Triumvirate.scm" destination="Maps/3/" />
-			<!-- 4 Player Maps -->
-				<map name="Alpha Draconis" path="multimaps/(4)Alpha Draconis.scm" destination="Maps/4/" />
-				<map name="Blood Bath" path="multimaps/(4)Blood Bath.scm" destination="Maps/4/" />
-				<map name="Bridge Too Near" path="multimaps/(4)Bridge Too Near.scm" destination="Maps/4/" />
-				<map name="Cyclone" path="multimaps/(4)Cyclone.scm" destination="Maps/4/" />
-				<map name="Dark Crystal" path="multimaps/(4)Dark Crystal.scm" destination="Maps/4/" />
-				<map name="Dark Star" path="multimaps/(4)Dark Star.scm" destination="Maps/4/" />
-				<map name="Lost Civilization" path="multimaps/(4)Lost Civilization.scm" destination="Maps/4/" />
-				<map name="Opposing City States '98" path="multimaps/(4)Opposing City States '98.scm" destination="Maps/4/" />
-				<map name="Orbital Relay" path="multimaps/(4)Orbital Relay.scm" destination="Maps/4/" />
-				<map name="Power Lines" path="multimaps/(4)Power Lines.scm" destination="Maps/4/" />
-				<map name="Ruins of the Ancients" path="multimaps/(4)Ruins of the Ancients.scm" destination="Maps/4/" />
-				<map name="Tarsonis Orbital" path="multimaps/(4)Tarsonis Orbital.scm" destination="Maps/4/" />
-			<!-- 5 Player Maps -->
-				<map name="Diablo" path="multimaps/(5)Diablo.scm" destination="Maps/5/" />
-				<map name="Island Hop" path="multimaps/(5)Island Hop.scm" destination="Maps/5/" />
-				<map name="Jeweled River" path="multimaps/(5)Jeweled River.scm" destination="Maps/5/" />
-				<map name="Sherwood Forest" path="multimaps/(5)Sherwood Forest.scm" destination="Maps/5/" />
-			<!-- 6 Player Maps -->
-				<map name="Ground Zero" path="multimaps/(6)Ground Zero.scm" destination="Maps/6/" />
-				<map name="Hidden Shrine" path="multimaps/(6)Hidden Shrine.scm" destination="Maps/6/" />
-				<map name="New Gettysburg" path="multimaps/(6)New Gettysburg.scm" destination="Maps/6/" />
-			<!-- 7 Player Maps -->
-				<map name="Continental Divide" path="multimaps/(7)Continental Divide.scm" destination="Maps/7/" />
-				<map name="River War" path="multimaps/(7)River War.scm" destination="Maps/7/" />
-			<!-- 8 Player Maps -->
-				<map name="Bridge to Bridge '98" path="multimaps/(8)Bridge to Bridge '98.scm" destination="Maps/8/" />
-				<map name="Char Magma" path="multimaps/(8)Char Magma.scm" destination="Maps/8/" />
-				<map name="Homeworld" path="multimaps/(8)Homeworld.scm" destination="Maps/8/" />
-				<map name="Killing Fields" path="multimaps/(8)Killing Fields.scm" destination="Maps/8/" />
-				<map name="Orbital Death" path="multimaps/(8)Orbital Death.scm" destination="Maps/8/" />
-				<map name="Plains of Snow '98" path="multimaps/(8)Plains of Snow '98.scm" destination="Maps/8/" />
-				<map name="Station Unrest" path="multimaps/(8)Station Unrest.scm" destination="Maps/8/" />
-				<map name="The Hunters" path="multimaps/(8)The Hunters.scm" destination="Maps/8/" />
- 	</MapAssets>
+ 	<Versions>
+ 		<Version name="USA Starcraft CD Windows" expansion=0>
+ 			<file name="INSTALL.EXE" hash="2de01f59e99c0fb16d32df2d7cdd909be2bf0825" Archive="MainStarcraft"/>
+ 		</Version>
+ 		<Version name="USA Starcraft CD Macintosh" expansion=0>
+ 			<file name="StarCraft Archive" hash="5b2f9abbba5ae5e27b59550f4795d62818b757f0" Archive="MainStarcraft"/>
+ 		</Version>
+ 		<Version name="USA Broodwar CD Windows" expansion=1>
+ 			<file name="INSTALL.EXE" hash="36ce21b1688d05bf659902d296719e63f08f2360" Archive="MainBroodwar"/>
+ 		</Version>
+ 		<Version name="USA Broodwar CD Macintosh" expansion=1>
+ 			<file name="Brood War Archive" hash="36ce21b1688d05bf659902d296719e63f08f2360" Archive="MainBroodwar" />
+ 		</Version>
+ 		<Version name="USA Starcraft Anthology Digital Distribution">
+ 			<file name="Installer Tome.mpq" hash="3957d7ac483d7fbbd543e0cd70633bc9c57adfad" Archive="DigitalDistributionTome1" />
+ 			<file name="Installer Tome 2.mpq" hash="577de9fa6db714a9e76244b98ae372ca170d7819" Archive="DigitalDistributionTome2" />
+ 		</Version>
+ 	</Versions>
+ 	<Archive name="DigitalDistributionTome1" type="MPQ">
+ 	<ExtractAssets>
+ 		<Extract name="Starcraft" path="Common/Starcraft.mpq" destination="temporary/" />
+ 		<Extract name="StarDat" path="Common/StarDat.mpq" desination="temporary/" />
+ 	</ExtractAssets>
+ 	</Archive>
+ 	<Archive name="DigitalDistributionTome2" type="MPQ">
+ 	 	<ExtractAssets>
+ 		<Extract name="BroodWar" path="Common/BroodWar.mpq" destination="temporary/" />
+ 		<Extract name="BrooDat" path="Common/BrooDat.mpq" desination="temporary/" />
+ 	</ExtractAssets>
+ 	</Archive>
+ 	<Archive name="StarcraftMain" type="MPQ">
+ 		<AudioAssets convert="ogg">
+ 		</AudioAssets>
+ 	 	<!-- Extract & Convert to Stratagus Map Format -->
+	 	<MapAssets>
+	 		<!-- Multiplayer Maps -->
+		 		<!-- 2 Player Maps -->
+				 	<map name="Challenger" path="multimaps/(2)Challenger.scm" destination="Maps/2/" />
+					<map name="River Crossing" path="multimaps/(2)River Crossing.scm" destination="Maps/2/" />
+					<map name="Road War" path="multimaps/(2)Road War.scm" destination="Maps/2/" />
+					<map name="Space Madness" path="multimaps/(2)Space Madness.scm" destination="Maps/2/" />
+					<map name="The Small Divide" path="multimaps/(2)The Small Divide.scm" destination="Maps/2/" />
+					<map name="Volcanis" path="multimaps/(2)Volcanis.scm" destination="Maps/2/" />
+				<!-- 3 Player Maps -->
+					<map name="Holy Ground" path="multimaps/(3)Holy Ground.scm" destination="Maps/3/" />
+					<map name="Meltdown" path="multimaps/(3)Meltdown.scm" destination="Maps/3/" />
+					<map name="Three Kingdoms" path="multimaps/(3)Three Kingdoms.scm" destination="Maps/3/" />
+					<map name="Triumvirate" path="multimaps/(3)Triumvirate.scm" destination="Maps/3/" />
+				<!-- 4 Player Maps -->
+					<map name="Alpha Draconis" path="multimaps/(4)Alpha Draconis.scm" destination="Maps/4/" />
+					<map name="Blood Bath" path="multimaps/(4)Blood Bath.scm" destination="Maps/4/" />
+					<map name="Bridge Too Near" path="multimaps/(4)Bridge Too Near.scm" destination="Maps/4/" />
+					<map name="Cyclone" path="multimaps/(4)Cyclone.scm" destination="Maps/4/" />
+					<map name="Dark Crystal" path="multimaps/(4)Dark Crystal.scm" destination="Maps/4/" />
+					<map name="Dark Star" path="multimaps/(4)Dark Star.scm" destination="Maps/4/" />
+					<map name="Lost Civilization" path="multimaps/(4)Lost Civilization.scm" destination="Maps/4/" />
+					<map name="Opposing City States '98" path="multimaps/(4)Opposing City States '98.scm" destination="Maps/4/" />
+					<map name="Orbital Relay" path="multimaps/(4)Orbital Relay.scm" destination="Maps/4/" />
+					<map name="Power Lines" path="multimaps/(4)Power Lines.scm" destination="Maps/4/" />
+					<map name="Ruins of the Ancients" path="multimaps/(4)Ruins of the Ancients.scm" destination="Maps/4/" />
+					<map name="Tarsonis Orbital" path="multimaps/(4)Tarsonis Orbital.scm" destination="Maps/4/" />
+				<!-- 5 Player Maps -->
+					<map name="Diablo" path="multimaps/(5)Diablo.scm" destination="Maps/5/" />
+					<map name="Island Hop" path="multimaps/(5)Island Hop.scm" destination="Maps/5/" />
+					<map name="Jeweled River" path="multimaps/(5)Jeweled River.scm" destination="Maps/5/" />
+					<map name="Sherwood Forest" path="multimaps/(5)Sherwood Forest.scm" destination="Maps/5/" />
+				<!-- 6 Player Maps -->
+					<map name="Ground Zero" path="multimaps/(6)Ground Zero.scm" destination="Maps/6/" />
+					<map name="Hidden Shrine" path="multimaps/(6)Hidden Shrine.scm" destination="Maps/6/" />
+					<map name="New Gettysburg" path="multimaps/(6)New Gettysburg.scm" destination="Maps/6/" />
+				<!-- 7 Player Maps -->
+					<map name="Continental Divide" path="multimaps/(7)Continental Divide.scm" destination="Maps/7/" />
+					<map name="River War" path="multimaps/(7)River War.scm" destination="Maps/7/" />
+				<!-- 8 Player Maps -->
+					<map name="Bridge to Bridge '98" path="multimaps/(8)Bridge to Bridge '98.scm" destination="Maps/8/" />
+					<map name="Char Magma" path="multimaps/(8)Char Magma.scm" destination="Maps/8/" />
+					<map name="Homeworld" path="multimaps/(8)Homeworld.scm" destination="Maps/8/" />
+					<map name="Killing Fields" path="multimaps/(8)Killing Fields.scm" destination="Maps/8/" />
+					<map name="Orbital Death" path="multimaps/(8)Orbital Death.scm" destination="Maps/8/" />
+					<map name="Plains of Snow '98" path="multimaps/(8)Plains of Snow '98.scm" destination="Maps/8/" />
+					<map name="Station Unrest" path="multimaps/(8)Station Unrest.scm" destination="Maps/8/" />
+					<map name="The Hunters" path="multimaps/(8)The Hunters.scm" destination="Maps/8/" />
+	 	</MapAssets>
+	 	<VideoAssets convert="ogv">
+	 		<video name="blizzardlogo" path="smk/blizzard.smk" destination="Video/Cutscenes/" />
+	 		<video name="diablo2trailer" path="smk/diablo2.smk" destination="Video/Cutscenes/" />
+	 		<video name="starcraftintroduction" path="smk/starintr.smk" destination="Video/Cutscenes/" />
+	 		<video name="preprotoss1" path="smk/preprotoss_1.smk" destination="Video/Cutscenes/Protoss/" />
+	 		<video name="protoss1" path="smk/protoss1.smk" destination="Video/Cutscenes/Protoss/" />
+	 		<video name="preprotoss2" path="smk/preprotoss_2.smk" destination="Video/Cutscenes/Protoss/" />
+	 		<video name="preprotoss3" path="smk/preprotoss_3.smk" destination="Video/Cutscenes/Protoss/" />
+	 		<video name="protoss3" path="smk/protoss3.smk" destination="Video/Cutscenes/Protoss/" />
+	 		<video name="protoss4" path="smk/protoss3.smk" destination="Video/Cutscenes/Protoss/" />
+	 		<video name="preterran1" path="smk/preterran_1.smk" destination="Video/Cutscenes/Terran/" />
+	 		<video name="terran1" path="smk/terrain1.smk" destination="Video/Cutscenes/Terran/" />
+	 		<video name="preterran2" path="smk/preterran_2.smk" destination="Video/Cutscenes/Terran/" />
+	 		<video name="terran2" path="smk/terran2.smk" destination="Video/Cutscenes/Terran/" />
+	 		<video name="preterran3" path="smk/preterran_3.smk" destination="Video/Cutscenes/Terran/" />
+	 		<video name="terran3" path="smk/terran3.smk" destination="Video/Cutscenes/Terran/" />
+	 		<video name="preterran4" path="smk/preterran_4.smk" destination="Video/Cutscenes/Terran/" />
+	 		<video name="terran4" path="smk/terran4.smk" destination="Video/Cutscenes/Terran/" />
+	 		<video name="zerg1" path="smk/zerg1.smk" destination="Video/Cutscenes/Zerg/" />
+	 		<video name="prezerg2" path="smk/" destination="Video/Cutscenes/Zerg/" />
+	 		<video name="zerg2" path="smk/" destination="Video/Cutscenes/Zerg/" />
+	 		<video name="prezerg3" path="smk/" destination="Video/Cutscenes/Zerg/" />
+	 		<video name="zerg3" path="smk/" destination="Video/Cutscenes/Zerg/" />
+	 		<video name="prezerg4" path="smk/" destination="Video/Cutscenes/Zerg/" />
+	 		<video name="zerg4" path="smk/" destination="Video/Cutscenes/Zerg/" />
+	 	</VideoAssets>
+	 	<FontAssets convert="">
+			<font name="font8" path="files/font/font8.fnt destination="Fonts/" />
+			<font name="font10" path="files/font/font10.fnt destination="Fonts/" />
+			<font name="font12" path="files/font/font12.fnt destination="Fonts/" />
+			<font name="font14" path="files/font/font14.fnt destination="Fonts/" />
+			<font name="font16" path="files/font/font16.fnt destination="Fonts/" />
+			<font name="font16x" path="files/font/font16x.fnt destination="Fonts/" />
+			<font name="font32" path="files/font/font32.fnt destination="Fonts/" />
+			<font name="font50" path="files/font/font50.fnt destination="Fonts/" />
+ 		</FontAssets>
+ 		<CampaignAssets>
+ 			<!-- Original Terran Campaigns -->
+ 			<campaign name="tutorial" path="campaign/terran/tutorial/scenario.chk" destination="Campaign/Terran/Original/Tutorial/" />
+ 			<campaign name="mission1" path="campaign/terran/terran01/scenario.chk" destination="Campaign/Terran/Original/Mission1/" />
+ 			<campaign name="mission2" path="campaign/terran/terran02/scenario.chk" destination="Campaign/Terran/Original/Mission2/" />
+ 			<campaign name="mission3" path="campaign/terran/terran03/scenario.chk" destination="Campaign/Terran/Original/Mission3/" />
+ 			<campaign name="mission4" path="campaign/terran/terran04/scenario.chk" destination="Campaign/Terran/Original/Mission4/" />
+ 			<campaign name="mission5" path="campaign/terran/terran05/scenario.chk" destination="Campaign/Terran/Original/Mission5/" />
+ 			<campaign name="mission6" path="campaign/terran/terran06/scenario.chk" destination="Campaign/Terran/Original/Mission6/" />
+ 			<campaign name="mission7" path="campaign/terran/terran07/scenario.chk" destination="Campaign/Terran/Original/Mission7/" />
+ 			<campaign name="mission8" path="campaign/terran/terran08/scenario.chk" destination="Campaign/Terran/Original/Mission8/" />
+ 			<campaign name="mission9" path="campaign/terran/terran09/scenario.chk" destination="Campaign/Terran/Original/Mission9/" />
+ 			<campaign name="mission10" path="campaign/terran/terran10/scenario.chk" destination="Campaign/Terran/Original/Mission10/" />
+ 			<campaign name="mission11" path="campaign/terran/terran11/scenario.chk" destination="Campaign/Terran/Original/Mission11/" />
+ 			<campaign name="mission12" path="campaign/terran/terran12/scenario.chk" destination="Campaign/Terran/Original/Mission12/" />
+ 			<!-- Original Zerg Campaigns -->
+ 			<campaign name="tutorial" path="campaign/zerg/tutorial/scenario.chk" destination="Campaign/Zerg/Original/Tutorial/" />
+ 			<campaign name="mission1" path="campaign/zerg/zerg01/scenario.chk" destination="Campaign/Zerg/Original/Mission1/" />
+ 			<campaign name="mission2" path="campaign/zerg/zerg02/scenario.chk" destination="Campaign/Zerg/Original/Mission2/" />
+ 			<campaign name="mission3" path="campaign/zerg/zerg03/scenario.chk" destination="Campaign/Zerg/Original/Mission3/" />
+ 			<campaign name="mission4" path="campaign/zerg/zerg04/scenario.chk" destination="Campaign/Zerg/Original/Mission4/" />
+ 			<campaign name="mission5" path="campaign/zerg/zerg05/scenario.chk" destination="Campaign/Zerg/Original/Mission5/" />
+ 			<campaign name="mission6" path="campaign/zerg/zerg06/scenario.chk" destination="Campaign/Zerg/Original/Mission6/" />
+ 			<campaign name="mission7" path="campaign/zerg/zerg07/scenario.chk" destination="Campaign/Zerg/Original/Mission7/" />
+ 			<campaign name="mission8" path="campaign/zerg/zerg08/scenario.chk" destination="Campaign/Zerg/Original/Mission8/" />
+ 			<campaign name="mission9" path="campaign/zerg/zerg09/scenario.chk" destination="Campaign/Zerg/Original/Mission9/" />
+ 			<campaign name="mission10" path="campaign/zerg/zerg10/scenario.chk" destination="Campaign/Zerg/Original/Mission10/" />
+ 			<!-- Original Protoss Campaigns -->
+ 			<campaign name="tutorial" path="campaign/protoss/tutorial/staredit/scenario.chk" destination="Campaign/Protoss/Original/Tutorial/" />
+ 			<campaign name="mission1" path="campaign/protoss/protoss01/staredit/scenario.chk" destination="Campaign/Protoss/Original/Mission1/" />
+ 			<campaign name="mission2" path="campaign/protoss/protoss02/staredit/scenario.chk" destination="Campaign/Protoss/Original/Mission2/" />
+ 			<campaign name="mission3" path="campaign/protoss/protoss03/staredit/scenario.chk" destination="Campaign/Protoss/Original/Mission3/" />
+ 			<campaign name="mission4" path="campaign/protoss/protoss04/staredit/scenario.chk" destination="Campaign/Protoss/Original/Mission4/" />
+ 			<campaign name="mission5" path="campaign/protoss/protoss05/staredit/scenario.chk" destination="Campaign/Protoss/Original/Mission5/" />
+ 			<campaign name="mission6" path="campaign/protoss/protoss06/staredit/scenario.chk" destination="Campaign/Protoss/Original/Mission6/" />
+ 			<campaign name="mission7" path="campaign/protoss/protoss07/staredit/scenario.chk" destination="Campaign/Protoss/Original/Mission7/" />
+ 			<campaign name="mission8" path="campaign/protoss/protoss08/staredit/scenario.chk" destination="Campaign/Protoss/Original/Mission8/" />
+ 			<campaign name="mission9" path="campaign/protoss/protoss09/staredit/scenario.chk" destination="Campaign/Protoss/Original/Mission9/" />
+ 			<campaign name="mission10" path="campaign/protoss/protoss10/staredit/scenario.chk" destination="Campaign/Protoss/Original/Mission10/" />
+ 		</CampaignAssets>
+ 	</Archive>
+ 	<Archive name="StarcraftData" type="MPQ">
  	<!-- Extract & Convert to PNG -->
- 	<ImageAssets>
+ 	<ImageAssets convert="png">
  	</ImageAssets>
  	<!-- Extract & Convert to OGG Vorbis -->
- 	<AudioAssets>
+ 	<AudioAssets convert="ogg">
+ 		<!-- Terran SoundEffects -->
+
  		<!-- Zerg SoundEffects -->
 	 		<!-- Zerg Advisor -->
 				<audio name="require minerals" path="sound/zerg/advisor/zaderr00.wav" destination="Audio/SoundEffects/Zerg/Advisor/" />
@@ -315,22 +426,19 @@
 			<audio name="explosion medium" path="sound/misc/explomed.wav" destination="Audio/SoundEffects/Misc/" />
 			<audio name="explosion small" path="sound/misc/explosm.wav" destination="Audio/SoundEffects/Misc/" />
  	</AudioAssets>
+ 	<!--Rip Audio Tracks from disks-->
+ 	<CDRipAudioAssets convert="ogg">
+ 	</CDRipAudioAssets>
  	<!-- Extract & Convert to OGG Theora -->
- 	<VideoAssets>
+ 	<VideoAssets convert="ogv">
  	</VideoAssets>
  	<!-- Extract & Convert? -->
- 	<FontAssets>
-		<font name="font8" path="files/font/font8.fnt destination="Fonts/" />
-		<font name="font10" path="files/font/font10.fnt destination="Fonts/" />
-		<font name="font12" path="files/font/font12.fnt destination="Fonts/" />
-		<font name="font14" path="files/font/font14.fnt destination="Fonts/" />
-		<font name="font16" path="files/font/font16.fnt destination="Fonts/" />
-		<font name="font16x" path="files/font/font16x.fnt destination="Fonts/" />
-		<font name="font32" path="files/font/font32.fnt destination="Fonts/" />
-		<font name="font50" path="files/font/font50.fnt destination="Fonts/" />
- 	</FontAssets>
+
  	<!-- Simply Extract Objects from Archive -->
  	<ExtractAssets>
  	</ExtractAssets>
  	</Archive>
+ 	<Archive name="MainBroodwar">
+ 	</Archive>
  </game>
+</StrataExtractConfig>

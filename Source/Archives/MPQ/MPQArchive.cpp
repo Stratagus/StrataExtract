@@ -8,3 +8,8 @@ void MPQArchive::OpenArchive(boost::filesystem::path archivePath)
         exit (-1);
     }
 }
+
+void MPQArchive::CloseArchive()
+{
+    SFileCloseArchive(mpqArchive);
+}
