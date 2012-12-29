@@ -14,7 +14,7 @@
  		<Version name="USA Broodwar CD Macintosh" expansion=1>
  			<file name="Brood War Archive" hash="36ce21b1688d05bf659902d296719e63f08f2360" Archive="MainBroodwar" />
  		</Version>
- 		<Version name="USA Starcraft Anthology Digital Distribution">
+ 		<Version name="USA Starcraft Anthology Digital Distribution" expansion=0>
  			<file name="Installer Tome.mpq" hash="3957d7ac483d7fbbd543e0cd70633bc9c57adfad" Archive="DigitalDistributionTome1" />
  			<file name="Installer Tome 2.mpq" hash="577de9fa6db714a9e76244b98ae372ca170d7819" Archive="DigitalDistributionTome2" />
  		</Version>
@@ -27,12 +27,61 @@
  	</Archive>
  	<Archive name="DigitalDistributionTome2" type="MPQ">
  	 	<ExtractAssets>
- 		<Extract name="BroodWar" path="Common/BroodWar.mpq" destination="temporary/" />
- 		<Extract name="BrooDat" path="Common/BrooDat.mpq" desination="temporary/" />
- 	</ExtractAssets>
+ 			<Extract name="BroodWar" path="Common/BroodWar.mpq" destination="temporary/" />
+ 			<Extract name="BrooDat" path="Common/BrooDat.mpq" desination="temporary/" />
+ 		</ExtractAssets>
  	</Archive>
  	<Archive name="StarcraftMain" type="MPQ">
  		<AudioAssets convert="ogg">
+	 		<audio name="title" path="music/title.wav" destination="Audio/Music/" />
+	 		<audio name="victory" path="music/tvict.wav" destination="Audio/Music/Terran/" />
+	 		<audio name="defeat" path="music/tdefeat.wav" destination="Audio/Music/Terran/" />
+	 		<audio name="readyroom" path="music/trdyroom.wav" destination="Audio/Music/Terran/" />
+	 		<audio name="ingame1" path="music/terran1.wav" destination="Audio/Music/Terran/" />
+	 		<audio name="ingame2" path="music/terran2.wav" destination="Audio/Music/Terran/" />
+	 		<audio name="ingame3" path="music/terran3.wav" destination="Audio/Music/Terran/" />
+	 		<audio name="victory" path="music/pvict.wav" destination="Audio/Music/Protoss/" />
+	 		<audio name="defeat" path="music/pdefeat.wav" destination="Audio/Music/Protoss/" />
+	 		<audio name="readroom" path="music/prdyroom.wav" destination="Audio/Music/Protoss/" />
+	 		<audio name="ingame1" path="music/protoss1.wav" destination="Audio/Music/Protoss/" />
+	 		<audio name="ingame2" path="music/protoss2.wav" destination="Audio/Music/Protoss/" />
+	 		<audio name="ingame3" path="music/protoss3.wav" destination="Audio/Music/Protoss/" />
+	 		<audio name="victory" path="music/zvict.wav" destination="Audio/Music/Zerg/" />
+	 		<audio name="defeat" path="music/zdefeat.wav" destination="Audio/Music/Zerg/" />
+	 		<audio name="readyroom" path="music/zrdyroom.wav" destination="Audio/Music/Zerg/" />
+	 		<audio name="ingame1" path="music/zerg1.wav" destination="Audio/Music/Zerg/" />
+	 		<audio name="ingame2" path="music/zerg2.wav" destination="Audio/Music/Zerg/" />
+	 		<audio name="ingame3" path="music/zerg3.wav" destination="Audio/Music/Zerg/" />
+	 		<!-- Additional Sounds to create a Welcome UI -->
+ 			<audio name="startup" path="setupdat/audio/installermusic.wav" destination="Audio/UI/Startup/" />
+ 			<audio name="mouseoverbutton" path="setupdat/audio/mouseover.wav" destination="Audio/UI/Startup/" />
+ 			<audio name="mouseclickbutton" path="setupdat/audio/mousedown.wav" destination="Audio/UI/Startup/" />
+ 			<audio name="battlenetbuttonclick" path="setupdat/audio/battlenetclick" destination="Audio/UI/" />
+ 			<!-- Campaign Dialogs -->
+ 				<!-- Terran Campaign Dialogs -->
+ 					<!-- Terran Campaign Tutorial Dialogs -->
+	 					<audio name="transmissionbeep" path="campaign/terran/tutorial/staredit/wav" destination="Campaign/Terran/Original/" />
+	 					<audio name="1-adjutant-welcome" path="campaign/terran/tutorial/staredit/wav/t0b00tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
+	 					<audio name="2-adjutant-selectstart" path="campaign/terran/tutorial/staredit/wav/t0b01tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
+	 					<audio name="3-adjutant-whenreadyselectstart" path="campaign/terran/tutorial/staredit/wav/t0b02tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
+	 					<audio name="4-adjutant-anytime" path="campaign/terran/tutorial/staredit/wav/t0b03tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
+	 					<audio name="5-adjutant-okgo" path="campaign/terran/tutorial/staredit/wav/t0b04tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
+	 					<audio name="6-adjutant-alright" path="campaign/terran/tutorial/staredit/wav/t0b05tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
+	 					<audio name="adjutant-explain-gas" path="campaign/terran/tutorial/staredit/wav/t0b60tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
+	 					<audio name="adjutant-explain-scv" path="campaign/terran/tutorial/staredit/wav/t0m00tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
+	 					<audio name="adjutant-explain-mutiplescv" path="campaign/terran/tutorial/staredit/wav/t0m01tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
+	 					<audio name="adjutant-explain-minerals-out" path="campaign/terran/tutorial/staredit/wav/t0m02tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
+	 					<audio name="ajutant-explain-scv-gather" path="campaign/terran/tutorial/staredit/wav/t0m03tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
+	 					<audio name="ajutant-explain-minerals" path="campaign/terran/tutorial/staredit/wav/t0m04tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
+	 					<audio name="ajutant-explain-supplydepot" path="campaign/terran/tutorial/staredit/wav/t0m05tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
+	 					<audio name="ajutant-explain-scv-supplydepot" path="campaign/terran/tutorial/staredit/wav/t0m06tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
+	 					<audio name="adjutant-explain-tutorial-over" path="campaign/terran/tutorial/staredit/wav/t0m07tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
+	 					<audio name="adjutant-explain-additional-scv" path="campaign/terran/tutorial/staredit/wav/t0m21tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
+	 					<audio name="marine-permission" path="campaign/terran/tutorial/staredit/wav/t0m30tma.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
+	 					<audio name="marine-explain-attack-move" path="campaign/terran/tutorial/staredit/wav/t0m31tma.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
+	 				<!-- Terran Campaign Mission 1 Dialogs -->
+	 					<audio name="1-adjutant-lockdown" path="campaign/terran/terran01/staredit/wav/" destination="" /> 
+
  		</AudioAssets>
  	 	<!-- Extract & Convert to Stratagus Map Format -->
 	 	<MapAssets>
@@ -84,6 +133,10 @@
 					<map name="Station Unrest" path="multimaps/(8)Station Unrest.scm" destination="Maps/8/" />
 					<map name="The Hunters" path="multimaps/(8)The Hunters.scm" destination="Maps/8/" />
 	 	</MapAssets>
+	 	<ImageAssets>
+	 		<!-- Could be used for game startup splash -->
+	 		<image name="startupsplash" path="setupdat/images/install.pcx" destination="Images/UI/Startup/"
+	 	</ImageAssets>
 	 	<VideoAssets convert="ogv">
 	 		<video name="blizzardlogo" path="smk/blizzard.smk" destination="Video/Cutscenes/" />
 	 		<video name="diablo2trailer" path="smk/diablo2.smk" destination="Video/Cutscenes/" />
@@ -160,6 +213,9 @@
  			<campaign name="mission9" path="campaign/protoss/protoss09/staredit/scenario.chk" destination="Campaign/Protoss/Original/Mission9/" />
  			<campaign name="mission10" path="campaign/protoss/protoss10/staredit/scenario.chk" destination="Campaign/Protoss/Original/Mission10/" />
  		</CampaignAssets>
+ 		<ExtractAssets>
+ 			<Extract name="StarDat" path="files/stardat.mpq" destination="temporary/" />
+ 		</ExtractAssets>
  	</Archive>
  	<Archive name="StarcraftData" type="MPQ">
  	<!-- Extract & Convert to PNG -->
