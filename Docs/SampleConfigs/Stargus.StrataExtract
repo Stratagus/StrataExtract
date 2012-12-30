@@ -2,36 +2,35 @@
  <game>
  	<name>Stargus</name>
  	<Versions>
- 		<Version name="USA Starcraft CD Windows" expansion=0>
+ 		<Version name="USA Starcraft CD Windows" expansion="0">
  			<file name="INSTALL.EXE" hash="2de01f59e99c0fb16d32df2d7cdd909be2bf0825" Archive="MainStarcraft"/>
  		</Version>
- 		<Version name="USA Starcraft CD Macintosh" expansion=0>
+ 		<Version name="USA Starcraft CD Macintosh" expansion="0">
  			<file name="StarCraft Archive" hash="5b2f9abbba5ae5e27b59550f4795d62818b757f0" Archive="MainStarcraft"/>
  		</Version>
- 		<Version name="USA Broodwar CD Windows" expansion=1>
+ 		<Version name="USA Broodwar CD Windows" expansion="1">
  			<file name="INSTALL.EXE" hash="36ce21b1688d05bf659902d296719e63f08f2360" Archive="MainBroodwar"/>
  		</Version>
- 		<Version name="USA Broodwar CD Macintosh" expansion=1>
+ 		<Version name="USA Broodwar CD Macintosh" expansion="1">
  			<file name="Brood War Archive" hash="36ce21b1688d05bf659902d296719e63f08f2360" Archive="MainBroodwar" />
  		</Version>
- 		<Version name="USA Starcraft Anthology Digital Distribution" expansion=0>
+ 		<Version name="USA Starcraft Anthology Digital Distribution" expansion="0">
  			<file name="Installer Tome.mpq" hash="3957d7ac483d7fbbd543e0cd70633bc9c57adfad" Archive="DigitalDistributionTome1" />
  			<file name="Installer Tome 2.mpq" hash="577de9fa6db714a9e76244b98ae372ca170d7819" Archive="DigitalDistributionTome2" />
  		</Version>
  	</Versions>
  	<Archive name="DigitalDistributionTome1" type="MPQ">
- 	<ExtractAssets>
- 		<Extract name="Starcraft" path="Common/Starcraft.mpq" destination="temporary/" />
- 		<Extract name="StarDat" path="Common/StarDat.mpq" desination="temporary/" />
- 	</ExtractAssets>
+	 	<ExtractAssets>
+	 	</ExtractAssets>
  	</Archive>
  	<Archive name="DigitalDistributionTome2" type="MPQ">
  	 	<ExtractAssets>
- 			<Extract name="BroodWar" path="Common/BroodWar.mpq" destination="temporary/" />
- 			<Extract name="BrooDat" path="Common/BrooDat.mpq" desination="temporary/" />
  		</ExtractAssets>
  	</Archive>
  	<Archive name="StarcraftMain" type="MPQ">
+ 		<ArchiveAssets>
+ 			<Archive name="Stardat" path="files/stardat.mpq" destination="temporary/" />
+ 		</ArchiveAssets>
  		<AudioAssets convert="ogg">
 	 		<audio name="title" path="music/title.wav" destination="Audio/Music/" />
 	 		<audio name="victory" path="music/tvict.wav" destination="Audio/Music/Terran/" />
@@ -221,7 +220,7 @@
 	 					<audio name="ingame-raynor-goodhunting" path="campaign/terran/terran11/staredit/wav/tbm04ura.wav" destination="Campaign/Terran/Original/Mission9/Audio/" />
 	 					<audio name="ingame-mengsk-staycool" path="campaign/terran/terran11/staredit/wav/tbm20ume.wav" destination="Campaign/Terran/Original/Mission9/Audio/" />
 	 					<audio name="ingame-marine-waxcritters" path="campaign/terran/terran11/staredit/wav/tbm21uma.wav" destination="Campaign/Terran/Original/Mission9/Audio/" />
-	 					<!-ingame-adjutant-recieveingincomingtransmission-->
+	 					<!-- ingame-adjutant-recieveingincomingtransmission -->
 	 					<audio name="ingame-kerrigan-immediateexac" path="campaign/terran/terran11/staredit/wav/tbm41uke.wav" destination="Campaign/Terran/Original/Mission9/Audio/" />
 	 					<audio name="ingame-mengsk-movingout" path="campaign/terran/terran11/staredit/wav/tbm42ume.wav" destination="Campaign/Terran/Original/Mission9/Audio/" />
 	 					<audio name="ingame-raynor-notleavethem" path="campaign/terran/terran11/staredit/wav/tbm43ura.wav" destination="Campaign/Terran/Original/Mission9/Audio/" />
@@ -233,7 +232,7 @@
 	 				<!-- Terran Campaign Mission 10 (The Hammer Falls) Dialog -->
 	 					<audio name="1-anjutant-lostcontact" path="campaign/terran/terran12/staredit/wav/tcb00tad.wav" destination="Campaign/Terran/Original/Mission10/Audio/" />
 	 					<audio name="2-raynor-imgone" path="campaign/terran/terran12/staredit/wav/tcb01ura.wav" destination="Campaign/Terran/Original/Mission10/Audio/" />
-	 					<!-3-adjutant-recieveingincomingtransmission-->
+	 					<!--3-adjutant-recieveingincomingtransmission-->
 	 					<audio name="4-mengsk-jobtodo" path="campaign/terran/terran12/staredit/wav/tcb3ume.wav" destination="Campaign/Terran/Original/Mission10/Audio/" />
 	 					<audio name="5-raynor-tohellwithyou" path="campaign/terran/terran12/staredit/wav/tcb04ura.wav" destination="Campaign/Terran/Original/Mission10/Audio/" />
 	 					<audio name="6-mengsk-dontthinkcrossme" path="campaign/terran/terran12/staredit/wav/tcb05ume.wav" destination="Campaign/Terran/Original/Mission10/Audio/" />
@@ -423,7 +422,7 @@
 	 	</MapAssets>
 	 	<ImageAssets>
 	 		<!-- Could be used for game startup splash -->
-	 		<image name="startupsplash" path="setupdat/images/install.pcx" destination="Images/UI/Startup/"
+	 		<image name="startupsplash" path="setupdat/images/install.pcx" destination="Images/UI/Startup/" />
 	 	</ImageAssets>
 	 	<VideoAssets convert="ogv">
 	 		<video name="blizzardlogo" path="smk/blizzard.smk" destination="Video/Cutscenes/" />
@@ -452,14 +451,14 @@
 	 		<video name="zerg4" path="smk/" destination="Video/Cutscenes/Zerg/" />
 	 	</VideoAssets>
 	 	<FontAssets convert="">
-			<font name="font8" path="files/font/font8.fnt destination="Fonts/" />
+			<!--<font name="font8" path="files/font/font8.fnt destination="Fonts/" />
 			<font name="font10" path="files/font/font10.fnt destination="Fonts/" />
 			<font name="font12" path="files/font/font12.fnt destination="Fonts/" />
 			<font name="font14" path="files/font/font14.fnt destination="Fonts/" />
 			<font name="font16" path="files/font/font16.fnt destination="Fonts/" />
 			<font name="font16x" path="files/font/font16x.fnt destination="Fonts/" />
 			<font name="font32" path="files/font/font32.fnt destination="Fonts/" />
-			<font name="font50" path="files/font/font50.fnt destination="Fonts/" />
+			<font name="font50" path="files/font/font50.fnt destination="Fonts/" />-->
  		</FontAssets>
  		<CampaignAssets>
  			<!-- Original Terran Campaigns -->
@@ -505,7 +504,7 @@
  			<Extract name="StarDat" path="files/stardat.mpq" destination="temporary/" />
  		</ExtractAssets>
  	</Archive>
- 	<Archive name="StarcraftData" type="MPQ">
+ 	<Archive name="Stardat" type="MPQ" depends="StarcraftMain">
  	<!-- Extract & Convert to PNG -->
  	<ImageAssets convert="png">
  	</ImageAssets>
