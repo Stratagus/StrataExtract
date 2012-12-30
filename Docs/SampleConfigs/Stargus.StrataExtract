@@ -244,6 +244,131 @@
 	 					<audio name="11-adjutant-ioncannon" path="campaign/terran/terran12/staredit/wav/tcm20tad.wav" destination="Campaign/Terran/Original/Mission10/Audio/" />
 	 					<audio name="ingame-raynor-yesterdaymengsk" path="campaign/terran/terran12/staredit/wav/tcm00ura.wav" destination="Campaign/Terran/Original/Mission10/Audio/" />
 	 					<audio name="ingame-raynor-shouldnthavelether" path="campaign/terran/terran12/staredit/wav/tcm01ura.wav" destination="Campaign/Terran/Original/Mission10/Audio/" />
+	 			<!-- Zerg Campaign Dialogs -->
+	 				<!-- Zerg Campaign Mission 1 (Among the Ruins) Dialogs -->
+	 				<audio name="1-overmind-iamtheovermind" path="campaign/zerg/zerg01/staredit/wav/z1b00zad.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
+	 				<audio name="2-overmind-benefittheirwisdom" path="campaign/zerg/zerg01/staredit/wav/z1b01zad.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
+	 				<audio name="3-overmind-protectchrysalis" path="campaign/zerg/zerg01/staredit/wav/z1b02zad.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
+	 				<audio name="4-overmind-gonow" path="campaign/zerg/zerg01/staredit/wav/z1b03zad.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
+	 				<audio name="ingame-zasz-greetings" path="campaign/zerg/zerg01/staredit/wav/z1m00uza.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
+	 				<audio name="ingame-zasz-explain-hatchery" path="campaign/zerg/zerg01/staredit/wav/z0m01uda.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
+	 				<audio name="ingame-zasz-explain-gather" path="campaign/zerg/zerg01/staredit/wav/z0m02uda.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
+	 				<audio name="ingame-zasz-explain-overlords" path="campaign/zerg/zerg01/staredit/wav/z0m03uda.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
+	 				<audio name="ingame-zasz-explain-mutationoverlord" path="campaign/zerg/zerg01/staredit/wav/z0m04uda.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
+	 				<audio name="ingame-zasz-generatehive" path="campaign/zerg/zerg01/staredit/wav/z0m05uda.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
+	 				<audio name="ingame-zasz-explain-dronemutation" path="campaign/zerg/zerg01/staredit/wav/z0m06uda.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
+	 				<audio name="ingame-zasz-explain-spawningpool" path="campaign/zerg/zerg01/staredit/wav/z0m07uda.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
+	 				<audio name="ingame-zasz-explain-creep" path="campaign/zerg/zerg01/staredit/wav/z0m08uda.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
+	 				<audio name="ingame-zasz-explain-expandcreep" path="campaign/zerg/zerg01/staredit/wav/z0m09uda.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
+	 				<audio name="zergpowerdown" path="campaign/zerg/zerg01/staredit/wav/zpwrdown.wav" destination="Campaign/Zerg/Original/Common/Audio/" />
+	 				<audio name="zergpowerup" path="campaign/zerg/zerg01/staredit/wav/zpwrup.wav" destination="Campaign/Zerg/Original/Common/Audio/" />
+	 				<!-- Zerg Campaign Mission 2 (Egression) Dialogs -->
+	 					<audio name="1-overmind-wellpleased" path="campaign/zerg/zerg02/staredit/wav/z2b00zad.wav" destination="Campaign/Zerg/Original/Mission2/Audio/" />
+	 					<audio name="2-overmind-exitworld" path="campaign/zerg/zerg02/staredit/wav/z2b01zad.wav" destination="Campaign/Zerg/Original/Mission2/Audio/" />
+	 					<audio name="3-zasz-protrossfleetremains" path="campaign/zerg/zerg02/staredit/wav/z2b02uza.wav" destination="Campaign/Zerg/Original/Mission2/Audio/" />
+	 					<audio name="4-daggoth-broodhelp" path="campaign/zerg/zerg02/staredit/wav/z2b03uda.wav" destination="Campaign/Zerg/Original/Mission2/Audio/" />
+	 					<audio name="ingame-daggoth-broodyourwill" path="campaign/zerg/zerg02/staredit/wav/z2m00uda.wav" destination="Campaign/Zerg/Original/Mission2/Audio/" />
+	 					<audio name="ingame-zasz-prepareforwarp" path="campaign/zerg/zerg02/staredit/wav/z2m20uza.wav" destination="Campaign/Zerg/Original/Mission2/Audio/" />
+	 					<audio name="ingame-daggoth-chrysalisindanger" path="campaign/zerg/zerg02/staredit/wav/z2m21uda.wav" destination="Campaign/Zerg/Original/Mission2/Audio/" />
+	 				<!-- Zerg Campaign Mission 3 (The New Dominion) Dialogs -->
+	 					<audio name="1-overmind-powerchrysalis" path="campaign/zerg/zerg03/staredit/wav/z3b00zad.wav" destination="Campaign/Zerg/Original/Mission3/Audio/" />
+	 					<audio name="2-zasz-awareofenemy" path="campaign/zerg/zerg03/staredit/wav/z3b01uza.wav" destination="Campaign/Zerg/Original/Mission3/Audio/" />
+	 					<audio name="3-duke-searchanddestory" path="campaign/zerg/zerg03/staredit/wav/z3b02udu.wav" destination="Campaign/Zerg/Original/Mission3/Audio/" />
+	 					<audio name="4-daggoth-destroyterrans" path="campaign/zerg/zerg03/staredit/wav/z3b03uda.wav" destination="Campaign/Zerg/Original/Mission3/Audio/" />
+	 					<audio name="ingame-duke-retreat" path="campaign/zerg/zerg03/staredit/wav/z3m00udu.wav" destination="Campaign/Zerg/Original/Mission3/Audio/" />
+	 					<audio name="ingame-daggoth-hold" path="campaign/zerg/zerg03/staredit/wav/z3m01uda.wav" destination="Campaign/Zerg/Original/Mission3/Audio/" />
+	 					<audio name="ingame-zasz-resecurechrysalis" path="campaign/zerg/zerg03/staredit/wav/z3m02uza.wav" destination="Campaign/Zerg/Original/Mission3/Audio/" />
+	 					<!--ZergPowerUp-->
+	 					<!--ZergPowerDown-->
+	 				<!-- Zerg Campaign Mission 4 (Agent of the Swarm) Dialogs -->
+	 					<audio name="1-zasz-moreenemiestochar" path="campaign/zerg/zerg04/staredit/wav/z4b00uza.wav" destination="Campaign/Zerg/Original/Mission4/Audio/" />
+	 					<audio name="2-overload-youwilldestroythem" path="campaign/zerg/zerg04/staredit/wav/z4b01zad.wav" destination="Campaign/Zerg/Original/Mission4/Audio/" />
+	 					<audio name="3-overload-protectthechrysalis" path="campaign/zerg/zerg04/staredit/wav/z4b02zad.wav" destination="Campaign/Zerg/Original/Mission4/Audio/" />
+	 					<audio name="ingame-raynor-stayfrosty" path="campaign/zerg/zerg04/staredit/wav/z4m00ura.wav" destination="Campaign/Zerg/Original/Mission4/Audio/" />
+	 					<audio name="ingame-zasz-chrysalisopening" path="campaign/zerg/zerg04/staredit/wav/z4m20uza.wav" destination="Campaign/Zerg/Original/Mission4/Audio/" />
+	 					<audio name="ingame-overmind-risekerrigan" path="campaign/zerg/zerg04/staredit/wav/z4m40zad.wav" destination="Campaign/Zerg/Original/Mission4/Audio/" />
+	 					<audio name="ingame-zergkerrigan-wrathofswarm" path="campaign/zerg/zerg04/staredit/wav/z4m41uki.wav" destination="Campaign/Zerg/Original/Mission4/Audio/" />
+	 					<audio name="ingame-overmind-noterransurvive" path="campaign/zerg/zerg04/staredit/wav/z4m42zad.wav" destination="Campaign/Zerg/Original/Mission4/Audio/" />
+	 					<audio name="ingame-raynor-whatkerrigan" path="campaign/zerg/zerg04/staredit/wav/z4m43ura.wav" destination="Campaign/Zerg/Original/Mission4/Audio/" />
+	 					<audio name="ingame-raynor-reallyyou" path="campaign/zerg/zerg04/staredit/wav/z4m60ura.wav" destination="Campaign/Zerg/Original/Mission4/Audio/" />
+	 					<audio name="ingame-zergkerrigan-youshouldntcomehere" path="campaign/zerg/zerg04/staredit/wav/z4m61uki.wav" destination="Campaign/Zerg/Original/Mission4/Audio/" />
+	 					<audio name="ingame-raynor-dreams" path="campaign/zerg/zerg04/staredit/wav/z4m62ura.wav" destination="Campaign/Zerg/Original/Mission4/Audio/" />
+	 					<audio name="ingame-zergkerrigan-iamzerg" path="campaign/zerg/zerg04/staredit/wav/z4m63uki.wav" destination="Campaign/Zerg/Original/Mission4/Audio/" />
+	 					<audio name="ingame-raynor-youkillme" path="campaign/zerg/zerg04/staredit/wav/z4m65ura.wav" destination="Campaign/Zerg/Original/Mission4/Audio/" />
+	 					<audio name="ingame-zergkerrigan-leavenow" path="campaign/zerg/zerg04/staredit/wav/z4m66uki.wav" destination="Campaign/Zerg/Original/Mission4/Audio/" />
+	 					<audio name="ingame-raynor-nochoice" path="campaign/zerg/zerg04/staredit/wav/z4m67ura.wav" destination="Campaign/Zerg/Original/Mission4/Audio/" />
+	 					<audio name="" path="campaign/zerg/zerg04/staredit/wav/.wav" destination="Campaign/Zerg/Original/Mission4/Audio/" />
+	 				<!-- Zerg Campaign Mission 5 (The Amerigo) Dialogs -->
+	 					<audio name="1-zergkerrigan-thanks" path="campaign/zerg/zerg05/staredit/wav/z5b00uki.wav" destination="Campaign/Zerg/Original/Mission5/Audio/" />
+	 					<audio name="2-zergkerrigan-infiltratescience" path="campaign/zerg/zerg05/staredit/wav/z5b01uki.wav" destination="Campaign/Zerg/Original/Mission5/Audio/" />
+	 					<audio name="3-zasz-youareservant" path="campaign/zerg/zerg05/staredit/wav/z5b02uza.wav" destination="Campaign/Zerg/Original/Mission5/Audio/" />
+	 					<audio name="4-zergkerrigan-noonestandinway" path="campaign/zerg/zerg05/staredit/wav/z5b03uki.wav" destination="Campaign/Zerg/Original/Mission5/Audio/" />
+	 					<audio name="5-overmind-freetodesire" path="campaign/zerg/zerg05/staredit/wav/z5b04zad.wav" destination="Campaign/Zerg/Original/Mission5/Audio/" />
+	 					<audio name="6-zasz-yourwill" path="campaign/zerg/zerg05/staredit/wav/z5b05uza.wav" destination="Campaign/Zerg/Original/Mission5/Audio/" />
+	 					<audio name="ingame-ajutant-teleportactive" path="campaign/zerg/zerg05/staredit/wav/p6m00tad.wav" destination="Campaign/Zerg/Original/Mission5/Audio/" />
+	 					<audio name="ingame-terran-powerdown" path="campaign/zerg/zerg05/staredit/wav/ppwrdown.wav" destination="Campaign/Zerg/Original/Mission5/Audio/" />
+	 					<audio name="ingame-adjutant-securitycameraactive" path="campaign/zerg/zerg05/staredit/wav/t4m70tad.wav" destination="Campaign/Zerg/Original/Mission5/Audio/" />
+	 					<audio name="ingame-marine-waxcritters" path="campaign/zerg/zerg05/staredit/wav/tbm21uma.wav" destination="Campaign/Zerg/Original/Mission5/Audio/" />
+	 					<audio name="ingame-adjutant-unauthorizedentry" path="campaign/zerg/zerg05/staredit/wav/z5m00tad.wav" destination="Campaign/Zerg/Original/Mission5/Audio/" />
+	 					<audio name="ingame-daggoth-takehunterssearch" path="campaign/zerg/zerg05/staredit/wav/z5m00uda.wav" destination="Campaign/Zerg/Original/Mission5/Audio/" />
+	 					<audio name="ingame-civilian-infested" path="campaign/zerg/zerg05/staredit/wav/z5m20uci.wav" destination="Campaign/Zerg/Original/Mission5/Audio/" />
+	 					<audio name="ingame-zergkerrigan-everythingneeded" path="campaign/zerg/zerg05/staredit/wav/z5m20uki.wav" destination="Campaign/Zerg/Original/Mission5/Audio/" />
+	 					<audio name="ingame-civilian-callhelp" path="campaign/zerg/zerg05/staredit/wav/z5m30uci.wav" destination="Campaign/Zerg/Original/Mission5/Audio/" />
+	 					<audio name="ingame-marine-nevermakeitoutalive" path="campaign/zerg/zerg05/staredit/wav/z5m40uma.wav" destination="Campaign/Zerg/Original/Mission5/Audio/" />
+	 					<audio name="ingame-marine-critterbleed" path="campaign/zerg/zerg05/staredit/wav/z5m50uma.wav" destination="Campaign/Zerg/Original/Mission5/Audio/" />
+	 					<audio name="ingame-marine-wegotcompany" path="campaign/zerg/zerg05/staredit/wav/z5m51uma.wav" destination="Campaign/Zerg/Original/Mission5/Audio/" />
+	 					<audio name="imgame-daggoth-keepterransofftrail" path="campaign/zerg/zerg05/staredit/wav/z5m60uda.wav" destination="Campaign/Zerg/Original/Mission5/Audio/" />
+	 					<!-- Zerg Power Down-->
+	 				<!-- Zerg Campaign Mission 6 (The Dark Templar) Dialogs -->
+	 					<audio name="1-zergkerrigan-protosshiding" path="campaign/zerg/zerg06/staredit/wav/z6b00uki.wav" destination="Campaign/Zerg/Original/Mission6/Audio/" />
+	 					<audio name="2-zergkerrigan-foolishprotoss" path="campaign/zerg/zerg06/staredit/wav/z6b01uki.wav" destination="Campaign/Zerg/Original/Mission6/Audio/" />
+	 					<audio name="3-tassadar-oncehonorable" path="campaign/zerg/zerg06/staredit/wav/z6b02uta.wav" destination="Campaign/Zerg/Original/Mission6/Audio/" />
+	 					<audio name="4-zergkerrigan-donottestme" path="campaign/zerg/zerg06/staredit/wav/z6b03uki.wav" destination="Campaign/Zerg/Original/Mission6/Audio/" />
+	 					<audio name="5-tassadar-infantiletestofwill" path="campaign/zerg/zerg06/staredit/wav/z6b04uta.wav" destination="Campaign/Zerg/Original/Mission6/Audio/" />
+	 					<audio name="6-zergkerrigan-comeforyou" path="campaign/zerg/zerg06/staredit/wav/z6b05uki.wav" destination="Campaign/Zerg/Original/Mission6/Audio/" />
+	 					<audio name="ingame-zasz-reconsider" path="campaign/zerg/zerg06/staredit/wav/z6m99uza.wav" destination="Campaign/Zerg/Original/Mission6/Audio/" />
+	 					<audio name="ingame-zergkerrigan-questionauthority" path="campaign/zerg/zerg06/staredit/wav/z6m01uki.wav" destination="Campaign/Zerg/Original/Mission6/Audio/" />
+	 					<audio name="ingame-zasz-darethreaten" path="campaign/zerg/zerg06/staredit/wav/z6m02uza.wav" destination="Campaign/Zerg/Original/Mission6/Audio/" />
+	 					<audio name="ingame-zergkerrigan-whereareyou" path="campaign/zerg/zerg06/staredit/wav/z6m20uki.wav" destination="Campaign/Zerg/Original/Mission6/Audio/" />
+	 					<audio name="ingame-tassadar-defeatyoumyself" path="campaign/zerg/zerg06/staredit/wav/z6m40uta.wav" destination="Campaign/Zerg/Original/Mission6/Audio/" />
+	 					<audio name="ingame-zergkerrigan-afraidtofaceme" path="campaign/zerg/zerg06/staredit/wav/z6m60uki.wav" destination="Campaign/Zerg/Original/Mission6/Audio/" />
+	 					<audio name="ingame-tassadar-predictable" path="campaign/zerg/zerg06/staredit/wav/z6m61uta.wav" destination="Campaign/Zerg/Original/Mission6/Audio/" />
+	 					<!--Terran Comm Beep0-->
+	 					<!--Terran Comm Beep1-->
+	 				<!-- Zerg Campaign Mission 7 (The Culling) Dialogs -->
+	 					<audio name="1-zergkerrigan-tassadar" path="campaign/zerg/zerg07/staredit/wav/z7b00uki.wav" destination="Campaign/Zerg/Original/Mission7/Audio/" />
+	 					<audio name="2-daggoth-zaszdead" path="campaign/zerg/zerg07/staredit/wav/z7b01uda.wav" destination="Campaign/Zerg/Original/Mission7/Audio/" />
+	 					<audio name="3-zergkerrigan-reincarnatezasz" path="campaign/zerg/zerg07/staredit/wav/z7b02uki.wav" destination="Campaign/Zerg/Original/Mission7/Audio/" />
+	 					<audio name="4-daggoth-newprotossattack" path="campaign/zerg/zerg07/staredit/wav/p7b03uda.wav" destination="Campaign/Zerg/Original/Mission7/Audio/" />
+	 					<audio name="5-zergkerrigan-tassadardiversion" path="campaign/zerg/zerg07/staredit/wav/z7b04uki.wav" destination="Campaign/Zerg/Original/Mission7/Audio/" />
+	 					<audio name="6-daggoth-zaszbroodamuk" path="campaign/zerg/zerg07/staredit/wav/z7b05uda.wav" destination="Campaign/Zerg/Original/Mission7/Audio/" />
+	 				<!-- Zerg Campaign Mission 8 (Eye for an Eye) Dialogs-->
+	 					<audio name="1-overmind-murderedzasz" path="campaign/zerg/zerg08/staredit/wav/z8b00zad.wav" destination="Campaign/Zerg/Original/Mission8/Audio/" />
+	 					<audio name="2-overmind-zeratulconnection" path="campaign/zerg/zerg08/staredit/wav/z8b01zad.wav" destination="Campaign/Zerg/Original/Mission8/Audio/" />
+	 					<audio name="3-overmind-searchisover" path="campaign/zerg/zerg08/staredit/wav/z8b02zad.wav" destination="Campaign/Zerg/Original/Mission8/Audio/" />
+	 					<audio name="4-daggoth-trapfoes" path="campaign/zerg/zerg08/staredit/wav/z8b03uda.wav" destination="Campaign/Zerg/Original/Mission8/Audio/" />
+	 					<audio name="ingame-daggoth-overlordsinplace" path="campaign/zerg/zerg08/staredit/wav/z8m00uda.wav" destination="Campaign/Zerg/Original/Mission8/Audio/" />
+	 					<audio name="ingame-daggoth-overlordsoutofplace" path="campaign/zerg/zerg08/staredit/wav/z8m20uda.wav" destination="Campaign/Zerg/Original/Mission8/Audio/" />
+	 					<audio name="ingame-zergkerrigan-lostprotosscourage" path="campaign/zerg/zerg08/staredit/wav/z8m40uki.wav" destination="Campaign/Zerg/Original/Mission8/Audio/" />
+	 					<audio name="ingame-zeratul-donotlackcurage" path="campaign/zerg/zerg08/staredit/wav/z8m41uze.wav" destination="Campaign/Zerg/Original/Mission8/Audio/" />
+	 					<audio name="ingame-zergkerrigan-queenofblades" path="campaign/zerg/zerg08/staredit/wav/z8m42uki.wav" destination="Campaign/Zerg/Original/Mission8/Audio/" />
+	 					<audio name="ingame-zergkerrigan-furyqueenofblades" path="campaign/zerg/zerg08/staredit/wav/z8m60uki.wav" destination="Campaign/Zerg/Original/Mission8/Audio/" />
+	 				<!-- Zerg Campaign Mission 9 (The Invasion of Aiur) Dialogs -->
+	 					<audio name="1-overmind-victoryathand" path="campaign/zerg/zerg09/staredit/wav/z9b00zad.wav" destination="Campaign/Zerg/Original/Mission9/Audio/" />
+	 					<audio name="2-overmind-crystalundreamedpower" path="campaign/zerg/zerg09/staredit/wav/z9b01zad.wav" destination="Campaign/Zerg/Original/Mission9/Audio/" />
+	 					<audio name="3-overmind-gonow" path="campaign/zerg/zerg09/staredit/wav/z9b02zad.wav" destination="Campaign/Zerg/Original/Mission9/Audio/" />
+	 					<audio name="ingame-daggoth-cystalsinposession" path="campaign/zerg/zerg09/staredit/wav/z9m00uda.wav" destination="Campaign/Zerg/Original/Mission9/Audio/" />
+	 					<audio name="ingame-daggoth-crystalharvested" path="campaign/zerg/zerg09/staredit/wav/.wav" destination="Campaign/Zerg/Original/Mission9/Audio/" />
+	 					<!-- Zerg Drone Error -->
+	 					<!-- Zerg Drone Mineral Harvest -->
+	 				<!-- Zerg Campaign Mission 10 (Full Circle) Dialogs-->
+	 					<audio name="1-overmind-welldone" path="campaign/zerg/zerg10/staredit/wav/zab00zad.wav" destination="Campaign/Zerg/Original/Mission10/Audio/" />
+	 					<audio name="2-overmind-destroytemple" path="campaign/zerg/zerg10/staredit/wav/zab01zad.wav" destination="Campaign/Zerg/Original/Mission10/Audio/" />
+	 					<audio name="3-overmind-setcrystalinplace" path="campaign/zerg/zerg10/staredit/wav/zab02zad.wav" destination="Campaign/Zerg/Original/Mission10/Audio/" />
+	 					<audio name="ingame-daggoth-finaloffense" path="campaign/zerg/zerg10/staredit/wav/zam00uda.wav" destination="Campaign/Zerg/Original/Mission10/Audio/" />
+	 					<audio name="ingame-overmind-setinmotion" path="campaign/zerg/zerg10/staredit/wav/zam20zad.wav" destination="Campaign/Zerg/Original/Mission10/Audio/" />
+	 					<!-- Terran Comm Beep 1 -->
+	 			<!--Protoss Campaign Dialogs -->
 	 					
  		</AudioAssets>
  	 	<!-- Extract & Convert to Stratagus Map Format -->
