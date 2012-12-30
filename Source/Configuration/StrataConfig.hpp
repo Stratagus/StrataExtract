@@ -24,6 +24,8 @@
 #include <libxml/parser.h>
 #include <libxml/xpath.h>
 
+#define VERSION 0.1f
+
 class StrataConfig
 {
     public:
@@ -36,45 +38,39 @@ class StrataConfig
         *  \note*/
         void readConfig(boost::filesystem::path configurationPath);
     
-        //!Queries the number of CPU Cores.
-        /*!  Queries the OS for the number of Core availible on
-         *  the CPU.
-         *  \pre None
-         *  \post Return the number of availible cores
-         *  \note*/
-    
-        void GetConversionSettings();
         float GetProgess();
         bool isConfigLoaded();
     
-        void GetDestinationAudioCodec();
-    
     
         static void PrintUsage();
+    //!Queries the number of CPU Cores.
+    /*!  Queries the OS for the number of Core availible on
+     *  the CPU.
+     *  \pre None
+     *  \post Return the number of availible cores
+     *  \note*/
         static int GetCPUCores();
-        static std::string FindGameHash(boost::filesystem::path gamePath);
-    
+        //std::string FindSourcePathHash(boost::filesystem::path gamePath);
 
-    void
-    print_xpath_nodes(xmlNodeSetPtr nodes, FILE* output);
+    void print_xpath_nodes(xmlNodeSetPtr nodes, FILE* output);
     
     protected:
         StrataConfig();
     
+        std::string getGameName();
+    
+        xmlNodePtr configurationRoot;
+    
         std::string *destinationImageFormat;
         std::string *destinationVideoFormat;
-        xmlXPathObjectPtr audioAssetObjects;
-        xmlXPathObjectPtr mapAssetObjects;
-        xmlXPathObjectPtr fontAssetObjects;
-        xmlXPathObjectPtr videoAssetObjects;
-        xmlXPathObjectPtr tilesetAssetObjects;
-    
 
     private:
         static StrataConfig *ConfigurationInstance;
         int completeObjects;
         int totalObjects;
         bool configLoaded;
+        int verbosity;
+    
     
         std::string gameName;
 };

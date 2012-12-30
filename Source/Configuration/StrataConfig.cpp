@@ -19,6 +19,7 @@ StrataConfig *StrataConfig::Configuration()
     return ConfigurationInstance;
 }
 
+
 void StrataConfig::readConfig(boost::filesystem::path configurationPath)
 {
     if(!boost::filesystem::exists(configurationPath))
@@ -31,7 +32,45 @@ void StrataConfig::readConfig(boost::filesystem::path configurationPath)
         xmlDoc *configurationDocument = NULL;
         
         //The root of our configuration tree
-        configurationDocument = xmlReadFile(configurationPath.string().c_str(), NULL, 33);
+        configurationDocument = xmlReadFile(configurationPath.string().c_str(), NULL, 1);
+        if(configurationDocument == NULL)
+        {
+            std::cerr << "Error: Unable to parse file: " << configurationPath << '\n';
+            exit(-1);
+        }
+        
+        //Ensure that the file we read is a valid StrataExtractConfig and not simply a XML file.
+        if(xmlStrcmp(xmlDocGetRootElement(configurationDocument)->name, (const xmlChar *) "StrataExtractConfig"))
+        {
+            std::cerr << "Document is not a StrataExtraction Config\n";
+        }
+        else
+        {
+            configurationRoot = xmlDocGetRootElement(configurationDocument);
+        }
+        //free the document
+        xmlFreeDoc(configurationDocument);
+        
+        configurationDocument = NULL;
+        //Free the global variables that may
+        //have been allocated by the parser.
+        xmlCleanupParser();
+    }
+}
+
+/*void StrataConfig::oldreadConfig(boost::filesystem::path configurationPath)
+{
+    if(!boost::filesystem::exists(configurationPath))
+    {
+        std::cerr << "File not found " << configurationPath;
+    }
+    else
+    {
+        //The XML document file
+        xmlDoc *configurationDocument = NULL;
+        
+        //The root of our configuration tree
+        configurationDocument = xmlReadFile(configurationPath.string().c_str(), NULL, 1);
         if(configurationDocument == NULL)
         {
             std::cerr << "Error: Unable to parse file: " << configurationPath << '\n';
@@ -86,7 +125,7 @@ void StrataConfig::readConfig(boost::filesystem::path configurationPath)
         //have been allocated by the parser.
         xmlCleanupParser();
     }
-}
+}*/
 
 int StrataConfig::GetCPUCores()
 {
@@ -106,59 +145,23 @@ bool StrataConfig::isConfigLoaded()
     return configLoaded;
 }
 
-void StrataConfig::GetDestinationAudioCodec()
+/*std::string StrataConfig::FindSourcePathHash(boost::filesystem::path gamePath)
 {
-    if(!isConfigLoaded())
+    if(configurationRoot == NULL)
     {
-        std::cerr << "Configuration is not loaded!";
+        std::cerr << "Configuration file not read.";
     }
-    else
-    {
-        //xmlNode *currentNode = rootConfigElement;
-        
-        //for(; xmlStrcmp(currentNode->name, (const xmlChar *) "AudioAssets"); currentNode = currentNode->next)
-        //{
-        //    std::cout << "\nRunning through the list";
-        //}
-        
-        std::cout << "Destination Audio Codec:  ";
-    }
-}
+    return "";
+}*/
 
-std::string StrataConfig::FindGameHash(boost::filesystem::path gamePath)
+/*std::string StrataConfig::FindSourcePathHash(boost::filesystem::path gamePath)
 {
     boost::uuids::detail::sha1 myHash;
+    boost::filesystem::ifstream hashFile;
     std::stringstream finalHash;
     std::string hello = "Hello World";
     char hash[20];
     
-    try
-    {
-        if(boost::filesystem::exists(gamePath))
-        {
-            if(boost::filesystem::is_regular_file(gamePath))
-               {
-                   std::cout << gamePath << " size of file " << boost::filesystem::file_size(gamePath) << '\n';
-                   
-               }
-            else if(boost::filesystem::is_directory(gamePath))
-            {
-                std::cout << gamePath << " is a directory containing:\n";
-            }
-           
-            std::copy(boost::filesystem::directory_iterator(gamePath), boost::filesystem::directory_iterator(),  // directory_iterator::value_type
-                      std::ostream_iterator<boost::filesystem::directory_entry>(std::cout, "\n"));  // is directory_entry, which is
-            // converted to a path by the
-            // path stream inserter
-        }
-        else
-            std::cout << gamePath << " exists, but is neither a regular file nor a directory\n";
-        
-    }
-    catch (const boost::filesystem::filesystem_error& ex)
-    {
-        std::cout << ex.what() << '\n';
-    }
     
     myHash.process_bytes(hello.c_str(), hello.size());
     
@@ -182,7 +185,7 @@ std::string StrataConfig::FindGameHash(boost::filesystem::path gamePath)
     }
     std::cout << finalHash.str();
     return "";
-}
+}*/
 
 /**
  * print_xpath_nodes:
@@ -229,4 +232,20 @@ void StrataConfig::print_xpath_nodes(xmlNodeSetPtr nodes, FILE* output) {
             fprintf(output, "= node \"%s\": type %d\n", cur->name, cur->type);
         }
     }
+}
+void StrataConfig::PrintUsage()
+{
+    std::cout << "Stratagus Version " << VERSION << ' '
+              << "Copyright (c) 2012 by StrataExtract Team\n\n"
+              << "Usage:./strataextract [OPTIONS] /gameconfig/path /source/game/path /destination/game/path\n"
+              << "Flags             Describution\n"
+              << "--gui             Open GUI\n"
+              << "--noconvert       Ignore Conversion tags\n"
+              << "--simulate        Simulate game extraction\n"
+              << "--verbosity #     0-4 Display internal operations\n"
+              << "                  0 - Nothing\n"
+              << "                  1 - Errors\n"
+              << "                  2 - Warnings (Default)\n"
+              << "                  3 - Main Operations\n"
+              << "                  4 - All Operations\n";
 }
