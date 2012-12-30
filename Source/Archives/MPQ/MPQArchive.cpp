@@ -6,7 +6,11 @@ MPQArchive::MPQArchive()
 }
 MPQArchive::~MPQArchive()
 {
-    
+    if(mpqArchive)
+    {
+        this->CloseArchive();
+        mpqArchive = NULL;
+    }
 }
 
 void MPQArchive::CreateArchive(boost::filesystem::path newArchivePath, int maxNumberOfFiles, DWORD MPQArchiveVersion)
@@ -82,5 +86,13 @@ void MPQArchive::ExtractRaw(boost::filesystem::path archiveFilePath, boost::file
 
 void MPQArchive::CloseArchive()
 {
-    SFileCloseArchive(mpqArchive);
+    if (!mpqArchive)
+    {
+        throw "No MPQArchive to close";
+    }
+    else
+    {
+        SFileCloseArchive(mpqArchive);
+        mpqArchive = NULL;
+    }
 }

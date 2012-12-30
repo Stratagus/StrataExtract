@@ -33,6 +33,7 @@ set (SOURCE_DIR "./Source")
 set (ARCHIVES_DIR ${SOURCE_DIR}/Archives)
 set (CONVERSION_DIR ${SOURCE_DIR}/Conversion)
 set (CONFIGURATION_DIR ${SOURCE_DIR}/Configuration)
+set (IMAGECONVERSION_DIR ${CONVERSION_DIR}/Images)
 set (RUNNER_DIR ${SOURCE_DIR}/AssetManager)
 set (UNITTEST_DIR "./UnitTesting")
 
@@ -53,6 +54,7 @@ include_directories("${STORMLIB_DIR}/src/"
 set(StrataExtractMain-Source
 	${SOURCE_DIR}/main.hpp
 	${SOURCE_DIR}/main.cpp
+  ${SOURCE_DIR}/SimpleOpt.h
 	 )
 set(StrataExtractConfiguration-Source
     ${CONFIGURATION_DIR}/StrataConfig.hpp
@@ -70,11 +72,16 @@ set(StrataExtractArchives-Source
     ${ARCHIVES_DIR}/GZIP/GZIPArchive.hpp
     ${ARCHIVES_DIR}/GZIP/GZIPArchive.cpp
    )
-set(StrataExtractGraphicalInterface-Source)    
+    
 set(StrataExtractAudioConversion-Source)
-set(StrataExtractImageConversion-Source)
+set(StrataExtractImageConversion-Source
+    ${IMAGECONVERSION_DIR}/StrataImage.hpp
+    ${IMAGECONVERSION_DIR}/StrataImage.cpp
+    ${IMAGECONVERSION_DIR}/ImageMagick/MagickImage.hpp
+    ${IMAGECONVERSION_DIR}/ImageMagick/MagickImage.cpp
+   )
 set(StrataExtractVideoConversion-Source)
-
+set(StrataExtractGraphicalInterface-Source)
 
 
 #Code groupings allow for IDEs to put files into collections
@@ -86,10 +93,10 @@ source_group(Configuration FILES ${StrataExtractConfiguration-Source})
 source_group(Runner FILES ${StrataExtractRunner-Source})
 source_group(GUI FILES ${StrataExtractGraphicalInterface})
 source_group(Archives FILES ${StrataExtractArchives-Source})
-source_group(Conversion FILES ${StrataExtractAudioConversion-Source}
-                                  ${StrataExtractImageConversion-Source}
-                                  ${StrataExtractVideoConversion-Source}
-            )
+source_group(Conversion FILES)
+source_group(Conversion\\Audio FILES ${StrataExtractAudioConversion-Source})
+source_group(Conversoin\\Image FILES ${StrataExtractImageConversion-Source})
+source_group(Conversion\\Video FILES ${StrataExtractVideoConversion-Source})
 
 
 
