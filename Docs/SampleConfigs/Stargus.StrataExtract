@@ -60,28 +60,127 @@
  			<!-- Campaign Dialogs -->
  				<!-- Terran Campaign Dialogs -->
  					<!-- Terran Campaign Tutorial Dialogs -->
-	 					<audio name="transmissionbeep" path="campaign/terran/tutorial/staredit/wav" destination="Campaign/Terran/Original/" />
+	 					<audio name="transmissionbeep1" path="campaign/terran/tutorial/staredit/commbeep0.wav" destination="Campaign/Terran/Original/Common/Audio/" />
 	 					<audio name="1-adjutant-welcome" path="campaign/terran/tutorial/staredit/wav/t0b00tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
 	 					<audio name="2-adjutant-selectstart" path="campaign/terran/tutorial/staredit/wav/t0b01tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
 	 					<audio name="3-adjutant-whenreadyselectstart" path="campaign/terran/tutorial/staredit/wav/t0b02tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
 	 					<audio name="4-adjutant-anytime" path="campaign/terran/tutorial/staredit/wav/t0b03tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
 	 					<audio name="5-adjutant-okgo" path="campaign/terran/tutorial/staredit/wav/t0b04tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
 	 					<audio name="6-adjutant-alright" path="campaign/terran/tutorial/staredit/wav/t0b05tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
-	 					<audio name="adjutant-explain-gas" path="campaign/terran/tutorial/staredit/wav/t0b60tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
-	 					<audio name="adjutant-explain-scv" path="campaign/terran/tutorial/staredit/wav/t0m00tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
-	 					<audio name="adjutant-explain-mutiplescv" path="campaign/terran/tutorial/staredit/wav/t0m01tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
-	 					<audio name="adjutant-explain-minerals-out" path="campaign/terran/tutorial/staredit/wav/t0m02tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
-	 					<audio name="ajutant-explain-scv-gather" path="campaign/terran/tutorial/staredit/wav/t0m03tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
-	 					<audio name="ajutant-explain-minerals" path="campaign/terran/tutorial/staredit/wav/t0m04tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
-	 					<audio name="ajutant-explain-supplydepot" path="campaign/terran/tutorial/staredit/wav/t0m05tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
-	 					<audio name="ajutant-explain-scv-supplydepot" path="campaign/terran/tutorial/staredit/wav/t0m06tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
-	 					<audio name="adjutant-explain-tutorial-over" path="campaign/terran/tutorial/staredit/wav/t0m07tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
-	 					<audio name="adjutant-explain-additional-scv" path="campaign/terran/tutorial/staredit/wav/t0m21tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
-	 					<audio name="marine-permission" path="campaign/terran/tutorial/staredit/wav/t0m30tma.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
-	 					<audio name="marine-explain-attack-move" path="campaign/terran/tutorial/staredit/wav/t0m31tma.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
+	 					<audio name="ingame-adjutant-explain-gas" path="campaign/terran/tutorial/staredit/wav/t0b60tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
+	 					<audio name="ingame-adjutant-explain-scv" path="campaign/terran/tutorial/staredit/wav/t0m00tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
+	 					<audio name="ingame-adjutant-explain-mutiplescv" path="campaign/terran/tutorial/staredit/wav/t0m01tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
+	 					<audio name="ingame-adjutant-explain-minerals-out" path="campaign/terran/tutorial/staredit/wav/t0m02tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
+	 					<audio name="ingame-ajutant-explain-scv-gather" path="campaign/terran/tutorial/staredit/wav/t0m03tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
+	 					<audio name="ingame-ajutant-explain-minerals" path="campaign/terran/tutorial/staredit/wav/t0m04tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
+	 					<audio name="ingame-ajutant-explain-supplydepot" path="campaign/terran/tutorial/staredit/wav/t0m05tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
+	 					<audio name="ingame-ajutant-explain-scv-supplydepot" path="campaign/terran/tutorial/staredit/wav/t0m06tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
+	 					<audio name="ingame-adjutant-explain-tutorial-over" path="campaign/terran/tutorial/staredit/wav/t0m07tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
+	 					<audio name="ingame-adjutant-explain-additional-scv" path="campaign/terran/tutorial/staredit/wav/t0m21tad.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
+	 					<audio name="ingame-marine-permission" path="campaign/terran/tutorial/staredit/wav/t0m30tma.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
+	 					<audio name="ingame-marine-explain-attack-move" path="campaign/terran/tutorial/staredit/wav/t0m31tma.wav" destination="Campaign/Terran/Original/Tutorial/Audio/" />
 	 				<!-- Terran Campaign Mission 1 Dialogs -->
-	 					<audio name="1-adjutant-lockdown" path="campaign/terran/terran01/staredit/wav/" destination="" /> 
-
+	 					<audio name="1-adjutant-lockdown" path="campaign/terran/terran01/staredit/wav/t1b00tad.wav" destination="Campaign/Terran/Original/Mission1/Audio/" />
+	 					<audio name="2-duke-movecolony" path="campaign/terran/terran01/staredit/wav/t1b01udu.wav" destination="Campaign/Terran/Original/Mission1/Audio/" />
+	 					<audio name="3-adjutant-raynor" path="campaign/terran/terran01/staredit/wav/t1b02tad.wav" destination="Campaign/Terran/Original/Mission1/Audio/" />
+	 					<audio name="ingame-scv-senttowasteland" path="campaign/terran/terran01/staredit/wav/t1m01uci.wav" destination="Campaign/Terran/Original/Mission1/Audio/" />
+	 					<audio name="ingame-raynor-howdy" path="campaign/terran/terran01/staredit/wav/t1m20ura.wav" destination="Campaign/Terran/Original/Mission1/Audio/" />
+	 					<audio name="ingame-ajutant-explain-barracks" path="campaign/terran/terran01/staredit/wav/t0m20tad.wav" destination="Campaign/Terran/Original/Mission1/Audio/" />
+	 				<!-- Terran Campaign Mission 2 Dialogs -->
+	 					<audio name="1-adjutant-commlinkestablished" path="campaign/terran/terran02/staredit/wav/t2b00tad.wav" destination="Campaign/Terran/Original/Common/Audio/" />
+	 					<audio name="2-raynor-refugees" path="campaign/terran/terran02/staredit/wav/t2b01ura.wav" destination="Campaign/Terran/Original/Mission2/Audio/" />
+	 					<audio name="3-adjutant-priorityalert" path="campaign/terran/terran02/staredit/wav/t2b02tad.wav" destination="Campaign/Terran/Original/Mission2/Audio/" />
+	 					<audio name="4-duke-sitback" path="campaign/terran/terran02/staredit/wav/t2b03udu.wav" destination="Campaign/Terran/Original/Mission2/Audio/" />
+	 					<audio name="5-raynor-rescueplan" path="campaign/terran/terran02/staredit/wav/t2b04ura.wav" destination="Campaign/Terran/Original/Mission2/Audio/" />
+	 					<audio name="ingame-raynor-kickbutt" path="campaign/terran/terran02/staredit/wav/t2m00ura.wav" destination="Campaign/Terran/Original/Mission2/Audio/" />
+	 					<audio name="ingame-raynor-outawhile" path="campaign/terran/terran02/staredit/wav/t2m20ura.wav" destination="Campaign/Terran/Original/Mission2/Audio/" />
+	 					<audio name="ingame-scv-thankyou" path="campaign/terran/terran02/staredit/wav/t2m30uci.wav" destination="Campaign/Terran/Original/Mission2/Audio/" />
+	 					<audio name="ingame-raynor-whatthehell" path="campaign/terran/terran02/staredit/wav/t2m40ura.wav" destination="Campaign/Terran/Original/Mission2/Audio/" />
+	 					<audio name="ingame-firebat-whatthehell" path="campaign/terran/terran02/staredit/wav/t2m60ftb.wav" destination="Campaign/Terran/Original/Mission2/Audio/" />
+	 					<audio name="ingame-marine-whatthehell" path="campaign/terran/terran02/staredit/wav/t2m60tma.wav" destination="Campaign/Terran/Original/Mission2/Audio/" />
+	 					<audio name="ingame-raynor-burnit" path="campaign/terran/terran02/staredit/wav/t2m60ura.wav" destination="Campaign/Terran/Original/Mission2/Audio/" />
+	 					<audio name="ingame-duke-underarrest" path="campaign/terran/terran02/staredit/wav/t2m80udu.wav" destination="Campaign/Terran/Original/Mission2/Audio/" />
+	 					<audio name="ingame-raynor-outofyourmind" path="campaign/terran/terran02/staredit/wav/t2m81ura.wav" destination="Campaign/Terran/Original/Mission2/Audio/" />
+	 					<audio name="ingame-duke-askednicly" path="campaign/terran/terran02/staredit/wav/t2m82udu.wav" destination="Campaign/Terran/Original/Mission2/Audio/" />
+	 					<audio name="ingame-raynor-painintheass" path="campaign/terran/terran02/staredit/wav/t2m83ura.wav" destination="Campaign/Terran/Original/Mission2/Audio/" />
+	 					<audio name="ingame-adjutant-recievingtransmission" path="campaign/terran/terran02/staredit/wav/t2m83ura.wav" destination="Campaign/Terran/Original/Common/Audio/" />
+	 				<!-- Terran Campaign Mission 3 Dialogs -->
+	 					<!--1-adjutant-commlink-established-->
+	 					<audio name="2-duke-dontcare" path="campaign/terran/terran03/staredit/wav/t3b01udu.wav" destination="Campaign/Terran/Original/Mission3/Audio/" />
+	 					<audio name="3-adjutant-zergsightings" path="campaign/terran/terran03/staredit/wav/t3b02tad.wav.wav" destination="Campaign/Terran/Original/Mission3/Audio/" />
+	 					<audio name="4-mengsk-rescuesurvivors" path="campaign/terran/terran03/staredit/wav/t3b03ume.wav" destination="Campaign/Terran/Original/Mission3/Audio/" />
+	 					<audio name="5-mengsk-outlaw" path="campaign/terran/terran03/staredit/wav/t3b04ume.wav" destination="Campaign/Terran/Original/Mission3/Audio/" />
+	 					<audio name="6-adjutant-zergattack" path="campaign/terran/terran03/staredit/wav/t3b05tad.wav" destination="Campaign/Terran/Original/Mission3/Audio/" />
+	 					<audio name="ingame-adjutant-10minarrival" path="campaign/terran/terran03/staredit/wav/t3m00tad.wav" destination="Campaign/Terran/Original/Mission3/Audio/" />
+	 					<audio name="ingame-adjutant-5minarrival" path="campaign/terran/terran03/staredit/wav/t3m20tad.wav" destination="Campaign/Terran/Original/Mission3/Audio/" />
+	 					<audio name="ingame-adjutant-1minarrival" path="campaign/terran/terran03/staredit/wav/t3m21tad.wav" destination="Campaign/Terran/Original/Mission3/Audio/" />
+	 					<audio name="ingame-adjutant-breakzergline" path="campaign/terran/terran03/staredit/wav/t3m60tad.wav" destination="Campaign/Terran/Original/Mission3/Audio/" />
+	 					<audio name="ingame-adjutant-dropshipapproach" path="campaign/terran/terran03/staredit/wav/t3m70tad.wav" destination="Campaign/Terran/Original/Mission3/Audio/" />
+	 					<audio name="ingame-adjutant-brokenthroughlines" path="campaign/terran/terran03/staredit/wav/t3m80tad.wav" destination="Campaign/Terran/Original/Mission3/Audio/" />
+	 					<audio name="ingame-marine-bunker" path="campaign/terran/terran03/staredit/wav/t3m90tma.wav" destination="Campaign/Terran/Original/Mission3/Audio/" />
+	 					<audio name="ingame-vulture-repair" path="campaign/terran/terran03/staredit/wav/t0m40tvu.wav" destination="Campaign/Terran/Original/Mission3/Audio/" />
+	 				<!-- Terran Campaign Mission 4 Dialogs -->
+	 					<audio name="transmissionbeep2" path="campaign/terran/terran04/staredit/wav/combeep1.wav" destination="Campaign/Terran/Original/CommonAudio/" />
+	 					<audio name="1-adjutant-suspended" path="campaign/terran/terran04/staredit/wav/t4b00tad.wav" destination="Campaign/Terran/Original/Mission4/Audio/" />
+	 					<audio name="2-raynor-escapeprison" path="campaign/terran/terran04/staredit/wav/t4b01ura.wav" destination="Campaign/Terran/Original/Mission4/Audio/" />
+	 					<audio name="3-mengsk-abandonplanet" path="campaign/terran/terran04/staredit/wav/t4b02ume.wav" destination="Campaign/Terran/Original/Mission4/Audio/" />
+	 					<audio name="4-mengsk-raidoutpost" path="campaign/terran/terran04/staredit/wav/t4b03ume.wav" destination="Campaign/Terran/Original/Mission4/Audio/" />
+	 					<audio name="5-raynor-imin" path="campaign/terran/terran04/staredit/wav/t4b04ura.wav" destination="Campaign/Terran/Original/Mission4/Audio/" />
+	 					<audio name="ingame-civilian-rebelscum" path="campaign/terran/terran04/staredit/wav/t4m00uci.wav" destination="Campaign/Terran/Original/Mission4/Audio/" />
+	 					<audio name="ingame-raynor-zerg" path="campaign/terran/terran04/staredit/wav/t4m00ura.wav" destination="Campaign/Terran/Original/Mission4/Audio/" />
+	 					<audio name="ingame-mengsk-priorities" path="campaign/terran/terran04/staredit/wav/t4m01ume.wav" destination="Campaign/Terran/Original/Mission4/Audio/" />
+	 					<audio name="ingame-civilian-notallowed" path="campaign/terran/terran04/staredit/wav/t4m20uci.wav" destination="Campaign/Terran/Original/Mission4/Audio/" />
+	 					<audio name="ingame-raynor-plansfound" path="campaign/terran/terran04/staredit/wav/t4m20ura.wav" destination="Campaign/Terran/Original/Mission4/Audio/" />
+	 					<audio name="ingame-marine-blastem" path="campaign/terran/terran04/staredit/wav/t4m30uma.wav" destination="Campaign/Terran/Original/Mission4/Audio/" />
+	 					<audio name="ingame-adjutant-securitycameras" path="campaign/terran/terran04/staredit/wav/t4m70tad.wav" destination="Campaign/Terran/Original/Mission4/Audio/" />
+	 					<audio name="ingame-adjutant-unauthorizedentry" path="campaign/terran/terran04/staredit/wav/z5m00tad.wav" destination="Campaign/Terran/Original/Mission4/Audio/" />
+	 					<audio name="ingame-adjutant-teleportactivated" path="campaign/terran/terran04/staredit/wav/p6m00tad.wav" destination="Campaign/Terran/Original/Mission4/Audio/" />
+	 				<!-- Terran Campaign Mission 5 Dialog -->
+	 					<audio name="1-raynor-discsworthit" path="campaign/terran/terran05/staredit/wav/t5b00ura.wav" destination="Campaign/Terran/Original/Mission5/Audio/" />
+	 					<audio name="2-adjutant-incomingtransmissionmengsk" path="campaign/terran/terran05/staredit/wav/t5b01tad.wav" destination="Campaign/Terran/Original/Mission5/Audio/" />
+	 					<audio name="3-mengsk-jobnotdone" path="campaign/terran/terran05/staredit/wav/t5b02ume.wav" destination="Campaign/Terran/Original/Mission5/Audio/" />
+	 					<audio name="4-kerrigan-openrevolt" path="campaign/terran/terran05/staredit/wav/t5b03uke.wav" destination="Campaign/Terran/Original/Mission5/Audio/" />
+	 					<audio name="5-mengsk-freepeople" path="campaign/terran/terran05/staredit/wav/t5b04ume.wav.wav" destination="Campaign/Terran/Original/Mission5/Audio/" />
+	 					<audio name="ingame-kerrigan-pig" path="campaign/terran/terran05/staredit/wav/t5m00uke.wav" destination="Campaign/Terran/Original/Mission5/Audio/" />
+	 					<audio name="ingame-raynor-didntsayathing" path="campaign/terran/terran05/staredit/wav/t5m01ura.wav" destination="Campaign/Terran/Original/Mission5/Audio/" />
+	 					<audio name="ingame-kerrigan-thinkingit" path="campaign/terran/terran05/staredit/wav/t5m02uke.wav" destination="Campaign/Terran/Original/Mission5/Audio/" />
+	 					<audio name="ingame-raynor-kerrigantelepath" path="campaign/terran/terran05/staredit/wav/t5m03ura.wav" destination="Campaign/Terran/Original/Mission5/Audio/" />
+	 					<audio name="ingame-kerrigan-right" path="campaign/terran/terran05/staredit/wav/t5m04uke.wav" destination="Campaign/Terran/Original/Mission5/Audio/" />
+	 					<audio name="ingame-kerrigan-hateturrent" path="campaign/terran/terran05/staredit/wav/t5m20uke.wav" destination="Campaign/Terran/Original/Mission5/Audio/" />
+	 					<audio name="ingame-action-killofficers" path="campaign/terran/terran05/staredit/wav/t5m40uma.wav" destination="Campaign/Terran/Original/Mission5/Audio/" />
+	 					<audio name="ingame-kerrigan-peoplebackusup" path="campaign/terran/terran05/staredit/wav/t5m41uke.wav" destination="Campaign/Terran/Original/Mission5/Audio/" />
+	 					<audio name="ingame-adjutant-strikeforceinbound" path="campaign/terran/terran05/staredit/wav/t5m42tad.wav" destination="Campaign/Terran/Original/Mission5/Audio/" />
+	 					<audio name="ingame-kerrigan-notwastingtime" path="campaign/terran/terran05/staredit/wav/t5m43uke.wav" destination="Campaign/Terran/Original/Mission5/Audio/" />
+	 					<audio name="ingame-marine-confederategoons" path="campaign/terran/terran05/staredit/wav/t5m44uma.wav" destination="Campaign/Terran/Original/Mission5/Audio/" />
+	 				<!-- Terran Campaign Mission 6 Dialog -->
+	 					<audio name="1-adjutant-confederatepanic" path="campaign/terran/terran06/staredit/wav/t6b00tad.wav" destination="Campaign/Terran/Original/Mission6/Audio/" />
+	 					<audio name="2-duke-crashland" path="campaign/terran/terran06/staredit/wav/t6b01udu.wav" destination="Campaign/Terran/Original/Mission6/Audio/" />
+	 					<audio name="3-raynor-zerghere" path="campaign/terran/terran06/staredit/wav/t6b02ura.wav" destination="Campaign/Terran/Original/Mission6/Audio/" />
+	 					<audio name="4-mengsk-savebase" path="campaign/terran/terran06/staredit/wav/t6b03ume.wav" destination="Campaign/Terran/Original/Mission6/Audio/" />
+	 					<audio name="5-raynor-didnthearright" path="campaign/terran/terran06/staredit/wav/t6b04ura.wav" destination="Campaign/Terran/Original/Mission6/Audio/" />
+	 					<audio name="6-kerrigan-lostmind" path="campaign/terran/terran06/staredit/wav/t6b05uke.wav" destination="Campaign/Terran/Original/Mission6/Audio/" />
+	 					<audio name="7-mengsk-powerfulally" path="campaign/terran/terran06/staredit/wav/t6b06ume.wav" destination="Campaign/Terran/Original/Mission6/Audio/" />
+	 					<audio name="8-kerrigan-dontlikeatall" path="campaign/terran/terran06/staredit/wav/t6b07uke.wav" destination="Campaign/Terran/Original/Mission6/Audio/" />
+	 					<audio name="9-mengsk-doit" path="campaign/terran/terran06/staredit/wav/t6b08ume.wav" destination="Campaign/Terran/Original/Mission6/Audio/" />
+	 					<audio name="10-kerrigan-yessir" path="campaign/terran/terran06/staredit/wav/t6b09uke.wav" destination="Campaign/Terran/Original/Mission6/Audio/" />
+	 					<audio name="11-raynor-overwith" path="campaign/terran/terran06/staredit/wav/t6b10ura.wav" destination="Campaign/Terran/Original/Mission6/Audio/" />
+	 					<audio name="ingame-raynor-wontlastlong" path="campaign/terran/terran06/staredit/wav/t6m00ura.wav" destination="Campaign/Terran/Original/Mission6/Audio/" />
+	 					<audio name="ingame-duke-whatyourangle" path="campaign/terran/terran06/staredit/wav/t6m20udu.wav" destination="Campaign/Terran/Original/Mission6/Audio/" />
+	 					<audio name="ingame-raynor-confederateshit" path="campaign/terran/terran06/staredit/wav/t6m21ura.wav" destination="Campaign/Terran/Original/Mission6/Audio/" />
+	 					<audio name="ingame-mengsk-confederateend" path="campaign/terran/terran06/staredit/wav/t6m22ume.wav" destination="Campaign/Terran/Original/Mission6/Audio/" />
+	 					<audio name="ingame-duke-yourpoint" path="campaign/terran/terran06/staredit/wav/t6m23udu.wav" destination="Campaign/Terran/Original/Mission6/Audio/" />
+	 					<audio name="ingame-mengsk-choice" path="campaign/terran/terran06/staredit/wav/t6m24ume.wav" destination="Campaign/Terran/Original/Mission6/Audio/" />
+	 					<audio name="ingame-duke-generalgodsake" path="campaign/terran/terran06/staredit/wav/t6m25udu.wav" destination="Campaign/Terran/Original/Mission6/Audio/" />
+	 					<audio name="ingame-mengsk-generalwithoutarmy" path="campaign/terran/terran06/staredit/wav/t6m26ume.wav" destination="Campaign/Terran/Original/Mission6/Audio/" />
+	 					<audio name="ingame-duke-deal" path="campaign/terran/terran06/staredit/wav/t6m27udu.wav" destination="Campaign/Terran/Original/Mission6/Audio/" />
+	 					<audio name="ingame-mengsk-rightchoice" path="campaign/terran/terran06/staredit/wav/t6m28ume.wav" destination="Campaign/Terran/Original/Mission6/Audio/" />
+	 					<audio name="ingame-raynor-trustsnake" path="campaign/terran/terran06/staredit/wav/t6m29ura.wav" destination="Campaign/Terran/Original/Mission6/Audio/" />
+	 					<audio name="ingame-mengsk-oursnake" path="campaign/terran/terran06/staredit/wav/t6m30ume.wav" destination="Campaign/Terran/Original/Mission6/Audio/" />
+	 				<!-- Terran Campaign Mission 7 Dialog -->
+	 					<audio name="" path="campaign/terran/terran06/staredit/wav/t6m30ume.wav" destination="Campaign/Terran/Original/Mission6/Audio/" />
+	 				<!-- Terran Campaign Mission 8 Dialog -->
+	 				<!-- Terran Campaign Mission 9 Dialog -->
+	 				<!-- Terran Campaign Mission 10 Dialog -->
  		</AudioAssets>
  	 	<!-- Extract & Convert to Stratagus Map Format -->
 	 	<MapAssets>
