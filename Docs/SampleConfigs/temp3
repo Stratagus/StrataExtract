@@ -1,372 +1,352 @@
 <?xml version="1.0"?>
 <xml>
-  <audio name="" path="sound/misc/tbldgplc.wav" destination="terran/building place" />
-  <audio name="" path="sound/terran/bldg/onfirlrg.wav" destination="terran/on fire large" />
-  <audio name="" path="sound/misc/land.wav" destination="terran/land" />
-  <audio name="" path="sound/misc/liftoff.wav" destination="terran/liftoff" />
-  <audio name="" path="sound/misc/tpwrdown.wav" destination="terran/power down" />
-  <audio name="" path="sound/misc/trescue.wav" destination="terran/rescue" />
-
-  <audio name="" path="sound/terran/advisor/taderr00.wav" destination="terran/units/advisor/err00" />
-  <audio name="" path="sound/terran/advisor/taderr01.wav" destination="terran/units/advisor/err01" />
-  <audio name="" path="sound/terran/advisor/taderr02.wav" destination="terran/units/advisor/err02" />
-  <audio name="" path="sound/terran/advisor/taderr03.wav" destination="terran/units/advisor/err03" />
-  <audio name="" path="sound/terran/advisor/taderr04.wav" destination="terran/units/advisor/err04" />
-  <audio name="" path="sound/terran/advisor/taderr06.wav" destination="terran/units/advisor/err06" />
-  <audio name="" path="sound/terran/advisor/tadupd00.wav" destination="terran/units/advisor/upd00" />
-  <audio name="" path="sound/terran/advisor/tadupd01.wav" destination="terran/units/advisor/upd01" />
-  <audio name="" path="sound/terran/advisor/tadupd02.wav" destination="terran/units/advisor/upd02" />
-  <audio name="" path="sound/terran/advisor/tadupd03.wav" destination="terran/units/advisor/upd03" />
-  <audio name="" path="sound/terran/advisor/tadupd04.wav" destination="terran/units/advisor/upd04" />
-  <audio name="" path="sound/terran/advisor/tadupd05.wav" destination="terran/units/advisor/upd05" />
-  <audio name="" path="sound/terran/advisor/tadupd06.wav" destination="terran/units/advisor/upd06" />
-  <audio name="" path="sound/terran/advisor/tadupd07.wav" destination="terran/units/advisor/upd07" />
-
-  <audio name="" path="sound/terran/battle/tbadth00.wav" destination="terran/units/battlecruiser/death/1" />
-  <audio name="" path="sound/terran/battle/tbapss00.wav" destination="terran/units/battlecruiser/pissed/1" />
-  <audio name="" path="sound/terran/battle/tbapss01.wav" destination="terran/units/battlecruiser/pissed/2" />
-  <audio name="" path="sound/terran/battle/tbapss02.wav" destination="terran/units/battlecruiser/pissed/3" />
-  <audio name="" path="sound/terran/battle/tbapss03.wav" destination="terran/units/battlecruiser/pissed/4" />
-  <audio name="" path="sound/terran/battle/tbapss04.wav" destination="terran/units/battlecruiser/pissed/5" />
-  <audio name="" path="sound/terran/battle/tbardy00.wav" destination="terran/units/battlecruiser/ready" />
-  <audio name="" path="sound/terran/battle/tbawht00.wav" destination="terran/units/battlecruiser/selected/1" />
-  <audio name="" path="sound/terran/battle/tbawht01.wav" destination="terran/units/battlecruiser/selected/2" />
-  <audio name="" path="sound/terran/battle/tbawht02.wav" destination="terran/units/battlecruiser/selected/3" />
-  <audio name="" path="sound/terran/battle/tbawht03.wav" destination="terran/units/battlecruiser/selected/4" />
-  <audio name="" path="sound/terran/battle/tbayam01.wav" destination="terran/units/battlecruiser/yam01" />
-  <audio name="" path="sound/terran/battle/tbayam02.wav" destination="terran/units/battlecruiser/yam02" />
-  <audio name="" path="sound/terran/battle/tbayes00.wav" destination="terran/units/battlecruiser/acknowledgement/1" />
-  <audio name="" path="sound/terran/battle/tbayes01.wav" destination="terran/units/battlecruiser/acknowledgement/2" />
-  <audio name="" path="sound/Terran/BATTLE/tbayes02.wav" destination="terran/units/battlecruiser/acknowledgement/3" />
-  <audio name="" path="sound/terran/battle/tbayes03.wav" destination="terran/units/battlecruiser/acknowledgement/4" />
-  <audio name="" path="sound/Bullet/tbaYam00.wav" destination="terran/units/battlecruiser/yamato" />
-
-  <audio name="" path="sound/terran/civilian/tcvdth00.wav" destination="terran/units/civilian/death/1" />
-  <audio name="" path="sound/terran/civilian/tcvpss00.wav" destination="terran/units/civilian/pissed/1" />
-  <audio name="" path="sound/terran/civilian/tcvpss01.wav" destination="terran/units/civilian/pissed/2" />
-  <audio name="" path="sound/terran/civilian/tcvpss02.wav" destination="terran/units/civilian/pissed/3" />
-  <audio name="" path="sound/terran/civilian/tcvpss03.wav" destination="terran/units/civilian/pissed/4" />
-  <audio name="" path="sound/terran/civilian/tcvpss04.wav" destination="terran/units/civilian/pissed/5" />
-  <audio name="" path="sound/terran/civilian/tcvrdy00.wav" destination="terran/units/civilian/ready" />
-  <audio name="" path="sound/terran/civilian/tcvwht00.wav" destination="terran/units/civilian/selected/1" />
-  <audio name="" path="sound/terran/civilian/tcvwht01.wav" destination="terran/units/civilian/selected/2" />
-  <audio name="" path="sound/terran/civilian/tcvwht02.wav" destination="terran/units/civilian/selected/3" />
-  <audio name="" path="sound/terran/civilian/tcvwht03.wav" destination="terran/units/civilian/selected/4" />
-  <audio name="" path="sound/terran/civilian/tcvyes00.wav" destination="terran/units/civilian/acknowledgement/1" />
-  <audio name="" path="sound/terran/civilian/tcvyes01.wav" destination="terran/units/civilian/acknowledgement/2" />
-  <audio name="" path="sound/terran/civilian/tcvyes02.wav" destination="terran/units/civilian/acknowledgement/3" />
-  <audio name="" path="sound/terran/civilian/tcvyes03.wav" destination="terran/units/civilian/acknowledgement/4" />
-  <audio name="" path="sound/terran/civilian/tcvyes04.wav" destination="terran/units/civilian/acknowledgement/5" />
-
-  <audio name="" path="sound/terran/dropship/tdrdth00.wav" destination="terran/units/dropship/death/1" />
-  <audio name="" path="sound/terran/dropship/tdrpss00.wav" destination="terran/units/dropship/pissed/1" />
-  <audio name="" path="sound/terran/dropship/tdrpss01.wav" destination="terran/units/dropship/pissed/2" />
-  <audio name="" path="sound/terran/dropship/tdrpss02.wav" destination="terran/units/dropship/pissed/3" />
-  <audio name="" path="sound/terran/dropship/tdrpss03.wav" destination="terran/units/dropship/pissed/4" />
-  <audio name="" path="sound/terran/dropship/tdrrdy00.wav" destination="terran/units/dropship/ready" />
-  <audio name="" path="sound/terran/dropship/tdrwht00.wav" destination="terran/units/dropship/selected/1" />
-  <audio name="" path="sound/terran/dropship/tdrwht01.wav" destination="terran/units/dropship/selected/2" />
-  <audio name="" path="sound/terran/dropship/tdrwht02.wav" destination="terran/units/dropship/selected/3" />
-  <audio name="" path="sound/terran/dropship/tdrwht03.wav" destination="terran/units/dropship/selected/4" />
-  <audio name="" path="sound/terran/dropship/tdryes00.wav" destination="terran/units/dropship/acknowledgement/1" />
-  <audio name="" path="sound/terran/dropship/tdryes01.wav" destination="terran/units/dropship/acknowledgement/2" />
-  <audio name="" path="sound/terran/dropship/tdryes02.wav" destination="terran/units/dropship/acknowledgement/3" />
-  <audio name="" path="sound/terran/dropship/tdryes03.wav" destination="terran/units/dropship/acknowledgement/4" />
-  <audio name="" path="sound/terran/dropship/tdryes04.wav" destination="terran/units/dropship/acknowledgement/5" />
-  <audio name="" path="sound/terran/dropship/tdryes05.wav" destination="terran/units/dropship/acknowledgement/6" />
-  <audio name="" path="sound/Misc/TDrTra00.wav" destination="terran/units/dropship/load" />
-  <audio name="" path="sound/Misc/TDrTra01.wav" destination="terran/units/dropship/unload" />
-
-  <audio name="" path="sound/terran/dukeb/ududth00.wav" destination="terran/units/dukeb/death/1" />
-  <audio name="" path="sound/terran/dukeb/udupss00.wav" destination="terran/units/dukeb/pissed/1" />
-  <audio name="" path="sound/terran/dukeb/udupss01.wav" destination="terran/units/dukeb/pissed/2" />
-  <audio name="" path="sound/terran/dukeb/udupss02.wav" destination="terran/units/dukeb/pissed/3" />
-  <audio name="" path="sound/terran/dukeb/udupss03.wav" destination="terran/units/dukeb/pissed/4" />
-  <audio name="" path="sound/terran/dukeb/udupss04.wav" destination="terran/units/dukeb/pissed/5" />
-  <audio name="" path="sound/terran/dukeb/uduwht00.wav" destination="terran/units/dukeb/selected/1" />
-  <audio name="" path="sound/terran/dukeb/uduwht01.wav" destination="terran/units/dukeb/selected/2" />
-  <audio name="" path="sound/terran/dukeb/uduwht02.wav" destination="terran/units/dukeb/selected/3" />
-  <audio name="" path="sound/terran/dukeb/uduwht03.wav" destination="terran/units/dukeb/selected/4" />
-  <audio name="" path="sound/terran/dukeb/uduyes00.wav" destination="terran/units/dukeb/acknowledgement/1" />
-  <audio name="" path="sound/terran/dukeb/uduyes01.wav" destination="terran/units/dukeb/acknowledgement/2" />
-  <audio name="" path="sound/terran/dukeb/uduyes02.wav" destination="terran/units/dukeb/acknowledgement/3" />
-  <audio name="" path="sound/terran/dukeb/uduyes03.wav" destination="terran/units/dukeb/acknowledgement/4" />
-
-  <audio name="" path="sound/terran/duket/udtdth00.wav" destination="terran/units/dukeb/death/1" />
-  <audio name="" path="sound/terran/duket/udtpss00.wav" destination="terran/units/dukeb/pissed/1" />
-  <audio name="" path="sound/terran/duket/udtpss01.wav" destination="terran/units/dukeb/pissed/2" />
-  <audio name="" path="sound/terran/duket/udtpss02.wav" destination="terran/units/dukeb/pissed/3" />
-  <audio name="" path="sound/terran/duket/udtpss03.wav" destination="terran/units/dukeb/pissed/4" />
-  <audio name="" path="sound/terran/duket/udtpss04.wav" destination="terran/units/dukeb/pissed/5" />
-  <audio name="" path="sound/terran/duket/udtwht00.wav" destination="terran/units/dukeb/selected/1" />
-  <audio name="" path="sound/terran/duket/udtwht01.wav" destination="terran/units/dukeb/selected/2" />
-  <audio name="" path="sound/terran/duket/udtwht02.wav" destination="terran/units/dukeb/selected/3" />
-  <audio name="" path="sound/terran/duket/udtwht03.wav" destination="terran/units/dukeb/selected/4" />
-  <audio name="" path="sound/terran/duket/udtyes00.wav" destination="terran/units/dukeb/acknowledgement/1" />
-  <audio name="" path="sound/terran/duket/udtyes01.wav" destination="terran/units/dukeb/acknowledgement/2" />
-  <audio name="" path="sound/terran/duket/udtyes02.wav" destination="terran/units/dukeb/acknowledgement/3" />
-  <audio name="" path="sound/terran/duket/udtyes03.wav" destination="terran/units/dukeb/acknowledgement/4" />
-
-  <audio name="" path="sound/terran/firebat/tfbdth00.wav" destination="terran/units/firebat/death/1" />
-  <audio name="" path="sound/terran/firebat/tfbdth01.wav" destination="terran/units/firebat/death/2" />
-  <audio name="" path="sound/terran/firebat/tfbdth02.wav" destination="terran/units/firebat/death/3" />
-  <audio name="" path="sound/terran/firebat/tfbfir00.wav" destination="terran/units/firebat/fire1" />
-  <audio name="" path="sound/terran/firebat/tfbfir01.wav" destination="terran/units/firebat/fire2" />
-  <audio name="" path="sound/terran/firebat/tfbpss00.wav" destination="terran/units/firebat/pissed/1" />
-  <audio name="" path="sound/terran/firebat/tfbpss01.wav" destination="terran/units/firebat/pissed/2" />
-  <audio name="" path="sound/terran/firebat/tfbpss02.wav" destination="terran/units/firebat/pissed/3" />
-  <audio name="" path="sound/terran/firebat/tfbpss03.wav" destination="terran/units/firebat/pissed/4" />
-  <audio name="" path="sound/terran/firebat/tfbpss04.wav" destination="terran/units/firebat/pissed/5" />
-  <audio name="" path="sound/terran/firebat/tfbpss05.wav" destination="terran/units/firebat/pissed/6" />
-  <audio name="" path="sound/terran/firebat/tfbpss06.wav" destination="terran/units/firebat/pissed/7" />
-  <audio name="" path="sound/terran/firebat/tfbrdy00.wav" destination="terran/units/firebat/ready" />
-  <audio name="" path="sound/terran/firebat/tfbwht00.wav" destination="terran/units/firebat/selected/1" />
-  <audio name="" path="sound/terran/firebat/tfbwht01.wav" destination="terran/units/firebat/selected/2" />
-  <audio name="" path="sound/terran/firebat/tfbwht02.wav" destination="terran/units/firebat/selected/3" />
-  <audio name="" path="sound/terran/firebat/tfbwht03.wav" destination="terran/units/firebat/selected/4" />
-  <audio name="" path="sound/terran/firebat/tfbyes00.wav" destination="terran/units/firebat/acknowledgement/1" />
-  <audio name="" path="sound/terran/firebat/tfbyes01.wav" destination="terran/units/firebat/acknowledgement/2" />
-  <audio name="" path="sound/terran/firebat/tfbyes02.wav" destination="terran/units/firebat/acknowledgement/3" />
-  <audio name="" path="sound/terran/firebat/tfbyes03.wav" destination="terran/units/firebat/acknowledgement/4" />
-
-  <audio name="" path="sound/terran/ghost/tghdth00.wav" destination="terran/units/ghost/death/1" />
-  <audio name="" path="sound/terran/ghost/tghdth01.wav" destination="terran/units/ghost/death/2" />
-  <audio name="" path="sound/terran/ghost/tghlas00.wav" destination="terran/units/ghost/las00" />
-  <audio name="" path="sound/terran/ghost/tghlkd00.wav" destination="terran/units/ghost/lockdown" />
-  <audio name="" path="sound/terran/ghost/tghpss00.wav" destination="terran/units/ghost/pissed/1" />
-  <audio name="" path="sound/terran/ghost/tghpss01.wav" destination="terran/units/ghost/pissed/2" />
-  <audio name="" path="sound/terran/ghost/tghpss02.wav" destination="terran/units/ghost/pissed/3" />
-  <audio name="" path="sound/terran/ghost/tghpss03.wav" destination="terran/units/ghost/pissed/4" />
-  <audio name="" path="sound/terran/ghost/tghrdy00.wav" destination="terran/units/ghost/ready" />
-  <audio name="" path="sound/terran/ghost/tghwht00.wav" destination="terran/units/ghost/selected/1" />
-  <audio name="" path="sound/terran/ghost/tghwht01.wav" destination="terran/units/ghost/selected/2" />
-  <audio name="" path="sound/terran/ghost/tghwht02.wav" destination="terran/units/ghost/selected/3" />
-  <audio name="" path="sound/Terran/GHOST/TGhWht03.wav" destination="terran/units/ghost/selected/4" />
-  <audio name="" path="sound/terran/ghost/tghyes00.wav" destination="terran/units/ghost/acknowledgement/1" />
-  <audio name="" path="sound/terran/ghost/tghyes01.wav" destination="terran/units/ghost/acknowledgement/2" />
-  <audio name="" path="sound/terran/ghost/tghyes02.wav" destination="terran/units/ghost/acknowledgement/3" />
-  <audio name="" path="sound/terran/ghost/tghyes03.wav" destination="terran/units/ghost/acknowledgement/4" />
-  <audio name="" path="sound/bullet/tghfir00.wav" destination="terran/units/ghost/fire" />
-
-  <audio name="" path="sound/terran/goliath/tgodth00.wav" destination="terran/units/goliath/death/1" />
-  <audio name="" path="sound/terran/goliath/tgopss00.wav" destination="terran/units/goliath/pissed/1" />
-  <audio name="" path="sound/terran/goliath/tgopss01.wav" destination="terran/units/goliath/pissed/2" />
-  <audio name="" path="sound/terran/goliath/tgopss02.wav" destination="terran/units/goliath/pissed/3" />
-  <audio name="" path="sound/terran/goliath/tgopss03.wav" destination="terran/units/goliath/pissed/4" />
-  <audio name="" path="sound/terran/goliath/tgopss04.wav" destination="terran/units/goliath/pissed/5" />
-  <audio name="" path="sound/terran/goliath/tgopss05.wav" destination="terran/units/goliath/pissed/6" />
-  <audio name="" path="sound/Terran/GOLIATH/TGoRdy00.wav" destination="terran/units/goliath/ready" />
-  <audio name="" path="sound/terran/goliath/tgowht00.wav" destination="terran/units/goliath/selected/1" />
-  <audio name="" path="sound/terran/goliath/tgowht01.wav" destination="terran/units/goliath/selected/2" />
-  <audio name="" path="sound/terran/goliath/tgowht02.wav" destination="terran/units/goliath/selected/3" />
-  <audio name="" path="sound/terran/goliath/tgowht03.wav" destination="terran/units/goliath/selected/4" />
-  <audio name="" path="sound/terran/goliath/tgoyes00.wav" destination="terran/units/goliath/acknowledgement/1" />
-  <audio name="" path="sound/terran/goliath/tgoyes01.wav" destination="terran/units/goliath/acknowledgement/2" />
-  <audio name="" path="sound/terran/goliath/tgoyes02.wav" destination="terran/units/goliath/acknowledgement/3" />
-  <audio name="" path="sound/terran/goliath/tgoyes03.wav" destination="terran/units/goliath/acknowledgement/4" />
-  <audio name="" path="sound/bullet/tgofi200.wav" destination="terran/units/goliath/fire2" />
-  <audio name="" path="sound/bullet/tgofir00.wav" destination="terran/units/goliath/fire" />
-  <audio name="" path="sound/bullet/hkmissle.wav" destination="terran/units/goliath/hkmissile" />
-
-  <audio name="" path="sound/terran/kerrigan/ukedth00.wav" destination="terran/units/kerrigan/death/1" />
-  <audio name="" path="sound/terran/kerrigan/ukedth01.wav" destination="terran/units/kerrigan/death/2" />
-  <audio name="" path="sound/terran/kerrigan/ukepss00.wav" destination="terran/units/kerrigan/pissed/1" />
-  <audio name="" path="sound/terran/kerrigan/ukepss01.wav" destination="terran/units/kerrigan/pissed/2" />
-  <audio name="" path="sound/terran/kerrigan/ukepss02.wav" destination="terran/units/kerrigan/pissed/3" />
-  <audio name="" path="sound/terran/kerrigan/ukepss03.wav" destination="terran/units/kerrigan/pissed/4" />
-  <audio name="" path="sound/terran/kerrigan/ukepss04.wav" destination="terran/units/kerrigan/pissed/5" />
-  <audio name="" path="sound/terran/kerrigan/ukewht00.wav" destination="terran/units/kerrigan/selected/1" />
-  <audio name="" path="sound/terran/kerrigan/ukewht01.wav" destination="terran/units/kerrigan/selected/2" />
-  <audio name="" path="sound/terran/kerrigan/ukewht02.wav" destination="terran/units/kerrigan/selected/3" />
-  <audio name="" path="sound/terran/kerrigan/ukewht03.wav" destination="terran/units/kerrigan/selected/4" />
-  <audio name="" path="sound/terran/kerrigan/ukeyes00.wav" destination="terran/units/kerrigan/acknowledgement/1" />
-  <audio name="" path="sound/terran/kerrigan/ukeyes01.wav" destination="terran/units/kerrigan/acknowledgement/2" />
-  <audio name="" path="sound/terran/kerrigan/ukeyes02.wav" destination="terran/units/kerrigan/acknowledgement/3" />
-  <audio name="" path="sound/terran/kerrigan/ukeyes03.wav" destination="terran/units/kerrigan/acknowledgement/4" />
-
-  <audio name="" path="sound/terran/marine/tmadth00.wav" destination="terran/units/marine/death/1" />
-  <audio name="" path="sound/terran/marine/tmadth01.wav" destination="terran/units/marine/death/2" />
-  <audio name="" path="sound/terran/marine/tmapss00.wav" destination="terran/units/marine/pissed/1" />
-  <audio name="" path="sound/terran/marine/tmapss01.wav" destination="terran/units/marine/pissed/2" />
-  <audio name="" path="sound/terran/marine/tmapss02.wav" destination="terran/units/marine/pissed/3" />
-  <audio name="" path="sound/terran/marine/tmapss03.wav" destination="terran/units/marine/pissed/4" />
-  <audio name="" path="sound/terran/marine/tmapss04.wav" destination="terran/units/marine/pissed/5" />
-  <audio name="" path="sound/terran/marine/tmapss05.wav" destination="terran/units/marine/pissed/6" />
-  <audio name="" path="sound/terran/marine/tmapss06.wav" destination="terran/units/marine/pissed/7" />
-  <audio name="" path="sound/terran/marine/tmardy00.wav" destination="terran/units/marine/ready" />
-  <audio name="" path="sound/terran/marine/tmasti00.wav" destination="terran/units/marine/sti00" />
-  <audio name="" path="sound/terran/marine/tmasti01.wav" destination="terran/units/marine/sti01" />
-  <audio name="" path="sound/terran/marine/tmawht00.wav" destination="terran/units/marine/selected/1" />
-  <audio name="" path="sound/terran/marine/tmawht01.wav" destination="terran/units/marine/selected/2" />
-  <audio name="" path="sound/terran/marine/tmawht02.wav" destination="terran/units/marine/selected/3" />
-  <audio name="" path="sound/terran/marine/tmawht03.wav" destination="terran/units/marine/selected/4" />
-  <audio name="" path="sound/terran/marine/tmayes00.wav" destination="terran/units/marine/acknowledgement/1" />
-  <audio name="" path="sound/terran/marine/tmayes01.wav" destination="terran/units/marine/acknowledgement/2" />
-  <audio name="" path="sound/terran/marine/tmayes02.wav" destination="terran/units/marine/acknowledgement/3" />
-  <audio name="" path="sound/terran/marine/tmayes03.wav" destination="terran/units/marine/acknowledgement/4" />
-  <audio name="" path="sound/bullet/tmafir00.wav" destination="terran/units/marine/fire" />
-
-  <audio name="" path="sound/terran/phoenix/tphclo00.wav" destination="terran/units/wraith/clo00" />
-  <audio name="" path="sound/terran/phoenix/tphclo01.wav" destination="terran/units/wraith/clo01" />
-  <audio name="" path="sound/terran/phoenix/tphdth00.wav" destination="terran/units/wraith/death/1" />
-  <audio name="" path="sound/terran/phoenix/tphpss00.wav" destination="terran/units/wraith/pissed/1" />
-  <audio name="" path="sound/terran/phoenix/tphpss01.wav" destination="terran/units/wraith/pissed/2" />
-  <audio name="" path="sound/terran/phoenix/tphpss02.wav" destination="terran/units/wraith/pissed/3" />
-  <audio name="" path="sound/terran/phoenix/tphpss03.wav" destination="terran/units/wraith/pissed/4" />
-  <audio name="" path="sound/terran/phoenix/tphpss04.wav" destination="terran/units/wraith/pissed/5" />
-  <audio name="" path="sound/terran/phoenix/tphpss05.wav" destination="terran/units/wraith/pissed/6" />
-  <audio name="" path="sound/terran/phoenix/tphpss06.wav" destination="terran/units/wraith/pissed/7" />
-  <audio name="" path="sound/terran/phoenix/tphrdy00.wav" destination="terran/units/wraith/ready" />
-  <audio name="" path="sound/terran/phoenix/tphwht00.wav" destination="terran/units/wraith/selected/1" />
-  <audio name="" path="sound/terran/phoenix/tphwht01.wav" destination="terran/units/wraith/selected/2" />
-  <audio name="" path="sound/terran/phoenix/tphwht02.wav" destination="terran/units/wraith/selected/3" />
-  <audio name="" path="sound/terran/phoenix/tphwht03.wav" destination="terran/units/wraith/selected/4" />
-  <audio name="" path="sound/terran/phoenix/tphyes00.wav" destination="terran/units/wraith/acknowledgement/1" />
-  <audio name="" path="sound/terran/phoenix/tphyes01.wav" destination="terran/units/wraith/acknowledgement/2" />
-  <audio name="" path="sound/terran/phoenix/tphyes02.wav" destination="terran/units/wraith/acknowledgement/3" />
-  <audio name="" path="sound/terran/phoenix/tphyes03.wav" destination="terran/units/wraith/acknowledgement/4" />
-  <audio name="" path="sound/bullet/tphfi100.wav" destination="terran/units/wraith/fire100" />
-  <audio name="" path="sound/bullet/tphfi200.wav" destination="terran/units/wraith/fire200" />
-  <audio name="" path="sound/bullet/tphfi201.wav" destination="terran/units/wraith/fire201" />
-
-  <audio name="" path="sound/terran/raynorm/uradth00.wav" destination="terran/units/raynorm/death/1" />
-  <audio name="" path="sound/Terran/RAYNORM/URaDth01.wav" destination="terran/units/raynorm/death/2" />
-  <audio name="" path="sound/terran/raynorm/urapss00.wav" destination="terran/units/raynorm/pissed/1" />
-  <audio name="" path="sound/terran/raynorm/urapss01.wav" destination="terran/units/raynorm/pissed/2" />
-  <audio name="" path="sound/terran/raynorm/urapss02.wav" destination="terran/units/raynorm/pissed/3" />
-  <audio name="" path="sound/terran/raynorm/urapss03.wav" destination="terran/units/raynorm/pissed/4" />
-  <audio name="" path="sound/terran/raynorm/urawht00.wav" destination="terran/units/raynorm/selected/1" />
-  <audio name="" path="sound/terran/raynorm/urawht01.wav" destination="terran/units/raynorm/selected/2" />
-  <audio name="" path="sound/terran/raynorm/urawht02.wav" destination="terran/units/raynorm/selected/3" />
-  <audio name="" path="sound/terran/raynorm/urawht03.wav" destination="terran/units/raynorm/selected/4" />
-  <audio name="" path="sound/terran/raynorm/urayes00.wav" destination="terran/units/raynorm/acknowledgement/1" />
-  <audio name="" path="sound/terran/raynorm/urayes01.wav" destination="terran/units/raynorm/acknowledgement/2" />
-  <audio name="" path="sound/terran/raynorm/urayes02.wav" destination="terran/units/raynorm/acknowledgement/3" />
-  <audio name="" path="sound/terran/raynorm/urayes03.wav" destination="terran/units/raynorm/acknowledgement/4" />
-
-  <audio name="" path="sound/terran/raynorv/urvdth00.wav" destination="terran/units/raynorv/death/1" />
-  <audio name="" path="sound/terran/raynorv/urvpss00.wav" destination="terran/units/raynorv/pissed/1" />
-  <audio name="" path="sound/terran/raynorv/urvpss01.wav" destination="terran/units/raynorv/pissed/2" />
-  <audio name="" path="sound/terran/raynorv/urvpss02.wav" destination="terran/units/raynorv/pissed/3" />
-  <audio name="" path="sound/terran/raynorv/urvpss03.wav" destination="terran/units/raynorv/pissed/4" />
-  <audio name="" path="sound/terran/raynorv/urvwht00.wav" destination="terran/units/raynorv/selected/1" />
-  <audio name="" path="sound/terran/raynorv/urvwht01.wav" destination="terran/units/raynorv/selected/2" />
-  <audio name="" path="sound/terran/raynorv/urvwht02.wav" destination="terran/units/raynorv/selected/3" />
-  <audio name="" path="sound/terran/raynorv/urvwht03.wav" destination="terran/units/raynorv/selected/4" />
-  <audio name="" path="sound/terran/raynorv/urvyes00.wav" destination="terran/units/raynorv/acknowledgement/1" />
-  <audio name="" path="sound/terran/raynorv/urvyes01.wav" destination="terran/units/raynorv/acknowledgement/2" />
-  <audio name="" path="sound/terran/raynorv/urvyes02.wav" destination="terran/units/raynorv/acknowledgement/3" />
-  <audio name="" path="sound/terran/raynorv/urvyes03.wav" destination="terran/units/raynorv/acknowledgement/4" />
-
-  <audio name="" path="sound/terran/scv/edrrep00.wav" destination="terran/units/scv/edrrep00" />
-  <audio name="" path="sound/terran/scv/edrrep01.wav" destination="terran/units/scv/edrrep01" />
-  <audio name="" path="sound/terran/scv/edrrep02.wav" destination="terran/units/scv/edrrep02" />
-  <audio name="" path="sound/terran/scv/edrrep03.wav" destination="terran/units/scv/edrrep03" />
-  <audio name="" path="sound/terran/scv/edrrep04.wav" destination="terran/units/scv/edrrep04" />
-  <audio name="" path="sound/terran/scv/tscdth00.wav" destination="terran/units/scv/death/1" />
-  <audio name="" path="sound/terran/scv/tscerr00.wav" destination="terran/units/scv/err00" />
-  <audio name="" path="sound/terran/scv/tscerr01.wav" destination="terran/units/scv/err01" />
-  <audio name="" path="sound/terran/scv/tscmin00.wav" destination="terran/units/scv/min00" />
-  <audio name="" path="sound/terran/scv/tscmin01.wav" destination="terran/units/scv/min01" />
-  <audio name="" path="sound/terran/scv/tscpss00.wav" destination="terran/units/scv/pissed/1" />
-  <audio name="" path="sound/terran/scv/tscpss01.wav" destination="terran/units/scv/pissed/2" />
-  <audio name="" path="sound/terran/scv/tscpss02.wav" destination="terran/units/scv/pissed/3" />
-  <audio name="" path="sound/terran/scv/tscpss03.wav" destination="terran/units/scv/pissed/4" />
-  <audio name="" path="sound/terran/scv/tscpss04.wav" destination="terran/units/scv/pissed/5" />
-  <audio name="" path="sound/terran/scv/tscpss05.wav" destination="terran/units/scv/pissed/6" />
-  <audio name="" path="sound/terran/scv/tscpss06.wav" destination="terran/units/scv/pissed/7" />
-  <audio name="" path="sound/terran/scv/tscrdy00.wav" destination="terran/units/scv/ready" />
-  <audio name="" path="sound/terran/scv/tsctra00.wav" destination="terran/units/scv/tra00" />
-  <audio name="" path="sound/terran/scv/tscupd00.wav" destination="terran/units/scv/upd00" />
-  <audio name="" path="sound/terran/scv/tscwht00.wav" destination="terran/units/scv/selected/1" />
-  <audio name="" path="sound/terran/scv/tscwht01.wav" destination="terran/units/scv/selected/2" />
-  <audio name="" path="sound/terran/scv/tscwht02.wav" destination="terran/units/scv/selected/3" />
-  <audio name="" path="sound/terran/scv/tscwht03.wav" destination="terran/units/scv/selected/4" />
-  <audio name="" path="sound/terran/scv/tscyes00.wav" destination="terran/units/scv/acknowledgement/1" />
-  <audio name="" path="sound/terran/scv/tscyes01.wav" destination="terran/units/scv/acknowledgement/2" />
-  <audio name="" path="sound/terran/scv/tscyes02.wav" destination="terran/units/scv/acknowledgement/3" />
-  <audio name="" path="sound/terran/scv/tscyes03.wav" destination="terran/units/scv/acknowledgement/4" />
-
-  <audio name="" path="sound/terran/tank/ttadth00.wav" destination="terran/units/tank/death/1" />
-  <audio name="" path="sound/terran/tank/ttapss00.wav" destination="terran/units/tank/pissed/1" />
-  <audio name="" path="sound/terran/tank/ttapss01.wav" destination="terran/units/tank/pissed/2" />
-  <audio name="" path="sound/terran/tank/ttapss02.wav" destination="terran/units/tank/pissed/3" />
-  <audio name="" path="sound/terran/tank/ttapss03.wav" destination="terran/units/tank/pissed/4" />
-  <audio name="" path="sound/terran/tank/ttardy00.wav" destination="terran/units/tank/ready" />
-  <audio name="" path="sound/terran/tank/ttatra00.wav" destination="terran/units/tank/tra00" />
-  <audio name="" path="sound/terran/tank/ttatra01.wav" destination="terran/units/tank/tra01" />
-  <audio name="" path="sound/terran/tank/ttawht00.wav" destination="terran/units/tank/selected/1" />
-  <audio name="" path="sound/terran/tank/ttawht01.wav" destination="terran/units/tank/selected/2" />
-  <audio name="" path="sound/terran/tank/ttawht02.wav" destination="terran/units/tank/selected/3" />
-  <audio name="" path="sound/terran/tank/ttawht03.wav" destination="terran/units/tank/selected/4" />
-  <audio name="" path="sound/terran/tank/ttayes00.wav" destination="terran/units/tank/acknowledgement/1" />
-  <audio name="" path="sound/terran/tank/ttayes01.wav" destination="terran/units/tank/acknowledgement/2" />
-  <audio name="" path="sound/terran/tank/ttayes02.wav" destination="terran/units/tank/acknowledgement/3" />
-  <audio name="" path="sound/terran/tank/ttayes03.wav" destination="terran/units/tank/acknowledgement/4" />
-  <audio name="" path="sound/bullet/ttafi200.wav" destination="terran/units/tank/fire2" />
-  <audio name="" path="sound/Bullet/TTaFir00.wav" destination="terran/units/tank/fire" />
-  <audio name="" path="sound/bullet/TTaHi200.wav" destination="terran/units/tank/hit2" />
-  <audio name="" path="sound/bullet/TTahit00.wav" destination="terran/units/tank/hit" />
-
-  <audio name="" path="sound/terran/vessel/tvedef00.wav" destination="terran/units/science vessel/def00" />
-  <audio name="" path="sound/terran/vessel/tvedth00.wav" destination="terran/units/science vessel/death/1" />
-  <audio name="" path="sound/terran/vessel/tveemp00.wav" destination="terran/units/science vessel/emp00" />
-  <audio name="" path="sound/terran/vessel/tveirr00.wav" destination="terran/units/science vessel/irr00" />
-  <audio name="" path="sound/terran/vessel/tvepss00.wav" destination="terran/units/science vessel/pissed/1" />
-  <audio name="" path="sound/terran/vessel/tvepss01.wav" destination="terran/units/science vessel/pissed/2" />
-  <audio name="" path="sound/terran/vessel/tvepss02.wav" destination="terran/units/science vessel/pissed/3" />
-  <audio name="" path="sound/terran/vessel/tvepss03.wav" destination="terran/units/science vessel/pissed/4" />
-  <audio name="" path="sound/terran/vessel/tvepss04.wav" destination="terran/units/science vessel/pissed/5" />
-  <audio name="" path="sound/terran/vessel/tvepss05.wav" destination="terran/units/science vessel/pissed/6" />
-  <audio name="" path="sound/terran/vessel/tvepss06.wav" destination="terran/units/science vessel/pissed/7" />
-  <audio name="" path="sound/terran/vessel/tverdy00.wav" destination="terran/units/science vessel/ready" />
-  <audio name="" path="sound/terran/vessel/tvewht00.wav" destination="terran/units/science vessel/selected/1" />
-  <audio name="" path="sound/terran/vessel/tvewht01.wav" destination="terran/units/science vessel/selected/2" />
-  <audio name="" path="sound/terran/vessel/tvewht02.wav" destination="terran/units/science vessel/selected/3" />
-  <audio name="" path="sound/terran/vessel/tvewht03.wav" destination="terran/units/science vessel/selected/4" />
-  <audio name="" path="sound/terran/vessel/tveyes00.wav" destination="terran/units/science vessel/acknowledgement/1" />
-  <audio name="" path="sound/terran/vessel/tveyes01.wav" destination="terran/units/science vessel/acknowledgement/2" />
-  <audio name="" path="sound/terran/vessel/tveyes02.wav" destination="terran/units/science vessel/acknowledgement/3" />
-  <audio name="" path="sound/terran/vessel/tveyes03.wav" destination="terran/units/science vessel/acknowledgement/4" />
-
-  <audio name="" path="sound/terran/vulture/tvudth00.wav" destination="terran/units/vulture/death/1" />
-  <audio name="" path="sound/terran/vulture/tvumin00.wav" destination="terran/units/vulture/min00" />
-  <audio name="" path="sound/terran/vulture/tvumin01.wav" destination="terran/units/vulture/min01" />
-  <audio name="" path="sound/terran/vulture/tvupss00.wav" destination="terran/units/vulture/pissed/1" />
-  <audio name="" path="sound/terran/vulture/tvupss01.wav" destination="terran/units/vulture/pissed/2" />
-  <audio name="" path="sound/terran/vulture/tvupss02.wav" destination="terran/units/vulture/pissed/3" />
-  <audio name="" path="sound/terran/vulture/tvupss03.wav" destination="terran/units/vulture/pissed/4" />
-  <audio name="" path="sound/terran/vulture/tvurdy00.wav" destination="terran/units/vulture/ready" />
-  <audio name="" path="sound/terran/vulture/tvuwht00.wav" destination="terran/units/vulture/selected/1" />
-  <audio name="" path="sound/terran/vulture/tvuwht01.wav" destination="terran/units/vulture/selected/2" />
-  <audio name="" path="sound/terran/vulture/tvuwht02.wav" destination="terran/units/vulture/selected/3" />
-  <audio name="" path="sound/terran/vulture/tvuwht03.wav" destination="terran/units/vulture/selected/4" />
-  <audio name="" path="sound/terran/vulture/tvuyes00.wav" destination="terran/units/vulture/acknowledgement/1" />
-  <audio name="" path="sound/terran/vulture/tvuyes01.wav" destination="terran/units/vulture/acknowledgement/2" />
-  <audio name="" path="sound/terran/vulture/tvuyes02.wav" destination="terran/units/vulture/acknowledgement/3" />
-  <audio name="" path="sound/terran/vulture/tvuyes03.wav" destination="terran/units/vulture/acknowledgement/4" />
-  <audio name="" path="sound/bullet/tvufir00.wav" destination="terran/units/vulture/fire" />
-  <audio name="" path="sound/bullet/tvuhit00.wav" destination="terran/units/vulture/hit" />
-  <audio name="" path="sound/bullet/tvuhit01.wav" destination="terran/units/vulture/hit1" />
-  <audio name="" path="sound/bullet/tvuhit02.wav" destination="terran/units/vulture/hit2" />
-
-  <audio name="" path="sound/terran/bldg/tacwht00.wav" destination="terran/units/academy" />
-  <audio name="" path="sound/terran/bldg/tclwht00.wav" destination="terran/units/armory" />
-  <audio name="" path="sound/terran/bldg/tcssca00.wav" destination="terran/units/science facility" />
-  <audio name="" path="sound/Terran/bldg/tcswht00.wav" destination="terran/units/comsat station" />
-  <audio name="" path="sound/terran/bldg/tddwht00.wav" destination="terran/units/control tower" />
-  <audio name="" path="sound/terran/bldg/tglwht00.wav" destination="terran/units/covert ops" />
-  <audio name="" path="sound/terran/bldg/tmswht00.wav" destination="terran/units/machine shop" />
-  <audio name="" path="sound/terran/bldg/tmtwht00.wav" destination="terran/units/missile turret" />
-  <audio name="" path="sound/terran/bldg/tnswht00.wav" destination="terran/units/nuclear silo" />
-  <audio name="" path="sound/terran/bldg/tpgwht00.wav" destination="terran/units/supply depot" />
-  <audio name="" path="sound/terran/bldg/tplwht00.wav" destination="terran/units/bunker" />
-  <audio name="" path="sound/terran/bldg/trewht00.wav" destination="terran/units/refinery" />
-  <audio name="" path="sound/terran/bldg/trfwht00.wav" destination="terran/units/rf" />
-  <audio name="" path="sound/terran/bldg/trlwht00.wav" destination="terran/units/factory" />
-  <audio name="" path="sound/terran/bldg/twpwht00.wav" destination="terran/units/engineering bay" />
-  
-  <audio name="" path="sound/bullet/tnsfir00.wav" destination="terran/units/nuclear silo/fire" />
-  <audio name="" path="sound/bullet/tnshit00.wav" destination="terran/units/nuclear silo/hit" />
-  <audio name="" path="sound/bullet/tscfir00.wav" destination="terran/units/tscfir00" />
+  <audio name="" path="sound/misc/tbldgplc.wav" destination="terran/building place"/>
+  <audio name="" path="sound/terran/bldg/onfirlrg.wav" destination="terran/on fire large"/>
+  <audio name="" path="sound/misc/land.wav" destination="terran/land"/>
+  <audio name="" path="sound/misc/liftoff.wav" destination="terran/liftoff"/>
+  <audio name="" path="sound/misc/tpwrdown.wav" destination="terran/power down"/>
+  <audio name="" path="sound/misc/trescue.wav" destination="terran/rescue"/>
+  <audio name="" path="sound/terran/advisor/taderr00.wav" destination="terran/units/advisor/err00"/>
+  <audio name="" path="sound/terran/advisor/taderr01.wav" destination="terran/units/advisor/err01"/>
+  <audio name="" path="sound/terran/advisor/taderr02.wav" destination="terran/units/advisor/err02"/>
+  <audio name="" path="sound/terran/advisor/taderr03.wav" destination="terran/units/advisor/err03"/>
+  <audio name="" path="sound/terran/advisor/taderr04.wav" destination="terran/units/advisor/err04"/>
+  <audio name="" path="sound/terran/advisor/taderr06.wav" destination="terran/units/advisor/err06"/>
+  <audio name="" path="sound/terran/advisor/tadupd00.wav" destination="terran/units/advisor/upd00"/>
+  <audio name="" path="sound/terran/advisor/tadupd01.wav" destination="terran/units/advisor/upd01"/>
+  <audio name="" path="sound/terran/advisor/tadupd02.wav" destination="terran/units/advisor/upd02"/>
+  <audio name="" path="sound/terran/advisor/tadupd03.wav" destination="terran/units/advisor/upd03"/>
+  <audio name="" path="sound/terran/advisor/tadupd04.wav" destination="terran/units/advisor/upd04"/>
+  <audio name="" path="sound/terran/advisor/tadupd05.wav" destination="terran/units/advisor/upd05"/>
+  <audio name="" path="sound/terran/advisor/tadupd06.wav" destination="terran/units/advisor/upd06"/>
+  <audio name="" path="sound/terran/advisor/tadupd07.wav" destination="terran/units/advisor/upd07"/>
+  <audio name="" path="sound/terran/battle/tbadth00.wav" destination="terran/units/battlecruiser/death/1"/>
+  <audio name="" path="sound/terran/battle/tbapss00.wav" destination="terran/units/battlecruiser/pissed/1"/>
+  <audio name="" path="sound/terran/battle/tbapss01.wav" destination="terran/units/battlecruiser/pissed/2"/>
+  <audio name="" path="sound/terran/battle/tbapss02.wav" destination="terran/units/battlecruiser/pissed/3"/>
+  <audio name="" path="sound/terran/battle/tbapss03.wav" destination="terran/units/battlecruiser/pissed/4"/>
+  <audio name="" path="sound/terran/battle/tbapss04.wav" destination="terran/units/battlecruiser/pissed/5"/>
+  <audio name="" path="sound/terran/battle/tbardy00.wav" destination="terran/units/battlecruiser/ready"/>
+  <audio name="" path="sound/terran/battle/tbawht00.wav" destination="terran/units/battlecruiser/selected/1"/>
+  <audio name="" path="sound/terran/battle/tbawht01.wav" destination="terran/units/battlecruiser/selected/2"/>
+  <audio name="" path="sound/terran/battle/tbawht02.wav" destination="terran/units/battlecruiser/selected/3"/>
+  <audio name="" path="sound/terran/battle/tbawht03.wav" destination="terran/units/battlecruiser/selected/4"/>
+  <audio name="" path="sound/terran/battle/tbayam01.wav" destination="terran/units/battlecruiser/yam01"/>
+  <audio name="" path="sound/terran/battle/tbayam02.wav" destination="terran/units/battlecruiser/yam02"/>
+  <audio name="" path="sound/terran/battle/tbayes00.wav" destination="terran/units/battlecruiser/acknowledgement/1"/>
+  <audio name="" path="sound/terran/battle/tbayes01.wav" destination="terran/units/battlecruiser/acknowledgement/2"/>
+  <audio name="" path="sound/Terran/BATTLE/tbayes02.wav" destination="terran/units/battlecruiser/acknowledgement/3"/>
+  <audio name="" path="sound/terran/battle/tbayes03.wav" destination="terran/units/battlecruiser/acknowledgement/4"/>
+  <audio name="" path="sound/Bullet/tbaYam00.wav" destination="terran/units/battlecruiser/yamato"/>
+  <audio name="" path="sound/terran/civilian/tcvdth00.wav" destination="terran/units/civilian/death/1"/>
+  <audio name="" path="sound/terran/civilian/tcvpss00.wav" destination="terran/units/civilian/pissed/1"/>
+  <audio name="" path="sound/terran/civilian/tcvpss01.wav" destination="terran/units/civilian/pissed/2"/>
+  <audio name="" path="sound/terran/civilian/tcvpss02.wav" destination="terran/units/civilian/pissed/3"/>
+  <audio name="" path="sound/terran/civilian/tcvpss03.wav" destination="terran/units/civilian/pissed/4"/>
+  <audio name="" path="sound/terran/civilian/tcvpss04.wav" destination="terran/units/civilian/pissed/5"/>
+  <audio name="" path="sound/terran/civilian/tcvrdy00.wav" destination="terran/units/civilian/ready"/>
+  <audio name="" path="sound/terran/civilian/tcvwht00.wav" destination="terran/units/civilian/selected/1"/>
+  <audio name="" path="sound/terran/civilian/tcvwht01.wav" destination="terran/units/civilian/selected/2"/>
+  <audio name="" path="sound/terran/civilian/tcvwht02.wav" destination="terran/units/civilian/selected/3"/>
+  <audio name="" path="sound/terran/civilian/tcvwht03.wav" destination="terran/units/civilian/selected/4"/>
+  <audio name="" path="sound/terran/civilian/tcvyes00.wav" destination="terran/units/civilian/acknowledgement/1"/>
+  <audio name="" path="sound/terran/civilian/tcvyes01.wav" destination="terran/units/civilian/acknowledgement/2"/>
+  <audio name="" path="sound/terran/civilian/tcvyes02.wav" destination="terran/units/civilian/acknowledgement/3"/>
+  <audio name="" path="sound/terran/civilian/tcvyes03.wav" destination="terran/units/civilian/acknowledgement/4"/>
+  <audio name="" path="sound/terran/civilian/tcvyes04.wav" destination="terran/units/civilian/acknowledgement/5"/>
+  <audio name="" path="sound/terran/dropship/tdrdth00.wav" destination="terran/units/dropship/death/1"/>
+  <audio name="" path="sound/terran/dropship/tdrpss00.wav" destination="terran/units/dropship/pissed/1"/>
+  <audio name="" path="sound/terran/dropship/tdrpss01.wav" destination="terran/units/dropship/pissed/2"/>
+  <audio name="" path="sound/terran/dropship/tdrpss02.wav" destination="terran/units/dropship/pissed/3"/>
+  <audio name="" path="sound/terran/dropship/tdrpss03.wav" destination="terran/units/dropship/pissed/4"/>
+  <audio name="" path="sound/terran/dropship/tdrrdy00.wav" destination="terran/units/dropship/ready"/>
+  <audio name="" path="sound/terran/dropship/tdrwht00.wav" destination="terran/units/dropship/selected/1"/>
+  <audio name="" path="sound/terran/dropship/tdrwht01.wav" destination="terran/units/dropship/selected/2"/>
+  <audio name="" path="sound/terran/dropship/tdrwht02.wav" destination="terran/units/dropship/selected/3"/>
+  <audio name="" path="sound/terran/dropship/tdrwht03.wav" destination="terran/units/dropship/selected/4"/>
+  <audio name="" path="sound/terran/dropship/tdryes00.wav" destination="terran/units/dropship/acknowledgement/1"/>
+  <audio name="" path="sound/terran/dropship/tdryes01.wav" destination="terran/units/dropship/acknowledgement/2"/>
+  <audio name="" path="sound/terran/dropship/tdryes02.wav" destination="terran/units/dropship/acknowledgement/3"/>
+  <audio name="" path="sound/terran/dropship/tdryes03.wav" destination="terran/units/dropship/acknowledgement/4"/>
+  <audio name="" path="sound/terran/dropship/tdryes04.wav" destination="terran/units/dropship/acknowledgement/5"/>
+  <audio name="" path="sound/terran/dropship/tdryes05.wav" destination="terran/units/dropship/acknowledgement/6"/>
+  <audio name="" path="sound/Misc/TDrTra00.wav" destination="terran/units/dropship/load"/>
+  <audio name="" path="sound/Misc/TDrTra01.wav" destination="terran/units/dropship/unload"/>
+  <audio name="" path="sound/terran/dukeb/ududth00.wav" destination="terran/units/dukeb/death/1"/>
+  <audio name="" path="sound/terran/dukeb/udupss00.wav" destination="terran/units/dukeb/pissed/1"/>
+  <audio name="" path="sound/terran/dukeb/udupss01.wav" destination="terran/units/dukeb/pissed/2"/>
+  <audio name="" path="sound/terran/dukeb/udupss02.wav" destination="terran/units/dukeb/pissed/3"/>
+  <audio name="" path="sound/terran/dukeb/udupss03.wav" destination="terran/units/dukeb/pissed/4"/>
+  <audio name="" path="sound/terran/dukeb/udupss04.wav" destination="terran/units/dukeb/pissed/5"/>
+  <audio name="" path="sound/terran/dukeb/uduwht00.wav" destination="terran/units/dukeb/selected/1"/>
+  <audio name="" path="sound/terran/dukeb/uduwht01.wav" destination="terran/units/dukeb/selected/2"/>
+  <audio name="" path="sound/terran/dukeb/uduwht02.wav" destination="terran/units/dukeb/selected/3"/>
+  <audio name="" path="sound/terran/dukeb/uduwht03.wav" destination="terran/units/dukeb/selected/4"/>
+  <audio name="" path="sound/terran/dukeb/uduyes00.wav" destination="terran/units/dukeb/acknowledgement/1"/>
+  <audio name="" path="sound/terran/dukeb/uduyes01.wav" destination="terran/units/dukeb/acknowledgement/2"/>
+  <audio name="" path="sound/terran/dukeb/uduyes02.wav" destination="terran/units/dukeb/acknowledgement/3"/>
+  <audio name="" path="sound/terran/dukeb/uduyes03.wav" destination="terran/units/dukeb/acknowledgement/4"/>
+  <audio name="" path="sound/terran/duket/udtdth00.wav" destination="terran/units/dukeb/death/1"/>
+  <audio name="" path="sound/terran/duket/udtpss00.wav" destination="terran/units/dukeb/pissed/1"/>
+  <audio name="" path="sound/terran/duket/udtpss01.wav" destination="terran/units/dukeb/pissed/2"/>
+  <audio name="" path="sound/terran/duket/udtpss02.wav" destination="terran/units/dukeb/pissed/3"/>
+  <audio name="" path="sound/terran/duket/udtpss03.wav" destination="terran/units/dukeb/pissed/4"/>
+  <audio name="" path="sound/terran/duket/udtpss04.wav" destination="terran/units/dukeb/pissed/5"/>
+  <audio name="" path="sound/terran/duket/udtwht00.wav" destination="terran/units/dukeb/selected/1"/>
+  <audio name="" path="sound/terran/duket/udtwht01.wav" destination="terran/units/dukeb/selected/2"/>
+  <audio name="" path="sound/terran/duket/udtwht02.wav" destination="terran/units/dukeb/selected/3"/>
+  <audio name="" path="sound/terran/duket/udtwht03.wav" destination="terran/units/dukeb/selected/4"/>
+  <audio name="" path="sound/terran/duket/udtyes00.wav" destination="terran/units/dukeb/acknowledgement/1"/>
+  <audio name="" path="sound/terran/duket/udtyes01.wav" destination="terran/units/dukeb/acknowledgement/2"/>
+  <audio name="" path="sound/terran/duket/udtyes02.wav" destination="terran/units/dukeb/acknowledgement/3"/>
+  <audio name="" path="sound/terran/duket/udtyes03.wav" destination="terran/units/dukeb/acknowledgement/4"/>
+  <audio name="" path="sound/terran/firebat/tfbdth00.wav" destination="terran/units/firebat/death/1"/>
+  <audio name="" path="sound/terran/firebat/tfbdth01.wav" destination="terran/units/firebat/death/2"/>
+  <audio name="" path="sound/terran/firebat/tfbdth02.wav" destination="terran/units/firebat/death/3"/>
+  <audio name="" path="sound/terran/firebat/tfbfir00.wav" destination="terran/units/firebat/fire1"/>
+  <audio name="" path="sound/terran/firebat/tfbfir01.wav" destination="terran/units/firebat/fire2"/>
+  <audio name="" path="sound/terran/firebat/tfbpss00.wav" destination="terran/units/firebat/pissed/1"/>
+  <audio name="" path="sound/terran/firebat/tfbpss01.wav" destination="terran/units/firebat/pissed/2"/>
+  <audio name="" path="sound/terran/firebat/tfbpss02.wav" destination="terran/units/firebat/pissed/3"/>
+  <audio name="" path="sound/terran/firebat/tfbpss03.wav" destination="terran/units/firebat/pissed/4"/>
+  <audio name="" path="sound/terran/firebat/tfbpss04.wav" destination="terran/units/firebat/pissed/5"/>
+  <audio name="" path="sound/terran/firebat/tfbpss05.wav" destination="terran/units/firebat/pissed/6"/>
+  <audio name="" path="sound/terran/firebat/tfbpss06.wav" destination="terran/units/firebat/pissed/7"/>
+  <audio name="" path="sound/terran/firebat/tfbrdy00.wav" destination="terran/units/firebat/ready"/>
+  <audio name="" path="sound/terran/firebat/tfbwht00.wav" destination="terran/units/firebat/selected/1"/>
+  <audio name="" path="sound/terran/firebat/tfbwht01.wav" destination="terran/units/firebat/selected/2"/>
+  <audio name="" path="sound/terran/firebat/tfbwht02.wav" destination="terran/units/firebat/selected/3"/>
+  <audio name="" path="sound/terran/firebat/tfbwht03.wav" destination="terran/units/firebat/selected/4"/>
+  <audio name="" path="sound/terran/firebat/tfbyes00.wav" destination="terran/units/firebat/acknowledgement/1"/>
+  <audio name="" path="sound/terran/firebat/tfbyes01.wav" destination="terran/units/firebat/acknowledgement/2"/>
+  <audio name="" path="sound/terran/firebat/tfbyes02.wav" destination="terran/units/firebat/acknowledgement/3"/>
+  <audio name="" path="sound/terran/firebat/tfbyes03.wav" destination="terran/units/firebat/acknowledgement/4"/>
+  <audio name="" path="sound/terran/ghost/tghdth00.wav" destination="terran/units/ghost/death/1"/>
+  <audio name="" path="sound/terran/ghost/tghdth01.wav" destination="terran/units/ghost/death/2"/>
+  <audio name="" path="sound/terran/ghost/tghlas00.wav" destination="terran/units/ghost/las00"/>
+  <audio name="" path="sound/terran/ghost/tghlkd00.wav" destination="terran/units/ghost/lockdown"/>
+  <audio name="" path="sound/terran/ghost/tghpss00.wav" destination="terran/units/ghost/pissed/1"/>
+  <audio name="" path="sound/terran/ghost/tghpss01.wav" destination="terran/units/ghost/pissed/2"/>
+  <audio name="" path="sound/terran/ghost/tghpss02.wav" destination="terran/units/ghost/pissed/3"/>
+  <audio name="" path="sound/terran/ghost/tghpss03.wav" destination="terran/units/ghost/pissed/4"/>
+  <audio name="" path="sound/terran/ghost/tghrdy00.wav" destination="terran/units/ghost/ready"/>
+  <audio name="" path="sound/terran/ghost/tghwht00.wav" destination="terran/units/ghost/selected/1"/>
+  <audio name="" path="sound/terran/ghost/tghwht01.wav" destination="terran/units/ghost/selected/2"/>
+  <audio name="" path="sound/terran/ghost/tghwht02.wav" destination="terran/units/ghost/selected/3"/>
+  <audio name="" path="sound/Terran/GHOST/TGhWht03.wav" destination="terran/units/ghost/selected/4"/>
+  <audio name="" path="sound/terran/ghost/tghyes00.wav" destination="terran/units/ghost/acknowledgement/1"/>
+  <audio name="" path="sound/terran/ghost/tghyes01.wav" destination="terran/units/ghost/acknowledgement/2"/>
+  <audio name="" path="sound/terran/ghost/tghyes02.wav" destination="terran/units/ghost/acknowledgement/3"/>
+  <audio name="" path="sound/terran/ghost/tghyes03.wav" destination="terran/units/ghost/acknowledgement/4"/>
+  <audio name="" path="sound/bullet/tghfir00.wav" destination="terran/units/ghost/fire"/>
+  <audio name="" path="sound/terran/goliath/tgodth00.wav" destination="terran/units/goliath/death/1"/>
+  <audio name="" path="sound/terran/goliath/tgopss00.wav" destination="terran/units/goliath/pissed/1"/>
+  <audio name="" path="sound/terran/goliath/tgopss01.wav" destination="terran/units/goliath/pissed/2"/>
+  <audio name="" path="sound/terran/goliath/tgopss02.wav" destination="terran/units/goliath/pissed/3"/>
+  <audio name="" path="sound/terran/goliath/tgopss03.wav" destination="terran/units/goliath/pissed/4"/>
+  <audio name="" path="sound/terran/goliath/tgopss04.wav" destination="terran/units/goliath/pissed/5"/>
+  <audio name="" path="sound/terran/goliath/tgopss05.wav" destination="terran/units/goliath/pissed/6"/>
+  <audio name="" path="sound/Terran/GOLIATH/TGoRdy00.wav" destination="terran/units/goliath/ready"/>
+  <audio name="" path="sound/terran/goliath/tgowht00.wav" destination="terran/units/goliath/selected/1"/>
+  <audio name="" path="sound/terran/goliath/tgowht01.wav" destination="terran/units/goliath/selected/2"/>
+  <audio name="" path="sound/terran/goliath/tgowht02.wav" destination="terran/units/goliath/selected/3"/>
+  <audio name="" path="sound/terran/goliath/tgowht03.wav" destination="terran/units/goliath/selected/4"/>
+  <audio name="" path="sound/terran/goliath/tgoyes00.wav" destination="terran/units/goliath/acknowledgement/1"/>
+  <audio name="" path="sound/terran/goliath/tgoyes01.wav" destination="terran/units/goliath/acknowledgement/2"/>
+  <audio name="" path="sound/terran/goliath/tgoyes02.wav" destination="terran/units/goliath/acknowledgement/3"/>
+  <audio name="" path="sound/terran/goliath/tgoyes03.wav" destination="terran/units/goliath/acknowledgement/4"/>
+  <audio name="" path="sound/bullet/tgofi200.wav" destination="terran/units/goliath/fire2"/>
+  <audio name="" path="sound/bullet/tgofir00.wav" destination="terran/units/goliath/fire"/>
+  <audio name="" path="sound/bullet/hkmissle.wav" destination="terran/units/goliath/hkmissile"/>
+  <audio name="" path="sound/terran/kerrigan/ukedth00.wav" destination="terran/units/kerrigan/death/1"/>
+  <audio name="" path="sound/terran/kerrigan/ukedth01.wav" destination="terran/units/kerrigan/death/2"/>
+  <audio name="" path="sound/terran/kerrigan/ukepss00.wav" destination="terran/units/kerrigan/pissed/1"/>
+  <audio name="" path="sound/terran/kerrigan/ukepss01.wav" destination="terran/units/kerrigan/pissed/2"/>
+  <audio name="" path="sound/terran/kerrigan/ukepss02.wav" destination="terran/units/kerrigan/pissed/3"/>
+  <audio name="" path="sound/terran/kerrigan/ukepss03.wav" destination="terran/units/kerrigan/pissed/4"/>
+  <audio name="" path="sound/terran/kerrigan/ukepss04.wav" destination="terran/units/kerrigan/pissed/5"/>
+  <audio name="" path="sound/terran/kerrigan/ukewht00.wav" destination="terran/units/kerrigan/selected/1"/>
+  <audio name="" path="sound/terran/kerrigan/ukewht01.wav" destination="terran/units/kerrigan/selected/2"/>
+  <audio name="" path="sound/terran/kerrigan/ukewht02.wav" destination="terran/units/kerrigan/selected/3"/>
+  <audio name="" path="sound/terran/kerrigan/ukewht03.wav" destination="terran/units/kerrigan/selected/4"/>
+  <audio name="" path="sound/terran/kerrigan/ukeyes00.wav" destination="terran/units/kerrigan/acknowledgement/1"/>
+  <audio name="" path="sound/terran/kerrigan/ukeyes01.wav" destination="terran/units/kerrigan/acknowledgement/2"/>
+  <audio name="" path="sound/terran/kerrigan/ukeyes02.wav" destination="terran/units/kerrigan/acknowledgement/3"/>
+  <audio name="" path="sound/terran/kerrigan/ukeyes03.wav" destination="terran/units/kerrigan/acknowledgement/4"/>
+  <audio name="" path="sound/terran/marine/tmadth00.wav" destination="terran/units/marine/death/1"/>
+  <audio name="" path="sound/terran/marine/tmadth01.wav" destination="terran/units/marine/death/2"/>
+  <audio name="" path="sound/terran/marine/tmapss00.wav" destination="terran/units/marine/pissed/1"/>
+  <audio name="" path="sound/terran/marine/tmapss01.wav" destination="terran/units/marine/pissed/2"/>
+  <audio name="" path="sound/terran/marine/tmapss02.wav" destination="terran/units/marine/pissed/3"/>
+  <audio name="" path="sound/terran/marine/tmapss03.wav" destination="terran/units/marine/pissed/4"/>
+  <audio name="" path="sound/terran/marine/tmapss04.wav" destination="terran/units/marine/pissed/5"/>
+  <audio name="" path="sound/terran/marine/tmapss05.wav" destination="terran/units/marine/pissed/6"/>
+  <audio name="" path="sound/terran/marine/tmapss06.wav" destination="terran/units/marine/pissed/7"/>
+  <audio name="" path="sound/terran/marine/tmardy00.wav" destination="terran/units/marine/ready"/>
+  <audio name="" path="sound/terran/marine/tmasti00.wav" destination="terran/units/marine/sti00"/>
+  <audio name="" path="sound/terran/marine/tmasti01.wav" destination="terran/units/marine/sti01"/>
+  <audio name="" path="sound/terran/marine/tmawht00.wav" destination="terran/units/marine/selected/1"/>
+  <audio name="" path="sound/terran/marine/tmawht01.wav" destination="terran/units/marine/selected/2"/>
+  <audio name="" path="sound/terran/marine/tmawht02.wav" destination="terran/units/marine/selected/3"/>
+  <audio name="" path="sound/terran/marine/tmawht03.wav" destination="terran/units/marine/selected/4"/>
+  <audio name="" path="sound/terran/marine/tmayes00.wav" destination="terran/units/marine/acknowledgement/1"/>
+  <audio name="" path="sound/terran/marine/tmayes01.wav" destination="terran/units/marine/acknowledgement/2"/>
+  <audio name="" path="sound/terran/marine/tmayes02.wav" destination="terran/units/marine/acknowledgement/3"/>
+  <audio name="" path="sound/terran/marine/tmayes03.wav" destination="terran/units/marine/acknowledgement/4"/>
+  <audio name="" path="sound/bullet/tmafir00.wav" destination="terran/units/marine/fire"/>
+  <audio name="" path="sound/terran/phoenix/tphclo00.wav" destination="terran/units/wraith/clo00"/>
+  <audio name="" path="sound/terran/phoenix/tphclo01.wav" destination="terran/units/wraith/clo01"/>
+  <audio name="" path="sound/terran/phoenix/tphdth00.wav" destination="terran/units/wraith/death/1"/>
+  <audio name="" path="sound/terran/phoenix/tphpss00.wav" destination="terran/units/wraith/pissed/1"/>
+  <audio name="" path="sound/terran/phoenix/tphpss01.wav" destination="terran/units/wraith/pissed/2"/>
+  <audio name="" path="sound/terran/phoenix/tphpss02.wav" destination="terran/units/wraith/pissed/3"/>
+  <audio name="" path="sound/terran/phoenix/tphpss03.wav" destination="terran/units/wraith/pissed/4"/>
+  <audio name="" path="sound/terran/phoenix/tphpss04.wav" destination="terran/units/wraith/pissed/5"/>
+  <audio name="" path="sound/terran/phoenix/tphpss05.wav" destination="terran/units/wraith/pissed/6"/>
+  <audio name="" path="sound/terran/phoenix/tphpss06.wav" destination="terran/units/wraith/pissed/7"/>
+  <audio name="" path="sound/terran/phoenix/tphrdy00.wav" destination="terran/units/wraith/ready"/>
+  <audio name="" path="sound/terran/phoenix/tphwht00.wav" destination="terran/units/wraith/selected/1"/>
+  <audio name="" path="sound/terran/phoenix/tphwht01.wav" destination="terran/units/wraith/selected/2"/>
+  <audio name="" path="sound/terran/phoenix/tphwht02.wav" destination="terran/units/wraith/selected/3"/>
+  <audio name="" path="sound/terran/phoenix/tphwht03.wav" destination="terran/units/wraith/selected/4"/>
+  <audio name="" path="sound/terran/phoenix/tphyes00.wav" destination="terran/units/wraith/acknowledgement/1"/>
+  <audio name="" path="sound/terran/phoenix/tphyes01.wav" destination="terran/units/wraith/acknowledgement/2"/>
+  <audio name="" path="sound/terran/phoenix/tphyes02.wav" destination="terran/units/wraith/acknowledgement/3"/>
+  <audio name="" path="sound/terran/phoenix/tphyes03.wav" destination="terran/units/wraith/acknowledgement/4"/>
+  <audio name="" path="sound/bullet/tphfi100.wav" destination="terran/units/wraith/fire100"/>
+  <audio name="" path="sound/bullet/tphfi200.wav" destination="terran/units/wraith/fire200"/>
+  <audio name="" path="sound/bullet/tphfi201.wav" destination="terran/units/wraith/fire201"/>
+  <audio name="" path="sound/terran/raynorm/uradth00.wav" destination="terran/units/raynorm/death/1"/>
+  <audio name="" path="sound/Terran/RAYNORM/URaDth01.wav" destination="terran/units/raynorm/death/2"/>
+  <audio name="" path="sound/terran/raynorm/urapss00.wav" destination="terran/units/raynorm/pissed/1"/>
+  <audio name="" path="sound/terran/raynorm/urapss01.wav" destination="terran/units/raynorm/pissed/2"/>
+  <audio name="" path="sound/terran/raynorm/urapss02.wav" destination="terran/units/raynorm/pissed/3"/>
+  <audio name="" path="sound/terran/raynorm/urapss03.wav" destination="terran/units/raynorm/pissed/4"/>
+  <audio name="" path="sound/terran/raynorm/urawht00.wav" destination="terran/units/raynorm/selected/1"/>
+  <audio name="" path="sound/terran/raynorm/urawht01.wav" destination="terran/units/raynorm/selected/2"/>
+  <audio name="" path="sound/terran/raynorm/urawht02.wav" destination="terran/units/raynorm/selected/3"/>
+  <audio name="" path="sound/terran/raynorm/urawht03.wav" destination="terran/units/raynorm/selected/4"/>
+  <audio name="" path="sound/terran/raynorm/urayes00.wav" destination="terran/units/raynorm/acknowledgement/1"/>
+  <audio name="" path="sound/terran/raynorm/urayes01.wav" destination="terran/units/raynorm/acknowledgement/2"/>
+  <audio name="" path="sound/terran/raynorm/urayes02.wav" destination="terran/units/raynorm/acknowledgement/3"/>
+  <audio name="" path="sound/terran/raynorm/urayes03.wav" destination="terran/units/raynorm/acknowledgement/4"/>
+  <audio name="" path="sound/terran/raynorv/urvdth00.wav" destination="terran/units/raynorv/death/1"/>
+  <audio name="" path="sound/terran/raynorv/urvpss00.wav" destination="terran/units/raynorv/pissed/1"/>
+  <audio name="" path="sound/terran/raynorv/urvpss01.wav" destination="terran/units/raynorv/pissed/2"/>
+  <audio name="" path="sound/terran/raynorv/urvpss02.wav" destination="terran/units/raynorv/pissed/3"/>
+  <audio name="" path="sound/terran/raynorv/urvpss03.wav" destination="terran/units/raynorv/pissed/4"/>
+  <audio name="" path="sound/terran/raynorv/urvwht00.wav" destination="terran/units/raynorv/selected/1"/>
+  <audio name="" path="sound/terran/raynorv/urvwht01.wav" destination="terran/units/raynorv/selected/2"/>
+  <audio name="" path="sound/terran/raynorv/urvwht02.wav" destination="terran/units/raynorv/selected/3"/>
+  <audio name="" path="sound/terran/raynorv/urvwht03.wav" destination="terran/units/raynorv/selected/4"/>
+  <audio name="" path="sound/terran/raynorv/urvyes00.wav" destination="terran/units/raynorv/acknowledgement/1"/>
+  <audio name="" path="sound/terran/raynorv/urvyes01.wav" destination="terran/units/raynorv/acknowledgement/2"/>
+  <audio name="" path="sound/terran/raynorv/urvyes02.wav" destination="terran/units/raynorv/acknowledgement/3"/>
+  <audio name="" path="sound/terran/raynorv/urvyes03.wav" destination="terran/units/raynorv/acknowledgement/4"/>
+  <audio name="" path="sound/terran/scv/edrrep00.wav" destination="terran/units/scv/edrrep00"/>
+  <audio name="" path="sound/terran/scv/edrrep01.wav" destination="terran/units/scv/edrrep01"/>
+  <audio name="" path="sound/terran/scv/edrrep02.wav" destination="terran/units/scv/edrrep02"/>
+  <audio name="" path="sound/terran/scv/edrrep03.wav" destination="terran/units/scv/edrrep03"/>
+  <audio name="" path="sound/terran/scv/edrrep04.wav" destination="terran/units/scv/edrrep04"/>
+  <audio name="" path="sound/terran/scv/tscdth00.wav" destination="terran/units/scv/death/1"/>
+  <audio name="" path="sound/terran/scv/tscerr00.wav" destination="terran/units/scv/err00"/>
+  <audio name="" path="sound/terran/scv/tscerr01.wav" destination="terran/units/scv/err01"/>
+  <audio name="" path="sound/terran/scv/tscmin00.wav" destination="terran/units/scv/min00"/>
+  <audio name="" path="sound/terran/scv/tscmin01.wav" destination="terran/units/scv/min01"/>
+  <audio name="" path="sound/terran/scv/tscpss00.wav" destination="terran/units/scv/pissed/1"/>
+  <audio name="" path="sound/terran/scv/tscpss01.wav" destination="terran/units/scv/pissed/2"/>
+  <audio name="" path="sound/terran/scv/tscpss02.wav" destination="terran/units/scv/pissed/3"/>
+  <audio name="" path="sound/terran/scv/tscpss03.wav" destination="terran/units/scv/pissed/4"/>
+  <audio name="" path="sound/terran/scv/tscpss04.wav" destination="terran/units/scv/pissed/5"/>
+  <audio name="" path="sound/terran/scv/tscpss05.wav" destination="terran/units/scv/pissed/6"/>
+  <audio name="" path="sound/terran/scv/tscpss06.wav" destination="terran/units/scv/pissed/7"/>
+  <audio name="" path="sound/terran/scv/tscrdy00.wav" destination="terran/units/scv/ready"/>
+  <audio name="" path="sound/terran/scv/tsctra00.wav" destination="terran/units/scv/tra00"/>
+  <audio name="" path="sound/terran/scv/tscupd00.wav" destination="terran/units/scv/upd00"/>
+  <audio name="" path="sound/terran/scv/tscwht00.wav" destination="terran/units/scv/selected/1"/>
+  <audio name="" path="sound/terran/scv/tscwht01.wav" destination="terran/units/scv/selected/2"/>
+  <audio name="" path="sound/terran/scv/tscwht02.wav" destination="terran/units/scv/selected/3"/>
+  <audio name="" path="sound/terran/scv/tscwht03.wav" destination="terran/units/scv/selected/4"/>
+  <audio name="" path="sound/terran/scv/tscyes00.wav" destination="terran/units/scv/acknowledgement/1"/>
+  <audio name="" path="sound/terran/scv/tscyes01.wav" destination="terran/units/scv/acknowledgement/2"/>
+  <audio name="" path="sound/terran/scv/tscyes02.wav" destination="terran/units/scv/acknowledgement/3"/>
+  <audio name="" path="sound/terran/scv/tscyes03.wav" destination="terran/units/scv/acknowledgement/4"/>
+  <audio name="" path="sound/terran/tank/ttadth00.wav" destination="terran/units/tank/death/1"/>
+  <audio name="" path="sound/terran/tank/ttapss00.wav" destination="terran/units/tank/pissed/1"/>
+  <audio name="" path="sound/terran/tank/ttapss01.wav" destination="terran/units/tank/pissed/2"/>
+  <audio name="" path="sound/terran/tank/ttapss02.wav" destination="terran/units/tank/pissed/3"/>
+  <audio name="" path="sound/terran/tank/ttapss03.wav" destination="terran/units/tank/pissed/4"/>
+  <audio name="" path="sound/terran/tank/ttardy00.wav" destination="terran/units/tank/ready"/>
+  <audio name="" path="sound/terran/tank/ttatra00.wav" destination="terran/units/tank/tra00"/>
+  <audio name="" path="sound/terran/tank/ttatra01.wav" destination="terran/units/tank/tra01"/>
+  <audio name="" path="sound/terran/tank/ttawht00.wav" destination="terran/units/tank/selected/1"/>
+  <audio name="" path="sound/terran/tank/ttawht01.wav" destination="terran/units/tank/selected/2"/>
+  <audio name="" path="sound/terran/tank/ttawht02.wav" destination="terran/units/tank/selected/3"/>
+  <audio name="" path="sound/terran/tank/ttawht03.wav" destination="terran/units/tank/selected/4"/>
+  <audio name="" path="sound/terran/tank/ttayes00.wav" destination="terran/units/tank/acknowledgement/1"/>
+  <audio name="" path="sound/terran/tank/ttayes01.wav" destination="terran/units/tank/acknowledgement/2"/>
+  <audio name="" path="sound/terran/tank/ttayes02.wav" destination="terran/units/tank/acknowledgement/3"/>
+  <audio name="" path="sound/terran/tank/ttayes03.wav" destination="terran/units/tank/acknowledgement/4"/>
+  <audio name="" path="sound/bullet/ttafi200.wav" destination="terran/units/tank/fire2"/>
+  <audio name="" path="sound/Bullet/TTaFir00.wav" destination="terran/units/tank/fire"/>
+  <audio name="" path="sound/bullet/TTaHi200.wav" destination="terran/units/tank/hit2"/>
+  <audio name="" path="sound/bullet/TTahit00.wav" destination="terran/units/tank/hit"/>
+  <audio name="" path="sound/terran/vessel/tvedef00.wav" destination="terran/units/science vessel/def00"/>
+  <audio name="" path="sound/terran/vessel/tvedth00.wav" destination="terran/units/science vessel/death/1"/>
+  <audio name="" path="sound/terran/vessel/tveemp00.wav" destination="terran/units/science vessel/emp00"/>
+  <audio name="" path="sound/terran/vessel/tveirr00.wav" destination="terran/units/science vessel/irr00"/>
+  <audio name="" path="sound/terran/vessel/tvepss00.wav" destination="terran/units/science vessel/pissed/1"/>
+  <audio name="" path="sound/terran/vessel/tvepss01.wav" destination="terran/units/science vessel/pissed/2"/>
+  <audio name="" path="sound/terran/vessel/tvepss02.wav" destination="terran/units/science vessel/pissed/3"/>
+  <audio name="" path="sound/terran/vessel/tvepss03.wav" destination="terran/units/science vessel/pissed/4"/>
+  <audio name="" path="sound/terran/vessel/tvepss04.wav" destination="terran/units/science vessel/pissed/5"/>
+  <audio name="" path="sound/terran/vessel/tvepss05.wav" destination="terran/units/science vessel/pissed/6"/>
+  <audio name="" path="sound/terran/vessel/tvepss06.wav" destination="terran/units/science vessel/pissed/7"/>
+  <audio name="" path="sound/terran/vessel/tverdy00.wav" destination="terran/units/science vessel/ready"/>
+  <audio name="" path="sound/terran/vessel/tvewht00.wav" destination="terran/units/science vessel/selected/1"/>
+  <audio name="" path="sound/terran/vessel/tvewht01.wav" destination="terran/units/science vessel/selected/2"/>
+  <audio name="" path="sound/terran/vessel/tvewht02.wav" destination="terran/units/science vessel/selected/3"/>
+  <audio name="" path="sound/terran/vessel/tvewht03.wav" destination="terran/units/science vessel/selected/4"/>
+  <audio name="" path="sound/terran/vessel/tveyes00.wav" destination="terran/units/science vessel/acknowledgement/1"/>
+  <audio name="" path="sound/terran/vessel/tveyes01.wav" destination="terran/units/science vessel/acknowledgement/2"/>
+  <audio name="" path="sound/terran/vessel/tveyes02.wav" destination="terran/units/science vessel/acknowledgement/3"/>
+  <audio name="" path="sound/terran/vessel/tveyes03.wav" destination="terran/units/science vessel/acknowledgement/4"/>
+  <audio name="" path="sound/terran/vulture/tvudth00.wav" destination="terran/units/vulture/death/1"/>
+  <audio name="" path="sound/terran/vulture/tvumin00.wav" destination="terran/units/vulture/min00"/>
+  <audio name="" path="sound/terran/vulture/tvumin01.wav" destination="terran/units/vulture/min01"/>
+  <audio name="" path="sound/terran/vulture/tvupss00.wav" destination="terran/units/vulture/pissed/1"/>
+  <audio name="" path="sound/terran/vulture/tvupss01.wav" destination="terran/units/vulture/pissed/2"/>
+  <audio name="" path="sound/terran/vulture/tvupss02.wav" destination="terran/units/vulture/pissed/3"/>
+  <audio name="" path="sound/terran/vulture/tvupss03.wav" destination="terran/units/vulture/pissed/4"/>
+  <audio name="" path="sound/terran/vulture/tvurdy00.wav" destination="terran/units/vulture/ready"/>
+  <audio name="" path="sound/terran/vulture/tvuwht00.wav" destination="terran/units/vulture/selected/1"/>
+  <audio name="" path="sound/terran/vulture/tvuwht01.wav" destination="terran/units/vulture/selected/2"/>
+  <audio name="" path="sound/terran/vulture/tvuwht02.wav" destination="terran/units/vulture/selected/3"/>
+  <audio name="" path="sound/terran/vulture/tvuwht03.wav" destination="terran/units/vulture/selected/4"/>
+  <audio name="" path="sound/terran/vulture/tvuyes00.wav" destination="terran/units/vulture/acknowledgement/1"/>
+  <audio name="" path="sound/terran/vulture/tvuyes01.wav" destination="terran/units/vulture/acknowledgement/2"/>
+  <audio name="" path="sound/terran/vulture/tvuyes02.wav" destination="terran/units/vulture/acknowledgement/3"/>
+  <audio name="" path="sound/terran/vulture/tvuyes03.wav" destination="terran/units/vulture/acknowledgement/4"/>
+  <audio name="" path="sound/bullet/tvufir00.wav" destination="terran/units/vulture/fire"/>
+  <audio name="" path="sound/bullet/tvuhit00.wav" destination="terran/units/vulture/hit"/>
+  <audio name="" path="sound/bullet/tvuhit01.wav" destination="terran/units/vulture/hit1"/>
+  <audio name="" path="sound/bullet/tvuhit02.wav" destination="terran/units/vulture/hit2"/>
+  <audio name="" path="sound/terran/bldg/tacwht00.wav" destination="terran/units/academy"/>
+  <audio name="" path="sound/terran/bldg/tclwht00.wav" destination="terran/units/armory"/>
+  <audio name="" path="sound/terran/bldg/tcssca00.wav" destination="terran/units/science facility"/>
+  <audio name="" path="sound/Terran/bldg/tcswht00.wav" destination="terran/units/comsat station"/>
+  <audio name="" path="sound/terran/bldg/tddwht00.wav" destination="terran/units/control tower"/>
+  <audio name="" path="sound/terran/bldg/tglwht00.wav" destination="terran/units/covert ops"/>
+  <audio name="" path="sound/terran/bldg/tmswht00.wav" destination="terran/units/machine shop"/>
+  <audio name="" path="sound/terran/bldg/tmtwht00.wav" destination="terran/units/missile turret"/>
+  <audio name="" path="sound/terran/bldg/tnswht00.wav" destination="terran/units/nuclear silo"/>
+  <audio name="" path="sound/terran/bldg/tpgwht00.wav" destination="terran/units/supply depot"/>
+  <audio name="" path="sound/terran/bldg/tplwht00.wav" destination="terran/units/bunker"/>
+  <audio name="" path="sound/terran/bldg/trewht00.wav" destination="terran/units/refinery"/>
+  <audio name="" path="sound/terran/bldg/trfwht00.wav" destination="terran/units/rf"/>
+  <audio name="" path="sound/terran/bldg/trlwht00.wav" destination="terran/units/factory"/>
+  <audio name="" path="sound/terran/bldg/twpwht00.wav" destination="terran/units/engineering bay"/>
+  <audio name="" path="sound/bullet/tnsfir00.wav" destination="terran/units/nuclear silo/fire"/>
+  <audio name="" path="sound/bullet/tnshit00.wav" destination="terran/units/nuclear silo/hit"/>
+  <audio name="" path="sound/bullet/tscfir00.wav" destination="terran/units/tscfir00"/>
 </xml>
