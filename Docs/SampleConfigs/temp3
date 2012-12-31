@@ -251,8 +251,8 @@
   <audio name="death1" path="sound/terran/scv/tscdth00.wav" destination="terran/units/scv/death/1"/>
   <audio name="error1" path="sound/terran/scv/tscerr00.wav" destination="terran/units/scv/err00"/>
   <audio name="error2" path="sound/terran/scv/tscerr01.wav" destination="terran/units/scv/err01"/>
-  <audio name="" path="sound/terran/scv/tscmin00.wav" destination="terran/units/scv/min00"/>
-  <audio name="" path="sound/terran/scv/tscmin01.wav" destination="terran/units/scv/min01"/>
+  <audio name="min001" path="sound/terran/scv/tscmin00.wav" destination="terran/units/scv/min00"/>
+  <audio name="min012" path="sound/terran/scv/tscmin01.wav" destination="terran/units/scv/min01"/>
   <audio name="pissed1" path="sound/terran/scv/tscpss00.wav" destination="terran/units/scv/pissed/1"/>
   <audio name="pissed2" path="sound/terran/scv/tscpss01.wav" destination="terran/units/scv/pissed/2"/>
   <audio name="pissed3" path="sound/terran/scv/tscpss02.wav" destination="terran/units/scv/pissed/3"/>
@@ -312,8 +312,8 @@
   <audio name="acknowledgement3" path="sound/terran/vessel/tveyes02.wav" destination="terran/units/science vessel/acknowledgement/3"/>
   <audio name="acknowledgement4" path="sound/terran/vessel/tveyes03.wav" destination="terran/units/science vessel/acknowledgement/4"/>
   <audio name="death1" path="sound/terran/vulture/tvudth00.wav" destination="terran/units/vulture/death/1"/>
-  <audio name="" path="sound/terran/vulture/tvumin00.wav" destination="terran/units/vulture/min00"/>
-  <audio name="" path="sound/terran/vulture/tvumin01.wav" destination="terran/units/vulture/min01"/>
+  <audio name="min001" path="sound/terran/vulture/tvumin00.wav" destination="terran/units/vulture/min00"/>
+  <audio name="min012" path="sound/terran/vulture/tvumin01.wav" destination="terran/units/vulture/min01"/>
   <audio name="pissed1" path="sound/terran/vulture/tvupss00.wav" destination="terran/units/vulture/pissed/1"/>
   <audio name="pissed2" path="sound/terran/vulture/tvupss01.wav" destination="terran/units/vulture/pissed/2"/>
   <audio name="pissed3" path="sound/terran/vulture/tvupss02.wav" destination="terran/units/vulture/pissed/3"/>
