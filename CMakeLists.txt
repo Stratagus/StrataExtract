@@ -33,7 +33,9 @@ set (SOURCE_DIR "./Source")
 set (ARCHIVES_DIR ${SOURCE_DIR}/Archives)
 set (CONVERSION_DIR ${SOURCE_DIR}/Conversion)
 set (CONFIGURATION_DIR ${SOURCE_DIR}/Configuration)
-set (IMAGECONVERSION_DIR ${CONVERSION_DIR}/Images)
+set (AUDIOCONVERSION_DIR ${CONVERSION_DIR}/Audio)
+set (IMAGECONVERSION_DIR ${CONVERSION_DIR}/Image)
+set (VIDEOCONVERSION_DIR ${CONVERSION_DIR}/Video)
 set (RUNNER_DIR ${SOURCE_DIR}/AssetManager)
 set (UNITTEST_DIR "./UnitTesting")
 
@@ -73,14 +75,24 @@ set(StrataExtractArchives-Source
     ${ARCHIVES_DIR}/GZIP/GZIPArchive.cpp
    )
     
-set(StrataExtractAudioConversion-Source)
+set(StrataExtractAudioConversion-Source
+    ${AUDIOCONVERSION_DIR}/StrataAudio.hpp
+    ${AUDIOCONVERSION_DIR}/StrataAudio.cpp
+    ${AUDIOCONVERSION_DIR}/Libav/AudioLibav.hpp
+    ${AUDIOCONVERSION_DIR}/Libav/AudioLibav.cpp
+   )
 set(StrataExtractImageConversion-Source
     ${IMAGECONVERSION_DIR}/StrataImage.hpp
     ${IMAGECONVERSION_DIR}/StrataImage.cpp
     ${IMAGECONVERSION_DIR}/ImageMagick/MagickImage.hpp
     ${IMAGECONVERSION_DIR}/ImageMagick/MagickImage.cpp
    )
-set(StrataExtractVideoConversion-Source)
+set(StrataExtractVideoConversion-Source
+    ${VIDEOCONVERSION_DIR}/StrataVideo.hpp
+    ${VIDEOCONVERSION_DIR}/StrataVideo.cpp
+    ${VIDEOCONVERSION_DIR}/Libav/VideoLibav.hpp
+    ${VIDEOCONVERSION_DIR}/Libav/VideoLibav.cpp
+   )
 set(StrataExtractGraphicalInterface-Source)
 
 
@@ -95,7 +107,7 @@ source_group(GUI FILES ${StrataExtractGraphicalInterface})
 source_group(Archives FILES ${StrataExtractArchives-Source})
 source_group(Conversion FILES)
 source_group(Conversion\\Audio FILES ${StrataExtractAudioConversion-Source})
-source_group(Conversoin\\Image FILES ${StrataExtractImageConversion-Source})
+source_group(Conversion\\Image FILES ${StrataExtractImageConversion-Source})
 source_group(Conversion\\Video FILES ${StrataExtractVideoConversion-Source})
 
 

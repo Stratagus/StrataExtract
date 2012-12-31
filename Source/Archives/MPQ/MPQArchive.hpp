@@ -3,11 +3,9 @@
 
 #define MPQArchiveType
 
-#include <boost/asio.hpp>
-#include <boost/shared_ptr.hpp>
-
 #include <boost/filesystem.hpp>
 #include <stormlib.h>
+
 
 class MPQArchive
 {

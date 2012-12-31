@@ -11,6 +11,7 @@ MPQArchive::~MPQArchive()
         this->CloseArchive();
         mpqArchive = NULL;
     }
+    
 }
 
 void MPQArchive::CreateArchive(boost::filesystem::path newArchivePath, int maxNumberOfFiles, DWORD MPQArchiveVersion)
@@ -29,24 +30,20 @@ void MPQArchive::OpenArchive(boost::filesystem::path archivePath)
     }
     if(!SFileOpenArchive(archivePath.string().c_str(), 0, 0, &mpqArchive))
     {
-        std::cerr << "Failed to open the file '" << archivePath << "'\n";
-        exit (-1);
+        throw "Failed to open the file";
     }
     
 }
 
 void MPQArchive::OpenArchive(boost::filesystem::path archivePath, boost::filesystem::path listPath)
 {
-    
-    std::cout << "Opening Archive: " << archivePath << " with Listfile: " << listPath << '\n';
     if(mpqArchive)
     {
         throw "Archive already open";
     }
     if(!SFileOpenArchive(archivePath.string().c_str(), MPQ_OPEN_NO_LISTFILE, 0, &mpqArchive))
     {
-        std::cerr << "Failed to open the file '" << archivePath << "'\n";
-        exit (-1);
+        throw "Failed to open the file";
     }
     
 }
@@ -125,7 +122,6 @@ void MPQArchive::ExtractRaw(boost::filesystem::path archiveFilePath, boost::file
     }
     else
     {
-        std::cout << "Extract: " << archiveFilePath << " to destination: " << destinationPath << '\n';
         if(!SFileExtractFile(mpqArchive, archiveFilePath.string().c_str(), destinationPath.string().c_str(), SFILE_OPEN_FROM_MPQ))
         {
            throw "Failed to extract file";
