@@ -3,6 +3,9 @@
 
 #define MPQArchiveType
 
+#include <boost/asio.hpp>
+#include <boost/shared_ptr.hpp>
+
 #include <boost/filesystem.hpp>
 #include <stormlib.h>
 
@@ -39,6 +42,7 @@ class MPQArchive
          *                               MPQ_CREATE_ARCHIVE_V4 - 4GB+ (WoW-Cataclysm)
          *  \note NA*/
         void CreateArchive(boost::filesystem::path newArchivePath, int maxNumberOfFiles, DWORD MPQArchiveVersion);
+    
         //!Open an existing MPQ Archive
         /*!  Open an existing MPQ Archive without a list file
          *  \pre MPQArchive Defined
@@ -46,6 +50,7 @@ class MPQArchive
          *  \param[in] archivePath The file path to the MPQ Archive.
          *  \note NA*/
         void OpenArchive(boost::filesystem::path archivePath);
+    
         //!Open an existing MPQ Archive
         /*!  Open an existing MPQ Archive with a list file
          *  \pre MPQArchive Defined
@@ -54,6 +59,7 @@ class MPQArchive
          *  \param[in] listPath The file path to the associated list file
          *  \note*/
         void OpenArchive(boost::filesystem::path archivePath, boost::filesystem::path listPath);
+    
         //!Use Additional list files to MPQArchive
         /*!  Add additional list files to the MPQArchive (to acheive better search performance)
          *  \pre MPQArchive must already be open
@@ -61,6 +67,7 @@ class MPQArchive
          *  \param[in] listFilePath The file path to the list file to add to the MPQArchive
          *  \note NA*/
         void ApplyListFile(boost::filesystem::path listFilePath);
+    
         //!Read file from MPQArchive
         /*!  Read a file from the archive into memory
          *  \pre
@@ -68,7 +75,18 @@ class MPQArchive
          *  \param[in] src source describ
          *  \param[out] dest dest describ
          *  \note NOT IMPLEMENTED YET*/
-        void *ReadFile(boost::filesystem::path archiveFilePath);
+        std::vector<char> *ReadFile(boost::filesystem::path archiveFilePath);
+
+    
+        //!Gets the bytesize of a file
+        /*! Gets the bytesize of a file in the MPQArchive
+         *  \pre MPQArchive must be defined and opened
+         *  \post Returns long with the size of the file
+         *  \param[in] archiveFilePath The filepath relative in the MPQArchive
+         *                             to the file to query filesize.
+         *  \note NA*/
+        unsigned long GetFileLength(boost::filesystem::path archiveFilePath);
+    
         //!Extract file to disk
         /*!  Simply extract a file to disk.
          *  \pre MPQArchive must be defined and open
@@ -80,6 +98,7 @@ class MPQArchive
          *                             (eg. ./terran1.wav)-UNIX/POSIX (eg. C:\terran1.wav)-WIN
          *  \note NA*/
         void ExtractRaw(boost::filesystem::path archiveFilePath, boost::filesystem::path destinationPath);
+    
         //!Close the MPQArchive
         /*!  Close the current MPQArchive.
          *  \pre MPQArchive must be open

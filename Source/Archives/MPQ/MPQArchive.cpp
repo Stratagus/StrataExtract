@@ -63,9 +63,58 @@ void MPQArchive::ApplyListFile(boost::filesystem::path listFilePath)
     }
 }
 
-void *ReadFile(boost::filesystem::path archiveFilePath)
+std::vector<char> *MPQArchive::ReadFile(boost::filesystem::path archiveFilePath)
 {
-    return NULL;
+    if(!mpqArchive)
+    {
+        throw "Archive not opened";
+
+    }
+    else
+    {
+        std::vector<char> *fileBuffer = new std::vector<char>;
+        
+        HANDLE fileHandle;
+        if(!SFileOpenFileEx(mpqArchive, archiveFilePath.string().c_str(), SFILE_OPEN_FROM_MPQ, &fileHandle))
+        {
+            throw "failed to open file in mpqArchive";
+        }
+        fileBuffer->resize(SFileGetFileSize(fileHandle, NULL));
+        if (!SFileReadFile(fileHandle, &fileBuffer->at(0), SFileGetFileSize(fileHandle, NULL), NULL, NULL))
+        {
+            throw "failed to read file to memory";
+        }
+        if(!SFileCloseFile(fileHandle))
+        {
+            throw "failed to close file";
+        }
+        return fileBuffer;
+
+    }
+}
+
+
+unsigned long MPQArchive::GetFileLength(boost::filesystem::path archiveFilePath)
+{
+    if(!mpqArchive)
+    {
+        throw "Archive not opened";
+    }
+    else
+    {
+        unsigned long fileLength;
+        HANDLE fileHandle;
+        if(!SFileOpenFileEx(mpqArchive, archiveFilePath.string().c_str(), SFILE_OPEN_FROM_MPQ, &fileHandle))
+        {
+            throw "failed to open file in mpqArchive";
+        }
+         fileLength = SFileGetFileSize(fileHandle, NULL);
+        if(!SFileCloseFile(fileHandle))
+        {
+            throw "could no close file";
+        }
+        return fileLength;
+    }
 }
 
 void MPQArchive::ExtractRaw(boost::filesystem::path archiveFilePath, boost::filesystem::path destinationPath)
