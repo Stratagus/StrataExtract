@@ -11,7 +11,6 @@
 #define StrataConfig_Header
 
 #include <boost/filesystem.hpp>
-#include <boost/filesystem/fstream.hpp>
 #include <boost/thread.hpp>
 #include <boost/exception/all.hpp>
 #include <boost/algorithm/string.hpp>

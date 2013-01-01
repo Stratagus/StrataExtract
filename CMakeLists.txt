@@ -20,7 +20,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules
 #inputted format maybe to OGG Vorbis(Audio) and OGG Theora(Video).
 #Magick++ (C++ Bindings to ImageMagick) allows for image conversion
 #from whatever the input type to png (Portable Network Graphic)
-find_package(Boost REQUIRED COMPONENTS system thread filesystem exception)
+find_package(Boost REQUIRED COMPONENTS system thread filesystem)
 find_package(LibXml2 REQUIRED)
 find_package(FFMPEG REQUIRED)
 find_package(Magick++ REQUIRED)
@@ -133,6 +133,7 @@ link_libraries (
     ${Magick++_LIBRARIES}
     ${FFMPEG_LIBAVCODEC_LIBRARIES}
     ${FFMPEG_LIBAVFORMAT_LIBRARIES}
+    ${FFMPEG_LIBAVUTIL_LIBRARIES}
 )
 
 # Now we define what makes our executable.  First thing is the name,
