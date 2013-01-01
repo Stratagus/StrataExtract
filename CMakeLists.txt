@@ -132,6 +132,7 @@ link_libraries (
     ${LIBXML2_LIBRARIES}
     ${Magick++_LIBRARIES}
     ${FFMPEG_LIBAVCODEC_LIBRARIES}
+    ${FFMPEG_LIBAVFORMAT_LIBRARIES}
 )
 
 # Now we define what makes our executable.  First thing is the name,
