@@ -11,7 +11,7 @@ do
 	do
 		if echo $value | grep $i > /dev/null
 		then
-			xmlstarlet ed -u "/xml/audio[@path='$value']/@name" -v $replace_string$n $filename | diff $filename - | patch $filename -
+			xmlstarlet ed -u "/xml/*[@path='$value']/@name" -v $replace_string$n $filename | diff $filename - | patch $filename -
 		else
 			n=`expr $n + 1`
 		fi
