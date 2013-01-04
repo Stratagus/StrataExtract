@@ -4,7 +4,7 @@
 #define MPQArchiveType
 
 #include <boost/filesystem.hpp>
-#include <stormlib.h>
+#include <StormLib.h>
 
 
 class MPQArchive
