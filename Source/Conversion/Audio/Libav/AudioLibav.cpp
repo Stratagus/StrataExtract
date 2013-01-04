@@ -183,8 +183,8 @@ void AudioLibav::EncodeAudio()
     
     /* put sample parameters */
 #warning VORBIS won't set bitrate
-    //c->bit_rate = audioBitRate;
-    //c->bit_rate = 320000;
+    c->bit_rate = audioBitRate;
+    c->bit_rate = 320000;
     
     
     /* check that the encoder supports s16 pcm input */
@@ -288,18 +288,11 @@ void AudioLibav::EncodeAudio()
 
 AVSampleFormat AudioLibav::Resample(AVCodec *avCodec)
 {
-    ReSampleContext *resampleContext;
+    SwrContext *resampleContext;
     
+#warning 2 = channels layout (bad)
     
-    resampleContext = av_audio_resample_init(audioChannels, audioChannels, audioSampleRate, audioSampleRate, avCodec->sample_fmts[0], audioSampleFormat, 0, 0, 0, 0);
-    //resampleContext = av_audio_resample_init(<#int output_channels#>, <#int input_channels#>, <#int output_rate#>, <#int input_rate#>, <#enum AVSampleFormat sample_fmt_out#>, <#enum AVSampleFormat sample_fmt_in#>, <#int filter_length#>, <#int log2_phase_count#>, <#int linear#>, <#double cutoff#>);
-    
-    
-    
-    /*if(!audio_resample(resampleContext, <#short *output#>, <#short *input#>, <#int nb_samples#>))
-    {
-        std::cout << "Error resampling file";
-    }*/
+    resampleContext = swr_alloc_set_opts(resampleContext, 2, avCodec->sample_fmts[0], audioSampleRate, 2, audioSampleFormat, audioSampleRate, 0, 0);
 }
 
 /* check that a given sample format is supported by the encoder */

@@ -43,6 +43,7 @@ set (UNITTEST_DIR "./UnitTesting")
 #a packaged version installed via DEB/RPM/Macports
 set (LIBRARIES_DIR "./Libraries")
 set (STORMLIB_DIR ${LIBRARIES_DIR}/StormLib)
+set (LIBAV_DIR ${LIBRARIES_DIR}/LibAV)
 
 #Include internal library directories if a package was not found
 #grab versions included with this tool.
@@ -134,6 +135,7 @@ link_libraries (
     ${FFMPEG_LIBAVCODEC_LIBRARIES}
     ${FFMPEG_LIBAVFORMAT_LIBRARIES}
     ${FFMPEG_LIBAVUTIL_LIBRARIES}
+    ${FFMPEG_LIBSWRESAMPLE_LIBRARIES}
 )
 
 # Now we define what makes our executable.  First thing is the name,

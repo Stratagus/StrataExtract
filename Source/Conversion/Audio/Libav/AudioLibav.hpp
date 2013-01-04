@@ -5,8 +5,8 @@
 extern "C"
 {
     #include <libavcodec/avcodec.h>
-    #include <libavformat/avformat.h>  
-    
+    #include <libavformat/avformat.h> 
+    #include <libswresample/swresample.h>
 }
 
 #define INBUF_SIZE 4096
@@ -33,7 +33,7 @@ class AudioLibav
 
 
     protected:
-    AVSampleFormat AudioLibav::Resample(AVCodec *avCodec);
+    AVSampleFormat Resample(AVCodec *avCodec);
     
     int audioSampleRate;
     int audioBitRate;
