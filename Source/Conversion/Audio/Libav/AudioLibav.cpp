@@ -2,6 +2,12 @@
 AudioLibav::AudioLibav()
 {
     audio = NULL;
+    
+    //If no values are specified assume these values.
+    audioBitRate = 320000;
+    audioSampleRate = 44100;
+    audioBitsPerSample = 16;
+    audioEncoded = false;
 }
 AudioLibav::~AudioLibav()
 {
@@ -155,11 +161,11 @@ void AudioLibav::EncodeAudio()
     AVCodecContext *c= NULL;
     AVFrame *frame;
     AVPacket pkt;
-    int j, k, ret, got_output;
+    int ret, got_output;
     int buffer_size;
     FILE *f;
     uint16_t *samples;
-    float t, tincr;
+    int vectorPosition = 0;
     
     printf("Audio encoding\n");
     
@@ -173,21 +179,24 @@ void AudioLibav::EncodeAudio()
     c = avcodec_alloc_context3(codec);
     
     /* put sample parameters */
-    c->bit_rate = 128000;
+    c->bit_rate = audioBitRate;
     
     /* check that the encoder supports s16 pcm input */
+
     c->sample_fmt = AV_SAMPLE_FMT_S16;
-    if (!check_sample_fmt(codec, c->sample_fmt)) {
+    if (!check_sample_fmt(codec, c->sample_fmt))
+    {
         fprintf(stderr, "encoder does not support %s",
                 av_get_sample_fmt_name(c->sample_fmt));
         exit(1);
     }
     
     /* select other audio parameters supported by the encoder */
-    //c->sample_rate    = select_sample_rate(codec);
+    #warning use audioSampleRate instead
     c->sample_rate = 22050;
     c->channel_layout = select_channel_layout(codec);
     c->channels       = av_get_channel_layout_nb_channels(c->channel_layout);
+    c->bits_per_raw_sample = 16;
     
     /* open it */
     if (avcodec_open2(c, codec, NULL) < 0) {
@@ -203,7 +212,8 @@ void AudioLibav::EncodeAudio()
     
     /* frame containing input raw audio */
     frame = avcodec_alloc_frame();
-    if (!frame) {
+    if (!frame)
+    {
         fprintf(stderr, "could not allocate audio frame\n");
         exit(1);
     }
@@ -222,26 +232,27 @@ void AudioLibav::EncodeAudio()
                 buffer_size);
         exit(1);
     }
-    /* setup the data pointers in the AVFrame */
-    
+    //Put some initial data in the samples
+    memcpy(samples, &audio->at(vectorPosition), buffer_size);
+    vectorPosition += buffer_size;
 
-    int vectorLocation = 0;
+    
     //Get the data and encode
-    while (vectorLocation < audio->size())
+    while (vectorPosition < audio->size())
     {
         av_init_packet(&pkt);
         pkt.data = NULL; // packet data will be allocated by the encoder
         pkt.size = 0;
         
-        if((audio->size() - vectorLocation) < buffer_size)
+        if((audio->size() - vectorPosition) < buffer_size)
         {
-            memcpy(samples, &audio->at(vectorLocation), (audio->size() - vectorLocation));
-            vectorLocation += (audio->size() - vectorLocation);
+            memcpy(samples, &audio->at(vectorPosition), (audio->size() - vectorPosition));
+            vectorPosition += (audio->size() - vectorPosition);
         }
         else
         {
-            memcpy(samples, &audio->at(vectorLocation), buffer_size);
-            vectorLocation += buffer_size;
+            memcpy(samples, &audio->at(vectorPosition), buffer_size);
+            vectorPosition += buffer_size;
         }
 
         ret = avcodec_fill_audio_frame(frame, c->channels, c->sample_fmt, (const uint8_t*)samples, buffer_size, 0);
@@ -264,6 +275,8 @@ void AudioLibav::EncodeAudio()
     avcodec_free_frame(&frame);
     avcodec_close(c);
     av_free(c);
+    
+    audioEncoded = true;
 }
 
 

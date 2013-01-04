@@ -30,12 +30,15 @@ class AudioLibav
     int check_sample_fmt(AVCodec *codec, enum AVSampleFormat sample_fmt);
     int select_sample_rate(AVCodec *codec);
     int select_channel_layout(AVCodec *codec);
-    
-    #warning Change to protected
-    std::vector<char> *audio;
+    bool isEncoded();
+
 
     protected:
-    
+    int audioSampleRate;
+    int audioBitRate;
+    int audioBitsPerSample;
+    bool audioEncoded;
+    std::vector<char> *audio;
     
     private:
 };
