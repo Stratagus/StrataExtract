@@ -296,10 +296,10 @@ AVSampleFormat AudioLibav::Resample(AVCodec *avCodec)
     
     
     
-    if(!audio_resample(resampleContext, <#short *output#>, <#short *input#>, <#int nb_samples#>))
+    /*if(!audio_resample(resampleContext, <#short *output#>, <#short *input#>, <#int nb_samples#>))
     {
         std::cout << "Error resampling file";
-    }
+    }*/
 }
 
 /* check that a given sample format is supported by the encoder */
