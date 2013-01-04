@@ -5,7 +5,8 @@
 extern "C"
 {
     #include <libavcodec/avcodec.h>
-    #include <libavformat/avformat.h>   
+    #include <libavformat/avformat.h>  
+    
 }
 
 #define INBUF_SIZE 4096
@@ -25,8 +26,6 @@ class AudioLibav
     void EncodeAudio();
     void DecodeAudio(std::vector<char> *inputAudio);
     
-    void audio_encode_example(const char *filename);
-    
     int check_sample_fmt(AVCodec *codec, enum AVSampleFormat sample_fmt);
     int select_sample_rate(AVCodec *codec);
     int select_channel_layout(AVCodec *codec);
@@ -34,11 +33,16 @@ class AudioLibav
 
 
     protected:
+    AVSampleFormat AudioLibav::Resample(AVCodec *avCodec);
+    
     int audioSampleRate;
     int audioBitRate;
     int audioBitsPerSample;
+    int audioChannels;
+    
     bool audioEncoded;
     std::vector<char> *audio;
+    enum AVSampleFormat audioSampleFormat;
     
     private:
 };
