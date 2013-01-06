@@ -87,6 +87,8 @@ set(StrataExtractImageConversion-Source
     ${IMAGECONVERSION_DIR}/StrataImage.cpp
     ${IMAGECONVERSION_DIR}/ImageMagick/MagickImage.hpp
     ${IMAGECONVERSION_DIR}/ImageMagick/MagickImage.cpp
+    ${IMAGECONVERSION_DIR}/GRPImage/GRPImage.hpp
+    ${IMAGECONVERSION_DIR}/GRPImage/GRPImage.cpp
    )
 set(StrataExtractVideoConversion-Source
     ${VIDEOCONVERSION_DIR}/StrataVideo.hpp
