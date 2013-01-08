@@ -20,8 +20,25 @@ void AudioLibav::ConvertAudio(boost::filesystem::path sourceFilePath, boost::fil
     //outputBuffer = reinterpret_cast<uint8_t *>(malloc(AVCODEC_MAX_AUDIO_FRAME_SIZE));
 }
 
+
+#warning !!!NOT OPTIMIZED AT ALL!!!
 void AudioLibav::DecodeAudio(std::vector<char> *inputAudio)
 {
+    
+    //#warning Writeout
+    FILE* outfile = fopen("testraw", "wb");
+    
+    unsigned int inputAudioVectorPosition = 0;
+    unsigned int audioVectorPosition = 0;
+    
+    AVCodec *codec;
+    AVCodecContext *codecContext = NULL;
+    int length;
+    uint8_t audioBuffer[AUDIO_INBUF_SIZE + FF_INPUT_BUFFER_PADDING_SIZE];
+    AVPacket audioPacket;
+    AVFrame *decodedFrame = NULL;
+    
+    av_init_packet(&audioPacket);
     
     //Lazy instantiation
     if(!audio)
@@ -39,13 +56,11 @@ void AudioLibav::DecodeAudio(std::vector<char> *inputAudio)
     }
     else
     {
-        delete audioAttributes;
+        avformat_free_context(audioAttributes);
         audioAttributes = avformat_alloc_context();
     }
     #warning Wasteful?
     av_register_all();
-    
-    
     
 
     //Attach a pointer from the audioAttributes to the inputAudio
@@ -56,29 +71,18 @@ void AudioLibav::DecodeAudio(std::vector<char> *inputAudio)
         throw "Could not open the audioInput in audioAttributes";
     }
     
+    if(audioAttributes->nb_streams > 1)
+    {
+        throw "Cannot support more then one stream yet";
+    }
     
     //Output the audioAttributes found
-    av_dump_format(audioAttributes, 0, 0, 0);
+    //av_dump_format(audioAttributes, 0, 0, 0);
     
-    
-    //#warning Writeout
-    FILE* outfile = fopen("testraw", "wb");
-    
-    unsigned int inputAudioVectorPosition = 0;
-    unsigned int audioVectorPosition = 0;
-    
-    AVCodec *codec;
-    AVCodecContext *codecContext = NULL;
-    int length;
-    uint8_t audioBuffer[AUDIO_INBUF_SIZE + FF_INPUT_BUFFER_PADDING_SIZE];
-    AVPacket audioPacket;
-    AVFrame *decodedFrame = NULL;
-    
-    av_init_packet(&audioPacket);
     
     printf("Audio decoding\n");
     
-    codec = avcodec_find_decoder(AV_CODEC_ID_PCM_S16LE);
+    codec = avcodec_find_decoder(audioAttributes->streams[0]->codec->codec_id);
     if (!codec)
     {
         fprintf(stderr, "codec not found\n");
@@ -87,18 +91,12 @@ void AudioLibav::DecodeAudio(std::vector<char> *inputAudio)
 
     codecContext = avcodec_alloc_context3(codec);
     
-    #warning Bad assumption!!
-    codecContext->channels = 2;
+    codecContext->channels = audioAttributes->streams[0]->codec->channels;
     
     if (avcodec_open2(codecContext, codec, NULL) < 0) {
         fprintf(stderr, "could not open codec\n");
         exit(1);
     }
-    
-    
-    //audioSampleFormat = AV_SAMPLE_FMT_S16;
-    //audioSampleFormat  = codecContext->sample_fmt;
-    //audioChannelLayout = AV_CH_LAYOUT_STEREO;
     
     audioPacket.data = audioBuffer;
     audioPacket.size = AUDIO_INBUF_SIZE;
@@ -156,7 +154,6 @@ void AudioLibav::DecodeAudio(std::vector<char> *inputAudio)
                 memcpy( (audioPacket.data + audioPacket.size) , &inputAudio->at(inputAudioVectorPosition), (inputAudio->size() - inputAudioVectorPosition));
                 inputAudioVectorPosition = inputAudio->size() - 1;
                 #warning Bad Assumption?
-                //memlen = AUDIO_INBUF_SIZE - memPkt.size;
                 length = 0;
             }
             else
