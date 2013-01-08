@@ -4,6 +4,7 @@
 #include <boost/filesystem/path.hpp>
 extern "C"
 {
+    #include <libavformat/avio.h>
     #include <libavcodec/avcodec.h>
     #include <libavformat/avformat.h> 
     #include <libswresample/swresample.h>
@@ -33,16 +34,11 @@ class AudioLibav
 
 
     protected:
-    AVSampleFormat Resample(AVCodec *avCodec);
-    
-    int audioSampleRate;
-    int audioBitRate;
-    int audioBitsPerSample;
-    int audioChannels;
+    AVSampleFormat Resample(AVCodec *avCodec, AVCodecContext *avCodecContext);
+    AVFormatContext *audioAttributes;
     
     bool audioEncoded;
     std::vector<char> *audio;
-    enum AVSampleFormat audioSampleFormat;
     
     private:
 };

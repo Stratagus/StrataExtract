@@ -2,18 +2,16 @@
 AudioLibav::AudioLibav()
 {
     audio = NULL;
-    
-    //If no values are specified assume these values.
-    audioBitRate = 128000;
-    audioSampleRate = 44100;
-    audioBitsPerSample = 16;
-    audioChannels = 2;
+    audioAttributes = NULL;
     audioEncoded = false;
 }
 AudioLibav::~AudioLibav()
 {
     delete audio;
     audio = NULL;
+    if(audioAttributes)
+        delete audioAttributes;
+    audioAttributes = NULL;
 }
 void AudioLibav::ConvertAudio(boost::filesystem::path sourceFilePath, boost::filesystem::path destinationFilePath)
 {
@@ -26,7 +24,7 @@ void AudioLibav::DecodeAudio(std::vector<char> *inputAudio)
 {
     
     //Lazy instantiation
-    if(audio == NULL)
+    if(!audio)
     {
         audio = new std::vector<char>;
     }
@@ -35,8 +33,36 @@ void AudioLibav::DecodeAudio(std::vector<char> *inputAudio)
         delete audio;
         audio = new std::vector<char>;
     }
+    if(!audioAttributes)
+    {
+        audioAttributes = avformat_alloc_context();
+    }
+    else
+    {
+        delete audioAttributes;
+        audioAttributes = avformat_alloc_context();
+    }
     #warning Wasteful?
-    avcodec_register_all();
+    av_register_all();
+    
+    
+    
+
+    //Attach a pointer from the audioAttributes to the inputAudio
+    audioAttributes->pb = avio_alloc_context((unsigned char *) &inputAudio->front(), inputAudio->size(), 0, NULL, NULL, NULL, NULL);
+    
+    if (avformat_open_input(&audioAttributes, "", NULL, NULL) < 0)
+    {
+        throw "Could not open the audioInput in audioAttributes";
+    }
+    
+    
+    //Output the audioAttributes found
+    av_dump_format(audioAttributes, 0, 0, 0);
+    
+    
+    //#warning Writeout
+    FILE* outfile = fopen("testraw", "wb");
     
     unsigned int inputAudioVectorPosition = 0;
     unsigned int audioVectorPosition = 0;
@@ -69,7 +95,10 @@ void AudioLibav::DecodeAudio(std::vector<char> *inputAudio)
         exit(1);
     }
     
-    audioSampleFormat  = codecContext->sample_fmt;
+    
+    //audioSampleFormat = AV_SAMPLE_FMT_S16;
+    //audioSampleFormat  = codecContext->sample_fmt;
+    //audioChannelLayout = AV_CH_LAYOUT_STEREO;
     
     audioPacket.data = audioBuffer;
     audioPacket.size = AUDIO_INBUF_SIZE;
@@ -111,7 +140,7 @@ void AudioLibav::DecodeAudio(std::vector<char> *inputAudio)
             audioVectorPosition += data_size_mem;
 
             //Write output to file
-            //fwrite(decoded_frame_mem->data[0], 1, data_size_mem, memoutfile);
+            fwrite(decodedFrame->data[0], 1, data_size_mem, outfile);
         }
         
         audioPacket.size -= length;
@@ -173,7 +202,7 @@ void AudioLibav::EncodeAudio()
     printf("Audio encoding\n");
     
     /* find the MP2 encoder */
-    codec = avcodec_find_encoder(AV_CODEC_ID_VORBIS);
+    codec = avcodec_find_encoder(AV_CODEC_ID_MP2);
     if (!codec) {
         fprintf(stderr, "codec not found\n");
         exit(1);
@@ -182,18 +211,16 @@ void AudioLibav::EncodeAudio()
     c = avcodec_alloc_context3(codec);
     
     /* put sample parameters */
-#warning VORBIS won't set bitrate
-    c->bit_rate = audioBitRate;
-    c->bit_rate = 320000;
+    c->bit_rate = 128000;
     
     
     /* check that the encoder supports s16 pcm input */
     
-    c->sample_fmt = audioSampleFormat;
+    c->sample_fmt = AV_SAMPLE_FMT_S16;
     if (!check_sample_fmt(codec, c->sample_fmt))
     {
-        fprintf(stderr, "encoder does not support %s Resampling..", av_get_sample_fmt_name(c->sample_fmt));
-        c->sample_fmt = Resample(codec);
+        fprintf(stderr, "encoder does not support %s Resampling..\n", av_get_sample_fmt_name(c->sample_fmt));
+        c->sample_fmt = Resample(codec, c);
         exit(-1);
     }
     
@@ -210,7 +237,7 @@ void AudioLibav::EncodeAudio()
         exit(1);
     }
     
-    f = fopen("encoded.ogg", "wb");
+    f = fopen("encoded.mp2", "wb");
     if (!f) {
         //fprintf(stderr, "could not open %s\n", filename);
         exit(1);
@@ -230,8 +257,7 @@ void AudioLibav::EncodeAudio()
     
     /* the codec gives us the frame size, in samples,
      * we calculate the size of the samples buffer in bytes */
-    buffer_size = av_samples_get_buffer_size(NULL, c->channels, c->frame_size,
-                                             c->sample_fmt, 0);
+    buffer_size = av_samples_get_buffer_size(NULL, c->channels, c->frame_size, c->sample_fmt, 0);
     samples = reinterpret_cast<uint16_t *>(av_malloc(buffer_size));
     if (!samples) {
         fprintf(stderr, "could not allocate %d bytes for samples buffer\n",
@@ -286,13 +312,39 @@ void AudioLibav::EncodeAudio()
     audioEncoded = true;
 }
 
-AVSampleFormat AudioLibav::Resample(AVCodec *avCodec)
+AVSampleFormat AudioLibav::Resample(AVCodec *avCodec, AVCodecContext *avCodecContext)
 {
-    SwrContext *resampleContext;
+    SwrContext *resampleContext = NULL;
+    uint8_t **inputBuffer = NULL;
+    uint8_t **outputBuffer= NULL;
     
-#warning 2 = channels layout (bad)
+    int ret, dst_nb_samples, max_dst_nb_samples;
+    int sourceNumberofChannels;
     
-    resampleContext = swr_alloc_set_opts(resampleContext, 2, avCodec->sample_fmts[0], audioSampleRate, 2, audioSampleFormat, audioSampleRate, 0, 0);
+    int audioVectorPosition = 0;
+    int resampledAudioVectorPosition = 0;
+    
+    int numberOfPlanes;
+    
+    std::vector<char> *resampledAudio = new std::vector<char>;
+    
+    
+    #warning Remove AV_SAMPLE_FMT_FLT to dynamic instead
+    /*resampleContext = swr_alloc_set_opts(resampleContext, audioChannelLayout,
+                                         AV_SAMPLE_FMT_FLT, audioSampleRate,
+                                         audioChannelLayout, audioSampleFormat,
+                                         audioSampleRate, 0, 0);*/
+    if((ret = swr_init(resampleContext)) < 0)
+    {
+        std::cout << "Could not init resampler context\n";
+        exit(-1);
+    }
+    
+    //sourceNumberofChannels = av_get_channel_layout_nb_channels(audioChannelLayout);
+    
+    
+
+
 }
 
 /* check that a given sample format is supported by the encoder */
