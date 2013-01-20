@@ -106,6 +106,7 @@ void AudioFFmpeg::DecodeAudio(std::vector<char> *inputAudio)
 
     while (audioPacket.size > 0)
     {
+        std::cout << "Packet Size: " << audioPacket.size << '\n';
         int got_frame_mem = 0;
         
         if(!decodedFrame)
@@ -149,12 +150,19 @@ void AudioFFmpeg::DecodeAudio(std::vector<char> *inputAudio)
             memmove(audioBuffer, audioPacket.data, audioPacket.size);
             audioPacket.data = audioBuffer;
             //std::cout << "Mempacket data: " << memPkt.data << "   MemPacket size: " << memPkt.size << "    memAUDIO BUFF - size: " << AUDIO_INBUF_SIZE - memPkt.size;
+            
+            std::cout << "Incoming Size: " << inputAudio->size() << " InputVectorPos: " << inputAudioVectorPosition << '\n';
             if((inputAudio->size() - inputAudioVectorPosition) < (AUDIO_INBUF_SIZE - audioPacket.size))
             {
                 memcpy( (audioPacket.data + audioPacket.size) , &inputAudio->at(inputAudioVectorPosition), (inputAudio->size() - inputAudioVectorPosition));
+                length = ((inputAudio->size() - 1) - inputAudioVectorPosition) - audioPacket.size;
                 inputAudioVectorPosition = inputAudio->size() - 1;
                 #warning Bad Assumption?
-                length = 0;
+                if(audioPacket.size == 1)
+                {
+                    break;
+                }
+                
             }
             else
             {
