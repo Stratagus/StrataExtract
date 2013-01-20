@@ -1,5 +1,5 @@
-#ifndef AudioLibav_Header
-#define AudioLibav_Header
+#ifndef AudioFFmpeg_Header
+#define AudioFFmpeg_Header
 
 #include <boost/filesystem/path.hpp>
 extern "C"
@@ -18,11 +18,11 @@ extern "C"
 #define SAMPLE_SIZE 6144
 
 
-class AudioLibav
+class AudioFFmpeg
 {
     public:
-    AudioLibav();
-    ~AudioLibav();
+    AudioFFmpeg();
+    ~AudioFFmpeg();
     void ConvertAudio(boost::filesystem::path sourceFilePath, boost::filesystem::path destinationFilePath);
     void EncodeAudio();
     void DecodeAudio(std::vector<char> *inputAudio);

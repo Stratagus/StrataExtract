@@ -2,8 +2,8 @@
 
 #include "Archives/MPQ/MPQArchive.hpp"
 #include "Conversion/Image/ImageMagick/MagickImage.hpp"
-#include "Conversion/Audio/Libav/AudioLibav.hpp"
-#include "Conversion/Video/Libav/VideoLibav.hpp"
+#include "Conversion/Audio/FFmpeg/AudioFFmpeg.hpp"
+#include "Conversion/Video/FFmpeg/VideoFFmpeg.hpp"
 
 
 int main(int numberOfArguments, char **commandArguments)
@@ -42,7 +42,7 @@ int main(int numberOfArguments, char **commandArguments)
     //delete myImage;
     //myImage = NULL;
     
-    AudioLibav *myAudio = new AudioLibav;
+    AudioFFmpeg *myAudio = new AudioFFmpeg;
     //myAudio->DecodeAudio(myArchive->ReadFile("campaign/terran/terran02/staredit/wav/t2b00tad.wav"));
     myAudio->DecodeAudio(&vec);
     myAudio->EncodeAudio();
@@ -55,7 +55,7 @@ int main(int numberOfArguments, char **commandArguments)
     //myAudio->audio_decode_example("testraw", "test.wav");
     //myAudio->audio_encode_example("tester.mp2");
     
-    //VideoLibav *myVideo = new VideoLibav;
+    //VideoFFmpeg *myVideo = new VideoFFmpeg;
     //myVideo->video_decode_example("videorawout", "test.smk");
     
     

@@ -43,7 +43,7 @@ set (UNITTEST_DIR "./UnitTesting")
 #a packaged version installed via DEB/RPM/Macports
 set (LIBRARIES_DIR "./Libraries")
 set (STORMLIB_DIR ${LIBRARIES_DIR}/StormLib)
-set (LIBAV_DIR ${LIBRARIES_DIR}/LibAV)
+set (FFMPEG_DIR ${LIBRARIES_DIR}/FFmpeg)
 
 #Include internal library directories if a package was not found
 #grab versions included with this tool.
@@ -79,8 +79,8 @@ set(StrataExtractArchives-Source
 set(StrataExtractAudioConversion-Source
     ${AUDIOCONVERSION_DIR}/StrataAudio.hpp
     ${AUDIOCONVERSION_DIR}/StrataAudio.cpp
-    ${AUDIOCONVERSION_DIR}/Libav/AudioLibav.hpp
-    ${AUDIOCONVERSION_DIR}/Libav/AudioLibav.cpp
+    ${AUDIOCONVERSION_DIR}/FFmpeg/AudioFFmpeg.hpp
+    ${AUDIOCONVERSION_DIR}/FFmpeg/AudioFFmpeg.cpp
    )
 set(StrataExtractImageConversion-Source
     ${IMAGECONVERSION_DIR}/StrataImage.hpp
@@ -93,8 +93,8 @@ set(StrataExtractImageConversion-Source
 set(StrataExtractVideoConversion-Source
     ${VIDEOCONVERSION_DIR}/StrataVideo.hpp
     ${VIDEOCONVERSION_DIR}/StrataVideo.cpp
-    ${VIDEOCONVERSION_DIR}/Libav/VideoLibav.hpp
-    ${VIDEOCONVERSION_DIR}/Libav/VideoLibav.cpp
+    ${VIDEOCONVERSION_DIR}/FFmpeg/VideoFFmpeg.hpp
+    ${VIDEOCONVERSION_DIR}/FFmpeg/VideoFFmpeg.cpp
    )
 set(StrataExtractGraphicalInterface-Source)
 

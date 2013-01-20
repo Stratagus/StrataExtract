@@ -1,11 +1,11 @@
-#include "AudioLibav.hpp"
-AudioLibav::AudioLibav()
+#include "AudioFFmpeg.hpp"
+AudioFFmpeg::AudioFFmpeg()
 {
     audio = NULL;
     audioAttributes = NULL;
     audioEncoded = false;
 }
-AudioLibav::~AudioLibav()
+AudioFFmpeg::~AudioFFmpeg()
 {
     delete audio;
     audio = NULL;
@@ -13,7 +13,7 @@ AudioLibav::~AudioLibav()
         delete audioAttributes;
     audioAttributes = NULL;
 }
-void AudioLibav::ConvertAudio(boost::filesystem::path sourceFilePath, boost::filesystem::path destinationFilePath)
+void AudioFFmpeg::ConvertAudio(boost::filesystem::path sourceFilePath, boost::filesystem::path destinationFilePath)
 {
     //Defered from pattern here
     //std::cout <<
@@ -22,7 +22,7 @@ void AudioLibav::ConvertAudio(boost::filesystem::path sourceFilePath, boost::fil
 
 
 #warning !!!NOT OPTIMIZED AT ALL!!!
-void AudioLibav::DecodeAudio(std::vector<char> *inputAudio)
+void AudioFFmpeg::DecodeAudio(std::vector<char> *inputAudio)
 {
     
     //#warning Writeout
@@ -175,7 +175,7 @@ void AudioLibav::DecodeAudio(std::vector<char> *inputAudio)
     avcodec_free_frame(&decodedFrame);
 
 }
-void AudioLibav::EncodeAudio()
+void AudioFFmpeg::EncodeAudio()
 {
     if(!audio)
     {
@@ -309,7 +309,7 @@ void AudioLibav::EncodeAudio()
     audioEncoded = true;
 }
 
-AVSampleFormat AudioLibav::Resample(AVCodec *avCodec, AVCodecContext *avCodecContext)
+AVSampleFormat AudioFFmpeg::Resample(AVCodec *avCodec, AVCodecContext *avCodecContext)
 {
     SwrContext *resampleContext = NULL;
     uint8_t **inputBuffer = NULL;
@@ -345,7 +345,7 @@ AVSampleFormat AudioLibav::Resample(AVCodec *avCodec, AVCodecContext *avCodecCon
 }
 
 /* check that a given sample format is supported by the encoder */
-int AudioLibav::check_sample_fmt(AVCodec *codec, enum AVSampleFormat sample_fmt)
+int AudioFFmpeg::check_sample_fmt(AVCodec *codec, enum AVSampleFormat sample_fmt)
 {
     const enum AVSampleFormat *p = codec->sample_fmts;
     
@@ -360,7 +360,7 @@ int AudioLibav::check_sample_fmt(AVCodec *codec, enum AVSampleFormat sample_fmt)
 }
 
 /* just pick the highest supported samplerate */
-int AudioLibav::select_sample_rate(AVCodec *codec)
+int AudioFFmpeg::select_sample_rate(AVCodec *codec)
 {
     const int *p;
     int best_samplerate = 0;
@@ -377,7 +377,7 @@ int AudioLibav::select_sample_rate(AVCodec *codec)
 }
 
 /* select layout with the highest channel count */
-int AudioLibav::select_channel_layout(AVCodec *codec)
+int AudioFFmpeg::select_channel_layout(AVCodec *codec)
 {
     const uint64_t *p;
     uint64_t best_ch_layout = 0;
