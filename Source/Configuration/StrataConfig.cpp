@@ -94,6 +94,21 @@ void StrataConfig::findGameEdition()
         
         
         std::cout << "Number of Children: " << xmlChildElementCount(currentNodePointer) << '\n';
+        xmlNodePtr currentChildPointer = currentNodePointer->children->next;
+        
+        for(int numberOfFiles = 0; numberOfFiles < xmlChildElementCount(currentNodePointer); numberOfFiles++)
+        {
+            xmlAttr* childattribute = currentChildPointer->properties;
+            while(childattribute && childattribute->name && childattribute->children)
+            {
+                xmlChar* childvalue = xmlNodeListGetString(currentChildPointer->doc, childattribute->children, 1);
+                std::cout << "Childs Property: " << childvalue << '\n';
+                //do something with value
+                xmlFree(childvalue);
+                childattribute = childattribute->next;
+            }
+            currentChildPointer = currentChildPointer->next;
+        }
         //if(xmlChildElementCount(currentNodePointer) > 0)
         //{
         //    std::cout << "Child Content: " << currentNodePointer->children->next->name << '\n';
