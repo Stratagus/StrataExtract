@@ -51,12 +51,12 @@ void StrataConfig::readConfig(boost::filesystem::path configurationPath)
         }
         
         //free the document
-        xmlFreeDoc(configurationDocument);
-        configurationDocument = NULL;
+        //xmlFreeDoc(configurationDocument);
+        //configurationDocument = NULL;
         
         //Free the global variables that may
         //have been allocated by the parser.
-        xmlCleanupParser();
+        //xmlCleanupParser();
         
         findGameEdition();
         
@@ -69,9 +69,22 @@ void StrataConfig::findGameEdition()
     std::string gameHash = "3957d7ac483d7fbbd543e0cd70633bc9c57adfad";
     xmlXPathObjectPtr gameVersions = xmlXPathEval((const xmlChar *) "//Version", configXPathContext);
     std::cout << "Game Versions in Config: " << gameVersions->nodesetval->nodeNr << '\n';
-    std::cout << "First object in versions: " << gameVersions->nodesetval->nodeTab[1]->properties->next->name << '\n';
+    //std::cout << "First object in versions: " << gameVersions->nodesetval->nodeTab[1]->properties->next->name << '\n';
 
-    std::cout << "Property: " << xmlGetProp(gameVersions->nodesetval->nodeTab[1], (const xmlChar *) "//name") << '\n';
+    //std::cout << "Property: " << xmlGetProp(gameVersions->nodesetval->nodeTab[1], (const xmlChar *) "//name") << '\n';
+    //xmlNodeGetContent(<#xmlNodePtr cur#>)
+    //std::cout << "XMLContent: " << xmlNodeGetContent(gameVersions->nodesetval->nodeTab[1])
+    
+    
+    xmlAttr* attribute = gameVersions->nodesetval->nodeTab[1]->properties;
+    while(attribute && attribute->name && attribute->children)
+    {
+        xmlChar* value = xmlNodeListGetString(gameVersions->nodesetval->nodeTab[1]->doc, attribute->children, 1);
+        std::cout << "something: " << value << '\n';
+        //do something with value
+        xmlFree(value);
+        attribute = attribute->next;
+    }
     
     //print_xpath(gameVersions->nodesetval);
 }
