@@ -91,11 +91,13 @@ void StrataConfig::findGameEdition()
             attribute = attribute->next;
         }
         
+        
+        
         std::cout << "Number of Children: " << xmlChildElementCount(currentNodePointer) << '\n';
         //if(xmlChildElementCount(currentNodePointer) > 0)
-        {
-            std::cout << "Child Content: " << currentNodePointer->children->next->name << '\n';
-        }
+        //{
+        //    std::cout << "Child Content: " << currentNodePointer->children->next->name << '\n';
+        //}
     }
     
 
@@ -103,74 +105,6 @@ void StrataConfig::findGameEdition()
     //print_xpath(gameVersions->nodesetval);
 }
 
-/*void StrataConfig::oldreadConfig(boost::filesystem::path configurationPath)
-{
-    if(!boost::filesystem::exists(configurationPath))
-    {
-        std::cerr << "File not found " << configurationPath;
-    }
-    else
-    {
-        //The XML document file
-        xmlDoc *configurationDocument = NULL;
-        
-        //The root of our configuration tree
-        configurationDocument = xmlReadFile(configurationPath.string().c_str(), NULL, 1);
-        if(configurationDocument == NULL)
-        {
-            std::cerr << "Error: Unable to parse file: " << configurationPath << '\n';
-            exit(-1);
-        }
-        
-        //Ensure that the file we read is a valid StrataExtractConfig and not simply a XML file.
-        if(xmlStrcmp(xmlDocGetRootElement(configurationDocument)->name, (const xmlChar *) "StrataExtractConfig"))
-        {
-            std::cerr << "Document is not a StrataExtraction Config\n";
-        }
-        else
-        {
-            xmlXPathContextPtr xPathContext = xmlXPathNewContext(configurationDocument);
-            if(xPathContext == NULL)
-            {
-                std::cout << "Error: Unable to create xpath context." << '\n';
-                exit(-1);
-            }
-            
-            audioAssetObjects = xmlXPathEval((const xmlChar *) "//audio", xPathContext);
-            mapAssetObjects = xmlXPathEval((const xmlChar *) "//map", xPathContext);
-            fontAssetObjects = xmlXPathEval((const xmlChar *) "//font", xPathContext);
-            videoAssetObjects = xmlXPathEval((const xmlChar *) "//video", xPathContext);
-            tilesetAssetObjects = xmlXPathEval((const xmlChar *) "//tileset", xPathContext);
-            
-            
-            //xmlNodePtr *myAudio = audioAssetObjects->nodesetval->nodeTab;
-            //std::cout <<  myAudio[1]->name;
-            
-            std::cout << "\n# of AudioAssets: " << audioAssetObjects->nodesetval->nodeNr << '\n'
-                      << "# of MapAssets: " << mapAssetObjects->nodesetval->nodeNr << '\n'
-                      << "# of FontAssets: " << fontAssetObjects->nodesetval->nodeNr << '\n'
-                      << "# of VideoAssets: " << videoAssetObjects->nodesetval->nodeNr << '\n'
-                      << "# of TileSetAssets: " << tilesetAssetObjects->nodesetval->nodeNr << '\n';
-            
-            totalObjects = audioAssetObjects->nodesetval->nodeNr
-                         + mapAssetObjects->nodesetval->nodeNr
-                         + fontAssetObjects->nodesetval->nodeNr
-                         + videoAssetObjects->nodesetval->nodeNr
-                         + tilesetAssetObjects->nodesetval->nodeNr;
-            std::cout << "Total Asset Objects: " << totalObjects;
-
-            
-            configLoaded = true;
-        }
-        
-        //free the document
-        xmlFreeDoc(configurationDocument);
-        
-        //Free the global variables that may
-        //have been allocated by the parser.
-        xmlCleanupParser();
-    }
-}*/
 
 int StrataConfig::GetCPUCores()
 {
@@ -188,6 +122,12 @@ float StrataConfig::GetProgess()
 bool StrataConfig::isConfigLoaded()
 {
     return configLoaded;
+}
+
+xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
+{
+    //SHA1 hash here
+    return NULL;
 }
 
 /*std::string StrataConfig::FindSourcePathHash(boost::filesystem::path gamePath)
