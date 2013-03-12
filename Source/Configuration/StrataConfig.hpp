@@ -59,13 +59,14 @@ class StrataConfig
     
         std::string getGameName();
     
-        void findGameEdition();
+        xmlNodePtr findGameEdition();
         void parseConfig();
     
     
         xmlChar *GetFileHash(boost::filesystem::path filePath);
     
         xmlNodePtr configurationRoot;
+        xmlNodePtr gameVersionDetected;
         xmlXPathContextPtr configXPathContext;
     
         std::string *destinationImageFormat;

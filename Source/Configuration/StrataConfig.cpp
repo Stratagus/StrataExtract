@@ -51,9 +51,11 @@ void StrataConfig::readConfig(boost::filesystem::path configurationPath)
         }
         
 
+        if(!findGameEdition())
+        {
+            throw "No valid version detected";
+        }
         
-        findGameEdition();
-        std::cout << "DONE!";
         
         //free the document
         //xmlFreeDoc(configurationDocument);
@@ -67,7 +69,7 @@ void StrataConfig::readConfig(boost::filesystem::path configurationPath)
     }
 }
 
-void StrataConfig::findGameEdition()
+xmlNodePtr StrataConfig::findGameEdition()
 {
     std::string gameHash = "3957d7ac483d7fbbd543e0cd70633bc9c57adfad";
     xmlXPathObjectPtr gameVersions = xmlXPathEval((const xmlChar *) "//Version", configXPathContext);
@@ -96,7 +98,7 @@ void StrataConfig::findGameEdition()
         std::cout << "Number of Children: " << xmlChildElementCount(currentNodePointer) << '\n';
         xmlNodePtr currentChildPointer = currentNodePointer->children->next;
         
-        for(int numberOfFiles = 0; numberOfFiles < xmlChildElementCount(currentNodePointer); numberOfFiles++)
+        while(currentChildPointer != NULL)
         {
             /*xmlAttr* childattribute = currentChildPointer->properties;
             while(childattribute && childattribute->name && childattribute->children)
@@ -117,6 +119,10 @@ void StrataConfig::findGameEdition()
             std::cout << "Hash: " << xmlGetProp(currentChildPointer, (const xmlChar *) "hash") << '\n';
             std::cout << "ArchiveList: " << xmlGetProp(currentChildPointer, (const xmlChar *) "Archive") << '\n';
             
+            if(xmlStrcmp(xmlGetProp(currentChildPointer, (const xmlChar *) "hash"), GetFileHash("")))
+            {
+                return currentNodePointer;
+            }
         #warning This line probably breaks something, but I am not sure
             currentChildPointer = currentChildPointer->next->next;
         }
@@ -125,10 +131,7 @@ void StrataConfig::findGameEdition()
         //    std::cout << "Child Content: " << currentNodePointer->children->next->name << '\n';
         //}
     }
-    
-
-    
-    //print_xpath(gameVersions->nodesetval);
+    return NULL;
 }
 
 
@@ -153,7 +156,8 @@ bool StrataConfig::isConfigLoaded()
 xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
 {
     //SHA1 hash here
-    return NULL;
+    //return NULL;
+    return (xmlChar*) "2de01f59e99c0fb16d32df2d7cdd909be2bf0825";
 }
 
 /*std::string StrataConfig::FindSourcePathHash(boost::filesystem::path gamePath)
