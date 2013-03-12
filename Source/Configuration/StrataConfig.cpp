@@ -50,8 +50,9 @@ void StrataConfig::readConfig(boost::filesystem::path configurationPath)
             configXPathContext = xmlXPathNewContext(configurationDocument);
         }
         
-
-        if(!findGameVersion())
+        gameVersionDetected = FindGameVersion();
+        
+        if(!gameVersionDetected)
         {
             throw "No valid version detected";
         }
@@ -109,6 +110,37 @@ xmlNodePtr StrataConfig::FindGameVersion()
     return NULL;
 }
 
+
+bool StrataConfig::setGameMediaSourcePath(boost::filesystem::path gameMediaSourcePath)
+{
+    if(!boost::filesystem::exists(gameMediaSourcePath) || !boost::filesystem::is_directory(gameMediaSourcePath))
+    {
+        return false;
+    }
+    
+    gameMediaSource = gameMediaSourcePath;
+    return true;
+}
+bool StrataConfig::setGameMediaDestinationPath(boost::filesystem::path gameMediaDestinationPath)
+{
+    if(!boost::filesystem::exists(gameMediaDestinationPath) || !boost::filesystem::is_directory(gameMediaDestinationPath))
+    {
+        //boost::filesystem::status(<#const boost::filesystem::path &p#>)
+        return false;
+    }
+    
+    gameMediaDestination = gameMediaDestinationPath;
+    return true;
+}
+
+boost::filesystem::path StrataConfig::GameMediaSourcePath()
+{
+    return gameMediaSource;
+}
+boost::filesystem::path StrataConfig::GameMediaDestinationPath()
+{
+    return gameMediaDestination;
+}
 
 int StrataConfig::GetCPUCores()
 {

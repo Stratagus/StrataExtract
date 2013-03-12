@@ -37,9 +37,25 @@ class StrataConfig
         *  \note*/
         void readConfig(boost::filesystem::path configurationPath);
     
+        //!Returns the current Progress
+        /*!  
+         *  \pre
+         *  \post
+         *  \note*/
         float GetProgess();
+    
+        //!Checks if a game version is loaded
+        /*!
+         *  \pre
+         *  \post
+         *  \note*/
         bool isConfigLoaded();
     
+        bool setGameMediaSourcePath(boost::filesystem::path gameMediaSourcePath);
+        bool setGameMediaDestinationPath(boost::filesystem::path gameMediaDestinationPath);
+    
+        boost::filesystem::path GameMediaSourcePath();
+        boost::filesystem::path GameMediaDestinationPath();
     
         static void PrintUsage();
     //!Queries the number of CPU Cores.
@@ -71,6 +87,9 @@ class StrataConfig
     
         std::string *destinationImageFormat;
         std::string *destinationVideoFormat;
+    
+        boost::filesystem::path gameMediaSource;
+        boost::filesystem::path gameMediaDestination;
 
     private:
         static StrataConfig *ConfigurationInstance;
