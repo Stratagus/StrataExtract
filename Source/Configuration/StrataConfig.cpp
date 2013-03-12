@@ -116,12 +116,13 @@ xmlNodePtr StrataConfig::findGameEdition()
             //printf("Archive: %s \n", xmlGetProp(currentChildPointer, (const xmlChar *) "Archive") );
             
             std::cout << "Filename: " << xmlGetProp(currentChildPointer, (const xmlChar *) "name") << '\n';
-            std::cout << "Hash: " << xmlGetProp(currentChildPointer, (const xmlChar *) "hash") << '\n';
-            std::cout << "ArchiveList: " << xmlGetProp(currentChildPointer, (const xmlChar *) "Archive") << '\n';
+            //std::cout << "Hash: " << xmlGetProp(currentChildPointer, (const xmlChar *) "hash") << '\n';
+            //std::cout << "ArchiveList: " << xmlGetProp(currentChildPointer, (const xmlChar *) "Archive") << '\n';
             
-            if(xmlStrcmp(xmlGetProp(currentChildPointer, (const xmlChar *) "hash"), GetFileHash("")))
+            if(!xmlStrcmp(xmlGetProp(currentChildPointer, (const xmlChar *) "hash"), GetFileHash((char *)xmlGetProp(currentChildPointer, (const xmlChar *) "name"))))
             {
-                return currentNodePointer;
+                std::cout << "HIT!!!\n";
+                return gameVersions->nodesetval->nodeTab[numberOfVersions];
             }
         #warning This line probably breaks something, but I am not sure
             currentChildPointer = currentChildPointer->next->next;
@@ -155,6 +156,7 @@ bool StrataConfig::isConfigLoaded()
 
 xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
 {
+    std::cout << "Passed in: " << filePath << '\n';
     //SHA1 hash here
     //return NULL;
     return (xmlChar*) "2de01f59e99c0fb16d32df2d7cdd909be2bf0825";
