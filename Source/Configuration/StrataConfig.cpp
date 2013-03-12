@@ -74,7 +74,7 @@ xmlNodePtr StrataConfig::findGameEdition()
     //Jump to the <Versions> entity
     xmlXPathObjectPtr gameVersions = xmlXPathEval((const xmlChar *) "//Version", configXPathContext);
     std::cout << "Game Versions in Config: " << gameVersions->nodesetval->nodeNr << '\n';
-    bool earlierMatch = false;
+    bool fileMatch = true;
     
     //Interate through each version (<Version> entities) of the game until we hit a match or fail 
     for(int numberOfVersions = 0; numberOfVersions < (gameVersions->nodesetval->nodeNr); numberOfVersions++)
@@ -94,7 +94,7 @@ xmlNodePtr StrataConfig::findGameEdition()
         std::cout << "Number of Children: " << xmlChildElementCount(currentNodePointer) << '\n';
         xmlNodePtr currentChildPointer = currentNodePointer->children->next;
         
-        while(currentChildPointer != NULL)
+        while(currentChildPointer != NULL && fileMatch)
         {
             /*xmlAttr* childattribute = currentChildPointer->properties;
             while(childattribute && childattribute->name && childattribute->children)
@@ -119,14 +119,12 @@ xmlNodePtr StrataConfig::findGameEdition()
             if(!xmlStrcmp(xmlGetProp(currentChildPointer, (const xmlChar *) "hash"), GetFileHash((char *)xmlGetProp(currentChildPointer, (const xmlChar *) "name"))))
             {
                 std::cout << "HIT!!!\n";
-                earlierMatch = true;
                 if(currentChildPointer->next->next == NULL)
                     return gameVersions->nodesetval->nodeTab[numberOfVersions];
             }
             else
             {
-                if(earlierMatch)
-                    return NULL;
+                fileMatch = false;
             }
         #warning This line probably breaks something, but I am not sure
             currentChildPointer = currentChildPointer->next->next;
@@ -159,7 +157,7 @@ xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
     std::cout << "Passed in: " << filePath << '\n';
     //SHA1 hash here
     //return NULL;
-    return (xmlChar*) "577de9fa6db714a9e76244b98ae372ca170d7819";
+    return (xmlChar*) "2de01f59e99c0fb16d32df2d7cdd909be2bf0825";
 }
 
 /*std::string StrataConfig::FindSourcePathHash(boost::filesystem::path gamePath)
