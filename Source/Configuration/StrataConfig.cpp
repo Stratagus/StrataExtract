@@ -50,6 +50,11 @@ void StrataConfig::readConfig(boost::filesystem::path configurationPath)
             configXPathContext = xmlXPathNewContext(configurationDocument);
         }
         
+
+        
+        findGameEdition();
+        
+        
         //free the document
         //xmlFreeDoc(configurationDocument);
         //configurationDocument = NULL;
@@ -57,8 +62,6 @@ void StrataConfig::readConfig(boost::filesystem::path configurationPath)
         //Free the global variables that may
         //have been allocated by the parser.
         //xmlCleanupParser();
-        
-        findGameEdition();
         
         configLoaded = 1;
     }
@@ -75,16 +78,27 @@ void StrataConfig::findGameEdition()
     //xmlNodeGetContent(<#xmlNodePtr cur#>)
     //std::cout << "XMLContent: " << xmlNodeGetContent(gameVersions->nodesetval->nodeTab[1])
     
-    
-    xmlAttr* attribute = gameVersions->nodesetval->nodeTab[1]->properties;
-    while(attribute && attribute->name && attribute->children)
+    for(int numberOfVersions = 0; numberOfVersions < (gameVersions->nodesetval->nodeNr); numberOfVersions++)
     {
-        xmlChar* value = xmlNodeListGetString(gameVersions->nodesetval->nodeTab[1]->doc, attribute->children, 1);
-        std::cout << "something: " << value << '\n';
-        //do something with value
-        xmlFree(value);
-        attribute = attribute->next;
+        xmlNodePtr currentNodePointer = gameVersions->nodesetval->nodeTab[numberOfVersions];
+        xmlAttr* attribute = currentNodePointer->properties;
+        while(attribute && attribute->name && attribute->children)
+        {
+            xmlChar* value = xmlNodeListGetString(currentNodePointer->doc, attribute->children, 1);
+            std::cout << "Parent Property: " << value << '\n';
+            //do something with value
+            xmlFree(value);
+            attribute = attribute->next;
+        }
+        
+        std::cout << "Number of Children: " << xmlChildElementCount(currentNodePointer) << '\n';
+        //if(xmlChildElementCount(currentNodePointer) > 0)
+        {
+            std::cout << "Child Content: " << currentNodePointer->children->next->name << '\n';
+        }
     }
+    
+
     
     //print_xpath(gameVersions->nodesetval);
 }
