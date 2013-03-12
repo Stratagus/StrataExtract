@@ -32,7 +32,7 @@ void StrataConfig::readConfig(boost::filesystem::path configurationPath)
         xmlDoc *configurationDocument = NULL;
         
         //The root of our configuration tree
-        configurationDocument = xmlReadFile(configurationPath.string().c_str(), NULL, 1);
+        configurationDocument = xmlReadFile(configurationPath.string().c_str(), NULL, NULL);
         if(configurationDocument == NULL)
         {
             std::cerr << "Error: Unable to parse file: " << configurationPath << '\n';
@@ -47,85 +47,68 @@ void StrataConfig::readConfig(boost::filesystem::path configurationPath)
         else
         {
             configurationRoot = xmlDocGetRootElement(configurationDocument);
+            configXPathContext = xmlXPathNewContext(configurationDocument);
         }
-        //free the document
-        xmlFreeDoc(configurationDocument);
         
-        configurationDocument = NULL;
+
+        if(!findGameVersion())
+        {
+            throw "No valid version detected";
+        }
+        
+        
+        //free the document
+        //xmlFreeDoc(configurationDocument);
+        //configurationDocument = NULL;
+        
         //Free the global variables that may
         //have been allocated by the parser.
-        xmlCleanupParser();
+        //xmlCleanupParser();
+        
+        configLoaded = 1;
     }
 }
 
-/*void StrataConfig::oldreadConfig(boost::filesystem::path configurationPath)
+xmlNodePtr StrataConfig::findGameVersion()
 {
-    if(!boost::filesystem::exists(configurationPath))
+    //Jump to the <Versions> entity
+    xmlXPathObjectPtr gameVersions = xmlXPathEval((const xmlChar *) "//Version", configXPathContext);
+    
+    bool fileMatch = true;
+    
+    //Interate through each version (<Version> entities) of the game until we hit a match or fail 
+    for(int numberOfVersions = 0; numberOfVersions < (gameVersions->nodesetval->nodeNr); numberOfVersions++)
     {
-        std::cerr << "File not found " << configurationPath;
-    }
-    else
-    {
-        //The XML document file
-        xmlDoc *configurationDocument = NULL;
+        xmlNodePtr currentNodePointer = gameVersions->nodesetval->nodeTab[numberOfVersions];
+        xmlNodePtr currentChildPointer = currentNodePointer->children->next;
         
-        //The root of our configuration tree
-        configurationDocument = xmlReadFile(configurationPath.string().c_str(), NULL, 1);
-        if(configurationDocument == NULL)
-        {
-            std::cerr << "Error: Unable to parse file: " << configurationPath << '\n';
-            exit(-1);
-        }
+        //Reset the fileMatch flag
+        fileMatch = true;
         
-        //Ensure that the file we read is a valid StrataExtractConfig and not simply a XML file.
-        if(xmlStrcmp(xmlDocGetRootElement(configurationDocument)->name, (const xmlChar *) "StrataExtractConfig"))
+        //Start checking the <file> hashes with those in this version, if ANY fail break out
+        while(currentChildPointer != NULL && fileMatch)
         {
-            std::cerr << "Document is not a StrataExtraction Config\n";
-        }
-        else
-        {
-            xmlXPathContextPtr xPathContext = xmlXPathNewContext(configurationDocument);
-            if(xPathContext == NULL)
+            
+        #warning Potential logic error (Code Review)
+            //Compare the Hash in the current file entity with the method generated hash
+            if(!xmlStrcmp(xmlGetProp(currentChildPointer, (const xmlChar *) "hash"), GetFileHash((char *)xmlGetProp(currentChildPointer, (const xmlChar *) "name"))))
             {
-                std::cout << "Error: Unable to create xpath context." << '\n';
-                exit(-1);
+                if(currentChildPointer->next->next == NULL)
+                {
+                   return gameVersions->nodesetval->nodeTab[numberOfVersions]; 
+                }
             }
-            
-            audioAssetObjects = xmlXPathEval((const xmlChar *) "//audio", xPathContext);
-            mapAssetObjects = xmlXPathEval((const xmlChar *) "//map", xPathContext);
-            fontAssetObjects = xmlXPathEval((const xmlChar *) "//font", xPathContext);
-            videoAssetObjects = xmlXPathEval((const xmlChar *) "//video", xPathContext);
-            tilesetAssetObjects = xmlXPathEval((const xmlChar *) "//tileset", xPathContext);
-            
-            
-            //xmlNodePtr *myAudio = audioAssetObjects->nodesetval->nodeTab;
-            //std::cout <<  myAudio[1]->name;
-            
-            std::cout << "\n# of AudioAssets: " << audioAssetObjects->nodesetval->nodeNr << '\n'
-                      << "# of MapAssets: " << mapAssetObjects->nodesetval->nodeNr << '\n'
-                      << "# of FontAssets: " << fontAssetObjects->nodesetval->nodeNr << '\n'
-                      << "# of VideoAssets: " << videoAssetObjects->nodesetval->nodeNr << '\n'
-                      << "# of TileSetAssets: " << tilesetAssetObjects->nodesetval->nodeNr << '\n';
-            
-            totalObjects = audioAssetObjects->nodesetval->nodeNr
-                         + mapAssetObjects->nodesetval->nodeNr
-                         + fontAssetObjects->nodesetval->nodeNr
-                         + videoAssetObjects->nodesetval->nodeNr
-                         + tilesetAssetObjects->nodesetval->nodeNr;
-            std::cout << "Total Asset Objects: " << totalObjects;
-
-            
-            configLoaded = true;
+            else
+            {
+                fileMatch = false;
+            }
+        #warning This line probably breaks something, but I am not sure
+            currentChildPointer = currentChildPointer->next->next;
         }
-        
-        //free the document
-        xmlFreeDoc(configurationDocument);
-        
-        //Free the global variables that may
-        //have been allocated by the parser.
-        xmlCleanupParser();
     }
-}*/
+    return NULL;
+}
+
 
 int StrataConfig::GetCPUCores()
 {
@@ -143,6 +126,14 @@ float StrataConfig::GetProgess()
 bool StrataConfig::isConfigLoaded()
 {
     return configLoaded;
+}
+
+xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
+{
+    std::cout << "Passed in: " << filePath << '\n';
+    //SHA1 hash here
+    //return NULL;
+    return (xmlChar*) "2de01f59e99c0fb16d32df2d7cdd909be2bf0825";
 }
 
 /*std::string StrataConfig::FindSourcePathHash(boost::filesystem::path gamePath)
@@ -230,6 +221,45 @@ void StrataConfig::print_xpath_nodes(xmlNodeSetPtr nodes, FILE* output) {
         } else {
             cur = nodes->nodeTab[i];    
             fprintf(output, "= node \"%s\": type %d\n", cur->name, cur->type);
+        }
+    }
+}
+
+void StrataConfig::print_xpath(xmlNodeSetPtr nodes) {
+    xmlNodePtr cur;
+    int size;
+    int i;
+    
+    size = (nodes) ? nodes->nodeNr : 0;
+    
+    printf("Result (%d nodes):\n", size);
+    for(i = 0; i < size; ++i) {
+        assert(nodes->nodeTab[i]);
+        
+        if(nodes->nodeTab[i]->type == XML_NAMESPACE_DECL) {
+            xmlNsPtr ns;
+            
+            ns = (xmlNsPtr)nodes->nodeTab[i];
+            cur = (xmlNodePtr)ns->next;
+            if(cur->ns) {
+                printf("= namespace \"%s\"=\"%s\" for node %s:%s\n",
+                        ns->prefix, ns->href, cur->ns->href, cur->name);
+            } else {
+                printf( "= namespace \"%s\"=\"%s\" for node %s\n",
+                        ns->prefix, ns->href, cur->name);
+            }
+        } else if(nodes->nodeTab[i]->type == XML_ELEMENT_NODE) {
+            cur = nodes->nodeTab[i];
+            if(cur->ns) {
+    	        printf( "= element node \"%s:%s\"\n",
+                        cur->ns->href, cur->name);
+            } else {
+    	        printf( "= element node \"%s\"\n",
+                        cur->name);
+            }
+        } else {
+            cur = nodes->nodeTab[i];
+            printf("= node \"%s\": type %d\n", cur->name, cur->type);
         }
     }
 }

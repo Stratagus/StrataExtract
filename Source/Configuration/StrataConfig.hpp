@@ -52,13 +52,22 @@ class StrataConfig
         //std::string FindSourcePathHash(boost::filesystem::path gamePath);
 
     void print_xpath_nodes(xmlNodeSetPtr nodes, FILE* output);
+    void print_xpath(xmlNodeSetPtr nodes);
     
     protected:
         StrataConfig();
     
         std::string getGameName();
     
+        xmlNodePtr findGameVersion();
+        void parseConfig();
+    
+    
+        xmlChar *GetFileHash(boost::filesystem::path filePath);
+    
         xmlNodePtr configurationRoot;
+        xmlNodePtr gameVersionDetected;
+        xmlXPathContextPtr configXPathContext;
     
         std::string *destinationImageFormat;
         std::string *destinationVideoFormat;
