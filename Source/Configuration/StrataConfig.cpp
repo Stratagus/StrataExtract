@@ -71,15 +71,12 @@ void StrataConfig::readConfig(boost::filesystem::path configurationPath)
 
 xmlNodePtr StrataConfig::findGameEdition()
 {
-    std::string gameHash = "3957d7ac483d7fbbd543e0cd70633bc9c57adfad";
+    //Jump to the <Versions> entity
     xmlXPathObjectPtr gameVersions = xmlXPathEval((const xmlChar *) "//Version", configXPathContext);
     std::cout << "Game Versions in Config: " << gameVersions->nodesetval->nodeNr << '\n';
-    //std::cout << "First object in versions: " << gameVersions->nodesetval->nodeTab[1]->properties->next->name << '\n';
-
-    //std::cout << "Property: " << xmlGetProp(gameVersions->nodesetval->nodeTab[1], (const xmlChar *) "//name") << '\n';
-    //xmlNodeGetContent(<#xmlNodePtr cur#>)
-    //std::cout << "XMLContent: " << xmlNodeGetContent(gameVersions->nodesetval->nodeTab[1])
+    bool earlierMatch = false;
     
+    //Interate through each version (<Version> entities) of the game until we hit a match or fail 
     for(int numberOfVersions = 0; numberOfVersions < (gameVersions->nodesetval->nodeNr); numberOfVersions++)
     {
         xmlNodePtr currentNodePointer = gameVersions->nodesetval->nodeTab[numberOfVersions];
@@ -88,7 +85,6 @@ xmlNodePtr StrataConfig::findGameEdition()
         {
             xmlChar* value = xmlNodeListGetString(currentNodePointer->doc, attribute->children, 1);
             std::cout << "Parent Property: " << value << '\n';
-            //do something with value
             xmlFree(value);
             attribute = attribute->next;
         }
@@ -119,18 +115,22 @@ xmlNodePtr StrataConfig::findGameEdition()
             //std::cout << "Hash: " << xmlGetProp(currentChildPointer, (const xmlChar *) "hash") << '\n';
             //std::cout << "ArchiveList: " << xmlGetProp(currentChildPointer, (const xmlChar *) "Archive") << '\n';
             
+#warning Potential logic error if the hash is good then bad then good, may cause currupted game files to be accepted
             if(!xmlStrcmp(xmlGetProp(currentChildPointer, (const xmlChar *) "hash"), GetFileHash((char *)xmlGetProp(currentChildPointer, (const xmlChar *) "name"))))
             {
                 std::cout << "HIT!!!\n";
-                return gameVersions->nodesetval->nodeTab[numberOfVersions];
+                earlierMatch = true;
+                if(currentChildPointer->next->next == NULL)
+                    return gameVersions->nodesetval->nodeTab[numberOfVersions];
+            }
+            else
+            {
+                if(earlierMatch)
+                    return NULL;
             }
         #warning This line probably breaks something, but I am not sure
             currentChildPointer = currentChildPointer->next->next;
         }
-        //if(xmlChildElementCount(currentNodePointer) > 0)
-        //{
-        //    std::cout << "Child Content: " << currentNodePointer->children->next->name << '\n';
-        //}
     }
     return NULL;
 }
@@ -159,7 +159,7 @@ xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
     std::cout << "Passed in: " << filePath << '\n';
     //SHA1 hash here
     //return NULL;
-    return (xmlChar*) "2de01f59e99c0fb16d32df2d7cdd909be2bf0825";
+    return (xmlChar*) "577de9fa6db714a9e76244b98ae372ca170d7819";
 }
 
 /*std::string StrataConfig::FindSourcePathHash(boost::filesystem::path gamePath)
