@@ -59,7 +59,7 @@ class StrataConfig
     
         std::string getGameName();
     
-        xmlNodePtr findGameEdition();
+        xmlNodePtr findGameVersion();
         void parseConfig();
     
     
