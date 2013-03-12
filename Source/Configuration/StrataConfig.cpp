@@ -32,7 +32,7 @@ void StrataConfig::readConfig(boost::filesystem::path configurationPath)
         xmlDoc *configurationDocument = NULL;
         
         //The root of our configuration tree
-        configurationDocument = xmlReadFile(configurationPath.string().c_str(), NULL, 1);
+        configurationDocument = xmlReadFile(configurationPath.string().c_str(), NULL, NULL);
         if(configurationDocument == NULL)
         {
             std::cerr << "Error: Unable to parse file: " << configurationPath << '\n';
@@ -53,7 +53,7 @@ void StrataConfig::readConfig(boost::filesystem::path configurationPath)
 
         
         findGameEdition();
-        
+        std::cout << "DONE!";
         
         //free the document
         //xmlFreeDoc(configurationDocument);
@@ -96,9 +96,9 @@ void StrataConfig::findGameEdition()
         std::cout << "Number of Children: " << xmlChildElementCount(currentNodePointer) << '\n';
         xmlNodePtr currentChildPointer = currentNodePointer->children->next;
         
-        for(int numberOfFiles = 0; numberOfFiles <= xmlChildElementCount(currentNodePointer); numberOfFiles++)
+        for(int numberOfFiles = 0; numberOfFiles < xmlChildElementCount(currentNodePointer); numberOfFiles++)
         {
-            xmlAttr* childattribute = currentChildPointer->properties;
+            /*xmlAttr* childattribute = currentChildPointer->properties;
             while(childattribute && childattribute->name && childattribute->children)
             {
                 xmlChar* childvalue = xmlNodeListGetString(currentChildPointer->doc, childattribute->children, 1);
@@ -106,8 +106,19 @@ void StrataConfig::findGameEdition()
                 //do something with value
                 xmlFree(childvalue);
                 childattribute = childattribute->next;
-            }
-            currentChildPointer = currentChildPointer->next;
+            }*/
+            
+            
+            //printf("Filename: %s \n", xmlGetProp(currentChildPointer, (const xmlChar *) "name") );
+            //printf("Hash: %s \n", xmlGetProp(currentChildPointer, (const xmlChar *) "hash") );
+            //printf("Archive: %s \n", xmlGetProp(currentChildPointer, (const xmlChar *) "Archive") );
+            
+            std::cout << "Filename: " << xmlGetProp(currentChildPointer, (const xmlChar *) "name") << '\n';
+            std::cout << "Hash: " << xmlGetProp(currentChildPointer, (const xmlChar *) "hash") << '\n';
+            std::cout << "ArchiveList: " << xmlGetProp(currentChildPointer, (const xmlChar *) "Archive") << '\n';
+            
+        #warning This line probably breaks something, but I am not sure
+            currentChildPointer = currentChildPointer->next->next;
         }
         //if(xmlChildElementCount(currentNodePointer) > 0)
         //{
