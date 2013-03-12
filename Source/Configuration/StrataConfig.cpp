@@ -69,7 +69,7 @@ void StrataConfig::readConfig(boost::filesystem::path configurationPath)
     }
 }
 
-xmlNodePtr StrataConfig::findGameVersion()
+xmlNodePtr StrataConfig::FindGameVersion()
 {
     //Jump to the <Versions> entity
     xmlXPathObjectPtr gameVersions = xmlXPathEval((const xmlChar *) "//Version", configXPathContext);
