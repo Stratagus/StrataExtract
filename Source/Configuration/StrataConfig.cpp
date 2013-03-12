@@ -73,54 +73,30 @@ xmlNodePtr StrataConfig::findGameEdition()
 {
     //Jump to the <Versions> entity
     xmlXPathObjectPtr gameVersions = xmlXPathEval((const xmlChar *) "//Version", configXPathContext);
-    std::cout << "Game Versions in Config: " << gameVersions->nodesetval->nodeNr << '\n';
+    
     bool fileMatch = true;
     
     //Interate through each version (<Version> entities) of the game until we hit a match or fail 
     for(int numberOfVersions = 0; numberOfVersions < (gameVersions->nodesetval->nodeNr); numberOfVersions++)
     {
         xmlNodePtr currentNodePointer = gameVersions->nodesetval->nodeTab[numberOfVersions];
-        xmlAttr* attribute = currentNodePointer->properties;
-        while(attribute && attribute->name && attribute->children)
-        {
-            xmlChar* value = xmlNodeListGetString(currentNodePointer->doc, attribute->children, 1);
-            std::cout << "Parent Property: " << value << '\n';
-            xmlFree(value);
-            attribute = attribute->next;
-        }
-        
-        
-        
-        std::cout << "Number of Children: " << xmlChildElementCount(currentNodePointer) << '\n';
         xmlNodePtr currentChildPointer = currentNodePointer->children->next;
         
+        //Reset the fileMatch flag
+        fileMatch = true;
+        
+        //Start checking the <file> hashes with those in this version, if ANY fail break out
         while(currentChildPointer != NULL && fileMatch)
         {
-            /*xmlAttr* childattribute = currentChildPointer->properties;
-            while(childattribute && childattribute->name && childattribute->children)
-            {
-                xmlChar* childvalue = xmlNodeListGetString(currentChildPointer->doc, childattribute->children, 1);
-                std::cout << "Childs Property: " << childvalue << '\n';
-                //do something with value
-                xmlFree(childvalue);
-                childattribute = childattribute->next;
-            }*/
             
-            
-            //printf("Filename: %s \n", xmlGetProp(currentChildPointer, (const xmlChar *) "name") );
-            //printf("Hash: %s \n", xmlGetProp(currentChildPointer, (const xmlChar *) "hash") );
-            //printf("Archive: %s \n", xmlGetProp(currentChildPointer, (const xmlChar *) "Archive") );
-            
-            std::cout << "Filename: " << xmlGetProp(currentChildPointer, (const xmlChar *) "name") << '\n';
-            //std::cout << "Hash: " << xmlGetProp(currentChildPointer, (const xmlChar *) "hash") << '\n';
-            //std::cout << "ArchiveList: " << xmlGetProp(currentChildPointer, (const xmlChar *) "Archive") << '\n';
-            
-#warning Potential logic error if the hash is good then bad then good, may cause currupted game files to be accepted
+        #warning Potential logic error (Code Review)
+            //Compare the Hash in the current file entity with the method generated hash
             if(!xmlStrcmp(xmlGetProp(currentChildPointer, (const xmlChar *) "hash"), GetFileHash((char *)xmlGetProp(currentChildPointer, (const xmlChar *) "name"))))
             {
-                std::cout << "HIT!!!\n";
                 if(currentChildPointer->next->next == NULL)
-                    return gameVersions->nodesetval->nodeTab[numberOfVersions];
+                {
+                   return gameVersions->nodesetval->nodeTab[numberOfVersions]; 
+                }
             }
             else
             {
