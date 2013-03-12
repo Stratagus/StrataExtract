@@ -47,15 +47,33 @@ void StrataConfig::readConfig(boost::filesystem::path configurationPath)
         else
         {
             configurationRoot = xmlDocGetRootElement(configurationDocument);
+            configXPathContext = xmlXPathNewContext(configurationDocument);
         }
+        
         //free the document
         xmlFreeDoc(configurationDocument);
-        
         configurationDocument = NULL;
+        
         //Free the global variables that may
         //have been allocated by the parser.
         xmlCleanupParser();
+        
+        findGameEdition();
+        
+        configLoaded = 1;
     }
+}
+
+void StrataConfig::findGameEdition()
+{
+    std::string gameHash = "3957d7ac483d7fbbd543e0cd70633bc9c57adfad";
+    xmlXPathObjectPtr gameVersions = xmlXPathEval((const xmlChar *) "//Version", configXPathContext);
+    std::cout << "Game Versions in Config: " << gameVersions->nodesetval->nodeNr << '\n';
+    std::cout << "First object in versions: " << gameVersions->nodesetval->nodeTab[1]->properties->next->name << '\n';
+
+    std::cout << "Property: " << xmlGetProp(gameVersions->nodesetval->nodeTab[1], (const xmlChar *) "//name") << '\n';
+    
+    //print_xpath(gameVersions->nodesetval);
 }
 
 /*void StrataConfig::oldreadConfig(boost::filesystem::path configurationPath)
@@ -230,6 +248,45 @@ void StrataConfig::print_xpath_nodes(xmlNodeSetPtr nodes, FILE* output) {
         } else {
             cur = nodes->nodeTab[i];    
             fprintf(output, "= node \"%s\": type %d\n", cur->name, cur->type);
+        }
+    }
+}
+
+void StrataConfig::print_xpath(xmlNodeSetPtr nodes) {
+    xmlNodePtr cur;
+    int size;
+    int i;
+    
+    size = (nodes) ? nodes->nodeNr : 0;
+    
+    printf("Result (%d nodes):\n", size);
+    for(i = 0; i < size; ++i) {
+        assert(nodes->nodeTab[i]);
+        
+        if(nodes->nodeTab[i]->type == XML_NAMESPACE_DECL) {
+            xmlNsPtr ns;
+            
+            ns = (xmlNsPtr)nodes->nodeTab[i];
+            cur = (xmlNodePtr)ns->next;
+            if(cur->ns) {
+                printf("= namespace \"%s\"=\"%s\" for node %s:%s\n",
+                        ns->prefix, ns->href, cur->ns->href, cur->name);
+            } else {
+                printf( "= namespace \"%s\"=\"%s\" for node %s\n",
+                        ns->prefix, ns->href, cur->name);
+            }
+        } else if(nodes->nodeTab[i]->type == XML_ELEMENT_NODE) {
+            cur = nodes->nodeTab[i];
+            if(cur->ns) {
+    	        printf( "= element node \"%s:%s\"\n",
+                        cur->ns->href, cur->name);
+            } else {
+    	        printf( "= element node \"%s\"\n",
+                        cur->name);
+            }
+        } else {
+            cur = nodes->nodeTab[i];
+            printf("= node \"%s\": type %d\n", cur->name, cur->type);
         }
     }
 }
