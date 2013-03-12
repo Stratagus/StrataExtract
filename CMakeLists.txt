@@ -122,7 +122,12 @@ set(EXTRA_LIBS "")
 if (APPLE)
     set(EXTRA_LIBS ${EXTRA_LIBS} "-framework Cocoa")
     include_directories("/opt/local/include")
+    include_directories("/opt/local/include/libxml2")
+    include_directories("/opt/local/include/ImageMagick")
     link_directories("/opt/local/lib")
+else()
+    include_directories("/usr/include/libxml2")
+    include_directories("/usr/include/ImageMagick")
 endif()
 
 #Compile the Library for X use
