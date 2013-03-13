@@ -71,6 +71,8 @@ class StrataConfig
      *  \note*/
         static int GetCPUCores();
         //std::string FindSourcePathHash(boost::filesystem::path gamePath);
+    
+    std::string getGameName();
 
     void print_xpath_nodes(xmlNodeSetPtr nodes, FILE* output);
     void print_xpath(xmlNodeSetPtr nodes);
@@ -78,7 +80,7 @@ class StrataConfig
     protected:
         StrataConfig();
     
-        std::string getGameName();
+        
     
         xmlNodePtr FindGameVersion();
         void parseConfig();

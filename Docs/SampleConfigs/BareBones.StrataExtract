@@ -1,6 +1,5 @@
 <!--Tells the parser is a StrataExtract configuration or a random XML File-->
 <StrataExtractConfig>
-<!--Allows for multiple game configurations to be in the same config (Generally a bad idea)-->
  <game>
  	<!--The name of the game we will be extracting-->
  	<title>SuperAwesomeGame</title>

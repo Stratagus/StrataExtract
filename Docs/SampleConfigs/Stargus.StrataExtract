@@ -1,5 +1,4 @@
 <StrataExtractConfig>
- <game>
  	<title>Stargus</title>
  	<Versions>
  		<Version name="USA Starcraft CD Windows" expansion="0">
@@ -965,5 +964,4 @@
 			0x2C,0x20,0x20,0x20,0x18,0x18,0x18,0x0C,0x0C,0x0C,0x04,0x04,0x04,
  		</palette>
  	</Palettes>
- </game>
 </StrataExtractConfig>

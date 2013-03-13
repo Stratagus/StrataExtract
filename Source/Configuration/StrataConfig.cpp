@@ -112,7 +112,7 @@ xmlNodePtr StrataConfig::FindGameVersion()
             {
                 fileMatch = false;
             }
-        #warning This line probably breaks something, but I am not sure
+        #warning This line probably breaks something, but I am not sure (Code Review)
             currentChildPointer = currentChildPointer->next->next;
         }
     }
@@ -125,26 +125,22 @@ void StrataConfig::ProcessGameAssetLists()
     std::cout << "Game Version is: " << xmlGetProp(gameVersion, (const xmlChar *) "name") << '\n';
     while(gameVersionFilePointer != NULL)
     {
-        if(xmlStrcmp(xmlGetProp(gameVersionFilePointer, (const xmlChar *) "Archive"), (xmlChar *) ""))
+        if(xmlGetProp(gameVersionFilePointer, (const xmlChar *) "Archive") != NULL)
         {
             std::cout << "It's a archive file!!\n";
+    #warning Seems like a really ugly solution (Code Review)
+            xmlChar* query = new xmlChar;
+            strcat((char *) query, "Archive[@name='");
+            strcat((char *) query, (char *) xmlGetProp(gameVersionFilePointer, (const xmlChar *) "Archive"));
+            strcat((char *) query, "']");
             configXPathContext->node = gameVersion->parent->parent;
-            xmlXPathObjectPtr result = xmlXPathEval((xmlChar *) "Archive[@name='DigitalDistributionTome1']", configXPathContext);
-            if(result == NULL)
+            xmlXPathObjectPtr result = xmlXPathEval((xmlChar *) query, configXPathContext);
+            if(result == NULL || (result->nodesetval->nodeNr > 1))
             {
                 throw "Archive in version file element not found";
             }
-            std::cout << "FOUND: " << result->nodesetval->nodeNr << '\n';
-            for(int i = 0; i < result->nodesetval->nodeNr; i++)
-            {
-                std::cout << result->nodesetval->nodeTab[i]->name << '\n';
-            }
-            //ProcessArchive(gameVersionFilePointer);
-        }
-        if(xmlStrcmp(xmlGetProp(gameVersionFilePointer, (const xmlChar *) "Copy"), (xmlChar *) ""))
-        {
-            //std::cout << "Copy: " << xmlGetProp(gameVersionFilePointer, (const xmlChar *) "Copy") << "\n";
-            //Copy the file to a location in the destination
+
+            ProcessArchive(result->nodesetval->nodeTab[0]);
         }
         gameVersionFilePointer = gameVersionFilePointer->next->next;
     }
@@ -203,6 +199,22 @@ boost::filesystem::path StrataConfig::GameMediaDestinationPath()
 {
     return gameMediaDestination;
 }
+
+/*std::string StrataConfig::getGameName()
+{
+    if(!isConfigLoaded())
+    {
+        throw "GetGameName: No config loaded";
+    }
+    configXPathContext->node = configurationRoot;
+    xmlXPathObjectPtr result = xmlXPathEval((xmlChar *) "title", configXPathContext);
+    if(result == NULL)
+    {
+        throw "Incomplete game configuration";
+    }
+    std::cout << "Test: " << result->nodesetval->nodeTab[0]->name << '\n';
+    return "";
+}*/
 
 int StrataConfig::GetCPUCores()
 {
