@@ -51,6 +51,10 @@ class StrataConfig
          *  \note*/
         bool isConfigLoaded();
     
+        void ProcessGameAssetLists();
+    
+        bool isExpansionGame();
+    
         bool setGameMediaSourcePath(boost::filesystem::path gameMediaSourcePath);
         bool setGameMediaDestinationPath(boost::filesystem::path gameMediaDestinationPath);
     
@@ -96,6 +100,8 @@ class StrataConfig
         int completeObjects;
         int totalObjects;
         bool configLoaded;
+        //Is the GameMediaSource a expansion disc?
+        bool isExpansion;
         int verbosity;
     
     

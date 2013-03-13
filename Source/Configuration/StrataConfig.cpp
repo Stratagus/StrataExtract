@@ -5,6 +5,7 @@ StrataConfig::StrataConfig()
     totalObjects = 0;
     completeObjects = 0;
     configLoaded = false;
+    isExpansion = false;
 }
 
 StrataConfig* StrataConfig::ConfigurationInstance = 0;
@@ -96,7 +97,14 @@ xmlNodePtr StrataConfig::FindGameVersion()
             {
                 if(currentChildPointer->next->next == NULL)
                 {
-                   return gameVersions->nodesetval->nodeTab[numberOfVersions]; 
+                   //Check if the GameMediaSource is a expansion (We will need additional input)
+                   if(!xmlStrcmp(xmlGetProp(currentNodePointer, (const xmlChar *) "expansion"), (xmlChar *) "1"))
+                   {
+                       isExpansion = true;
+                   }
+                   //If everything checks out and all files are accounted for with the proper SHA1 hashes return
+                   //the game version for the configuration
+                   return gameVersions->nodesetval->nodeTab[numberOfVersions];
                 }
             }
             else
@@ -110,6 +118,21 @@ xmlNodePtr StrataConfig::FindGameVersion()
     return NULL;
 }
 
+void StrataConfig::ProcessGameAssetLists()
+{
+    std::cout << "In ProcessGameAssetLists.... YAY!\n";
+    
+}
+
+bool StrataConfig::isExpansionGame()
+{
+    if(!isConfigLoaded())
+    {
+        throw "No configuration loaded in strataconfig";
+    }
+    
+    return isExpansion;
+}
 
 bool StrataConfig::setGameMediaSourcePath(boost::filesystem::path gameMediaSourcePath)
 {
@@ -123,9 +146,8 @@ bool StrataConfig::setGameMediaSourcePath(boost::filesystem::path gameMediaSourc
 }
 bool StrataConfig::setGameMediaDestinationPath(boost::filesystem::path gameMediaDestinationPath)
 {
-    if(!boost::filesystem::exists(gameMediaDestinationPath) || !boost::filesystem::is_directory(gameMediaDestinationPath))
+    if(boost::filesystem::exists(gameMediaDestinationPath))
     {
-        //boost::filesystem::status(<#const boost::filesystem::path &p#>)
         return false;
     }
     
@@ -165,7 +187,7 @@ xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
     std::cout << "Passed in: " << filePath << '\n';
     //SHA1 hash here
     //return NULL;
-    return (xmlChar*) "2de01f59e99c0fb16d32df2d7cdd909be2bf0825";
+    return (xmlChar*) "36ce21b1688d05bf659902d296719e63f08f2360";
 }
 
 /*std::string StrataConfig::FindSourcePathHash(boost::filesystem::path gamePath)
