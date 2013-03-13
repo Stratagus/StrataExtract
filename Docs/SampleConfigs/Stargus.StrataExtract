@@ -1,6 +1,6 @@
 <StrataExtractConfig>
  <game>
- 	<name>Stargus</name>
+ 	<title>Stargus</title>
  	<Versions>
  		<Version name="USA Starcraft CD Windows" expansion="0">
  			<file name="INSTALL.EXE" hash="2de01f59e99c0fb16d32df2d7cdd909be2bf0825" Archive="MainStarcraft"/>

@@ -1,0 +1,45 @@
+<!--Tells the parser is a StrataExtract configuration or a random XML File-->
+<StrataExtractConfig>
+<!--Allows for multiple game configurations to be in the same config (Generally a bad idea)-->
+ <game>
+ 	<!--The name of the game we will be extracting-->
+ 	<title>SuperAwesomeGame</title>
+ 	<!--If there are different versions of the game we can account that for a different extraction procedure-->
+ 	<Versions>
+ 		<!--Define each specific version of the game in order to properly detect it-->
+ 		<Version name="USA Basic Edition" expansion="0">
+ 			<!--List of files that will help us indetify what version of the game, but also what the Extractor should
+ 				do with the file-->
+ 			<file name="INSTALL.EXE" hash="2de01f59e99c0fb16d32df2d7cdd909be2bf0825" Archive="MainArchive"/>
+ 			<!--Simple copy the file to the copy attribute destination-->
+ 			<file name="manual.pdf"  hash="577de9fa6db714a9e76244b98ae372ca170d7819" copy="/" />
+ 		</Version>
+ 		 <!--Define each specific version of the game in order to properly detect it, this is a expansion and will prompt the
+ 			user to give a already built .Stratagame in which to -->
+ 		<Version name="USA Ultra Edition" expansion="1">
+ 			<!--List of files that will help us indetify what version of the game, but also what the Extractor should
+ 				do with the file-->
+ 			<file name="INSTALL.EXE" hash="36ce21b1688d05bf659902d296719e63f08f2360" Archive="MainExpansion"/>
+ 		</Version>
+ 	</Versions>
+ 	<!--Tells the extractor what format and that contents of the archive to be extracted/converted-->
+ 	<Archive name="MainArchive" type="MPQ"> 
+ 		<!--Lists other archives nested in the archieve to be extracted and processed-->
+ 		<ArchiveAssets>
+ 			<!--Maps the archive and extracts it to a temporary name and location for processing and maps to
+ 			another archive element to describe what processing must be done-->
+ 			<ArchiveAsset name="TemporaryArchive" path="smallArchive.mpq" Archive="nestedArchive" />
+ 		</ArchiveAssets>
+ 	</Archive>
+ 	<Archive name="nestedArchive" type="ZIP">
+ 		<AudioAssets>
+ 		</AudioAssets>
+ 		<ImageAssets>
+ 		</ImageAssets>
+ 		<VideoAssets>
+ 		</VideoAssets>
+ 		<MapAssets>
+ 		</MapAssets>
+ 	</Archive>
+ </game>
+ </StrataExtractConfig>

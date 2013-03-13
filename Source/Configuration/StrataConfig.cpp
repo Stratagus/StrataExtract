@@ -6,6 +6,8 @@ StrataConfig::StrataConfig()
     completeObjects = 0;
     configLoaded = false;
     isExpansion = false;
+    configurationDocument = NULL;
+    configXPathContext = NULL;
 }
 
 StrataConfig* StrataConfig::ConfigurationInstance = 0;
@@ -29,8 +31,7 @@ void StrataConfig::readConfig(boost::filesystem::path configurationPath)
     }
     else
     {
-        //The XML document file
-        xmlDoc *configurationDocument = NULL;
+
         
         //The root of our configuration tree
         configurationDocument = xmlReadFile(configurationPath.string().c_str(), NULL, NULL);
@@ -47,8 +48,8 @@ void StrataConfig::readConfig(boost::filesystem::path configurationPath)
         }
         else
         {
-            configurationRoot = xmlDocGetRootElement(configurationDocument);
             configXPathContext = xmlXPathNewContext(configurationDocument);
+            configurationRoot = xmlDocGetRootElement(configurationDocument);
         }
         
         gameVersion = FindGameVersion();
@@ -124,11 +125,43 @@ void StrataConfig::ProcessGameAssetLists()
     std::cout << "Game Version is: " << xmlGetProp(gameVersion, (const xmlChar *) "name") << '\n';
     while(gameVersionFilePointer != NULL)
     {
-        //Do stuff with the file tags
-        std::cout << gameVersionFilePointer->name << '\n';
+        if(xmlStrcmp(xmlGetProp(gameVersionFilePointer, (const xmlChar *) "Archive"), (xmlChar *) ""))
+        {
+            std::cout << "It's a archive file!!\n";
+            configXPathContext->node = gameVersion->parent->parent;
+            xmlXPathObjectPtr result = xmlXPathEval((xmlChar *) "Archive[@name='DigitalDistributionTome1']", configXPathContext);
+            if(result == NULL)
+            {
+                throw "Archive in version file element not found";
+            }
+            std::cout << "FOUND: " << result->nodesetval->nodeNr << '\n';
+            for(int i = 0; i < result->nodesetval->nodeNr; i++)
+            {
+                std::cout << result->nodesetval->nodeTab[i]->name << '\n';
+            }
+            //ProcessArchive(gameVersionFilePointer);
+        }
+        if(xmlStrcmp(xmlGetProp(gameVersionFilePointer, (const xmlChar *) "Copy"), (xmlChar *) ""))
+        {
+            //std::cout << "Copy: " << xmlGetProp(gameVersionFilePointer, (const xmlChar *) "Copy") << "\n";
+            //Copy the file to a location in the destination
+        }
         gameVersionFilePointer = gameVersionFilePointer->next->next;
     }
     
+}
+
+void StrataConfig::ProcessArchive(xmlNodePtr archive)
+{
+    //Set the "scope" in which we want to the XPath expression to evaluate
+    configXPathContext->node = archive;
+    xmlXPathObjectPtr archiveAssets = xmlXPathEval((const xmlChar *) "*", configXPathContext);
+    std::cout << "Found Items: " << archiveAssets->nodesetval->nodeNr << '\n';
+    for(int i = 0; i < archiveAssets->nodesetval->nodeNr; i++)
+    {
+        std::cout << archiveAssets->nodesetval->nodeTab[i]->name << '\n';
+    }
+
 }
 
 bool StrataConfig::isExpansionGame()

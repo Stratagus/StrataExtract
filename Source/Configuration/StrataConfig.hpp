@@ -19,6 +19,7 @@
 #include <math.h>
 #include <string>
 #include <iterator>
+#include <queue>
 
 #include <libxml/parser.h>
 #include <libxml/xpath.h>
@@ -81,19 +82,24 @@ class StrataConfig
     
         xmlNodePtr FindGameVersion();
         void parseConfig();
+        void ProcessArchive(xmlNodePtr archive);
     
     
         xmlChar *GetFileHash(boost::filesystem::path filePath);
     
         xmlNodePtr configurationRoot;
         xmlNodePtr gameVersion;
-        xmlXPathContextPtr configXPathContext;
     
         std::string *destinationImageFormat;
         std::string *destinationVideoFormat;
     
         boost::filesystem::path gameMediaSource;
         boost::filesystem::path gameMediaDestination;
+    
+        xmlDoc *configurationDocument;
+    
+        std::queue<xmlNodePtr> processQueue;
+        xmlXPathContextPtr configXPathContext;
 
     private:
         static StrataConfig *ConfigurationInstance;
