@@ -86,7 +86,7 @@ class StrataConfig
         xmlChar *GetFileHash(boost::filesystem::path filePath);
     
         xmlNodePtr configurationRoot;
-        xmlNodePtr gameVersionDetected;
+        xmlNodePtr gameVersion;
         xmlXPathContextPtr configXPathContext;
     
         std::string *destinationImageFormat;

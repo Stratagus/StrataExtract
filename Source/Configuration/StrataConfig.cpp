@@ -51,9 +51,9 @@ void StrataConfig::readConfig(boost::filesystem::path configurationPath)
             configXPathContext = xmlXPathNewContext(configurationDocument);
         }
         
-        gameVersionDetected = FindGameVersion();
+        gameVersion = FindGameVersion();
         
-        if(!gameVersionDetected)
+        if(!gameVersion)
         {
             throw "No valid version detected";
         }
@@ -120,7 +120,14 @@ xmlNodePtr StrataConfig::FindGameVersion()
 
 void StrataConfig::ProcessGameAssetLists()
 {
-    std::cout << "In ProcessGameAssetLists.... YAY!\n";
+    xmlNodePtr gameVersionFilePointer = gameVersion->children->next;
+    std::cout << "Game Version is: " << xmlGetProp(gameVersion, (const xmlChar *) "name") << '\n';
+    while(gameVersionFilePointer != NULL)
+    {
+        //Do stuff with the file tags
+        std::cout << gameVersionFilePointer->name << '\n';
+        gameVersionFilePointer = gameVersionFilePointer->next->next;
+    }
     
 }
 
@@ -187,7 +194,7 @@ xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
     std::cout << "Passed in: " << filePath << '\n';
     //SHA1 hash here
     //return NULL;
-    return (xmlChar*) "36ce21b1688d05bf659902d296719e63f08f2360";
+    return (xmlChar*) "2de01f59e99c0fb16d32df2d7cdd909be2bf0825";
 }
 
 /*std::string StrataConfig::FindSourcePathHash(boost::filesystem::path gamePath)

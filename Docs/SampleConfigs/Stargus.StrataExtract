@@ -20,16 +20,29 @@
  		</Version>
  	</Versions>
  	<Archive name="DigitalDistributionTome1" type="MPQ">
+ 		<ArchiveAssets>
+ 			<ArchiveAsset name="StarCraftMainTemporary" path="Common/Starcraft.mpq" Archive="MainStarcraft" />
+ 	    </ArchiveAssets>
+ 	    <MapAssets>
+ 	    	<map name="ThreeKingdoms" path="Common/Maps/(3)Three Kingdoms.scm" destination="Maps/3/" />
+ 	    	<map name="Opposing City State '98" path="Common/Maps/(4)Opposing City State '98.scm" destination="Maps/4/" />
+ 	    	<map name="Allied Fortress" path="Common/Maps/Broodwar/Allied/(8)Allied Fortress.scm" destination="Maps/8/" />
+ 	    	<map name="Crossroads" path="Common/Maps/Broodwar/WebMaps/(4)Crossroads.scm" destination="Maps/4/" />
+ 	    	<map name="Steal the Beacon" path="Common/Maps/Broodwar/WebMaps/(4)Steal the Beacon.scm" destination="Maps/4/" />
+ 	    </MapAssets>
 	 	<ExtractAssets>
+	 		<extract name="Manual" path="PC/Starcraft Manual.pdf" destination="/" />
 	 	</ExtractAssets>
  	</Archive>
  	<Archive name="DigitalDistributionTome2" type="MPQ">
+ 		<ArchiveAssets>
+ 		</ArchiveAssets>
  	 	<ExtractAssets>
  		</ExtractAssets>
  	</Archive>
- 	<Archive name="StarcraftMain" type="MPQ">
+ 	<Archive name="MainStarcraft" type="MPQ">
  		<ArchiveAssets>
- 			<Archive name="Stardat" path="files/stardat.mpq" destination="temporary/" />
+ 			<ArchiveAsset name="StardatTemporary" path="files/stardat.mpq" Archive="Stardat" />
  		</ArchiveAssets>
  		<AudioAssets convert="ogg">
 	 		<audio name="title" path="music/title.wav" destination="Audio/Music/" />
@@ -504,7 +517,9 @@
  			<Extract name="StarDat" path="files/stardat.mpq" destination="temporary/" />
  		</ExtractAssets>
  	</Archive>
- 	<Archive name="Stardat" type="MPQ" depends="StarcraftMain">
+ 	<Archive name="StarDat" type="MPQ">
+ 	<ArchiveAssets>
+ 	</ArchiveAssets>
  	<!-- Extract & Convert to PNG -->
  	<ImageAssets convert="png">
  	</ImageAssets>
