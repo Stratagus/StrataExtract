@@ -41,7 +41,7 @@
  	</Archive>
  	<Archive name="MainStarcraft" type="MPQ">
  		<ArchiveAssets>
- 			<ArchiveAsset name="StardatTemporary" path="files/stardat.mpq" Archive="Stardat" />
+ 			<ArchiveAsset name="StardatTemporary" path="files/stardat.mpq" Archive="StarDat" />
  		</ArchiveAssets>
  		<AudioAssets convert="ogg">
 	 		<audio name="title" path="music/title.wav" destination="Audio/Music/" />

@@ -153,23 +153,42 @@ void StrataConfig::ProcessArchive(xmlNodePtr archive)
     configXPathContext->node = archive;
     xmlXPathObjectPtr archiveAssets = xmlXPathEval((const xmlChar *) "*", configXPathContext);
     std::cout << "Found Items: " << archiveAssets->nodesetval->nodeNr << '\n';
-    for(int i = 0; i < archiveAssets->nodesetval->nodeNr; i++)
+    for(int printLoop = 0; printLoop < archiveAssets->nodesetval->nodeNr; printLoop++)
     {
-        std::cout << archiveAssets->nodesetval->nodeTab[i]->name << '\n';
+        std::cout << archiveAssets->nodesetval->nodeTab[printLoop]->name << '\n';
     }
+    
+    #warning Need a more efficent way to do this (Code Review)
+    int processNode;
     
     //Check for any ArchiveAsset Prereqs that need to be pushed onto the prereq queue
     archiveAssets = xmlXPathEval((xmlChar *) "ArchiveAssets", configXPathContext);
     if(archiveAssets->nodesetval->nodeTab > 0)
     {
         std::cout << "Found ArchiveAssets to push on the prereq\n";
+        //While there should only be one node, in the case that the config is built incorrectly be
+        //forgiving and add both noderoots
+        for(processNode = 0; processNode < (archiveAssets->nodesetval->nodeNr); processNode++)
+        {
+            preparationProcessQueue.push(archiveAssets->nodesetval->nodeTab[processNode]);
+            
+            std::cout << "Pushed-Pre!!\n";
+        }
     }
+    
     
     //Check for any AudioAssets that need to be extracted
     archiveAssets = xmlXPathEval((xmlChar *) "AudioAssets", configXPathContext);
     if(archiveAssets->nodesetval->nodeTab > 0)
     {
         std::cout << "Found AUDIOAssets to push on the process queue\n";
+        //While there should only be one node, in the case that the config is built incorrectly be
+        //forgiving and add both noderoots
+        for(processNode = 0; processNode < (archiveAssets->nodesetval->nodeNr); processNode++)
+        {
+            processQueue.push(archiveAssets->nodesetval->nodeTab[processNode]);
+            std::cout << "Pushed-Post!!\n";
+        }
     }
     
     //Check for any AudioAssets that need to be extracted
@@ -177,6 +196,20 @@ void StrataConfig::ProcessArchive(xmlNodePtr archive)
     if(archiveAssets->nodesetval->nodeTab > 0)
     {
         std::cout << "Found MAPAssets to push on the process queue\n";
+        //While there should only be one node, in the case that the config is built incorrectly be
+        //forgiving and add both noderoots
+        for(processNode = 0; processNode < (archiveAssets->nodesetval->nodeNr); processNode++)
+        {
+            processQueue.push(archiveAssets->nodesetval->nodeTab[processNode]);
+#warning here
+            xmlNodePtr test = archiveAssets->nodesetval->nodeTab[processNode];
+            test = test->children->next;
+            while (test != NULL)
+            {
+                printf("%s\n", xmlGetProp(test, (xmlChar *)"name"));
+                test = test->next->next;
+            }
+        }
     }
     
     //Check for any AudioAssets that need to be extracted
@@ -184,6 +217,12 @@ void StrataConfig::ProcessArchive(xmlNodePtr archive)
     if(archiveAssets->nodesetval->nodeTab > 0)
     {
         std::cout << "Found IMAGEAssets to push on the process queue\n";
+        //While there should only be one node, in the case that the config is built incorrectly be
+        //forgiving and add both noderoots
+        for(processNode = 0; processNode < (archiveAssets->nodesetval->nodeNr); processNode++)
+        {
+            processQueue.push(archiveAssets->nodesetval->nodeTab[processNode]);
+        }
     }
     
     //Check for any AudioAssets that need to be extracted
@@ -191,6 +230,12 @@ void StrataConfig::ProcessArchive(xmlNodePtr archive)
     if(archiveAssets->nodesetval->nodeTab > 0)
     {
         std::cout << "Found VIDEOAssets to push on the process queue\n";
+        //While there should only be one node, in the case that the config is built incorrectly be
+        //forgiving and add both noderoots
+        for(processNode = 0; processNode < (archiveAssets->nodesetval->nodeNr); processNode++)
+        {
+            processQueue.push(archiveAssets->nodesetval->nodeTab[processNode]);
+        }
     }
     
     //Check for any AudioAssets that need to be extracted
@@ -198,6 +243,12 @@ void StrataConfig::ProcessArchive(xmlNodePtr archive)
     if(archiveAssets->nodesetval->nodeTab > 0)
     {
         std::cout << "Found FONTAssets to push on the process queue\n";
+        //While there should only be one node, in the case that the config is built incorrectly be
+        //forgiving and add both noderoots
+        for(processNode = 0; processNode < (archiveAssets->nodesetval->nodeNr); processNode++)
+        {
+            processQueue.push(archiveAssets->nodesetval->nodeTab[processNode]);
+        }
     }
     
     //Check for any AudioAssets that need to be extracted
@@ -205,6 +256,12 @@ void StrataConfig::ProcessArchive(xmlNodePtr archive)
     if(archiveAssets->nodesetval->nodeTab > 0)
     {
         std::cout << "Found CampaignAssets to push on the process queue\n";
+        //While there should only be one node, in the case that the config is built incorrectly be
+        //forgiving and add both noderoots
+        for(processNode = 0; processNode < (archiveAssets->nodesetval->nodeNr); processNode++)
+        {
+            processQueue.push(archiveAssets->nodesetval->nodeTab[processNode]);
+        }
     }
     
     //Check for any AudioAssets that need to be extracted
@@ -212,7 +269,15 @@ void StrataConfig::ProcessArchive(xmlNodePtr archive)
     if(archiveAssets->nodesetval->nodeTab > 0)
     {
         std::cout << "Found EXTRACTAssets to push on the process queue\n" ;
+        //While there should only be one node, in the case that the config is built incorrectly be
+        //forgiving and add both noderoots
+        for(processNode = 0; processNode < (archiveAssets->nodesetval->nodeNr); processNode++)
+        {
+            processQueue.push(archiveAssets->nodesetval->nodeTab[processNode]);
+        }
     }
+    
+    
     
     for(int i = 0; i < archiveAssets->nodesetval->nodeNr; i++)
     {

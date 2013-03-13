@@ -8,7 +8,7 @@
  		<!--Define each specific version of the game in order to properly detect it-->
  		<Version name="USA Basic Edition" expansion="0">
  			<!--List of files that will help us indetify what version of the game, but also what the Extractor should
- 				do with the file-->
+ 				do with the file WARNING-IF A FILE DEPENDS ON ANOTHER IT MUST BE FIRST EXECUTE ON TOP-->
  			<file name="INSTALL.EXE" hash="2de01f59e99c0fb16d32df2d7cdd909be2bf0825" Archive="MainArchive"/>
  			<!--Simple copy the file to the copy attribute destination-->
  			<file name="manual.pdf"  hash="577de9fa6db714a9e76244b98ae372ca170d7819" copy="/" />
