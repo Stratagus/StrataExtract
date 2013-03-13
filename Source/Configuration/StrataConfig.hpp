@@ -100,8 +100,8 @@ class StrataConfig
     
         xmlDoc *configurationDocument;
     
-        std::queue<xmlNodePtr> preparationProcessQueue;
-        std::queue<xmlNodePtr> processQueue;
+        std::queue<xmlXPathObjectPtr> preparationProcessQueue;
+        std::queue<xmlXPathObjectPtr> processQueue;
         xmlXPathContextPtr configXPathContext;
 
     private:
