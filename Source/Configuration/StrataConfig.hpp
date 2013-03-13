@@ -100,6 +100,8 @@ class StrataConfig
     
         xmlDoc *configurationDocument;
     
+        xmlNodePtr LookupArchive(xmlChar* archiveName);
+    
         std::queue<xmlXPathObjectPtr> preparationProcessQueue;
         std::queue<xmlXPathObjectPtr> processQueue;
         xmlXPathContextPtr configXPathContext;

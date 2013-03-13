@@ -152,16 +152,13 @@ void StrataConfig::ProcessArchive(xmlNodePtr archive)
     //Set the "scope" in which we want to the XPath expression to evaluate
     configXPathContext->node = archive;
     xmlXPathObjectPtr archiveAssets = xmlXPathEval((const xmlChar *) "*", configXPathContext);
-    std::cout << "Found Items: " << archiveAssets->nodesetval->nodeNr << '\n';
-    /*for(int printLoop = 0; printLoop < archiveAssets->nodesetval->nodeNr; printLoop++)
-    {
-        std::cout << archiveAssets->nodesetval->nodeTab[printLoop]->name << '\n';
-    }*/
+
     #warning Need a more efficent way to do this (Code Review)
     xmlChar* assetTypes [8] = { (xmlChar *)"ArchiveAssets", (xmlChar *)"AudioAssets",
                                (xmlChar *)"MapAssets", (xmlChar *)"ImageAssets",
                                (xmlChar *)"VideoAssets", (xmlChar *)"FontAssets",
                                (xmlChar *)"CampaignAssets", (xmlChar *)"ExtractAssets"};
+    
     xmlChar* baseTypes [8] = { (xmlChar *)"ArchiveAsset", (xmlChar *)"audio",
                                 (xmlChar *)"map", (xmlChar *)"image",
                                 (xmlChar *)"video", (xmlChar *)"font",
@@ -183,12 +180,36 @@ void StrataConfig::ProcessArchive(xmlNodePtr archive)
                 }
                 else
                 {
+                    //Found a nested archive that needs to be extracted
                     preparationProcessQueue.push(archiveAssets);
+                    //xmlNodePtr hello = LookupArchive((xmlChar *) "StarDat");
+                    for(int nestedArchives = 0; nestedArchives < archiveAssets->nodesetval->nodeNr; nestedArchives++)
+                    {
+                        std::cout << "Hello: " << xmlGetProp(archiveAssets->nodesetval->nodeTab[nestedArchives], (const xmlChar *) "Archive") << '\n';
+                        ProcessArchive(LookupArchive(xmlGetProp(archiveAssets->nodesetval->nodeTab[nestedArchives], (const xmlChar *) "Archive")));
+                    }
                 }
             }
         }
         configXPathContext->node = archive;
     }
+}
+
+xmlNodePtr StrataConfig::LookupArchive(xmlChar* archiveName)
+{
+    configXPathContext->node = configurationRoot;
+    xmlXPathObjectPtr archiveList = xmlXPathEval((const xmlChar *) "//Archive", configXPathContext);
+    for(int junk = 0; junk < archiveList->nodesetval->nodeNr; junk++)
+    {
+        //std::cout << archiveList->nodesetval->nodeTab[junk]->name << '\n';
+        if(!xmlStrcmp(xmlGetProp(archiveList->nodesetval->nodeTab[junk], (const xmlChar *) "name"), archiveName))
+        {
+            //printf("%s\n", xmlGetProp(archiveList->nodesetval->nodeTab[junk], (const xmlChar *) "name"));
+            return archiveList->nodesetval->nodeTab[junk];
+        }
+        
+    }
+    return NULL;
 }
 
 bool StrataConfig::isExpansionGame()
