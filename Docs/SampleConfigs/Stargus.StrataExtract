@@ -512,9 +512,6 @@
  			<campaign name="mission9" path="campaign/protoss/protoss09/staredit/scenario.chk" destination="Campaign/Protoss/Original/Mission9/" />
  			<campaign name="mission10" path="campaign/protoss/protoss10/staredit/scenario.chk" destination="Campaign/Protoss/Original/Mission10/" />
  		</CampaignAssets>
- 		<ExtractAssets>
- 			<Extract name="StarDat" path="files/stardat.mpq" destination="temporary/" />
- 		</ExtractAssets>
  	</Archive>
  	<Archive name="StarDat" type="MPQ">
  	<ArchiveAssets>

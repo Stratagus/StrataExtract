@@ -157,7 +157,67 @@ void StrataConfig::ProcessArchive(xmlNodePtr archive)
     {
         std::cout << archiveAssets->nodesetval->nodeTab[i]->name << '\n';
     }
-
+    
+    //Check for any ArchiveAsset Prereqs that need to be pushed onto the prereq queue
+    archiveAssets = xmlXPathEval((xmlChar *) "ArchiveAssets", configXPathContext);
+    if(archiveAssets->nodesetval->nodeTab > 0)
+    {
+        std::cout << "Found ArchiveAssets to push on the prereq\n";
+    }
+    
+    //Check for any AudioAssets that need to be extracted
+    archiveAssets = xmlXPathEval((xmlChar *) "AudioAssets", configXPathContext);
+    if(archiveAssets->nodesetval->nodeTab > 0)
+    {
+        std::cout << "Found AUDIOAssets to push on the process queue\n";
+    }
+    
+    //Check for any AudioAssets that need to be extracted
+    archiveAssets = xmlXPathEval((xmlChar *) "MapAssets", configXPathContext);
+    if(archiveAssets->nodesetval->nodeTab > 0)
+    {
+        std::cout << "Found MAPAssets to push on the process queue\n";
+    }
+    
+    //Check for any AudioAssets that need to be extracted
+    archiveAssets = xmlXPathEval((xmlChar *) "ImageAssets", configXPathContext);
+    if(archiveAssets->nodesetval->nodeTab > 0)
+    {
+        std::cout << "Found IMAGEAssets to push on the process queue\n";
+    }
+    
+    //Check for any AudioAssets that need to be extracted
+    archiveAssets = xmlXPathEval((xmlChar *) "VideoAssets", configXPathContext);
+    if(archiveAssets->nodesetval->nodeTab > 0)
+    {
+        std::cout << "Found VIDEOAssets to push on the process queue\n";
+    }
+    
+    //Check for any AudioAssets that need to be extracted
+    archiveAssets = xmlXPathEval((xmlChar *) "FontAssets", configXPathContext);
+    if(archiveAssets->nodesetval->nodeTab > 0)
+    {
+        std::cout << "Found FONTAssets to push on the process queue\n";
+    }
+    
+    //Check for any AudioAssets that need to be extracted
+    archiveAssets = xmlXPathEval((xmlChar *) "CampaignAssets", configXPathContext);
+    if(archiveAssets->nodesetval->nodeTab > 0)
+    {
+        std::cout << "Found CampaignAssets to push on the process queue\n";
+    }
+    
+    //Check for any AudioAssets that need to be extracted
+    archiveAssets = xmlXPathEval((xmlChar *) "ExtractAssets", configXPathContext);
+    if(archiveAssets->nodesetval->nodeTab > 0)
+    {
+        std::cout << "Found EXTRACTAssets to push on the process queue\n" ;
+    }
+    
+    for(int i = 0; i < archiveAssets->nodesetval->nodeNr; i++)
+    {
+        std::cout << archiveAssets->nodesetval->nodeTab[i]->name << '\n';
+    }
 }
 
 bool StrataConfig::isExpansionGame()
