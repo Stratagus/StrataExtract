@@ -56,6 +56,7 @@ void StrataConfig::readConfig(boost::filesystem::path configurationPath)
         
         if(!gameVersion)
         {
+            //exit(-1);
             throw "No valid version detected";
         }
         
@@ -75,6 +76,7 @@ void StrataConfig::readConfig(boost::filesystem::path configurationPath)
 xmlNodePtr StrataConfig::FindGameVersion()
 {
     //Jump to the <Versions> entity
+    boost::filesystem::path tempSourceGamePath = gameMediaSource;
     xmlXPathObjectPtr gameVersions = xmlXPathEval((const xmlChar *) "//Version", configXPathContext);
     
     bool fileMatch = true;
@@ -91,10 +93,9 @@ xmlNodePtr StrataConfig::FindGameVersion()
         //Start checking the <file> hashes with those in this version, if ANY fail break out
         while(currentChildPointer != NULL && fileMatch)
         {
-            
         #warning Potential logic error (Code Review)
             //Compare the Hash in the current file entity with the method generated hash
-            if(!xmlStrcmp(xmlGetProp(currentChildPointer, (const xmlChar *) "hash"), GetFileHash((char *)xmlGetProp(currentChildPointer, (const xmlChar *) "name"))))
+            if(!xmlStrcmp(xmlGetProp(currentChildPointer, (const xmlChar *) "hash"), GetFileHash(gameMediaSource / (char *)xmlGetProp(currentChildPointer, (const xmlChar *) "name"))))
             {
                 if(currentChildPointer->next->next == NULL)
                 {
@@ -266,27 +267,29 @@ bool StrataConfig::isConfigLoaded()
 
 xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
 {
-    boost::uuids::detail::sha1 s;
-    FILE *f;
-
-    f = fopen(filePath, "rb");
-
-    size_t len;
-
+    
+    std::cout << "Passing: " << filePath << '\n';
+    boost::uuids::detail::sha1 sha1Digest;
+    FILE *targetFile;
+    size_t bytesRead;
     char hash[20];
-    unsigned char buf[8192];
-
-
-    len = fread(buf, 1, sizeof buf, f);
-    while(len !=0)
+    unsigned char fileBuffer[8192];
+    unsigned int digest[5];
+    
+    targetFile = fopen(filePath.string().c_str(), "rb");
+    if(targetFile == NULL)
     {
-        s.process_bytes(buf, len);
-        len = fread(buf, 1, sizeof buf, f);
+        return NULL;
     }
 
-    unsigned int digest[5];
+    bytesRead = fread(fileBuffer, 1, sizeof fileBuffer, targetFile);
+    while(bytesRead !=0)
+    {
+        sha1Digest.process_bytes(fileBuffer, bytesRead);
+        bytesRead = fread(fileBuffer, 1, sizeof fileBuffer, targetFile);
+    }
 
-    s.get_digest(digest);
+    sha1Digest.get_digest(digest);
 
     for(int i = 0; i < 5; ++i)
     {
@@ -296,7 +299,7 @@ xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
         hash[i*4+2] = tmp[i*4+1];
         hash[i*4+3] = tmp[i*4];
     }
-    return (xmlChar*)hash;
+    return NULL;
 }
 
 /*std::string StrataConfig::FindSourcePathHash(boost::filesystem::path gamePath)
