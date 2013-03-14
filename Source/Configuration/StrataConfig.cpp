@@ -56,8 +56,8 @@ void StrataConfig::readConfig(boost::filesystem::path configurationPath)
         
         if(!gameVersion)
         {
-            //exit(-1);
-            throw "No valid version detected";
+            exit(-1);
+            //throw "No valid version detected";
         }
         
         
@@ -265,15 +265,17 @@ bool StrataConfig::isConfigLoaded()
     return configLoaded;
 }
 
+
+#warning Very Wasteful function!
 xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
 {
-    
     std::cout << "Passing: " << filePath << '\n';
     boost::uuids::detail::sha1 sha1Digest;
+    std::stringstream finalHash;
     FILE *targetFile;
     size_t bytesRead;
     char hash[20];
-    unsigned char fileBuffer[8192];
+    unsigned char fileBuffer[2048];
     unsigned int digest[5];
     
     targetFile = fopen(filePath.string().c_str(), "rb");
@@ -299,7 +301,15 @@ xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
         hash[i*4+2] = tmp[i*4+1];
         hash[i*4+3] = tmp[i*4];
     }
-    return NULL;
+    
+    finalHash << std::hex;
+    for(int i = 0; i < 20; ++i)
+    {
+        finalHash << ((hash[i] & 0x000000F0) >> 4)
+        << (hash[i] & 0x0000000F);
+    }
+    
+    return (xmlChar *) finalHash.str().c_str();
 }
 
 /*std::string StrataConfig::FindSourcePathHash(boost::filesystem::path gamePath)
