@@ -266,7 +266,7 @@ bool StrataConfig::isConfigLoaded()
 }
 
 
-#warning Very Wasteful function!
+#warning Very Wasteful function in memory and time in the way sha1Digest.process_bytes operates!
 xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
 {
     std::cout << "Passing: " << filePath << '\n';
@@ -312,133 +312,6 @@ xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
     return (xmlChar *) finalHash.str().c_str();
 }
 
-/*std::string StrataConfig::FindSourcePathHash(boost::filesystem::path gamePath)
-{
-    if(configurationRoot == NULL)
-    {
-        std::cerr << "Configuration file not read.";
-    }
-    return "";
-}*/
-
-/*std::string StrataConfig::FindSourcePathHash(boost::filesystem::path gamePath)
-{
-    boost::uuids::detail::sha1 myHash;
-    boost::filesystem::ifstream hashFile;
-    std::stringstream finalHash;
-    std::string hello = "Hello World";
-    char hash[20];
-    
-    
-    myHash.process_bytes(hello.c_str(), hello.size());
-    
-    
-    unsigned int digest[5];
-    myHash.get_digest(digest);
-    for(int i = 0; i < 5; ++i)
-    {
-        const char* tmp = reinterpret_cast<char*>(digest);
-        hash[i*4] = tmp[i*4+3];
-        hash[i*4+1] = tmp[i*4+2];
-        hash[i*4+2] = tmp[i*4+1];
-        hash[i*4+3] = tmp[i*4];
-    }
-    
-    finalHash << std::hex;
-    for(int i = 0; i < 20; ++i)
-    {
-        finalHash << ((hash[i] & 0x000000F0) >> 4)
-        << (hash[i] & 0x0000000F);
-    }
-    std::cout << finalHash.str();
-    return "";
-}*/
-
-/**
- * print_xpath_nodes:
- * @nodes:		the nodes set.
- * @output:		the output file handle.
- *
- * Prints the @nodes content to @output.
- */
-void StrataConfig::print_xpath_nodes(xmlNodeSetPtr nodes, FILE* output) {
-    xmlNodePtr cur;
-    int size;
-    int i;
-    
-    assert(output);
-    size = (nodes) ? nodes->nodeNr : 0;
-    
-    fprintf(output, "Result (%d nodes):\n", size);
-    for(i = 0; i < size; ++i) {
-        assert(nodes->nodeTab[i]);
-        
-        if(nodes->nodeTab[i]->type == XML_NAMESPACE_DECL) {
-            xmlNsPtr ns;
-            
-            ns = (xmlNsPtr)nodes->nodeTab[i];
-            cur = (xmlNodePtr)ns->next;
-            if(cur->ns) {
-                fprintf(output, "= namespace \"%s\"=\"%s\" for node %s:%s\n",
-                        ns->prefix, ns->href, cur->ns->href, cur->name);
-            } else {
-                fprintf(output, "= namespace \"%s\"=\"%s\" for node %s\n",
-                        ns->prefix, ns->href, cur->name);
-            }
-        } else if(nodes->nodeTab[i]->type == XML_ELEMENT_NODE) {
-            cur = nodes->nodeTab[i];
-            if(cur->ns) {
-    	        fprintf(output, "= element node \"%s:%s\"\n",
-                        cur->ns->href, cur->name);
-            } else {
-    	        fprintf(output, "= element node \"%s\"\n",
-                        cur->name);
-            }
-        } else {
-            cur = nodes->nodeTab[i];    
-            fprintf(output, "= node \"%s\": type %d\n", cur->name, cur->type);
-        }
-    }
-}
-
-void StrataConfig::print_xpath(xmlNodeSetPtr nodes) {
-    xmlNodePtr cur;
-    int size;
-    int i;
-    
-    size = (nodes) ? nodes->nodeNr : 0;
-    
-    printf("Result (%d nodes):\n", size);
-    for(i = 0; i < size; ++i) {
-        assert(nodes->nodeTab[i]);
-        
-        if(nodes->nodeTab[i]->type == XML_NAMESPACE_DECL) {
-            xmlNsPtr ns;
-            
-            ns = (xmlNsPtr)nodes->nodeTab[i];
-            cur = (xmlNodePtr)ns->next;
-            if(cur->ns) {
-                printf("= namespace \"%s\"=\"%s\" for node %s:%s\n",
-                        ns->prefix, ns->href, cur->ns->href, cur->name);
-            } else {
-                printf( "= namespace \"%s\"=\"%s\" for node %s\n",
-                        ns->prefix, ns->href, cur->name);
-            }
-        } else if(nodes->nodeTab[i]->type == XML_ELEMENT_NODE) {
-            cur = nodes->nodeTab[i];
-            if(cur->ns) {
-    	        printf( "= element node \"%s:%s\"\n",
-                        cur->ns->href, cur->name);
-            } else {
-    	        printf( "= element node \"%s\"\n",
-                        cur->name);
-            }
-        } else {
-            cur = nodes->nodeTab[i];
-            printf("= node \"%s\": type %d\n", cur->name, cur->type);
-        }
-    }
-}
 void StrataConfig::PrintUsage()
 {
     std::cout << "Stratagus Version " << VERSION << ' '

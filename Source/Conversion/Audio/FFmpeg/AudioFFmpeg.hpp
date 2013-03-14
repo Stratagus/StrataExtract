@@ -1,6 +1,8 @@
 #ifndef AudioFFmpeg_Header
 #define AudioFFmpeg_Header
 
+
+#include <iostream>
 #include <boost/filesystem/path.hpp>
 extern "C"
 {
