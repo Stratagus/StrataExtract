@@ -128,19 +128,7 @@ void StrataConfig::ProcessGameAssetLists()
         if(xmlGetProp(gameVersionFilePointer, (const xmlChar *) "Archive") != NULL)
         {
             std::cout << "It's a archive file!!\n";
-    #warning Seems like a really ugly solution (Code Review)
-            xmlChar* query = new xmlChar;
-            strcat((char *) query, "Archive[@name='");
-            strcat((char *) query, (char *) xmlGetProp(gameVersionFilePointer, (const xmlChar *) "Archive"));
-            strcat((char *) query, "']");
-            configXPathContext->node = gameVersion->parent->parent;
-            xmlXPathObjectPtr result = xmlXPathEval((xmlChar *) query, configXPathContext);
-            if(result == NULL || (result->nodesetval->nodeNr > 1))
-            {
-                throw "Archive in version file element not found";
-            }
-
-            ProcessArchive(result->nodesetval->nodeTab[0]);
+            ProcessArchive(LookupArchive(xmlGetProp(gameVersionFilePointer, (const xmlChar *) "Archive")));
         }
         gameVersionFilePointer = gameVersionFilePointer->next->next;
     }
