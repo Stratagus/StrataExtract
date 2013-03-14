@@ -5,6 +5,9 @@ StrataConfig::StrataConfig()
     totalObjects = 0;
     completeObjects = 0;
     configLoaded = false;
+    isExpansion = false;
+    configurationDocument = NULL;
+    configXPathContext = NULL;
 }
 
 StrataConfig* StrataConfig::ConfigurationInstance = 0;
@@ -28,8 +31,7 @@ void StrataConfig::readConfig(boost::filesystem::path configurationPath)
     }
     else
     {
-        //The XML document file
-        xmlDoc *configurationDocument = NULL;
+
         
         //The root of our configuration tree
         configurationDocument = xmlReadFile(configurationPath.string().c_str(), NULL, NULL);
@@ -46,12 +48,13 @@ void StrataConfig::readConfig(boost::filesystem::path configurationPath)
         }
         else
         {
-            configurationRoot = xmlDocGetRootElement(configurationDocument);
             configXPathContext = xmlXPathNewContext(configurationDocument);
+            configurationRoot = xmlDocGetRootElement(configurationDocument);
         }
         
-
-        if(!findGameVersion())
+        gameVersion = FindGameVersion();
+        
+        if(!gameVersion)
         {
             throw "No valid version detected";
         }
@@ -69,7 +72,7 @@ void StrataConfig::readConfig(boost::filesystem::path configurationPath)
     }
 }
 
-xmlNodePtr StrataConfig::findGameVersion()
+xmlNodePtr StrataConfig::FindGameVersion()
 {
     //Jump to the <Versions> entity
     xmlXPathObjectPtr gameVersions = xmlXPathEval((const xmlChar *) "//Version", configXPathContext);
@@ -95,20 +98,153 @@ xmlNodePtr StrataConfig::findGameVersion()
             {
                 if(currentChildPointer->next->next == NULL)
                 {
-                   return gameVersions->nodesetval->nodeTab[numberOfVersions]; 
+                   //Check if the GameMediaSource is a expansion (We will need additional input)
+                   if(!xmlStrcmp(xmlGetProp(currentNodePointer, (const xmlChar *) "expansion"), (xmlChar *) "1"))
+                   {
+                       isExpansion = true;
+                   }
+                   //If everything checks out and all files are accounted for with the proper SHA1 hashes return
+                   //the game version for the configuration
+                   return gameVersions->nodesetval->nodeTab[numberOfVersions];
                 }
             }
             else
             {
                 fileMatch = false;
             }
-        #warning This line probably breaks something, but I am not sure
+        #warning This line probably breaks something, but I am not sure (Code Review)
             currentChildPointer = currentChildPointer->next->next;
         }
     }
     return NULL;
 }
 
+void StrataConfig::ProcessGameAssetLists()
+{
+    xmlNodePtr gameVersionFilePointer = gameVersion->children->next;
+    std::cout << "Game Version is: " << xmlGetProp(gameVersion, (const xmlChar *) "name") << '\n';
+    while(gameVersionFilePointer != NULL)
+    {
+        if(xmlGetProp(gameVersionFilePointer, (const xmlChar *) "Archive") != NULL)
+        {
+            std::cout << "It's a archive file!!\n";
+            ProcessArchive(LookupArchive(xmlGetProp(gameVersionFilePointer, (const xmlChar *) "Archive")));
+        }
+        gameVersionFilePointer = gameVersionFilePointer->next->next;
+    }
+    
+}
+
+void StrataConfig::ProcessArchive(xmlNodePtr archive)
+{
+    //Set the "scope" in which we want to the XPath expression to evaluate
+    configXPathContext->node = archive;
+    xmlXPathObjectPtr archiveAssets = xmlXPathEval((const xmlChar *) "*", configXPathContext);
+
+    #warning Need a more efficent way to do this (Code Review)
+    xmlChar* assetTypes [8] = { (xmlChar *)"ArchiveAssets", (xmlChar *)"AudioAssets",
+                               (xmlChar *)"MapAssets", (xmlChar *)"ImageAssets",
+                               (xmlChar *)"VideoAssets", (xmlChar *)"FontAssets",
+                               (xmlChar *)"CampaignAssets", (xmlChar *)"ExtractAssets"};
+    
+    for(int currentAssetType = 0; currentAssetType < 8; currentAssetType++)
+    {
+        archiveAssets = xmlXPathEval(assetTypes[currentAssetType], configXPathContext);
+        if(archiveAssets->nodesetval->nodeTab > 0)
+        {
+                 std::cout << "Got a for typeset " << assetTypes[currentAssetType] << '\n';
+                if(currentAssetType > 0)
+                {
+                    processQueue.push(archiveAssets->nodesetval->nodeTab[0]->children->next);
+                }
+                else
+                {
+                    xmlNodePtr archiveAssetLists = archiveAssets->nodesetval->nodeTab[0]->children->next;
+                    while (archiveAssetLists != NULL)
+                    {
+                        preparationProcessQueue.push(LookupArchive(xmlGetProp(archiveAssetLists, (const xmlChar *) "Archive")));
+                        ProcessArchive(LookupArchive(xmlGetProp(archiveAssetLists, (const xmlChar *) "Archive")));
+                        archiveAssetLists = archiveAssetLists->next->next;
+                    }
+                }
+            
+        }
+        configXPathContext->node = archive;
+    }
+}
+
+xmlNodePtr StrataConfig::LookupArchive(xmlChar* archiveName)
+{
+    configXPathContext->node = configurationRoot;
+    xmlXPathObjectPtr archiveList = xmlXPathEval((const xmlChar *) "//Archive", configXPathContext);
+    for(int junk = 0; junk < archiveList->nodesetval->nodeNr; junk++)
+    {
+        //std::cout << archiveList->nodesetval->nodeTab[junk]->name << '\n';
+        if(!xmlStrcmp(xmlGetProp(archiveList->nodesetval->nodeTab[junk], (const xmlChar *) "name"), archiveName))
+        {
+            //printf("%s\n", xmlGetProp(archiveList->nodesetval->nodeTab[junk], (const xmlChar *) "name"));
+            return archiveList->nodesetval->nodeTab[junk];
+        }
+        
+    }
+    return NULL;
+}
+
+bool StrataConfig::isExpansionGame()
+{
+    if(!isConfigLoaded())
+    {
+        throw "No configuration loaded in strataconfig";
+    }
+    
+    return isExpansion;
+}
+
+bool StrataConfig::setGameMediaSourcePath(boost::filesystem::path gameMediaSourcePath)
+{
+    if(!boost::filesystem::exists(gameMediaSourcePath) || !boost::filesystem::is_directory(gameMediaSourcePath))
+    {
+        return false;
+    }
+    
+    gameMediaSource = gameMediaSourcePath;
+    return true;
+}
+bool StrataConfig::setGameMediaDestinationPath(boost::filesystem::path gameMediaDestinationPath)
+{
+    if(boost::filesystem::exists(gameMediaDestinationPath))
+    {
+        return false;
+    }
+    
+    gameMediaDestination = gameMediaDestinationPath;
+    return true;
+}
+
+boost::filesystem::path StrataConfig::GameMediaSourcePath()
+{
+    return gameMediaSource;
+}
+boost::filesystem::path StrataConfig::GameMediaDestinationPath()
+{
+    return gameMediaDestination;
+}
+
+/*std::string StrataConfig::getGameName()
+{
+    if(!isConfigLoaded())
+    {
+        throw "GetGameName: No config loaded";
+    }
+    configXPathContext->node = configurationRoot;
+    xmlXPathObjectPtr result = xmlXPathEval((xmlChar *) "title", configXPathContext);
+    if(result == NULL)
+    {
+        throw "Incomplete game configuration";
+    }
+    std::cout << "Test: " << result->nodesetval->nodeTab[0]->name << '\n';
+    return "";
+}*/
 
 int StrataConfig::GetCPUCores()
 {
