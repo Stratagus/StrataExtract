@@ -130,10 +130,37 @@ bool StrataConfig::isConfigLoaded()
 
 xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
 {
-    std::cout << "Passed in: " << filePath << '\n';
-    //SHA1 hash here
-    //return NULL;
-    return (xmlChar*) "2de01f59e99c0fb16d32df2d7cdd909be2bf0825";
+    boost::uuids::detail::sha1 s;
+    FILE *f;
+
+    f = fopen(filePath, "rb");
+
+    size_t len;
+
+    char hash[20];
+    unsigned char buf[8192];
+
+
+    len = fread(buf, 1, sizeof buf, f);
+    while(len !=0)
+    {
+        s.process_bytes(buf, len);
+        len = fread(buf, 1, sizeof buf, f);
+    }
+
+    unsigned int digest[5];
+
+    s.get_digest(digest);
+
+    for(int i = 0; i < 5; ++i)
+    {
+        const char* tmp = reinterpret_cast<char*>(digest);
+        hash[i*4] = tmp[i*4+3];
+        hash[i*4+1] = tmp[i*4+2];
+        hash[i*4+2] = tmp[i*4+1];
+        hash[i*4+3] = tmp[i*4];
+    }
+    return (xmlChar*)hash;
 }
 
 /*std::string StrataConfig::FindSourcePathHash(boost::filesystem::path gamePath)
