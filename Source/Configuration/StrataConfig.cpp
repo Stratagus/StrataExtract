@@ -147,37 +147,27 @@ void StrataConfig::ProcessArchive(xmlNodePtr archive)
                                (xmlChar *)"VideoAssets", (xmlChar *)"FontAssets",
                                (xmlChar *)"CampaignAssets", (xmlChar *)"ExtractAssets"};
     
-    xmlChar* baseTypes [8] = { (xmlChar *)"ArchiveAsset", (xmlChar *)"audio",
-                                (xmlChar *)"map", (xmlChar *)"image",
-                                (xmlChar *)"video", (xmlChar *)"font",
-                                (xmlChar *)"campaign", (xmlChar *)"extract"};
-    
     for(int currentAssetType = 0; currentAssetType < 8; currentAssetType++)
     {
         archiveAssets = xmlXPathEval(assetTypes[currentAssetType], configXPathContext);
         if(archiveAssets->nodesetval->nodeTab > 0)
         {
-            configXPathContext->node = archiveAssets->nodesetval->nodeTab[0];
-            archiveAssets = xmlXPathEval(baseTypes[currentAssetType], configXPathContext);
-            if(archiveAssets->nodesetval->nodeTab > 0)
-            {
-                 std::cout << "Got " << archiveAssets->nodesetval->nodeNr << " for type " << baseTypes[currentAssetType] << '\n';
+                 std::cout << "Got a for typeset " << assetTypes[currentAssetType] << '\n';
                 if(currentAssetType > 0)
                 {
-                    processQueue.push(archiveAssets);
+                    processQueue.push(archiveAssets->nodesetval->nodeTab[0]->children->next);
                 }
                 else
                 {
-                    //Found a nested archive that needs to be extracted
-                    preparationProcessQueue.push(archiveAssets);
-                    //xmlNodePtr hello = LookupArchive((xmlChar *) "StarDat");
-                    for(int nestedArchives = 0; nestedArchives < archiveAssets->nodesetval->nodeNr; nestedArchives++)
+                    xmlNodePtr archiveAssetLists = archiveAssets->nodesetval->nodeTab[0]->children->next;
+                    while (archiveAssetLists != NULL)
                     {
-                        std::cout << "Hello: " << xmlGetProp(archiveAssets->nodesetval->nodeTab[nestedArchives], (const xmlChar *) "Archive") << '\n';
-                        ProcessArchive(LookupArchive(xmlGetProp(archiveAssets->nodesetval->nodeTab[nestedArchives], (const xmlChar *) "Archive")));
+                        preparationProcessQueue.push(LookupArchive(xmlGetProp(archiveAssetLists, (const xmlChar *) "Archive")));
+                        ProcessArchive(LookupArchive(xmlGetProp(archiveAssetLists, (const xmlChar *) "Archive")));
+                        archiveAssetLists = archiveAssetLists->next->next;
                     }
                 }
-            }
+            
         }
         configXPathContext->node = archive;
     }

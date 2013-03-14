@@ -514,12 +514,6 @@
  		</CampaignAssets>
  	</Archive>
  	<Archive name="StarDat" type="MPQ">
- 	<ArchiveAssets>
- 	</ArchiveAssets>
- 	<!-- Extract & Convert to PNG -->
- 	<ImageAssets convert="png">
- 	</ImageAssets>
- 	<!-- Extract & Convert to OGG Vorbis -->
  	<AudioAssets convert="ogg">
  		<!-- Terran SoundEffects -->
 
@@ -780,17 +774,7 @@
 			<audio name="explosion medium" path="sound/misc/explomed.wav" destination="Audio/SoundEffects/Misc/" />
 			<audio name="explosion small" path="sound/misc/explosm.wav" destination="Audio/SoundEffects/Misc/" />
  	</AudioAssets>
- 	<!--Rip Audio Tracks from disks-->
- 	<CDRipAudioAssets convert="ogg">
- 	</CDRipAudioAssets>
- 	<!-- Extract & Convert to OGG Theora -->
- 	<VideoAssets convert="ogv">
- 	</VideoAssets>
- 	<!-- Extract & Convert? -->
 
- 	<!-- Simply Extract Objects from Archive -->
- 	<ExtractAssets>
- 	</ExtractAssets>
  	</Archive>
  	<Archive name="MainBroodwar">
  	</Archive>
