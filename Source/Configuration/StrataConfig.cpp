@@ -272,25 +272,33 @@ xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
     std::cout << "Passing: " << filePath << '\n';
     boost::uuids::detail::sha1 sha1Digest;
     std::stringstream finalHash;
-    FILE *targetFile;
-    size_t bytesRead;
     char hash[20];
-    unsigned char fileBuffer[2048];
+    char fileBuffer[2048];
     unsigned int digest[5];
     
-    targetFile = fopen(filePath.string().c_str(), "rb");
-    if(targetFile == NULL)
+    std::ifstream targetFile(filePath.string().c_str(),std::ios::binary);
+
+    //If the file could not be opened return NULL
+    if(!targetFile.good())
+    {
+        return NULL;
+    }
+    
+    while(targetFile.good())
+    {
+        targetFile.read(fileBuffer, sizeof(fileBuffer));
+        sha1Digest.process_bytes(fileBuffer, targetFile.gcount());
+    }
+    
+    //There was a failure to read the file
+    if(!targetFile.eof())
     {
         return NULL;
     }
 
-    bytesRead = fread(fileBuffer, 1, sizeof fileBuffer, targetFile);
-    while(bytesRead !=0)
-    {
-        sha1Digest.process_bytes(fileBuffer, bytesRead);
-        bytesRead = fread(fileBuffer, 1, sizeof fileBuffer, targetFile);
-    }
-
+    //Now that we have the file processed into the digest, close the file
+    targetFile.close();
+    
     sha1Digest.get_digest(digest);
 
     for(int i = 0; i < 5; ++i)

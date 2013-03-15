@@ -17,6 +17,7 @@
 #include <boost/uuid/sha1.hpp>
 
 #include <math.h>
+#include <fstream>
 #include <string>
 #include <iterator>
 #include <queue>
