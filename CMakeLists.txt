@@ -4,6 +4,7 @@
 #https://github.com/bradc6/StrataExtract
 cmake_minimum_required (VERSION 2.6)
 project (StrataExtract)
+set(StrataExtractVersion "0.1")
 
 
 #Sets the directory for cmake to find Cmake configration packages,
@@ -24,6 +25,8 @@ find_package(Boost REQUIRED COMPONENTS system thread filesystem)
 find_package(LibXml2 REQUIRED)
 find_package(FFMPEG REQUIRED)
 find_package(Magick++ REQUIRED)
+find_package(PkgConfig)
+pkg_check_modules(GTKMM gtkmm-3.0)
 
 #Source directory variables
 #These allow for folders in the source and unittesting to be moved
@@ -38,7 +41,7 @@ set (IMAGECONVERSION_DIR ${CONVERSION_DIR}/Image)
 set (VIDEOCONVERSION_DIR ${CONVERSION_DIR}/Video)
 set (RUNNER_DIR ${SOURCE_DIR}/AssetManager)
 
-#UnitTest directories
+#UnitTest Directories
 set (UNITTEST_DIR "./UnitTests")
 set (ARCHIVES_UNITTESTS_DIR ${UNITTEST_DIR}/Archives)
 set (CONVERSION_UNITTESTS_DIR ${UNITTEST_DIR}/Conversion)
@@ -47,6 +50,14 @@ set (AUDIOCONVERSION_UNITTESTS_DIR ${CONVERSION_UNITTESTS_DIR}/Audio)
 set (IMAGECONVERSION_UNITTESTS_DIR ${CONVERSION_UNITTESTS_DIR}/Image)
 set (VIDEOCONVERSION_UNITTESTS_DIR ${CONVERSION_DIR}/Video)
 set (RUNNER_UNITTESTS_DIR ${UNITTEST_DIR}/AssetManager)
+
+#GUI Directories
+set (GUI_DIR ${SOURCE_DIR}/GUIs)
+set (GUI_QUARTZ_DIR ${SOURCE_DIR}/GUIs/Quartz)
+set (GUI_GTKMM_DIR ${SOURCE_DIR}/GUIs/GTKMM)
+
+#Media Directories
+set (MEDIA_DIR "./Media")
 
 #Set of included libraries if the user does not have
 #a packaged version installed via DEB/RPM/Macports
@@ -125,6 +136,7 @@ set(StrataExtractImageConversion-UnitTests-Source
     ${IMAGECONVERSION_UNITTESTS_DIR}/ImageMagick/MagickImageUnitTests.hpp
     ${IMAGECONVERSION_UNITTESTS_DIR}/ImageMagick/MagickImageUnitTests.cpp
    )
+
 
 #Code groupings allow for IDEs to put files into collections
 #instead of simply throwing all files into a pile. This should
@@ -208,7 +220,7 @@ add_executable(
 #Creates the target libraries to use with other Frontend applications
 target_link_libraries (
 	StrataExtractCLI
-  strataextractCore
+  StrataExtractCore
   ${Boost_LIBRARIES}
 	)
 
@@ -230,7 +242,7 @@ if(UNITTESTS)
     ${StrataExtractImageConversion-UnitTests-Source}
     )
   target_link_libraries(StrataExtractUnitTests
-                        strataextractCore
+                        StrataExtractCore
                         ${CPPUNIT_LIBRARY})
 endif()
 
@@ -240,6 +252,101 @@ endif()
 #elseif (UNIX)
 #    set_target_properties(StrataExtractCLI PROPERTIES INSTALL_RPATH ".")
 #endif()
+
+#GUI Specific Compilation Processes
+#Quartz OSX GUI Target
+IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+  set(Quartz-Source
+    ${GUI_QUARTZ_DIR}/AppDelegate.h
+    ${GUI_QUARTZ_DIR}/AppDelegate.mm
+    ${GUI_QUARTZ_DIR}/main.mm
+)
+
+set(Quartz-Resources
+  "./Credits.rtf"
+  #${MEDIA_DIR}/Icons/StrataExtract.icns
+)
+
+set_source_files_properties(
+  ${Quartz-Resources}
+  PROPERTIES
+  MACOSX_PACKAGE_LOCATION Resources
+)
+#The XIB file locations 
+set(Quartz-Xibs-Source
+  ${GUI_QUARTZ_DIR}/Xibs/Main.xib
+  )
+
+#Set the XIB Files for compile
+set(Quartz-Xibs
+    Main
+)
+
+# Set the OS X Bundle specific CMake variables which will be used to populate the plist for
+# the application bundle
+set(MACOSX_BUNDLE_INFO_STRING "StrataExtract")
+set(MACOSX_BUNDLE_GUI_IDENTIFIER "net.codeprogrammers.StrataExtract")
+set(MACOSX_BUNDLE_LONG_VERSION_STRING "${PROJECT_NAME} Version ${STARTOOLVERSION_VERSION}")
+set(MACOSX_BUNDLE_BUNDLE_NAME ${PROJECT_NAME})
+set(MACOSX_BUNDLE_SHORT_VERSION_STRING ${StrataExtractVersion})
+set(MACOSX_BUNDLE_BUNDLE_VERSION ${StrataExtractVersion})
+set(MACOSX_BUNDLE_COPYRIGHT "The StrataExtract Team")
+
+#UnitTests groupings
+source_group(Main FILES ${Quartz-Source})
+source_group(Resources FILES ${Quartz-Resources})
+source_group(Xibs FILES ${Quartz-Xibs-Source})
+
+add_executable(StrataExtractOSX MACOSX_BUNDLE ${Quartz-Source} ${Quartz-Resources} ${Quartz-Xibs-Source})
+
+# Probably a better way to set the framework link libraries.
+target_link_libraries(StrataExtractOSX "-framework Cocoa")
+
+# Set a custom plist file for the app bundle
+set_target_properties(StrataExtractOSX PROPERTIES MACOSX_BUNDLE_INFO_PLIST .${GUI_QUARTZ_DIR}/StrataExtract-Info.plist)
+
+
+# Make sure we can find the 'ibtool' program. If we can NOT find it we
+# skip generation of this project
+find_program(IBTOOL ibtool HINTS "/usr/bin" "${OSX_DEVELOPER_ROOT}/usr/bin")
+if (${IBTOOL} STREQUAL "IBTOOL-NOTFOUND")
+  message(SEND_ERROR "ibtool can not be found and is needed to compile the .xib files. It should have been installed with 
+                    the Apple developer tools. The default system paths were searched in addition to ${OSX_DEVELOPER_ROOT}/usr/bin")
+endif()
+
+# Make sure the 'Resources' Directory is correctly created before we build
+add_custom_command (TARGET StrataExtractOSX PRE_BUILD
+                      COMMAND mkdir -p .${EXECUTABLE_OUTPUT_PATH}/\${CONFIGURATION}/StrataExtractOSX.app/Contents/Resources)
+                      
+# Compile the .xib files using the 'ibtool' program with the destination being the app package
+foreach(xib ${Quartz-Xibs})
+  add_custom_command (TARGET StrataExtractOSX POST_BUILD
+                    COMMAND ${IBTOOL} --errors --warnings --notices --output-format human-readable-text
+                              --compile .${EXECUTABLE_OUTPUT_PATH}/\${CONFIGURATION}/StrataExtractOSX.app/Contents/Resources/${xib}.nib
+                             .${GUI_QUARTZ_DIR}/Xibs/${xib}.xib)
+                      #COMMENT ("Compiling ${GUI_QUARTZ_DIR}/Xibs/${xib}.xib")
+
+endforeach()
+
+endif()
+
+#Check if the system has GTKMM
+IF(NOT "${GTKMM_LIBRARIES}" STREQUAL "")
+#Find PackageConfig to get the libraries we want
+MESSAGE("Found GTKMM, building GStrataExtract")
+
+set(GTKMM-Source
+  ${GUI_GTKMM_DIR}/main.hpp
+  ${GUI_GTKMM_DIR}/main.cpp
+  )
+include_directories(${GTKMM_INCLUDE_DIRS})
+
+add_executable(GStrataExtract ${GTKMM-Source})
+
+
+target_link_libraries(GStrataExtract 
+                      ${GTKMM_LIBRARIES})
+ENDIF()
 
 #Tell the developer the current build options
 message("\n\nlibgrp Compile Options\n Unit Tests: ${UNITTESTS} [-DUNITESTS=${UNITTESTS}] \n")
