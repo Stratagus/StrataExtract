@@ -141,7 +141,10 @@ source_group(Conversion\\Image FILES ${StrataExtractImageConversion-Source})
 source_group(Conversion\\Video FILES ${StrataExtractVideoConversion-Source})
 
 #UnitTests groupings
-
+source_group(Main FILES ${StrataExtractMain-UnitTests-Source})
+source_group(ConfigurationUnitTests FILES ${StrataExtractConfiguration-UnitTests-Source})
+source_group(ArchivesUnitTests\\MPQArchiveUnitTests FILES ${StrataExtractArchives-UnitTests-Source})
+source_group(ConversionUnitTests\\ImageUnitTests FILES ${StrataExtractImageConversion-UnitTests-Source})
 
 
 # on OS X we also have to add '-framework Cocoa' as library.  This is
@@ -162,17 +165,7 @@ endif()
 #Compile the Library for X use
 #add_library(Library)
 
-#Links the libraries to the executable as to actually call
-#the library dependancy.
-link_libraries (
-	  ${Boost_LIBRARIES}
-    ${LIBXML2_LIBRARIES}
-    ${Magick++_LIBRARIES}
-    ${FFMPEG_LIBAVCODEC_LIBRARIES}
-    ${FFMPEG_LIBAVFORMAT_LIBRARIES}
-    ${FFMPEG_LIBAVUTIL_LIBRARIES}
-    ${FFMPEG_LIBSWRESAMPLE_LIBRARIES}
-)
+
 
 # Now we define what makes our executable.  First thing is the name,
 # WIN32 is needed to make this a Win32 GUI application, MACOSX_BUNDLE
@@ -183,24 +176,40 @@ link_libraries (
 #    MACOSX_BUNDLE
 #)
 
+add_library(StrataExtractCore SHARED 
+    ${StrataExtractConfiguration-Source}
+    ${StrataExtractRunner-Source}
+    ${StrataExtractGraphicalInterface-Source}
+    ${StrataExtractAudioConversion-Source}
+    ${StrataExtractImageConversion-Source}
+    ${StrataExtractVideoConversion-Source}
+    ${StrataExtractArchives-Source}
+            )
+
+target_link_libraries(
+            StrataExtractCore
+            ${Boost_LIBRARIES}
+            ${LIBXML2_LIBRARIES}
+            ${Magick++_LIBRARIES}
+            ${FFMPEG_LIBAVCODEC_LIBRARIES}
+            ${FFMPEG_LIBAVFORMAT_LIBRARIES}
+            ${FFMPEG_LIBAVUTIL_LIBRARIES}
+            ${FFMPEG_LIBSWRESAMPLE_LIBRARIES}
+            storm
+)
+
 add_executable(
-	StrataExtract
+	StrataExtractCLI
     WIN32
     #MACOSX_BUNDLE
    ${StrataExtractMain-Source}
-   ${StrataExtractConfiguration-Source}
-   ${StrataExtractRunner-Source}
-   ${StrataExtractGraphicalInterface-Source}
-   ${StrataExtractAudioConversion-Source}
-   ${StrataExtractImageConversion-Source}
-   ${StrataExtractVideoConversion-Source}
-   ${StrataExtractArchives-Source}
 )
 
 #Creates the target libraries to use with other Frontend applications
 target_link_libraries (
-	StrataExtract
-  storm
+	StrataExtractCLI
+  strataextractCore
+  ${Boost_LIBRARIES}
 	)
 
 #Unittest configuration settings
@@ -211,35 +220,26 @@ if(UNITTESTS)
   find_package(CPPUnit REQUIRED)
 
   add_executable(
-    strataextractUnitTests
+    StrataExtractUnitTests
     WIN32
     #MACOSX_BUNDLE 
-    #Actual Strataextract code
-    ${StrataExtractConfiguration-Source}
-    ${StrataExtractRunner-Source}
-    ${StrataExtractGraphicalInterface-Source}
-    ${StrataExtractAudioConversion-Source}
-    ${StrataExtractImageConversion-Source}
-    ${StrataExtractVideoConversion-Source}
-    ${StrataExtractArchives-Source}
-
     #The UnitTests for functionality
     ${StrataExtractMain-UnitTests-Source}
     ${StrataExtractConfiguration-UnitTests-Source}
     ${StrataExtractArchives-UnitTests-Source}
     ${StrataExtractImageConversion-UnitTests-Source}
     )
-  target_link_libraries(strataextractUnitTests 
-                        storm
+  target_link_libraries(StrataExtractUnitTests
+                        strataextractCore
                         ${CPPUNIT_LIBRARY})
 endif()
 
 # Set the RPATH (ie Hack Soup for the moment)
-if (APPLE)
-    set_target_properties(StrataExtract PROPERTIES LINK_FLAGS "-Wl,-rpath,@loader_path/.")
-elseif (UNIX)
-    set_target_properties(StrataExtract PROPERTIES INSTALL_RPATH ".")
-endif()
+#if (APPLE)
+#    set_target_properties(StrataExtractCLI PROPERTIES LINK_FLAGS "-Wl,-rpath,@loader_path/.")
+#elseif (UNIX)
+#    set_target_properties(StrataExtractCLI PROPERTIES INSTALL_RPATH ".")
+#endif()
 
 #Tell the developer the current build options
 message("\n\nlibgrp Compile Options\n Unit Tests: ${UNITTESTS} [-DUNITESTS=${UNITTESTS}] \n")
