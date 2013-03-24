@@ -37,7 +37,16 @@ set (AUDIOCONVERSION_DIR ${CONVERSION_DIR}/Audio)
 set (IMAGECONVERSION_DIR ${CONVERSION_DIR}/Image)
 set (VIDEOCONVERSION_DIR ${CONVERSION_DIR}/Video)
 set (RUNNER_DIR ${SOURCE_DIR}/AssetManager)
-set (UNITTEST_DIR "./UnitTesting")
+
+#UnitTest directories
+set (UNITTEST_DIR "./UnitTests")
+set (ARCHIVES_UNITTESTS_DIR ${UNITTEST_DIR}/Archives)
+set (CONVERSION_UNITTESTS_DIR ${UNITTEST_DIR}/Conversion)
+set (CONFIGURATION_UNITTESTS_DIR ${UNITTEST_DIR}/Configuration)
+set (AUDIOCONVERSION_UNITTESTS_DIR ${CONVERSION_UNITTESTS_DIR}/Audio)
+set (IMAGECONVERSION_UNITTESTS_DIR ${CONVERSION_UNITTESTS_DIR}/Image)
+set (VIDEOCONVERSION_UNITTESTS_DIR ${CONVERSION_DIR}/Video)
+set (RUNNER_UNITTESTS_DIR ${UNITTEST_DIR}/AssetManager)
 
 #Set of included libraries if the user does not have
 #a packaged version installed via DEB/RPM/Macports
@@ -99,6 +108,24 @@ set(StrataExtractVideoConversion-Source
 set(StrataExtractGraphicalInterface-Source)
 
 
+#UnitTest hpp/cpp files
+set(StrataExtractMain-UnitTests-Source
+  ${UNITTEST_DIR}/mainUnitTests.hpp
+  ${UNITTEST_DIR}/mainUnitTests.cpp
+   )
+set(StrataExtractConfiguration-UnitTests-Source
+    ${CONFIGURATION_UNITTESTS_DIR}/StrataConfigUnitTests.hpp
+    ${CONFIGURATION_UNITTESTS_DIR}/StrataConfigUnitTests.cpp
+   )
+set(StrataExtractArchives-UnitTests-Source
+    ${ARCHIVES_UNITTESTS_DIR}/MPQ/MPQArchiveUnitTests.hpp
+    ${ARCHIVES_UNITTESTS_DIR}/MPQ/MPQArchiveUnitTests.cpp
+   )
+set(StrataExtractImageConversion-UnitTests-Source
+    ${IMAGECONVERSION_UNITTESTS_DIR}/ImageMagick/MagickImageUnitTests.hpp
+    ${IMAGECONVERSION_UNITTESTS_DIR}/ImageMagick/MagickImageUnitTests.cpp
+   )
+
 #Code groupings allow for IDEs to put files into collections
 #instead of simply throwing all files into a pile. This should
 #allow for easy navigation through the code base for novice and
@@ -113,6 +140,11 @@ source_group(Conversion\\Audio FILES ${StrataExtractAudioConversion-Source})
 source_group(Conversion\\Image FILES ${StrataExtractImageConversion-Source})
 source_group(Conversion\\Video FILES ${StrataExtractVideoConversion-Source})
 
+#UnitTests groupings
+source_group(Main FILES ${StrataExtractMain-UnitTests-Source})
+source_group(ConfigurationUnitTests FILES ${StrataExtractConfiguration-UnitTests-Source})
+source_group(ArchivesUnitTests\\MPQArchiveUnitTests FILES ${StrataExtractArchives-UnitTests-Source})
+source_group(ConversionUnitTests\\ImageUnitTests FILES ${StrataExtractImageConversion-UnitTests-Source})
 
 
 # on OS X we also have to add '-framework Cocoa' as library.  This is
@@ -133,17 +165,7 @@ endif()
 #Compile the Library for X use
 #add_library(Library)
 
-#Links the libraries to the executable as to actually call
-#the library dependancy.
-link_libraries (
-	  ${Boost_LIBRARIES}
-    ${LIBXML2_LIBRARIES}
-    ${Magick++_LIBRARIES}
-    ${FFMPEG_LIBAVCODEC_LIBRARIES}
-    ${FFMPEG_LIBAVFORMAT_LIBRARIES}
-    ${FFMPEG_LIBAVUTIL_LIBRARIES}
-    ${FFMPEG_LIBSWRESAMPLE_LIBRARIES}
-)
+
 
 # Now we define what makes our executable.  First thing is the name,
 # WIN32 is needed to make this a Win32 GUI application, MACOSX_BUNDLE
@@ -154,30 +176,70 @@ link_libraries (
 #    MACOSX_BUNDLE
 #)
 
+add_library(StrataExtractCore SHARED 
+    ${StrataExtractConfiguration-Source}
+    ${StrataExtractRunner-Source}
+    ${StrataExtractGraphicalInterface-Source}
+    ${StrataExtractAudioConversion-Source}
+    ${StrataExtractImageConversion-Source}
+    ${StrataExtractVideoConversion-Source}
+    ${StrataExtractArchives-Source}
+            )
+
+target_link_libraries(
+            StrataExtractCore
+            ${Boost_LIBRARIES}
+            ${LIBXML2_LIBRARIES}
+            ${Magick++_LIBRARIES}
+            ${FFMPEG_LIBAVCODEC_LIBRARIES}
+            ${FFMPEG_LIBAVFORMAT_LIBRARIES}
+            ${FFMPEG_LIBAVUTIL_LIBRARIES}
+            ${FFMPEG_LIBSWRESAMPLE_LIBRARIES}
+            storm
+)
+
 add_executable(
-	StrataExtract
+	StrataExtractCLI
     WIN32
     #MACOSX_BUNDLE
    ${StrataExtractMain-Source}
-   ${StrataExtractConfiguration-Source}
-   ${StrataExtractRunner-Source}
-   ${StrataExtractGraphicalInterface-Source}
-   ${StrataExtractAudioConversion-Source}
-   ${StrataExtractImageConversion-Source}
-   ${StrataExtractVideoConversion-Source}
-   ${StrataExtractArchives-Source}
 )
 
 #Creates the target libraries to use with other Frontend applications
 target_link_libraries (
-	StrataExtract
-  storm
+	StrataExtractCLI
+  strataextractCore
+  ${Boost_LIBRARIES}
 	)
 
+#Unittest configuration settings
+option(UNITTESTS "Compile Unittests" OFF)
+if(UNITTESTS)
+  #Search for the required libraries for the project to properly
+  #link and compile.
+  find_package(CPPUnit REQUIRED)
+
+  add_executable(
+    StrataExtractUnitTests
+    WIN32
+    #MACOSX_BUNDLE 
+    #The UnitTests for functionality
+    ${StrataExtractMain-UnitTests-Source}
+    ${StrataExtractConfiguration-UnitTests-Source}
+    ${StrataExtractArchives-UnitTests-Source}
+    ${StrataExtractImageConversion-UnitTests-Source}
+    )
+  target_link_libraries(StrataExtractUnitTests
+                        strataextractCore
+                        ${CPPUNIT_LIBRARY})
+endif()
 
 # Set the RPATH (ie Hack Soup for the moment)
-if (APPLE)
-    set_target_properties(StrataExtract PROPERTIES LINK_FLAGS "-Wl,-rpath,@loader_path/.")
-elseif (UNIX)
-    set_target_properties(StrataExtract PROPERTIES INSTALL_RPATH ".")
-endif()
+#if (APPLE)
+#    set_target_properties(StrataExtractCLI PROPERTIES LINK_FLAGS "-Wl,-rpath,@loader_path/.")
+#elseif (UNIX)
+#    set_target_properties(StrataExtractCLI PROPERTIES INSTALL_RPATH ".")
+#endif()
+
+#Tell the developer the current build options
+message("\n\nlibgrp Compile Options\n Unit Tests: ${UNITTESTS} [-DUNITESTS=${UNITTESTS}] \n")

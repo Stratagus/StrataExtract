@@ -5,55 +5,49 @@
 #include "Conversion/Audio/FFmpeg/AudioFFmpeg.hpp"
 #include "Conversion/Video/FFmpeg/VideoFFmpeg.hpp"
 
-
-//Test when Stormlib addresses the x64 bit issue.
-void testArchiveExtractRaw(MPQArchive *myArchive)
-{
-    myArchive->ExtractRaw("campaign/terran/terran02/staredit/wav/t2b00tad.wav", "target.wav");
-}
-
-void testImage(MPQArchive *myArchive)
-{
-    MagickImage *myImage = new MagickImage;
-    myImage->ReadImageFromMemory(myArchive->ReadFile("glue/create/pinfo.pcx"));
-    myImage->WriteImageToFile("blah.png");
-    
-    delete myImage;
-    myImage = NULL;
-}
-
-void testDecodeAudio(MPQArchive *myArchive)
-{
-    AudioFFmpeg *myAudio = new AudioFFmpeg;
-    myAudio->DecodeAudio(myArchive->ReadFile("campaign/terran/terran02/staredit/wav/t2b00tad.wav"));
-}
-
-void testEncodeAudio(MPQArchive *myArchive)
-{
-    AudioFFmpeg *myAudio = new AudioFFmpeg;
-    myAudio->EncodeAudio();
-}
+#include "Configuration/StrataConfig.hpp"
+#include "AssetManager/StrataRunner.hpp"
 
 
 int main(int numberOfArguments, char **commandArguments)
 {
-    std::cout << "StrataExtract CommandLine\n";
+    std::cout << "StrataConfig Tests\n";
+    //Create a Strataconfig reference (from teh singleton
+    StrataConfig *myConfig = StrataConfig::Configuration();
     
-    //MPQArchive *myArchive = new MPQArchive;
-    //std::cout << "Open Archive stardat.mpq\n";
+    //The root directory of the soure game
+    if(myConfig->setGameMediaSourcePath("/Users/brad/Games/"))
+    {
+        std::cout << "Set Source path\n";
+    }
+    else
+    {
+        std::cout << "SOURCE PATH not set\n";
+    }
     
-    MPQArchive *myArchive = new MPQArchive;
-    myArchive->OpenArchive("starcraft.mpq");
+    //Where we want the resulting file to be
+    if(myConfig->setGameMediaDestinationPath("/Users/brad/Desktop/"))
+    {
+        std::cout << "Set Destination path\n";
+    }
+    else
+    {
+        std::cout << "DESTINATION PATH not set\n";
+    }
     
-        testArchiveExtractRaw(myArchive);
-    
-        testImage(myArchive);
-    
-        testDecodeAudio(myArchive);
-        //testEncodeAudio(myArchive);
-    
-    myArchive->CloseArchive();
-    delete myArchive;
-    myArchive = NULL;
+    //Read the XML configuration
+    myConfig->readConfig("../../Docs/SampleConfigs/Stargus.StrataExtract");
+    if(myConfig->isExpansionGame())
+    {
+        std::cout << "You are loading a expansion game, you must give a proper destination path.\n";
+    }
+    else
+    {
+        std::cout << "Not a Expansion.\n";
+    }
+    myConfig->ProcessGameAssetLists();
+    //std::cout << "Game Name: " << myConfig->getGameName() << '\n';
+    StrataRunner *runner = StrataRunner::Runner();
+    std::cout << "Done!\n";
     return 0;
 }
