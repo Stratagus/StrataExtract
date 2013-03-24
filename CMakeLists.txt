@@ -53,6 +53,8 @@ set (RUNNER_UNITTESTS_DIR ${UNITTEST_DIR}/AssetManager)
 set (GUI_DIR ${SOURCE_DIR}/GUIs)
 set (GUI_QUARTZ_DIR ${SOURCE_DIR}/GUIs/Quartz)
 
+#Media Directories
+set (MEDIA_DIR "./Media")
 
 #Set of included libraries if the user does not have
 #a packaged version installed via DEB/RPM/Macports
@@ -147,14 +149,14 @@ set(Quartz-Resources
 )
 
 set_source_files_properties(
-  ${Quartz-Resources
+  ${Quartz-Resources}
   PROPERTIES
   MACOSX_PACKAGE_LOCATION Resources
 )
 
 #Set the XIB Files
 set(Quartz-Xibs
-    MainMenu
+    Main
 )
 
 # Set the OS X Bundle specific CMake variables which will be used to populate the plist for
@@ -252,7 +254,7 @@ add_executable(
 #Creates the target libraries to use with other Frontend applications
 target_link_libraries (
 	StrataExtractCLI
-  strataextractCore
+  StrataExtractCore
   ${Boost_LIBRARIES}
 	)
 
@@ -294,7 +296,7 @@ add_executable(StrataExtractOSX MACOSX_BUNDLE ${Quartz-Source} ${Quartz-Resource
 target_link_libraries(StrataExtractOSX "-framework Cocoa")
 
 # Set a custom plist file for the app bundle
-set_target_properties(StrataExtractOSX PROPERTIES MACOSX_BUNDLE_INFO_PLIST .${SOURCE_DIR}/GUIs/OSX/StarTool-Info.plist)
+set_target_properties(StrataExtractOSX PROPERTIES MACOSX_BUNDLE_INFO_PLIST .${GUI_QUARTZ_DIR}/StrataExtract-Info.plist)
 
 
 # Make sure we can find the 'ibtool' program. If we can NOT find it we
@@ -307,15 +309,15 @@ endif()
 
 # Make sure the 'Resources' Directory is correctly created before we build
 add_custom_command (TARGET StrataExtractOSX PRE_BUILD
-                      COMMAND mkdir -p .${EXECUTABLE_OUTPUT_PATH}/\${CONFIGURATION}/StarToolOSX.app/Contents/Resources)
+                      COMMAND mkdir -p .${EXECUTABLE_OUTPUT_PATH}/\${CONFIGURATION}/StrataExtractOSX.app/Contents/Resources)
                       
 # Compile the .xib files using the 'ibtool' program with the destination being the app package
-foreach(xib ${OSXGUI_XIBS})
+foreach(xib ${Quartz-Xibs})
   add_custom_command (TARGET StrataExtractOSX POST_BUILD
-                      COMMAND ${IBTOOL} --errors --warnings --notices --output-format human-readable-text
-                              --compile .${EXECUTABLE_OUTPUT_PATH}/\${CONFIGURATION}/StarToolOSX.app/Contents/Resources/${xib}.nib
-                             .${SOURCE_DIR}/GUIs/OSX/Xibs/${xib}.xib
-                      COMMENT "Compiling ${SOURCE_DIR}/GUIs/OSX/Xibs/${xib}.xib")
+                    COMMAND ${IBTOOL} --errors --warnings --notices --output-format human-readable-text
+                              --compile .${EXECUTABLE_OUTPUT_PATH}/\${CONFIGURATION}/StrataExtractOSX.app/Contents/Resources/${xib}.nib
+                             .${GUI_QUARTZ_DIR}/Xibs/${xib}.xib)
+                      #MESSAGE "Compiling ${GUI_QUARTZ_DIR}/Xibs/${xib}.xib")
 
 endforeach()
 
