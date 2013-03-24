@@ -25,6 +25,8 @@ find_package(Boost REQUIRED COMPONENTS system thread filesystem)
 find_package(LibXml2 REQUIRED)
 find_package(FFMPEG REQUIRED)
 find_package(Magick++ REQUIRED)
+find_package(PkgConfig)
+pkg_check_modules(GTKMM gtkmm-3.0)
 
 #Source directory variables
 #These allow for folders in the source and unittesting to be moved
@@ -52,6 +54,7 @@ set (RUNNER_UNITTESTS_DIR ${UNITTEST_DIR}/AssetManager)
 #GUI Directories
 set (GUI_DIR ${SOURCE_DIR}/GUIs)
 set (GUI_QUARTZ_DIR ${SOURCE_DIR}/GUIs/Quartz)
+set (GUI_GTKMM_DIR ${SOURCE_DIR}/GUIs/GTKMM)
 
 #Media Directories
 set (MEDIA_DIR "./Media")
@@ -163,7 +166,6 @@ set(Quartz-Xibs
     Main
 )
 
-
 # Set the OS X Bundle specific CMake variables which will be used to populate the plist for
 # the application bundle
 set(MACOSX_BUNDLE_INFO_STRING "StrataExtract")
@@ -181,6 +183,23 @@ source_group(Xibs FILES ${Quartz-Xibs-Source})
 
 ENDIF()
 
+#Check if the system is Linux and hopefully GTKMM
+IF(NOT "${GTKMM_LIBRARIES}" STREQUAL "")
+#Find PackageConfig to get the libraries we want
+MESSAGE("Hello World")
+
+set(GTKMM-Source
+  ${GUI_GTKMM_DIR}/main.hpp
+  ${GUI_GTKMM_DIR}/main.cpp
+  )
+include_directories(${GTKMM_INCLUDE_DIRS})
+
+add_executable(GStrataExtract ${GTKMM-Source})
+
+
+target_link_libraries(GStrataExtract 
+                      ${GTKMM_LIBRARIES})
+ENDIF()
 
 #Code groupings allow for IDEs to put files into collections
 #instead of simply throwing all files into a pile. This should
