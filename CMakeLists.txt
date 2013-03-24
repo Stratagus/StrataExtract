@@ -37,7 +37,16 @@ set (AUDIOCONVERSION_DIR ${CONVERSION_DIR}/Audio)
 set (IMAGECONVERSION_DIR ${CONVERSION_DIR}/Image)
 set (VIDEOCONVERSION_DIR ${CONVERSION_DIR}/Video)
 set (RUNNER_DIR ${SOURCE_DIR}/AssetManager)
-set (UNITTEST_DIR "./UnitTesting")
+
+#UnitTest directories
+set (UNITTEST_DIR "./UnitTests")
+set (ARCHIVES_UNITTESTS_DIR ${UNITTEST_DIR}/Archives)
+set (CONVERSION_UNITTESTS_DIR ${UNITTEST_DIR}/Conversion)
+set (CONFIGURATION_UNITTESTS_DIR ${UNITTEST_DIR}/Configuration)
+set (AUDIOCONVERSION_UNITTESTS_DIR ${CONVERSION_UNITTESTS_DIR}/Audio)
+set (IMAGECONVERSION_UNITTESTS_DIR ${CONVERSION_UNITTESTS_DIR}/Image)
+set (VIDEOCONVERSION_UNITTESTS_DIR ${CONVERSION_DIR}/Video)
+set (RUNNER_UNITTESTS_DIR ${UNITTEST_DIR}/AssetManager)
 
 #Set of included libraries if the user does not have
 #a packaged version installed via DEB/RPM/Macports
@@ -99,6 +108,24 @@ set(StrataExtractVideoConversion-Source
 set(StrataExtractGraphicalInterface-Source)
 
 
+#UnitTest hpp/cpp files
+set(StrataExtractMain-UnitTests-Source
+  ${UNITTEST_DIR}/mainUnitTests.hpp
+  ${UNITTEST_DIR}/mainUnitTests.cpp
+   )
+set(StrataExtractConfiguration-UnitTests-Source
+    ${CONFIGURATION_UNITTESTS_DIR}/StrataConfigUnitTests.hpp
+    ${CONFIGURATION_UNITTESTS_DIR}/StrataConfigUnitTests.cpp
+   )
+set(StrataExtractArchives-UnitTests-Source
+    ${ARCHIVES_UNITTESTS_DIR}/MPQ/MPQArchiveUnitTests.hpp
+    ${ARCHIVES_UNITTESTS_DIR}/MPQ/MPQArchiveUnitTests.cpp
+   )
+set(StrataExtractImageConversion-UnitTests-Source
+    ${IMAGECONVERSION_UNITTESTS_DIR}/ImageMagick/MagickImageUnitTests.hpp
+    ${IMAGECONVERSION_UNITTESTS_DIR}/ImageMagick/MagickImageUnitTests.cpp
+   )
+
 #Code groupings allow for IDEs to put files into collections
 #instead of simply throwing all files into a pile. This should
 #allow for easy navigation through the code base for novice and
@@ -112,6 +139,8 @@ source_group(Conversion FILES)
 source_group(Conversion\\Audio FILES ${StrataExtractAudioConversion-Source})
 source_group(Conversion\\Image FILES ${StrataExtractImageConversion-Source})
 source_group(Conversion\\Video FILES ${StrataExtractVideoConversion-Source})
+
+#UnitTests groupings
 
 
 
@@ -174,6 +203,36 @@ target_link_libraries (
   storm
 	)
 
+#Unittest configuration settings
+option(UNITTESTS "Compile Unittests" OFF)
+if(UNITTESTS)
+  #Search for the required libraries for the project to properly
+  #link and compile.
+  find_package(CPPUnit REQUIRED)
+
+  add_executable(
+    strataextractUnitTests
+    WIN32
+    #MACOSX_BUNDLE 
+    #Actual Strataextract code
+    ${StrataExtractConfiguration-Source}
+    ${StrataExtractRunner-Source}
+    ${StrataExtractGraphicalInterface-Source}
+    ${StrataExtractAudioConversion-Source}
+    ${StrataExtractImageConversion-Source}
+    ${StrataExtractVideoConversion-Source}
+    ${StrataExtractArchives-Source}
+
+    #The UnitTests for functionality
+    ${StrataExtractMain-UnitTests-Source}
+    ${StrataExtractConfiguration-UnitTests-Source}
+    ${StrataExtractArchives-UnitTests-Source}
+    ${StrataExtractImageConversion-UnitTests-Source}
+    )
+  target_link_libraries(strataextractUnitTests 
+                        storm
+                        ${CPPUNIT_LIBRARY})
+endif()
 
 # Set the RPATH (ie Hack Soup for the moment)
 if (APPLE)
@@ -181,3 +240,6 @@ if (APPLE)
 elseif (UNIX)
     set_target_properties(StrataExtract PROPERTIES INSTALL_RPATH ".")
 endif()
+
+#Tell the developer the current build options
+message("\n\nlibgrp Compile Options\n Unit Tests: ${UNITTESTS} [-DUNITESTS=${UNITTESTS}] \n")
