@@ -137,69 +137,6 @@ set(StrataExtractImageConversion-UnitTests-Source
     ${IMAGECONVERSION_UNITTESTS_DIR}/ImageMagick/MagickImageUnitTests.cpp
    )
 
-#GUI Specific files and sources
-#OSX Quartz
-IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-set(Quartz-Source
-    ${GUI_QUARTZ_DIR}/AppDelegate.h
-    ${GUI_QUARTZ_DIR}/AppDelegate.mm
-    ${GUI_QUARTZ_DIR}/main.mm
-)
-
-set(Quartz-Resources
-  "./Credits.rtf"
-  #${MEDIA_DIR}/Icons/StrataExtract.icns
-)
-
-set_source_files_properties(
-  ${Quartz-Resources}
-  PROPERTIES
-  MACOSX_PACKAGE_LOCATION Resources
-)
-#The XIB file locations 
-set(Quartz-Xibs-Source
-  ${GUI_QUARTZ_DIR}/Xibs/Main.xib
-  )
-
-#Set the XIB Files for compile
-set(Quartz-Xibs
-    Main
-)
-
-# Set the OS X Bundle specific CMake variables which will be used to populate the plist for
-# the application bundle
-set(MACOSX_BUNDLE_INFO_STRING "StrataExtract")
-set(MACOSX_BUNDLE_GUI_IDENTIFIER "net.codeprogrammers.StrataExtract")
-set(MACOSX_BUNDLE_LONG_VERSION_STRING "${PROJECT_NAME} Version ${STARTOOLVERSION_VERSION}")
-set(MACOSX_BUNDLE_BUNDLE_NAME ${PROJECT_NAME})
-set(MACOSX_BUNDLE_SHORT_VERSION_STRING ${StrataExtractVersion})
-set(MACOSX_BUNDLE_BUNDLE_VERSION ${StrataExtractVersion})
-set(MACOSX_BUNDLE_COPYRIGHT "The StrataExtract Team")
-
-#UnitTests groupings
-source_group(Main FILES ${Quartz-Source})
-source_group(Resources FILES ${Quartz-Resources})
-source_group(Xibs FILES ${Quartz-Xibs-Source})
-
-ENDIF()
-
-#Check if the system is Linux and hopefully GTKMM
-IF(NOT "${GTKMM_LIBRARIES}" STREQUAL "")
-#Find PackageConfig to get the libraries we want
-MESSAGE("Hello World")
-
-set(GTKMM-Source
-  ${GUI_GTKMM_DIR}/main.hpp
-  ${GUI_GTKMM_DIR}/main.cpp
-  )
-include_directories(${GTKMM_INCLUDE_DIRS})
-
-add_executable(GStrataExtract ${GTKMM-Source})
-
-
-target_link_libraries(GStrataExtract 
-                      ${GTKMM_LIBRARIES})
-ENDIF()
 
 #Code groupings allow for IDEs to put files into collections
 #instead of simply throwing all files into a pile. This should
@@ -319,6 +256,47 @@ endif()
 #GUI Specific Compilation Processes
 #Quartz OSX GUI Target
 IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+  set(Quartz-Source
+    ${GUI_QUARTZ_DIR}/AppDelegate.h
+    ${GUI_QUARTZ_DIR}/AppDelegate.mm
+    ${GUI_QUARTZ_DIR}/main.mm
+)
+
+set(Quartz-Resources
+  "./Credits.rtf"
+  #${MEDIA_DIR}/Icons/StrataExtract.icns
+)
+
+set_source_files_properties(
+  ${Quartz-Resources}
+  PROPERTIES
+  MACOSX_PACKAGE_LOCATION Resources
+)
+#The XIB file locations 
+set(Quartz-Xibs-Source
+  ${GUI_QUARTZ_DIR}/Xibs/Main.xib
+  )
+
+#Set the XIB Files for compile
+set(Quartz-Xibs
+    Main
+)
+
+# Set the OS X Bundle specific CMake variables which will be used to populate the plist for
+# the application bundle
+set(MACOSX_BUNDLE_INFO_STRING "StrataExtract")
+set(MACOSX_BUNDLE_GUI_IDENTIFIER "net.codeprogrammers.StrataExtract")
+set(MACOSX_BUNDLE_LONG_VERSION_STRING "${PROJECT_NAME} Version ${STARTOOLVERSION_VERSION}")
+set(MACOSX_BUNDLE_BUNDLE_NAME ${PROJECT_NAME})
+set(MACOSX_BUNDLE_SHORT_VERSION_STRING ${StrataExtractVersion})
+set(MACOSX_BUNDLE_BUNDLE_VERSION ${StrataExtractVersion})
+set(MACOSX_BUNDLE_COPYRIGHT "The StrataExtract Team")
+
+#UnitTests groupings
+source_group(Main FILES ${Quartz-Source})
+source_group(Resources FILES ${Quartz-Resources})
+source_group(Xibs FILES ${Quartz-Xibs-Source})
+
 add_executable(StrataExtractOSX MACOSX_BUNDLE ${Quartz-Source} ${Quartz-Resources} ${Quartz-Xibs-Source})
 
 # Probably a better way to set the framework link libraries.
@@ -351,6 +329,24 @@ foreach(xib ${Quartz-Xibs})
 endforeach()
 
 endif()
+
+#Check if the system has GTKMM
+IF(NOT "${GTKMM_LIBRARIES}" STREQUAL "")
+#Find PackageConfig to get the libraries we want
+MESSAGE("Found GTKMM, building GStrataExtract")
+
+set(GTKMM-Source
+  ${GUI_GTKMM_DIR}/main.hpp
+  ${GUI_GTKMM_DIR}/main.cpp
+  )
+include_directories(${GTKMM_INCLUDE_DIRS})
+
+add_executable(GStrataExtract ${GTKMM-Source})
+
+
+target_link_libraries(GStrataExtract 
+                      ${GTKMM_LIBRARIES})
+ENDIF()
 
 #Tell the developer the current build options
 message("\n\nlibgrp Compile Options\n Unit Tests: ${UNITTESTS} [-DUNITESTS=${UNITTESTS}] \n")
