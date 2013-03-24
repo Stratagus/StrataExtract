@@ -23,7 +23,7 @@ StrataConfig *StrataConfig::Configuration()
 }
 
 
-void StrataConfig::readConfig(boost::filesystem::path configurationPath)
+bool StrataConfig::readConfig(boost::filesystem::path configurationPath)
 {
     if(!boost::filesystem::exists(configurationPath))
     {
@@ -38,7 +38,7 @@ void StrataConfig::readConfig(boost::filesystem::path configurationPath)
         if(configurationDocument == NULL)
         {
             std::cerr << "Error: Unable to parse file: " << configurationPath << '\n';
-            exit(-1);
+            return false;
         }
         
         //Ensure that the file we read is a valid StrataExtractConfig and not simply a XML file.
@@ -70,7 +70,9 @@ void StrataConfig::readConfig(boost::filesystem::path configurationPath)
         //xmlCleanupParser();
         
         configLoaded = 1;
+        return true;
     }
+    return false;
 }
 
 xmlNodePtr StrataConfig::FindGameVersion()
