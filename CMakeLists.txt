@@ -145,7 +145,7 @@ set(Quartz-Source
 
 set(Quartz-Resources
   "./Credits.rtf"
-  ${MEDIA_DIR}/Icons/StrataExtract.icns
+  #${MEDIA_DIR}/Icons/StrataExtract.icns
 )
 
 set_source_files_properties(
@@ -153,11 +153,16 @@ set_source_files_properties(
   PROPERTIES
   MACOSX_PACKAGE_LOCATION Resources
 )
+#The XIB file locations 
+set(Quartz-Xibs-Source
+  ${GUI_QUARTZ_DIR}/Xibs/Main.xib
+  )
 
-#Set the XIB Files
+#Set the XIB Files for compile
 set(Quartz-Xibs
     Main
 )
+
 
 # Set the OS X Bundle specific CMake variables which will be used to populate the plist for
 # the application bundle
@@ -168,6 +173,11 @@ set(MACOSX_BUNDLE_BUNDLE_NAME ${PROJECT_NAME})
 set(MACOSX_BUNDLE_SHORT_VERSION_STRING ${StrataExtractVersion})
 set(MACOSX_BUNDLE_BUNDLE_VERSION ${StrataExtractVersion})
 set(MACOSX_BUNDLE_COPYRIGHT "The StrataExtract Team")
+
+#UnitTests groupings
+source_group(Main FILES ${Quartz-Source})
+source_group(Resources FILES ${Quartz-Resources})
+source_group(Xibs FILES ${Quartz-Xibs-Source})
 
 ENDIF()
 
@@ -276,7 +286,7 @@ if(UNITTESTS)
     ${StrataExtractImageConversion-UnitTests-Source}
     )
   target_link_libraries(StrataExtractUnitTests
-                        strataextractCore
+                        StrataExtractCore
                         ${CPPUNIT_LIBRARY})
 endif()
 
@@ -290,7 +300,7 @@ endif()
 #GUI Specific Compilation Processes
 #Quartz OSX GUI Target
 IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-add_executable(StrataExtractOSX MACOSX_BUNDLE ${Quartz-Source} ${Quartz-Resources})
+add_executable(StrataExtractOSX MACOSX_BUNDLE ${Quartz-Source} ${Quartz-Resources} ${Quartz-Xibs-Source})
 
 # Probably a better way to set the framework link libraries.
 target_link_libraries(StrataExtractOSX "-framework Cocoa")
@@ -317,7 +327,7 @@ foreach(xib ${Quartz-Xibs})
                     COMMAND ${IBTOOL} --errors --warnings --notices --output-format human-readable-text
                               --compile .${EXECUTABLE_OUTPUT_PATH}/\${CONFIGURATION}/StrataExtractOSX.app/Contents/Resources/${xib}.nib
                              .${GUI_QUARTZ_DIR}/Xibs/${xib}.xib)
-                      #MESSAGE "Compiling ${GUI_QUARTZ_DIR}/Xibs/${xib}.xib")
+                      #COMMENT ("Compiling ${GUI_QUARTZ_DIR}/Xibs/${xib}.xib")
 
 endforeach()
 
