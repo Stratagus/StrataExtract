@@ -25,6 +25,7 @@ find_package(Boost REQUIRED COMPONENTS system thread filesystem exception)
 find_package(LibXml2 REQUIRED)
 find_package(FFMPEG REQUIRED)
 find_package(Magick++ REQUIRED)
+find_package(OpenSSL)
 find_package(PkgConfig)
 pkg_check_modules(GTKMM gtkmm-3.0)
 
@@ -172,7 +173,7 @@ if (APPLE)
     include_directories("/opt/local/include/ImageMagick")
     link_directories("/opt/local/lib")
 
-    #Temporary Inlcudes
+    #Temporary Includes
     include_directories("~/dev/fakeroot/include")
     link_directories("~/dev/fakeroot/lib")
 else()
@@ -193,6 +194,7 @@ endif()
 #    WIN32
 #    MACOSX_BUNDLE
 #)
+add_definitions( -DOPENSSL_INSTALLED=${OPENSSL_FOUND} )
 
 add_library(StrataExtractCore SHARED 
     ${StrataExtractConfiguration-Source}
@@ -213,6 +215,7 @@ target_link_libraries(
             ${FFMPEG_LIBAVFORMAT_LIBRARIES}
             ${FFMPEG_LIBAVUTIL_LIBRARIES}
             ${FFMPEG_LIBSWRESAMPLE_LIBRARIES}
+            ${OPENSSL_LIBRARIES}
             storm
 )
 

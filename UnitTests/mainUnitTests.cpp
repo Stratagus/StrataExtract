@@ -49,8 +49,10 @@ void MiscTests::test1()
         std::cout << "DESTINATION PATH not set\n";
     }
     
+    
+    myConfig->setGameConfiguration("../../Docs/SampleConfigs/Stargus.StrataExtract");
     //Read the XML configuration
-    myConfig->readConfig("../../Docs/SampleConfigs/Stargus.StrataExtract");
+    myConfig->readConfig();
     if(myConfig->isExpansionGame())
     {
         std::cout << "You are loading a expansion game, you must give a proper destination path.\n";

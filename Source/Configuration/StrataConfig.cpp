@@ -345,7 +345,6 @@ void StrataConfig::PrintUsage()
               << "Copyright (c) 2012 by StrataExtract Team\n\n"
               << "Usage:./strataextract [OPTIONS] /gameconfig/path /source/game/path /destination/game/path\n"
               << "Flags             Describution\n"
-              << "--gui             Open GUI\n"
               << "--noconvert       Ignore Conversion tags\n"
               << "--simulate        Simulate game extraction\n"
               << "--verbosity #     0-4 Display internal operations\n"
