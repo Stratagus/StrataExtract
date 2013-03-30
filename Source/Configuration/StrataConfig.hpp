@@ -21,6 +21,8 @@
 #include <libxml/parser.h>
 #include <libxml/xpath.h>
 
+#include "StrataConfigException.hpp"
+
 #define VERSION 0.1f
 
 class StrataConfig
