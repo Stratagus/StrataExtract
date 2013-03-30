@@ -17,28 +17,19 @@
 
 
 // Class of several tests
-class SampleUnitTest : public CppUnit::TestCase
+class StrataConfigUnitTests : public CppUnit::TestCase
 {
 public:
-    SampleUnitTest();
+    StrataConfigUnitTests();
     
-    // Actual test case functions and code
+    
     void testObviousOne();
-    
-    void testObviousTwo();
-    
-    void testObviousThree();
-    
-    void testObviousFour();
     
     // Within the test class, a static method which loads all tests into an aggregate test object
     static CppUnit::Test *suite()
     {
-        CppUnit::TestSuite *suiteOfTests = new CppUnit::TestSuite("Sample Unit Test");
-        suiteOfTests->addTest(new CppUnit::TestCaller<SampleUnitTest>("testObviousOne",   &SampleUnitTest::testObviousOne));
-        suiteOfTests->addTest(new CppUnit::TestCaller<SampleUnitTest>("testObviousTwo",   &SampleUnitTest::testObviousTwo));
-        suiteOfTests->addTest(new CppUnit::TestCaller<SampleUnitTest>("testObviousThree", &SampleUnitTest::testObviousThree));
-        suiteOfTests->addTest(new CppUnit::TestCaller<SampleUnitTest>("testObviousFour",  &SampleUnitTest::testObviousFour));
+        CppUnit::TestSuite *suiteOfTests = new CppUnit::TestSuite("StrataExtract Configuration Tests");
+        suiteOfTests->addTest(new CppUnit::TestCaller<StrataConfigUnitTests>("testObviousOne",   &StrataConfigUnitTests::testObviousOne));
         return suiteOfTests;
     }
 };

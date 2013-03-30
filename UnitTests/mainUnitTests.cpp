@@ -7,13 +7,17 @@ MiscTests::MiscTests() : CppUnit::TestCase("Miscellaneous Tests")
 int main()
 {
 	std::cout << "StrataExtract Core Unit Tests\n";
+    boost::filesystem::path testMediaFilePath;
+    testMediaFilePath = "../../Dics/UnitTestMedia";
     
     CppUnit::TextUi::TestRunner runner;
     
     //Main Object
     
-    //runner.addTest( SampleUnitTest::suite() );
-    runner.addTest(MiscTests::suite());
+    runner.addTest(StrataConfigUnitTests::suite());
+    
+    
+    //runner.addTest(MiscTests::suite());
     
     runner.run();
 	return 0;

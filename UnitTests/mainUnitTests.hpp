@@ -15,6 +15,8 @@
 #include <cppunit/TestCase.h>
 #include <cppunit/TestCaller.h>
 
+#include <boost/filesystem.hpp>
+
 #include "./Configuration/StrataConfigUnitTests.hpp"
 
 //Temporary Testing
