@@ -23,21 +23,21 @@ StrataConfig *StrataConfig::Configuration()
 }
 
 
-bool StrataConfig::readConfig(boost::filesystem::path configurationPath)
+bool StrataConfig::readConfig()
 {
-    if(!boost::filesystem::exists(configurationPath))
+    if(!boost::filesystem::exists(gameConfiguration))
     {
-        std::cerr << "File not found " << configurationPath;
+        std::cerr << "File not found " << gameConfiguration;
     }
     else
     {
 
         
         //The root of our configuration tree
-        configurationDocument = xmlReadFile(configurationPath.string().c_str(), NULL, NULL);
+        configurationDocument = xmlReadFile(gameConfiguration.string().c_str(), NULL, NULL);
         if(configurationDocument == NULL)
         {
-            std::cerr << "Error: Unable to parse file: " << configurationPath << '\n';
+            std::cerr << "Error: Unable to parse file: " << gameConfiguration << '\n';
             return false;
         }
         
@@ -213,6 +213,18 @@ bool StrataConfig::setGameMediaSourcePath(boost::filesystem::path gameMediaSourc
     gameMediaSource = gameMediaSourcePath;
     return true;
 }
+
+bool StrataConfig::setGameConfiguration(boost::filesystem::path gameConfigurationPath)
+{
+    if(!boost::filesystem::exists(gameConfigurationPath))
+    {
+        return false;
+    }
+    
+    gameConfiguration = gameConfigurationPath;
+    return true;
+}
+
 bool StrataConfig::setGameMediaDestinationPath(boost::filesystem::path gameMediaDestinationPath)
 {
     if(boost::filesystem::exists(gameMediaDestinationPath))
@@ -231,6 +243,11 @@ boost::filesystem::path StrataConfig::GameMediaSourcePath()
 boost::filesystem::path StrataConfig::GameMediaDestinationPath()
 {
     return gameMediaDestination;
+}
+
+boost::filesystem::path StrataConfig::GameConfigurationPath()
+{
+    return gameConfiguration;
 }
 
 /*std::string StrataConfig::getGameName()

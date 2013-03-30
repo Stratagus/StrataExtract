@@ -38,7 +38,7 @@ class StrataConfig
          *  \pre gameMediaSource & configurationFilePath must be valid
          *  \post Parses the gameconfiguration and identifies the game version
          *  \note NA*/
-        bool readConfig(boost::filesystem::path configurationPath);
+        bool readConfig();
     
         //!Returns the gameMedia extract progress
         /*!  
@@ -90,6 +90,9 @@ class StrataConfig
          *  \note*/
         bool setGameMediaDestinationPath(boost::filesystem::path gameMediaDestinationPath);
     
+#warning Document ME!
+        bool setGameConfiguration(boost::filesystem::path gameConfigurationPath);
+    
         //!Returns the current value of the GameMediaSourcePath
         /*!Returns a copy of the currently set, gameMediaSource filepath
          *  \pre NA
@@ -104,6 +107,9 @@ class StrataConfig
          *  \post Returns a copy of the destination media filepath
          *  \note*/
         boost::filesystem::path GameMediaDestinationPath();
+    
+#warning Document ME!
+        boost::filesystem::path GameConfigurationPath();
     
         //!Prints the proper CLI usage information
         /*Prints the CLI usage information allowing the user to reformat their
@@ -179,6 +185,7 @@ class StrataConfig
     
         boost::filesystem::path gameMediaSource;
         boost::filesystem::path gameMediaDestination;
+        boost::filesystem::path gameConfiguration;
     
         std::queue<xmlNodePtr> preparationProcessQueue;
         std::queue<xmlNodePtr> processQueue;
