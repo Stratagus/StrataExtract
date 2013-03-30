@@ -285,6 +285,14 @@ bool StrataConfig::isConfigLoaded()
 }
 
 
+//If OpenSSL is installed prefer it's file hashing library, as it is much
+//faster. Else we revert to abusing boost's uuid sha1 hashing
+#if defined OPENSSL_INSTALLED
+xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
+{
+    return (xmlChar *) "";
+}
+#else
 #warning Very Wasteful function in memory and time in the way sha1Digest.process_bytes operates!
 xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
 {
@@ -338,6 +346,7 @@ xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
     
     return (xmlChar *) finalHash.str().c_str();
 }
+#endif
 
 void StrataConfig::PrintUsage()
 {
