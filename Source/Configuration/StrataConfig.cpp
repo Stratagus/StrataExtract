@@ -8,6 +8,10 @@ StrataConfig::StrataConfig()
     isExpansion = false;
     configurationDocument = NULL;
     configXPathContext = NULL;
+    
+    gameConfiguration = NULL;
+    gameMediaSource = NULL;
+    gameMediaDestination = NULL;
 }
 
 StrataConfig* StrataConfig::ConfigurationInstance = 0;
@@ -25,7 +29,7 @@ StrataConfig *StrataConfig::Configuration()
 
 bool StrataConfig::readConfig()
 {
-    if(!boost::filesystem::exists(gameConfiguration))
+    if(!boost::filesystem::exists(*gameConfiguration))
     {
         std::cerr << "File not found " << gameConfiguration;
     }
@@ -34,7 +38,7 @@ bool StrataConfig::readConfig()
 
         
         //The root of our configuration tree
-        configurationDocument = xmlReadFile(gameConfiguration.string().c_str(), NULL, NULL);
+        configurationDocument = xmlReadFile(gameConfiguration->string().c_str(), NULL, NULL);
         if(configurationDocument == NULL)
         {
             std::cerr << "Error: Unable to parse file: " << gameConfiguration << '\n';
@@ -78,7 +82,7 @@ bool StrataConfig::readConfig()
 xmlNodePtr StrataConfig::FindGameVersion()
 {
     //Jump to the <Versions> entity
-    boost::filesystem::path tempSourceGamePath = gameMediaSource;
+    boost::filesystem::path tempSourceGamePath = *gameMediaSource;
     xmlXPathObjectPtr gameVersions = xmlXPathEval((const xmlChar *) "//Version", configXPathContext);
     
     bool fileMatch = true;
@@ -97,7 +101,7 @@ xmlNodePtr StrataConfig::FindGameVersion()
         {
         #warning Potential logic error (Code Review)
             //Compare the Hash in the current file entity with the method generated hash
-            if(!xmlStrcmp(xmlGetProp(currentChildPointer, (const xmlChar *) "hash"), GetFileHash(gameMediaSource / (char *)xmlGetProp(currentChildPointer, (const xmlChar *) "name"))))
+            if(!xmlStrcmp(xmlGetProp(currentChildPointer, (const xmlChar *) "hash"), GetFileHash(*gameMediaSource / (char *)xmlGetProp(currentChildPointer, (const xmlChar *) "name"))))
             {
                 if(currentChildPointer->next->next == NULL)
                 {
@@ -210,7 +214,12 @@ bool StrataConfig::setGameMediaSourcePath(boost::filesystem::path gameMediaSourc
         return false;
     }
     
-    gameMediaSource = gameMediaSourcePath;
+    if(!gameMediaSource)
+    {
+        gameMediaSource = new boost::filesystem::path;
+    }
+    
+    *gameMediaSource = gameMediaSourcePath;
     return true;
 }
 
@@ -221,7 +230,12 @@ bool StrataConfig::setGameConfiguration(boost::filesystem::path gameConfiguratio
         return false;
     }
     
-    gameConfiguration = gameConfigurationPath;
+    if(!gameConfiguration)
+    {
+        gameConfiguration = new boost::filesystem::path;
+    }
+    
+    *gameConfiguration = gameConfigurationPath;
     return true;
 }
 
@@ -232,22 +246,27 @@ bool StrataConfig::setGameMediaDestinationPath(boost::filesystem::path gameMedia
         return false;
     }
     
-    gameMediaDestination = gameMediaDestinationPath;
+    if(!gameMediaDestination)
+    {
+        gameMediaDestination = new boost::filesystem::path;
+    }
+    
+    *gameMediaDestination = gameMediaDestinationPath;
     return true;
 }
 
 boost::filesystem::path StrataConfig::GameMediaSourcePath()
 {
-    return gameMediaSource;
+    return *gameMediaSource;
 }
 boost::filesystem::path StrataConfig::GameMediaDestinationPath()
 {
-    return gameMediaDestination;
+    return *gameMediaDestination;
 }
 
 boost::filesystem::path StrataConfig::GameConfigurationPath()
 {
-    return gameConfiguration;
+    return *gameConfiguration;
 }
 
 /*std::string StrataConfig::getGameName()

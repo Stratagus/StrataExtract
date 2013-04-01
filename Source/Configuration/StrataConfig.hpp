@@ -90,7 +90,11 @@ class StrataConfig
          *  \note*/
         bool setGameMediaDestinationPath(boost::filesystem::path gameMediaDestinationPath);
     
-#warning Document ME!
+        //!Sets the value of the game configuration file path to be parsed
+        /*!Sets the game configuration filepath
+         *  \pre File path should be valid and point to a valid strataextract config
+         *  \post Sets the Gameconfiguration value.
+         *  \note NA*/
         bool setGameConfiguration(boost::filesystem::path gameConfigurationPath);
     
         //!Returns the current value of the GameMediaSourcePath
@@ -105,10 +109,14 @@ class StrataConfig
          *  of extracted and converted file for the Stratagus engine.
          *  \pre NA
          *  \post Returns a copy of the destination media filepath
-         *  \note*/
+         *  \note NA*/
         boost::filesystem::path GameMediaDestinationPath();
     
-#warning Document ME!
+        //!Returns the current GameConfiguration file path
+        /*!Returns the currently set value of the gameconfiguration file path
+         *  \pre GameConfiguration file path should be set
+         *  \post Returns a copy of the game configuration fiel path
+         *  \note NA*/
         boost::filesystem::path GameConfigurationPath();
     
         //!Prints the proper CLI usage information
@@ -183,9 +191,9 @@ class StrataConfig
         xmlNodePtr configurationRoot;
         xmlNodePtr gameVersion;
     
-        boost::filesystem::path gameMediaSource;
-        boost::filesystem::path gameMediaDestination;
-        boost::filesystem::path gameConfiguration;
+        boost::filesystem::path *gameMediaSource;
+        boost::filesystem::path *gameMediaDestination;
+        boost::filesystem::path *gameConfiguration;
     
         std::queue<xmlNodePtr> preparationProcessQueue;
         std::queue<xmlNodePtr> processQueue;
