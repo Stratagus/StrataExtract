@@ -304,12 +304,49 @@ bool StrataConfig::isConfigLoaded()
 }
 
 
-//If OpenSSL is installed prefer it's file hashing library, as it is much
+//If OpenSSL is installed prefer it's hashing library, as it is much
 //faster. Else we revert to abusing boost's uuid sha1 hashing
-#if defined OPENSSL_INSTALLED
+#if OPENSSL_INSTALLED
 xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
 {
-    return (xmlChar *) "";
+    std::cout << "Passing: " << filePath << '\n';
+    FILE *f;
+    unsigned char buf[8192];
+    SHA_CTX sc;
+    int err;
+    unsigned char output[20];
+    std::stringstream finalHash;
+    
+    f = fopen(filePath.string().c_str(), "rb");
+    if (f == NULL) {
+        /* do something smart here: the file could not be opened */
+        std::cout << "Fail\n";
+        return (xmlChar *) "FAIL";
+    }
+    SHA1_Init(&sc);
+    for (;;) {
+        size_t len;
+        
+        len = fread(buf, 1, sizeof buf, f);
+        if (len == 0)
+            break;
+        SHA1_Update(&sc, buf, len);
+    }
+    err = ferror(f);
+    fclose(f);
+    if (err) {
+        /* some I/O error was encountered; report the error */
+        std::cout << "Fail!\n";
+        return (xmlChar *) "FAIL";
+    }
+    SHA1_Final(output, &sc);
+    
+    for(int i = 0; i < 20; ++i)
+    {
+        finalHash << std::hex << ((output[i] & 0x000000F0) >> 4)
+        << (output[i] & 0x0000000F);
+    }
+    return (xmlChar *) finalHash.str().c_str();
 }
 #else
 #warning Very Wasteful function in memory and time in the way sha1Digest.process_bytes operates!

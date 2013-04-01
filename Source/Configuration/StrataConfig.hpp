@@ -21,6 +21,10 @@
 #include <libxml/parser.h>
 #include <libxml/xpath.h>
 
+#if OPENSSL_INSTALLED
+    #include <openssl/sha.h>
+#endif
+
 #include "StrataConfigException.hpp"
 
 #define VERSION 0.1f
