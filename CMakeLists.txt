@@ -194,8 +194,8 @@ endif()
 #    WIN32
 #    MACOSX_BUNDLE
 #)
-if(${OPENSSL_FOUND})
-  add_definitions( -DOPENSSL_INSTALLED=${OPENSSL_FOUND} )
+if(OPENSSL_FOUND)
+  add_definitions( -DOPENSSL_INSTALLED=1 )
 endif()
 
 add_library(StrataExtractCore SHARED 
