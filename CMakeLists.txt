@@ -172,15 +172,14 @@ if (APPLE)
     include_directories("/opt/local/include/libxml2")
     include_directories("/opt/local/include/ImageMagick")
     link_directories("/opt/local/lib")
-
-    #Temporary Includes
-    include_directories("~/dev/fakeroot/include")
-    link_directories("~/dev/fakeroot/lib")
 else()
     include_directories("/usr/include/libxml2")
     include_directories("/usr/include/ImageMagick")
 endif()
 
+    #Temporary Includes
+    include_directories("~/dev/fakeroot/include")
+    link_directories("~/dev/fakeroot/lib")
 #Compile the Library for X use
 #add_library(Library)
 
