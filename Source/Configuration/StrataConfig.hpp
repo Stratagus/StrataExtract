@@ -97,7 +97,8 @@ class StrataConfig
          *  \pre NA
          *  \post If the game path is valid then set the game path and return true,
          *  else return false
-        *  \note NA*/
+         *  \throws StrataConfigFilesystemException
+         *  \note NA*/
         bool setGameMediaSourcePath(boost::filesystem::path gameMediaSourcePath);
     
         //!Set the extracted+converted game media assets to the destination directory
