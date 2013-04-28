@@ -80,19 +80,15 @@ BOOST_AUTO_TEST_CASE(GameMediaDestinationPathGOOD)
 
 BOOST_AUTO_TEST_CASE( ParserReadError )
 {
+    //The root directory of the soure game
+    
+    
     try
     {
         myConfiguration->setGameMediaSourcePath(GAMESDIRECTORY);
         myConfiguration->setGameMediaDestinationPath(GAMEDESTINATIONDIRECTORY);
-        myConfiguration->setGameConfiguration(GAMECONFIGFILEPATH);
-        myConfiguration->readConfig();
-        BOOST_CHECK(true);
-    }
-    catch(StrataConfigParsingException &errorInstance)
-    {
-        //Exceptions specific to Configuration Parsing
-        std::cout << "There was an error: "  << errorInstance.GetErrorMessage();
-        BOOST_CHECK(true);
+        myConfiguration->setGameConfiguration(BADGAMECONFIGFILEPATH);
+        BOOST_CHECK_THROW(myConfiguration->readConfig(), StrataConfigParsingException);
     }
     catch(StrataConfigException &errorInstance)
     {
