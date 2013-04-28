@@ -4,6 +4,12 @@
 #include <boost/exception/all.hpp>
 #include <boost/filesystem/path.hpp>
 
+
+//!The base exception
+/*!A Exception
+ * \pre NA
+ * \post NA
+ * \note */
 class StrataConfigException : public virtual std::exception, public virtual boost::exception
 {
     
@@ -16,7 +22,11 @@ protected:
 };
 
 
-
+//!An exception
+/*!A Exception
+ * \pre NA
+ * \post NA
+ * \note */
 class StrataConfigParsingException : public StrataConfigException
 {
     public:
@@ -28,7 +38,11 @@ class StrataConfigParsingException : public StrataConfigException
 
 };
 
-
+//!An exception
+/*!A Exception
+ * \pre NA
+ * \post NA
+ * \note */
 class StrataConfigFilesystemException : public StrataConfigException
 {
     public:

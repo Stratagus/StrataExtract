@@ -1,5 +1,5 @@
-#ifndef Main_UnitTests_Header
-#define Main_UnitTests_Header
+#ifndef StrataConfig_UnitTests_Header
+#define StrataConfig_UnitTests_Header
 
 #include <boost/test/unit_test.hpp>
 #include "../../Source/Configuration/StrataConfig.hpp"
