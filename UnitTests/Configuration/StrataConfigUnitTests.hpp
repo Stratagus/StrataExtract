@@ -7,7 +7,7 @@
 
 //Set the value to a  valid game media directory
 #define GAMESDIRECTORY "/Users/brad/Games"
-#define GAMEDESTINATIONDIRECTORY "/Users/brad/Desktop"
+#define GAMEDESTINATIONDIRECTORY "/Users/brad/Desktop/"
 #define GAMECONFIGFILEPATH "../../Docs/SampleConfigs/Stargus.StrataExtract"
 #define BADGAMECONFIGFILEPATH "../../Docs/UnitTestMedia/junkfile"
 

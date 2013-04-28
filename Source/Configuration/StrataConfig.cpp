@@ -49,7 +49,6 @@ StrataConfig::~StrataConfig()
 
 bool StrataConfig::readConfig()
 {
-    std::cout << "Current Value: " << gameConfiguration << '\n';
     //throw StrataConfigException::xmlReaderError();
     if(!boost::filesystem::exists(*gameConfiguration))
     {
@@ -255,14 +254,19 @@ bool StrataConfig::setGameMediaSourcePath(boost::filesystem::path gameMediaSourc
 
 bool StrataConfig::setGameConfiguration(boost::filesystem::path gameConfigurationPath)
 {
-    if(!boost::filesystem::exists(gameConfigurationPath))
-    {
-        return false;
-    }
-    
     if(!gameConfiguration)
     {
         gameConfiguration = new boost::filesystem::path;
+    }
+    
+    if(!boost::filesystem::exists(gameConfigurationPath))
+    {
+        StrataConfigFilesystemException fileException;
+        fileException.problemPath = gameConfiguration;
+        fileException.SetErrorMessage("File path does not exist or is a directory.");
+        
+        BOOST_THROW_EXCEPTION(fileException);
+        return false;
     }
     
     *gameConfiguration = gameConfigurationPath;
@@ -271,14 +275,19 @@ bool StrataConfig::setGameConfiguration(boost::filesystem::path gameConfiguratio
 
 bool StrataConfig::setGameMediaDestinationPath(boost::filesystem::path gameMediaDestinationPath)
 {
-    if(boost::filesystem::exists(gameMediaDestinationPath))
-    {
-        return false;
-    }
-    
     if(!gameMediaDestination)
     {
         gameMediaDestination = new boost::filesystem::path;
+    }
+    
+    if(boost::filesystem::exists(gameMediaDestinationPath))
+    {
+        StrataConfigFilesystemException fileException;
+        fileException.problemPath = gameMediaDestination;
+        fileException.SetErrorMessage("File path exists or is not a directory.");
+        
+        BOOST_THROW_EXCEPTION(fileException);
+        return false;
     }
     
     *gameMediaDestination = gameMediaDestinationPath;

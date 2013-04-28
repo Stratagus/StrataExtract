@@ -40,53 +40,13 @@ BOOST_AUTO_TEST_CASE(GameMediaSourcePathGOOD)
     }
 }
 
-BOOST_AUTO_TEST_CASE(GameMediaDestinationPathBAD)
-{
-    try
-    {
-        myConfiguration->setGameMediaSourcePath("/some/bad/path");
-        BOOST_CHECK(false);
-    }
-    catch (StrataConfigFilesystemException &errorInstance)
-    {
-        //Cout or log the error message with GetErrorMessage()
-        //std::cout << "File Error Message: " << errorInstance.GetErrorMessage();
-        
-        //It is possible to force override the checks here with (thought it's a really bad idea)
-        //Instead call the setter again with the new value.
-        //*errorInstance.problemPath = "/some/new/path";
-        
-        myConfiguration->setGameMediaSourcePath(GAMESDIRECTORY);
-        BOOST_CHECK(true);
-        
-    }
-    catch (...)
-    {
-        BOOST_CHECK(false);
-    }
-}
-
-BOOST_AUTO_TEST_CASE(GameMediaDestinationPathGOOD)
-{
-    try
-    {
-        myConfiguration->setGameMediaSourcePath(GAMESDIRECTORY);
-    }
-    catch(...)
-    {
-        BOOST_CHECK(false);
-    }
-}
 
 BOOST_AUTO_TEST_CASE( ParserReadError )
 {
     //The root directory of the soure game
     
-    
     try
     {
-        myConfiguration->setGameMediaSourcePath(GAMESDIRECTORY);
-        myConfiguration->setGameMediaDestinationPath(GAMEDESTINATIONDIRECTORY);
         myConfiguration->setGameConfiguration(BADGAMECONFIGFILEPATH);
         BOOST_CHECK_THROW(myConfiguration->readConfig(), StrataConfigParsingException);
     }

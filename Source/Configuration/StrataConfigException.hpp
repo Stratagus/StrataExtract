@@ -5,8 +5,8 @@
 #include <boost/filesystem/path.hpp>
 
 
-//!The base exception
-/*!A Exception
+//!The base exception for which all StrataConfig exceptions are based off of
+/*!A base exception class
  * \pre NA
  * \post NA
  * \note */
