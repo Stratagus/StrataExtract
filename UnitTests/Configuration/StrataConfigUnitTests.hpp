@@ -4,6 +4,12 @@
 #include <boost/test/unit_test.hpp>
 #include "../../Source/Configuration/StrataConfig.hpp"
 
+
+//Set the value to a  valid game media directory
+#define GAMESDIRECTORY "/Users/brad/Games"
+#define GAMEDESTINATIONDIRECTORY "/Users/brad/Desktop"
+#define GAMECONFIGFILEPATH "../../Docs/SampleConfigs/Stargus.StrataExtract"
+
 struct StrataConfigInstance
 {
     StrataConfig *myConfiguration = NULL;

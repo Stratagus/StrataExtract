@@ -65,7 +65,7 @@ bool StrataConfig::readConfig()
         {
             //std::cerr << "Error: Unable to parse file: " << gameConfiguration << '\n';
             //throw StrataConfigException::xmlReaderError();
-            BOOST_THROW_EXCEPTION(StrataConfigParsingException());
+            BOOST_THROW_EXCEPTION(StrataConfigParsingException("Unable to parse the configuration"));
             return false;
         }
         
@@ -232,15 +232,21 @@ bool StrataConfig::isExpansionGame()
 }
 
 bool StrataConfig::setGameMediaSourcePath(boost::filesystem::path gameMediaSourcePath)
-{
-    if(!boost::filesystem::exists(gameMediaSourcePath) || !boost::filesystem::is_directory(gameMediaSourcePath))
-    {
-        return false;
-    }
-    
+{    
     if(!gameMediaSource)
     {
         gameMediaSource = new boost::filesystem::path;
+    }
+    
+    if(!boost::filesystem::exists(gameMediaSourcePath) || !boost::filesystem::is_directory(gameMediaSourcePath))
+    {
+        //Wrapping the data we want to hand back to catch
+        StrataConfigFilesystemException  fileException;
+        fileException.problemPath = gameMediaSource;
+        fileException.SetErrorMessage("File path does not exist or is not a directory.");
+        
+        BOOST_THROW_EXCEPTION(fileException);
+        return false;
     }
     
     *gameMediaSource = gameMediaSourcePath;
