@@ -3,14 +3,9 @@
 #include "mainUnitTests.hpp"
 #include <boost/test/unit_test.hpp>
 
-BOOST_AUTO_TEST_CASE( my_test )
-{
-    
-    BOOST_CHECK( 1 == 1 );
-}
+BOOST_AUTO_TEST_SUITE(MiscTests)
 
-/*
-void MiscTests::test1()
+/*BOOST_AUTO_TEST_CASE( Test1 )
 {
     std::cout << "StrataConfig Tests\n";
     //Create a Strataconfig reference (from teh singleton
@@ -61,3 +56,5 @@ void MiscTests::test1()
     //StrataRunner *runner = StrataRunner::Runner();
     std::cout << "Done!\n";
 }*/
+
+BOOST_AUTO_TEST_SUITE_END()
