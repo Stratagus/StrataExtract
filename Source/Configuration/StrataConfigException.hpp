@@ -8,11 +8,6 @@ class StrataConfigException : public virtual std::exception, public virtual boos
     
 public:
 
-    
-    /*char const *what() const throw()
-    {
-        return "example_io error";
-    }*/
     virtual std::string GetErrorMessage();
 protected:
     ~StrataConfigException() throw() {}

@@ -239,7 +239,7 @@ option(UNITTESTS "Compile Unittests" OFF)
 if(UNITTESTS)
   #Search for the required libraries for the project to properly
   #link and compile.
-  find_package(CPPUnit REQUIRED)
+  find_package(Boost REQUIRED COMPONENTS unit_test_framework)
 
   add_executable(
     StrataExtractUnitTests
@@ -253,7 +253,8 @@ if(UNITTESTS)
     )
   target_link_libraries(StrataExtractUnitTests
                         StrataExtractCore
-                        ${CPPUNIT_LIBRARY})
+                        ${Boost_LIBRARIES}
+                        )
 endif()
 
 # Set the RPATH (ie Hack Soup for the moment)

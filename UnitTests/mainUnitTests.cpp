@@ -1,28 +1,15 @@
+#define BOOST_TEST_DYN_LINK
+#define BOOST_TEST_MODULE MyTest
 #include "mainUnitTests.hpp"
+#include <boost/test/unit_test.hpp>
 
-MiscTests::MiscTests() : CppUnit::TestCase("Miscellaneous Tests")
+BOOST_AUTO_TEST_CASE( my_test )
 {
+    
+    BOOST_CHECK( 1 == 1 );
 }
 
-int main()
-{
-	std::cout << "StrataExtract Core Unit Tests\n";
-    boost::filesystem::path testMediaFilePath;
-    testMediaFilePath = "../../Dics/UnitTestMedia";
-    
-    CppUnit::TextUi::TestRunner runner;
-    
-    //Main Object
-    
-    runner.addTest(StrataConfigUnitTests::suite());
-    
-    
-    //runner.addTest(MiscTests::suite());
-    
-    runner.run();
-	return 0;
-}
-
+/*
 void MiscTests::test1()
 {
     std::cout << "StrataConfig Tests\n";
@@ -73,4 +60,4 @@ void MiscTests::test1()
     //std::cout << "Game Name: " << myConfig->getGameName() << '\n';
     //StrataRunner *runner = StrataRunner::Runner();
     std::cout << "Done!\n";
-}
+}*/

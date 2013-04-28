@@ -1,58 +1,16 @@
-/*!
- *  \brief
- *  \details
- *  \author    Bradley Clemetson
- *  \version   0.01
- *  \date      March 24, 2013
- *  \copyright GPLv2
- */
+#ifndef Main_UnitTests_Header
+#define Main_UnitTests_Header
 
-#ifndef StrataConfig_UnitTests_Header
-#define StrataConfigUnitTests_Header
-
-//CPPUnit Test Includes
-#include <cppunit/ui/text/TestRunner.h>
-#include <cppunit/TestCase.h>
-#include <cppunit/TestCaller.h>
-
+#include <boost/test/unit_test.hpp>
 #include "../../Source/Configuration/StrataConfig.hpp"
 
+BOOST_AUTO_TEST_SUITE(StrataConfigUnitTests)
 
-// Class of several tests
-class StrataConfigUnitTests : public CppUnit::TestCase
+BOOST_AUTO_TEST_CASE( ReadError )
 {
-public:
-    StrataConfigUnitTests();
     
-    
-    //!Main Prototype header
-    /*!  Better desc
-     *  \pre
-     *  \post
-     *  \note NA*/
-    void noConfigurationFile();
-    
-    
-    //!Main Prototype header
-    /*!  Better desc
-     *  \pre
-     *  \post
-     *  \note NA*/
-    void testObviousOne();
-    
-    // Within the test class, a static method which loads all tests into an aggregate test object
-    static CppUnit::Test *suite()
-    {
-        CppUnit::TestSuite *suiteOfTests = new CppUnit::TestSuite("StrataExtract Configuration Tests");
-        suiteOfTests->addTest(new CppUnit::TestCaller<StrataConfigUnitTests>("testObviousOne",   &StrataConfigUnitTests::testObviousOne));
-        suiteOfTests->addTest(new CppUnit::TestCaller<StrataConfigUnitTests>("testObviousOne",   &StrataConfigUnitTests::noConfigurationFile));
-        return suiteOfTests;
-    }
-protected:
-    
-private:
-    StrataConfig *myConfig;
-};
+    BOOST_CHECK( 2 == 1 );
+}
 
-
+BOOST_AUTO_TEST_SUITE_END()
 #endif
