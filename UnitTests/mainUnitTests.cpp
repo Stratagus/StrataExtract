@@ -1,29 +1,15 @@
+#define BOOST_TEST_DYN_LINK
+#define BOOST_TEST_MODULE MyTest
 #include "mainUnitTests.hpp"
+#include <boost/test/unit_test.hpp>
 
-MiscTests::MiscTests() : CppUnit::TestCase("Miscellaneous Tests")
-{
-}
+BOOST_AUTO_TEST_SUITE(MiscTests)
 
-int main()
-{
-	std::cout << "StrataExtract Core Unit Tests\n";
-    
-    CppUnit::TextUi::TestRunner runner;
-    
-    //Main Object
-    
-    //runner.addTest( SampleUnitTest::suite() );
-    runner.addTest(MiscTests::suite());
-    
-    runner.run();
-	return 0;
-}
-
-void MiscTests::test1()
+/*BOOST_AUTO_TEST_CASE( Play )
 {
     std::cout << "StrataConfig Tests\n";
     //Create a Strataconfig reference (from teh singleton
-    StrataConfig *myConfig = StrataConfig::Configuration();
+    StrataConfig *myConfig = new StrataConfig;
     
     //The root directory of the soure game
     if(myConfig->setGameMediaSourcePath("/Users/brad/Games/"))
@@ -45,8 +31,18 @@ void MiscTests::test1()
         std::cout << "DESTINATION PATH not set\n";
     }
     
+    
+    myConfig->setGameConfiguration("../../Docs/SampleConfigs/Stargus.StrataExtract");
     //Read the XML configuration
-    myConfig->readConfig("../../Docs/SampleConfigs/Stargus.StrataExtract");
+    try
+    {
+        myConfig->readConfig();
+    }
+    catch(...)
+    {
+        
+    }
+    
     if(myConfig->isExpansionGame())
     {
         std::cout << "You are loading a expansion game, you must give a proper destination path.\n";
@@ -57,6 +53,8 @@ void MiscTests::test1()
     }
     myConfig->ProcessGameAssetLists();
     //std::cout << "Game Name: " << myConfig->getGameName() << '\n';
-    StrataRunner *runner = StrataRunner::Runner();
+    //StrataRunner *runner = StrataRunner::Runner();
     std::cout << "Done!\n";
-}
+}*/
+
+BOOST_AUTO_TEST_SUITE_END()

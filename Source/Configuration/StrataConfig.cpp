@@ -8,36 +8,64 @@ StrataConfig::StrataConfig()
     isExpansion = false;
     configurationDocument = NULL;
     configXPathContext = NULL;
+    
+    gameConfiguration = NULL;
+    gameMediaSource = NULL;
+    gameMediaDestination = NULL;
 }
 
-StrataConfig* StrataConfig::ConfigurationInstance = 0;
-
-StrataConfig *StrataConfig::Configuration()
+StrataConfig::~StrataConfig()
 {
-    if(ConfigurationInstance == 0)
+    if(configurationDocument)
     {
-        ConfigurationInstance = new StrataConfig;
+        delete configurationDocument;
+        configurationDocument = NULL;
     }
     
-    return ConfigurationInstance;
+    if (configXPathContext)
+    {
+        delete configXPathContext;
+        configXPathContext = NULL;
+    }
+    
+    if(gameConfiguration)
+    {
+        delete gameConfiguration;
+        gameConfiguration = NULL;
+    }
+    
+    if(gameMediaSource)
+    {
+        delete gameMediaSource;
+        gameMediaSource = NULL;
+    }
+    
+    if(gameMediaDestination)
+    {
+        delete gameMediaDestination;
+        gameMediaDestination = NULL;
+    }
 }
 
-
-bool StrataConfig::readConfig(boost::filesystem::path configurationPath)
+bool StrataConfig::readConfig()
 {
-    if(!boost::filesystem::exists(configurationPath))
+    std::cout << "Current Value: " << gameConfiguration << '\n';
+    //throw StrataConfigException::xmlReaderError();
+    if(!boost::filesystem::exists(*gameConfiguration))
     {
-        std::cerr << "File not found " << configurationPath;
+        std::cerr << "File not found " << gameConfiguration;
     }
     else
     {
 
         
         //The root of our configuration tree
-        configurationDocument = xmlReadFile(configurationPath.string().c_str(), NULL, NULL);
+        configurationDocument = xmlReadFile(gameConfiguration->string().c_str(), NULL, NULL);
         if(configurationDocument == NULL)
         {
-            std::cerr << "Error: Unable to parse file: " << configurationPath << '\n';
+            //std::cerr << "Error: Unable to parse file: " << gameConfiguration << '\n';
+            //throw StrataConfigException::xmlReaderError();
+            BOOST_THROW_EXCEPTION(StrataConfigParsingException("Unable to parse the configuration"));
             return false;
         }
         
@@ -78,7 +106,7 @@ bool StrataConfig::readConfig(boost::filesystem::path configurationPath)
 xmlNodePtr StrataConfig::FindGameVersion()
 {
     //Jump to the <Versions> entity
-    boost::filesystem::path tempSourceGamePath = gameMediaSource;
+    boost::filesystem::path tempSourceGamePath = *gameMediaSource;
     xmlXPathObjectPtr gameVersions = xmlXPathEval((const xmlChar *) "//Version", configXPathContext);
     
     bool fileMatch = true;
@@ -97,7 +125,7 @@ xmlNodePtr StrataConfig::FindGameVersion()
         {
         #warning Potential logic error (Code Review)
             //Compare the Hash in the current file entity with the method generated hash
-            if(!xmlStrcmp(xmlGetProp(currentChildPointer, (const xmlChar *) "hash"), GetFileHash(gameMediaSource / (char *)xmlGetProp(currentChildPointer, (const xmlChar *) "name"))))
+            if(!xmlStrcmp(xmlGetProp(currentChildPointer, (const xmlChar *) "hash"), GetFileHash(*gameMediaSource / (char *)xmlGetProp(currentChildPointer, (const xmlChar *) "name"))))
             {
                 if(currentChildPointer->next->next == NULL)
                 {
@@ -204,15 +232,43 @@ bool StrataConfig::isExpansionGame()
 }
 
 bool StrataConfig::setGameMediaSourcePath(boost::filesystem::path gameMediaSourcePath)
-{
+{    
+    if(!gameMediaSource)
+    {
+        gameMediaSource = new boost::filesystem::path;
+    }
+    
     if(!boost::filesystem::exists(gameMediaSourcePath) || !boost::filesystem::is_directory(gameMediaSourcePath))
+    {
+        //Wrapping the data we want to hand back to catch
+        StrataConfigFilesystemException  fileException;
+        fileException.problemPath = gameMediaSource;
+        fileException.SetErrorMessage("File path does not exist or is not a directory.");
+        
+        BOOST_THROW_EXCEPTION(fileException);
+        return false;
+    }
+    
+    *gameMediaSource = gameMediaSourcePath;
+    return true;
+}
+
+bool StrataConfig::setGameConfiguration(boost::filesystem::path gameConfigurationPath)
+{
+    if(!boost::filesystem::exists(gameConfigurationPath))
     {
         return false;
     }
     
-    gameMediaSource = gameMediaSourcePath;
+    if(!gameConfiguration)
+    {
+        gameConfiguration = new boost::filesystem::path;
+    }
+    
+    *gameConfiguration = gameConfigurationPath;
     return true;
 }
+
 bool StrataConfig::setGameMediaDestinationPath(boost::filesystem::path gameMediaDestinationPath)
 {
     if(boost::filesystem::exists(gameMediaDestinationPath))
@@ -220,17 +276,27 @@ bool StrataConfig::setGameMediaDestinationPath(boost::filesystem::path gameMedia
         return false;
     }
     
-    gameMediaDestination = gameMediaDestinationPath;
+    if(!gameMediaDestination)
+    {
+        gameMediaDestination = new boost::filesystem::path;
+    }
+    
+    *gameMediaDestination = gameMediaDestinationPath;
     return true;
 }
 
 boost::filesystem::path StrataConfig::GameMediaSourcePath()
 {
-    return gameMediaSource;
+    return *gameMediaSource;
 }
 boost::filesystem::path StrataConfig::GameMediaDestinationPath()
 {
-    return gameMediaDestination;
+    return *gameMediaDestination;
+}
+
+boost::filesystem::path StrataConfig::GameConfigurationPath()
+{
+    return *gameConfiguration;
 }
 
 /*std::string StrataConfig::getGameName()
@@ -268,6 +334,51 @@ bool StrataConfig::isConfigLoaded()
 }
 
 
+//If OpenSSL is installed prefer it's hashing library, as it is much
+//faster. Else we revert to abusing boost's uuid sha1 hashing
+#if OPENSSL_INSTALLED
+xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
+{
+    std::cout << "Passing: " << filePath << '\n';
+    FILE *f;
+    unsigned char buf[8192];
+    SHA_CTX sc;
+    int err;
+    unsigned char output[20];
+    std::stringstream finalHash;
+    
+    f = fopen(filePath.string().c_str(), "rb");
+    if (f == NULL) {
+        /* do something smart here: the file could not be opened */
+        std::cout << "Fail\n";
+        return (xmlChar *) "FAIL";
+    }
+    SHA1_Init(&sc);
+    for (;;) {
+        size_t len;
+        
+        len = fread(buf, 1, sizeof buf, f);
+        if (len == 0)
+            break;
+        SHA1_Update(&sc, buf, len);
+    }
+    err = ferror(f);
+    fclose(f);
+    if (err) {
+        /* some I/O error was encountered; report the error */
+        std::cout << "Fail!\n";
+        return (xmlChar *) "FAIL";
+    }
+    SHA1_Final(output, &sc);
+    
+    for(int i = 0; i < 20; ++i)
+    {
+        finalHash << std::hex << ((output[i] & 0x000000F0) >> 4)
+        << (output[i] & 0x0000000F);
+    }
+    return (xmlChar *) finalHash.str().c_str();
+}
+#else
 #warning Very Wasteful function in memory and time in the way sha1Digest.process_bytes operates!
 xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
 {
@@ -321,6 +432,7 @@ xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
     
     return (xmlChar *) finalHash.str().c_str();
 }
+#endif
 
 void StrataConfig::PrintUsage()
 {
@@ -328,7 +440,6 @@ void StrataConfig::PrintUsage()
               << "Copyright (c) 2012 by StrataExtract Team\n\n"
               << "Usage:./strataextract [OPTIONS] /gameconfig/path /source/game/path /destination/game/path\n"
               << "Flags             Describution\n"
-              << "--gui             Open GUI\n"
               << "--noconvert       Ignore Conversion tags\n"
               << "--simulate        Simulate game extraction\n"
               << "--verbosity #     0-4 Display internal operations\n"

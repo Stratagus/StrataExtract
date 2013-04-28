@@ -1,26 +1,106 @@
 #include "StrataConfigUnitTests.hpp"
 
-SampleUnitTest::SampleUnitTest() : CppUnit::TestCase("Sample UnitTest")
+BOOST_FIXTURE_TEST_SUITE(StrataConfigTests, StrataConfigInstance)
+
+BOOST_AUTO_TEST_CASE(GameMediaSourcePathBAD)
 {
+    try
+    {
+        myConfiguration->setGameMediaSourcePath("/some/bad/path");
+        BOOST_CHECK(false);
+    }
+    catch (StrataConfigFilesystemException &errorInstance)
+    {
+        //Cout or log the error message with GetErrorMessage()
+        //std::cout << "File Error Message: " << errorInstance.GetErrorMessage();
+        
+        //It is possible to force override the checks here with (thought it's a really bad idea)
+        //Instead call the setter again with the new value.
+        //*errorInstance.problemPath = "/some/new/path";
+        
+        myConfiguration->setGameMediaSourcePath(GAMESDIRECTORY);
+        BOOST_CHECK(true);
+
+    }
+    catch (...)
+    {
+        BOOST_CHECK(false);
+    }
 }
 
-// Actual test case functions and code
-void SampleUnitTest::testObviousOne()
+BOOST_AUTO_TEST_CASE(GameMediaSourcePathGOOD)
 {
-	CPPUNIT_ASSERT( 1 == 1);
+    try
+    {
+        myConfiguration->setGameMediaSourcePath(GAMESDIRECTORY);
+    }
+    catch(...)
+    {
+        BOOST_CHECK(false);
+    }
 }
 
-void SampleUnitTest::testObviousTwo()
+BOOST_AUTO_TEST_CASE(GameMediaDestinationPathBAD)
 {
-    CPPUNIT_ASSERT( 2 == 2);
+    try
+    {
+        myConfiguration->setGameMediaSourcePath("/some/bad/path");
+        BOOST_CHECK(false);
+    }
+    catch (StrataConfigFilesystemException &errorInstance)
+    {
+        //Cout or log the error message with GetErrorMessage()
+        //std::cout << "File Error Message: " << errorInstance.GetErrorMessage();
+        
+        //It is possible to force override the checks here with (thought it's a really bad idea)
+        //Instead call the setter again with the new value.
+        //*errorInstance.problemPath = "/some/new/path";
+        
+        myConfiguration->setGameMediaSourcePath(GAMESDIRECTORY);
+        BOOST_CHECK(true);
+        
+    }
+    catch (...)
+    {
+        BOOST_CHECK(false);
+    }
 }
 
-void SampleUnitTest::testObviousThree()
+BOOST_AUTO_TEST_CASE(GameMediaDestinationPathGOOD)
 {
-    CPPUNIT_ASSERT( 3 == 3);
+    try
+    {
+        myConfiguration->setGameMediaSourcePath(GAMESDIRECTORY);
+    }
+    catch(...)
+    {
+        BOOST_CHECK(false);
+    }
 }
 
-void SampleUnitTest::testObviousFour()
+BOOST_AUTO_TEST_CASE( ParserReadError )
 {
-    CPPUNIT_ASSERT( 3 == 4);  // Oh no! This test will fail.
+    //The root directory of the soure game
+    
+    
+    try
+    {
+        myConfiguration->setGameMediaSourcePath(GAMESDIRECTORY);
+        myConfiguration->setGameMediaDestinationPath(GAMEDESTINATIONDIRECTORY);
+        myConfiguration->setGameConfiguration(BADGAMECONFIGFILEPATH);
+        BOOST_CHECK_THROW(myConfiguration->readConfig(), StrataConfigParsingException);
+    }
+    catch(StrataConfigException &errorInstance)
+    {
+        //Exceptions base on anything strataconfig
+        std::cout << "There was an error: "  << errorInstance.GetErrorMessage();
+        BOOST_CHECK(false);
+    }
+    catch(...)
+    {
+        //Catch Anything
+        BOOST_REQUIRE(false);
+    }
 }
+
+BOOST_AUTO_TEST_SUITE_END()

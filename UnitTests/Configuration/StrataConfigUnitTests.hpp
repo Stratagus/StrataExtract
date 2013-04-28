@@ -1,45 +1,36 @@
-/*!
- *  \brief
- *  \details
- *  \author    Bradley Clemetson
- *  \version   0.01
- *  \date      March 24, 2013
- *  \copyright GPLv2
- */
+#ifndef Main_UnitTests_Header
+#define Main_UnitTests_Header
 
-#ifndef StrataConfig_UnitTests_Header
-#define StrataConfigUnitTests_Header
-
-//CPPUnit Test Includes
-#include <cppunit/ui/text/TestRunner.h>
-#include <cppunit/TestCase.h>
-#include <cppunit/TestCaller.h>
+#include <boost/test/unit_test.hpp>
+#include "../../Source/Configuration/StrataConfig.hpp"
 
 
-// Class of several tests
-class SampleUnitTest : public CppUnit::TestCase
+//Set the value to a  valid game media directory
+#define GAMESDIRECTORY "/Users/brad/Games"
+#define GAMEDESTINATIONDIRECTORY "/Users/brad/Desktop"
+#define GAMECONFIGFILEPATH "../../Docs/SampleConfigs/Stargus.StrataExtract"
+#define BADGAMECONFIGFILEPATH "../../Docs/UnitTestMedia/junkfile"
+
+struct StrataConfigInstance
 {
-public:
-    SampleUnitTest();
+    StrataConfig *myConfiguration = NULL;
     
-    // Actual test case functions and code
-    void testObviousOne();
     
-    void testObviousTwo();
-    
-    void testObviousThree();
-    
-    void testObviousFour();
-    
-    // Within the test class, a static method which loads all tests into an aggregate test object
-    static CppUnit::Test *suite()
+    StrataConfigInstance()
     {
-        CppUnit::TestSuite *suiteOfTests = new CppUnit::TestSuite("Sample Unit Test");
-        suiteOfTests->addTest(new CppUnit::TestCaller<SampleUnitTest>("testObviousOne",   &SampleUnitTest::testObviousOne));
-        suiteOfTests->addTest(new CppUnit::TestCaller<SampleUnitTest>("testObviousTwo",   &SampleUnitTest::testObviousTwo));
-        suiteOfTests->addTest(new CppUnit::TestCaller<SampleUnitTest>("testObviousThree", &SampleUnitTest::testObviousThree));
-        suiteOfTests->addTest(new CppUnit::TestCaller<SampleUnitTest>("testObviousFour",  &SampleUnitTest::testObviousFour));
-        return suiteOfTests;
+        BOOST_TEST_MESSAGE("Setup StrataConfiguration Tests");
+        if(!myConfiguration)
+            myConfiguration = new StrataConfig;
+    }
+    
+    ~StrataConfigInstance()
+    {
+        BOOST_TEST_MESSAGE("Teardown StrataConfiguration Tests");
+        if(myConfiguration)
+        {
+            delete myConfiguration;
+            myConfiguration = NULL;
+        }
     }
 };
 

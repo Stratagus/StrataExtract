@@ -1,5 +1,5 @@
 /*!
- *  \brief     Singleton Class responsible for Config setup/system queries.
+ *  \brief     responsible for Config setup/system queries.
  *  \details   
  *  \author    Bradley Clemetson
  *  \version   0.01
@@ -21,12 +21,32 @@
 #include <libxml/parser.h>
 #include <libxml/xpath.h>
 
+#if OPENSSL_INSTALLED
+    #include <openssl/sha.h>
+#endif
+
+#include "StrataConfigException.hpp"
+
 #define VERSION 0.1f
 
 class StrataConfig
 {
     public:
-        static StrataConfig *Configuration();
+        //!The constructor method
+        /*!Initializes the default settings
+         * \pre NA
+         * \post Creates a initial copy of the Strataconfig class
+         *  otherwise return a pointer to the class instead
+         * \note Singleton class implementation */
+        StrataConfig();
+    
+#warning Check that all memory is cleaned up
+        //!The destructor method for Strataconfig
+        /*!
+         * \pre StrataConfig object constructed
+         * \post The object instance is deallocated
+         * \note */
+        ~StrataConfig();
     
         //!Reads the Configuration XML
         /*!  Reads the strataextract configuration to ensure it is correctly
@@ -36,7 +56,7 @@ class StrataConfig
          *  \pre gameMediaSource & configurationFilePath must be valid
          *  \post Parses the gameconfiguration and identifies the game version
          *  \note NA*/
-        bool readConfig(boost::filesystem::path configurationPath);
+        bool readConfig();
     
         //!Returns the gameMedia extract progress
         /*!  
@@ -88,6 +108,13 @@ class StrataConfig
          *  \note*/
         bool setGameMediaDestinationPath(boost::filesystem::path gameMediaDestinationPath);
     
+        //!Sets the value of the game configuration file path to be parsed
+        /*!Sets the game configuration filepath
+         *  \pre File path should be valid and point to a valid strataextract config
+         *  \post Sets the Gameconfiguration value.
+         *  \note NA*/
+        bool setGameConfiguration(boost::filesystem::path gameConfigurationPath);
+    
         //!Returns the current value of the GameMediaSourcePath
         /*!Returns a copy of the currently set, gameMediaSource filepath
          *  \pre NA
@@ -100,8 +127,15 @@ class StrataConfig
          *  of extracted and converted file for the Stratagus engine.
          *  \pre NA
          *  \post Returns a copy of the destination media filepath
-         *  \note*/
+         *  \note NA*/
         boost::filesystem::path GameMediaDestinationPath();
+    
+        //!Returns the current GameConfiguration file path
+        /*!Returns the currently set value of the gameconfiguration file path
+         *  \pre GameConfiguration file path should be set
+         *  \post Returns a copy of the game configuration fiel path
+         *  \note NA*/
+        boost::filesystem::path GameConfigurationPath();
     
         //!Prints the proper CLI usage information
         /*Prints the CLI usage information allowing the user to reformat their
@@ -129,14 +163,6 @@ class StrataConfig
 
     
     protected:
-        //!The initialization & getter method
-        /*!Initializes the default settings 
-         * \pre NA
-         * \post Creates a initial copy of the Strataconfig class
-         *  otherwise return a pointer to the class instead
-         * \note Singleton class implementation */
-        StrataConfig();
-    
         //!Identifies the game version
         /*!Identifies the game version based on the read configuration
          *  file, along with the game media source path 
@@ -175,15 +201,15 @@ class StrataConfig
         xmlNodePtr configurationRoot;
         xmlNodePtr gameVersion;
     
-        boost::filesystem::path gameMediaSource;
-        boost::filesystem::path gameMediaDestination;
+        boost::filesystem::path *gameMediaSource;
+        boost::filesystem::path *gameMediaDestination;
+        boost::filesystem::path *gameConfiguration;
     
         std::queue<xmlNodePtr> preparationProcessQueue;
         std::queue<xmlNodePtr> processQueue;
         xmlXPathContextPtr configXPathContext;
 
     private:
-        static StrataConfig *ConfigurationInstance;
         int completeObjects;
         int totalObjects;
         bool configLoaded;

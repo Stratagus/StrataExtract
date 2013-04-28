@@ -21,10 +21,11 @@ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules
 #inputted format maybe to OGG Vorbis(Audio) and OGG Theora(Video).
 #Magick++ (C++ Bindings to ImageMagick) allows for image conversion
 #from whatever the input type to png (Portable Network Graphic)
-find_package(Boost REQUIRED COMPONENTS system thread filesystem)
+find_package(Boost REQUIRED COMPONENTS system thread filesystem exception)
 find_package(LibXml2 REQUIRED)
 find_package(FFMPEG REQUIRED)
 find_package(Magick++ REQUIRED)
+find_package(OpenSSL)
 find_package(PkgConfig)
 pkg_check_modules(GTKMM gtkmm-3.0)
 
@@ -82,6 +83,8 @@ set(StrataExtractMain-Source
 set(StrataExtractConfiguration-Source
     ${CONFIGURATION_DIR}/StrataConfig.hpp
     ${CONFIGURATION_DIR}/StrataConfig.cpp
+    ${CONFIGURATION_DIR}/StrataConfigException.hpp
+    ${CONFIGURATION_DIR}/StrataConfigException.cpp
    )
 set(StrataExtractRunner-Source
     ${RUNNER_DIR}/StrataRunner.hpp
@@ -169,15 +172,14 @@ if (APPLE)
     include_directories("/opt/local/include/libxml2")
     include_directories("/opt/local/include/ImageMagick")
     link_directories("/opt/local/lib")
-
-    #Temporary Inlcudes
-    include_directories("~/dev/fakeroot/include")
-    link_directories("~/dev/fakeroot/lib")
 else()
     include_directories("/usr/include/libxml2")
     include_directories("/usr/include/ImageMagick")
 endif()
 
+    #Temporary Includes
+    include_directories("~/dev/fakeroot/include")
+    link_directories("~/dev/fakeroot/lib")
 #Compile the Library for X use
 #add_library(Library)
 
@@ -191,6 +193,9 @@ endif()
 #    WIN32
 #    MACOSX_BUNDLE
 #)
+if(OPENSSL_FOUND)
+  add_definitions( -DOPENSSL_INSTALLED=1 )
+endif()
 
 add_library(StrataExtractCore SHARED 
     ${StrataExtractConfiguration-Source}
@@ -211,6 +216,7 @@ target_link_libraries(
             ${FFMPEG_LIBAVFORMAT_LIBRARIES}
             ${FFMPEG_LIBAVUTIL_LIBRARIES}
             ${FFMPEG_LIBSWRESAMPLE_LIBRARIES}
+            ${OPENSSL_LIBRARIES}
             storm
 )
 
@@ -233,7 +239,7 @@ option(UNITTESTS "Compile Unittests" OFF)
 if(UNITTESTS)
   #Search for the required libraries for the project to properly
   #link and compile.
-  find_package(CPPUnit REQUIRED)
+  find_package(Boost REQUIRED COMPONENTS unit_test_framework)
 
   add_executable(
     StrataExtractUnitTests
@@ -247,7 +253,8 @@ if(UNITTESTS)
     )
   target_link_libraries(StrataExtractUnitTests
                         StrataExtractCore
-                        ${CPPUNIT_LIBRARY})
+                        ${Boost_LIBRARIES}
+                        )
 endif()
 
 # Set the RPATH (ie Hack Soup for the moment)
