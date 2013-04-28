@@ -5,11 +5,11 @@
 
 BOOST_AUTO_TEST_SUITE(MiscTests)
 
-/*BOOST_AUTO_TEST_CASE( Test1 )
+/*BOOST_AUTO_TEST_CASE( Play )
 {
     std::cout << "StrataConfig Tests\n";
     //Create a Strataconfig reference (from teh singleton
-    StrataConfig *myConfig = StrataConfig::Configuration();
+    StrataConfig *myConfig = new StrataConfig;
     
     //The root directory of the soure game
     if(myConfig->setGameMediaSourcePath("/Users/brad/Games/"))

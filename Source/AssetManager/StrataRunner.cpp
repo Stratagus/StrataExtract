@@ -2,7 +2,6 @@
 
 StrataRunner::StrataRunner()
 {
-    config = StrataConfig::Configuration();
 }
 
 StrataRunner* StrataRunner::runnerInstance = 0;

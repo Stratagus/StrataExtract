@@ -6,17 +6,24 @@
 
 struct StrataConfigInstance
 {
-    StrataConfig *myConfiguration;
+    StrataConfig *myConfiguration = NULL;
+    
     
     StrataConfigInstance()
     {
-        BOOST_TEST_MESSAGE("setup mass");
-        myConfiguration = StrataConfig::Configuration();
+        BOOST_TEST_MESSAGE("Setup StrataConfiguration Tests");
+        if(!myConfiguration)
+            myConfiguration = new StrataConfig;
     }
     
     ~StrataConfigInstance()
     {
-        BOOST_TEST_MESSAGE("teardown mass");
+        BOOST_TEST_MESSAGE("Teardown StrataConfiguration Tests");
+        if(myConfiguration)
+        {
+            delete myConfiguration;
+            myConfiguration = NULL;
+        }
     }
 };
 

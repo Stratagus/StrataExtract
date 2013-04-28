@@ -14,22 +14,42 @@ StrataConfig::StrataConfig()
     gameMediaDestination = NULL;
 }
 
-StrataConfig* StrataConfig::ConfigurationInstance = 0;
-
-StrataConfig *StrataConfig::Configuration()
+StrataConfig::~StrataConfig()
 {
-    if(ConfigurationInstance == 0)
+    if(configurationDocument)
     {
-        ConfigurationInstance = new StrataConfig;
+        delete configurationDocument;
+        configurationDocument = NULL;
     }
     
-    return ConfigurationInstance;
+    if (configXPathContext)
+    {
+        delete configXPathContext;
+        configXPathContext = NULL;
+    }
+    
+    if(gameConfiguration)
+    {
+        delete gameConfiguration;
+        gameConfiguration = NULL;
+    }
+    
+    if(gameMediaSource)
+    {
+        delete gameMediaSource;
+        gameMediaSource = NULL;
+    }
+    
+    if(gameMediaDestination)
+    {
+        delete gameMediaDestination;
+        gameMediaDestination = NULL;
+    }
 }
-
 
 bool StrataConfig::readConfig()
 {
-    
+    std::cout << "Current Value: " << gameConfiguration << '\n';
     //throw StrataConfigException::xmlReaderError();
     if(!boost::filesystem::exists(*gameConfiguration))
     {
