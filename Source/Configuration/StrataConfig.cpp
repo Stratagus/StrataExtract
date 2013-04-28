@@ -29,6 +29,8 @@ StrataConfig *StrataConfig::Configuration()
 
 bool StrataConfig::readConfig()
 {
+    
+    //throw StrataConfigException::xmlReaderError();
     if(!boost::filesystem::exists(*gameConfiguration))
     {
         std::cerr << "File not found " << gameConfiguration;
@@ -41,7 +43,9 @@ bool StrataConfig::readConfig()
         configurationDocument = xmlReadFile(gameConfiguration->string().c_str(), NULL, NULL);
         if(configurationDocument == NULL)
         {
-            std::cerr << "Error: Unable to parse file: " << gameConfiguration << '\n';
+            //std::cerr << "Error: Unable to parse file: " << gameConfiguration << '\n';
+            //throw StrataConfigException::xmlReaderError();
+            BOOST_THROW_EXCEPTION(StrataConfigParsingException());
             return false;
         }
         

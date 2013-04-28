@@ -15,6 +15,8 @@
 #include <cppunit/TestCase.h>
 #include <cppunit/TestCaller.h>
 
+#include "../../Source/Configuration/StrataConfig.hpp"
+
 
 // Class of several tests
 class StrataConfigUnitTests : public CppUnit::TestCase
@@ -23,6 +25,19 @@ public:
     StrataConfigUnitTests();
     
     
+    //!Main Prototype header
+    /*!  Better desc
+     *  \pre
+     *  \post
+     *  \note NA*/
+    void noConfigurationFile();
+    
+    
+    //!Main Prototype header
+    /*!  Better desc
+     *  \pre
+     *  \post
+     *  \note NA*/
     void testObviousOne();
     
     // Within the test class, a static method which loads all tests into an aggregate test object
@@ -30,8 +45,13 @@ public:
     {
         CppUnit::TestSuite *suiteOfTests = new CppUnit::TestSuite("StrataExtract Configuration Tests");
         suiteOfTests->addTest(new CppUnit::TestCaller<StrataConfigUnitTests>("testObviousOne",   &StrataConfigUnitTests::testObviousOne));
+        suiteOfTests->addTest(new CppUnit::TestCaller<StrataConfigUnitTests>("testObviousOne",   &StrataConfigUnitTests::noConfigurationFile));
         return suiteOfTests;
     }
+protected:
+    
+private:
+    StrataConfig *myConfig;
 };
 
 

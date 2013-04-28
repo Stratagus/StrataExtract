@@ -52,7 +52,15 @@ void MiscTests::test1()
     
     myConfig->setGameConfiguration("../../Docs/SampleConfigs/Stargus.StrataExtract");
     //Read the XML configuration
-    myConfig->readConfig();
+    try
+    {
+        myConfig->readConfig();
+    }
+    catch(...)
+    {
+        
+    }
+    
     if(myConfig->isExpansionGame())
     {
         std::cout << "You are loading a expansion game, you must give a proper destination path.\n";
@@ -63,6 +71,6 @@ void MiscTests::test1()
     }
     myConfig->ProcessGameAssetLists();
     //std::cout << "Game Name: " << myConfig->getGameName() << '\n';
-    StrataRunner *runner = StrataRunner::Runner();
+    //StrataRunner *runner = StrataRunner::Runner();
     std::cout << "Done!\n";
 }
