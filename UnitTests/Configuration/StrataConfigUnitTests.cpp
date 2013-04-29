@@ -12,7 +12,7 @@ BOOST_AUTO_TEST_CASE(GameMediaSourcePathBAD)
     catch (StrataConfigFilesystemException &errorInstance)
     {
         //Cout or log the error message with GetErrorMessage()
-        //std::cout << "File Error Message: " << errorInstance.GetErrorMessage();
+        //std::cout << errorInstance.GetErrorMessage();
         
         //It is possible to force override the checks here with (thought it's a really bad idea)
         //Instead call the setter again with the new value.

@@ -14,7 +14,7 @@ class StrataConfigException : public virtual std::exception, public virtual boos
 {
     
 public:
-
+    void SetErrorMessage(const std::string &errorMessage);
     virtual std::string GetErrorMessage();
 protected:
     ~StrataConfigException() throw() {}
@@ -47,7 +47,6 @@ class StrataConfigFilesystemException : public StrataConfigException
 {
     public:
         boost::filesystem::path *problemPath;
-        void SetErrorMessage(std::string newMessage);
     
 };
 #endif
