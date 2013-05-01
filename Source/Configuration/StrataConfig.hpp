@@ -197,6 +197,14 @@ class StrataConfig
          * \note NA*/
         xmlChar *GetFileHash(boost::filesystem::path filePath);
     
+        //!Clears the XML Document and XML Parser global variables
+        /*!Clears the current XML document(configuration) in order for
+         *  allowing a new configuration to be loaded.
+         *\pre NA
+         *\post NA
+         * \note NA*/
+        void ClearCurrentConfigurationDocument();
+    
         //StrataConfig protected data members
         xmlDoc *configurationDocument;
         xmlNodePtr configurationRoot;

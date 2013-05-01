@@ -15,28 +15,26 @@ class StrataConfigException : public virtual std::exception, public virtual boos
     
 public:
     void SetErrorMessage(const std::string &errorMessage);
+    
+    ~StrataConfigException() throw() {}
     virtual std::string GetErrorMessage();
 protected:
-    ~StrataConfigException() throw() {}
     std::string humanReadableError;
 };
-
 
 //!An exception
 /*!A Exception
  * \pre NA
  * \post NA
  * \note */
-class StrataConfigParsingException : public StrataConfigException
-{
-    public:
-        StrataConfigParsingException();
-        StrataConfigParsingException(const std::string &errorMessage)
-        {
-            humanReadableError = errorMessage;
-        }
+class StrataConfigParsingException : public StrataConfigException {};
 
-};
+//!An exception
+/*!A Exception
+ * \pre NA
+ * \post NA
+ * \note */
+class StrataConfigNotLoadedException : public StrataConfigException {};
 
 //!An exception
 /*!A Exception

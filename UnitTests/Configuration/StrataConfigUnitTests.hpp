@@ -9,6 +9,8 @@
 #define GAMESDIRECTORY "/Users/brad/Games"
 #define GAMEDESTINATIONDIRECTORY "/Users/brad/Desktop/"
 #define GAMECONFIGFILEPATH "../../Docs/SampleConfigs/Stargus.StrataExtract"
+
+//Set to the UnitTestMedia Junkfile path
 #define BADGAMECONFIGFILEPATH "../../Docs/UnitTestMedia/junkfile"
 
 struct StrataConfigInstance
