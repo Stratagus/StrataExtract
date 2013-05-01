@@ -45,12 +45,30 @@ StrataConfig::~StrataConfig()
         delete gameMediaDestination;
         gameMediaDestination = NULL;
     }
+    
+    if(configurationDocument)
+    {
+        xmlFreeDoc(configurationDocument);
+        configurationDocument = NULL;
+    }
+    
+    //Free the global variables that may
+    //have been allocated by the parser.
+    xmlCleanupParser();
 }
 
 bool StrataConfig::readConfig()
 {
-    std::cout << "Current Value: " << gameConfiguration << '\n';
-    //throw StrataConfigException::xmlReaderError();
+    
+    if(!gameConfiguration)
+    {
+        StrataConfigFilesystemException fileNotFound;
+        fileNotFound.SetErrorMessage("Game configuration file path not set");
+        gameConfiguration = new boost::filesystem::path;
+        fileNotFound.problemPath = gameConfiguration;
+        BOOST_THROW_EXCEPTION(fileNotFound);
+        
+    }
     if(!boost::filesystem::exists(*gameConfiguration))
     {
         std::cerr << "File not found " << gameConfiguration;
@@ -63,16 +81,18 @@ bool StrataConfig::readConfig()
         configurationDocument = xmlReadFile(gameConfiguration->string().c_str(), NULL, NULL);
         if(configurationDocument == NULL)
         {
-            //std::cerr << "Error: Unable to parse file: " << gameConfiguration << '\n';
-            //throw StrataConfigException::xmlReaderError();
-            BOOST_THROW_EXCEPTION(StrataConfigParsingException("Unable to parse the configuration"));
+            StrataConfigParsingException parseReadError;
+            parseReadError.SetErrorMessage("Unable to parse the configuration");
+            BOOST_THROW_EXCEPTION(parseReadError);
             return false;
         }
         
         //Ensure that the file we read is a valid StrataExtractConfig and not simply a XML file.
         if(xmlStrcmp(xmlDocGetRootElement(configurationDocument)->name, (const xmlChar *) "StrataExtractConfig"))
         {
-            std::cerr << "Document is not a StrataExtraction Config\n";
+            StrataConfigParsingException notStrataConfig;
+            notStrataConfig.SetErrorMessage("Document is not a StrataExtraction Config");
+            BOOST_THROW_EXCEPTION(notStrataConfig);
         }
         else
         {
@@ -84,18 +104,10 @@ bool StrataConfig::readConfig()
         
         if(!gameVersion)
         {
-            exit(-1);
-            //throw "No valid version detected";
+            StrataConfigParsingException detectionException;
+            detectionException.SetErrorMessage("No valid game version detected.");
+            BOOST_THROW_EXCEPTION(detectionException);
         }
-        
-        
-        //free the document
-        //xmlFreeDoc(configurationDocument);
-        //configurationDocument = NULL;
-        
-        //Free the global variables that may
-        //have been allocated by the parser.
-        //xmlCleanupParser();
         
         configLoaded = 1;
         return true;
@@ -105,6 +117,7 @@ bool StrataConfig::readConfig()
 
 xmlNodePtr StrataConfig::FindGameVersion()
 {
+#warning Check that the source path is loaded
     //Jump to the <Versions> entity
     boost::filesystem::path tempSourceGamePath = *gameMediaSource;
     xmlXPathObjectPtr gameVersions = xmlXPathEval((const xmlChar *) "//Version", configXPathContext);
@@ -225,7 +238,10 @@ bool StrataConfig::isExpansionGame()
 {
     if(!isConfigLoaded())
     {
-        throw "No configuration loaded in strataconfig";
+        StrataConfigNotLoadedException errorInstance;
+        errorInstance.SetErrorMessage("No configuration loaded to check for expansion");
+        BOOST_THROW_EXCEPTION(errorInstance);
+        return false;
     }
     
     return isExpansion;
@@ -255,14 +271,19 @@ bool StrataConfig::setGameMediaSourcePath(boost::filesystem::path gameMediaSourc
 
 bool StrataConfig::setGameConfiguration(boost::filesystem::path gameConfigurationPath)
 {
-    if(!boost::filesystem::exists(gameConfigurationPath))
-    {
-        return false;
-    }
-    
     if(!gameConfiguration)
     {
         gameConfiguration = new boost::filesystem::path;
+    }
+    
+    if(!boost::filesystem::exists(gameConfigurationPath))
+    {
+        StrataConfigFilesystemException fileException;
+        fileException.problemPath = gameConfiguration;
+        fileException.SetErrorMessage("File path does not exist or is a directory.");
+        
+        BOOST_THROW_EXCEPTION(fileException);
+        return false;
     }
     
     *gameConfiguration = gameConfigurationPath;
@@ -271,14 +292,19 @@ bool StrataConfig::setGameConfiguration(boost::filesystem::path gameConfiguratio
 
 bool StrataConfig::setGameMediaDestinationPath(boost::filesystem::path gameMediaDestinationPath)
 {
-    if(boost::filesystem::exists(gameMediaDestinationPath))
-    {
-        return false;
-    }
-    
     if(!gameMediaDestination)
     {
         gameMediaDestination = new boost::filesystem::path;
+    }
+    
+    if(boost::filesystem::exists(gameMediaDestinationPath))
+    {
+        StrataConfigFilesystemException fileException;
+        fileException.problemPath = gameMediaDestination;
+        fileException.SetErrorMessage("File path exists or is not a directory.");
+        
+        BOOST_THROW_EXCEPTION(fileException);
+        return false;
     }
     
     *gameMediaDestination = gameMediaDestinationPath;
@@ -299,21 +325,25 @@ boost::filesystem::path StrataConfig::GameConfigurationPath()
     return *gameConfiguration;
 }
 
-/*std::string StrataConfig::getGameName()
+std::string StrataConfig::getGameName()
 {
     if(!isConfigLoaded())
     {
-        throw "GetGameName: No config loaded";
+        StrataConfigException noConfigLoaded;
+        noConfigLoaded.SetErrorMessage("No configuration no loaded.");
+        BOOST_THROW_EXCEPTION(noConfigLoaded);
     }
     configXPathContext->node = configurationRoot;
     xmlXPathObjectPtr result = xmlXPathEval((xmlChar *) "title", configXPathContext);
     if(result == NULL)
     {
-        throw "Incomplete game configuration";
+        StrataConfigParsingException parsingError;
+        parsingError.SetErrorMessage("Incomplete Game Configuration");
+        BOOST_THROW_EXCEPTION(parsingError);
     }
     std::cout << "Test: " << result->nodesetval->nodeTab[0]->name << '\n';
     return "";
-}*/
+}
 
 int StrataConfig::GetCPUCores()
 {
@@ -333,13 +363,22 @@ bool StrataConfig::isConfigLoaded()
     return configLoaded;
 }
 
+void StrataConfig::ClearCurrentConfigurationDocument()
+{
+    if(configurationDocument)
+    {
+        xmlFreeDoc(configurationDocument);
+        configurationDocument = NULL;
+    }
+    xmlCleanupParser();
+}
 
 //If OpenSSL is installed prefer it's hashing library, as it is much
 //faster. Else we revert to abusing boost's uuid sha1 hashing
 #if OPENSSL_INSTALLED
 xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
 {
-    std::cout << "Passing: " << filePath << '\n';
+    //std::cout << "Passing: " << filePath << '\n';
     FILE *f;
     unsigned char buf[8192];
     SHA_CTX sc;
@@ -348,10 +387,13 @@ xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
     std::stringstream finalHash;
     
     f = fopen(filePath.string().c_str(), "rb");
-    if (f == NULL) {
-        /* do something smart here: the file could not be opened */
-        std::cout << "Fail\n";
-        return (xmlChar *) "FAIL";
+    if (f == NULL)
+    {
+        //StrataConfigFilesystemException fileNotFoundError;
+        //fileNotFoundError.SetErrorMessage("Unable to open file.");
+        //fileNotFoundError.problemPath = &filePath;
+        //BOOST_THROW_EXCEPTION(fileNotFoundError);
+        return (xmlChar *) "";
     }
     SHA1_Init(&sc);
     for (;;) {
@@ -365,9 +407,13 @@ xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
     err = ferror(f);
     fclose(f);
     if (err) {
-        /* some I/O error was encountered; report the error */
-        std::cout << "Fail!\n";
-        return (xmlChar *) "FAIL";
+        //std::cout << "Fail!\n";
+        StrataConfigFilesystemException fileIOError;
+        fileIOError.SetErrorMessage("Unknown IO Error");
+        fileIOError.problemPath = &filePath;
+        BOOST_THROW_EXCEPTION(fileIOError);
+        
+        return (xmlChar *) "";
     }
     SHA1_Final(output, &sc);
     
@@ -382,7 +428,7 @@ xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
 #warning Very Wasteful function in memory and time in the way sha1Digest.process_bytes operates!
 xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
 {
-    std::cout << "Passing: " << filePath << '\n';
+    //std::cout << "Passing: " << filePath << '\n';
     boost::uuids::detail::sha1 sha1Digest;
     std::stringstream finalHash;
     char hash[20];
@@ -394,6 +440,10 @@ xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
     //If the file could not be opened return NULL
     if(!targetFile.good())
     {
+        //StrataConfigFilesystemException fileNotFoundError;
+        //fileNotFoundError.SetErrorMessage("Unable to open file.");
+        //fileNotFoundError.problemPath = &filePath;
+        //BOOST_THROW_EXCEPTION(fileNotFoundError);
         return NULL;
     }
     
@@ -406,6 +456,10 @@ xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
     //There was a failure to read the file
     if(!targetFile.eof())
     {
+        StrataConfigFilesystemException fileIOError;
+        fileIOError.SetErrorMessage("Unknown IO Error");
+        fileIOError.problemPath = &filePath;
+        BOOST_THROW_EXCEPTION(fileIOError);
         return NULL;
     }
 

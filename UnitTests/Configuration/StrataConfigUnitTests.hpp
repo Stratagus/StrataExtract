@@ -1,5 +1,5 @@
-#ifndef Main_UnitTests_Header
-#define Main_UnitTests_Header
+#ifndef StrataConfig_UnitTests_Header
+#define StrataConfig_UnitTests_Header
 
 #include <boost/test/unit_test.hpp>
 #include "../../Source/Configuration/StrataConfig.hpp"
@@ -7,8 +7,10 @@
 
 //Set the value to a  valid game media directory
 #define GAMESDIRECTORY "/Users/brad/Games"
-#define GAMEDESTINATIONDIRECTORY "/Users/brad/Desktop"
+#define GAMEDESTINATIONDIRECTORY "/Users/brad/Desktop/"
 #define GAMECONFIGFILEPATH "../../Docs/SampleConfigs/Stargus.StrataExtract"
+
+//Set to the UnitTestMedia Junkfile path
 #define BADGAMECONFIGFILEPATH "../../Docs/UnitTestMedia/junkfile"
 
 struct StrataConfigInstance

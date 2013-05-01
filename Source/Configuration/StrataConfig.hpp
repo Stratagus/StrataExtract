@@ -97,7 +97,8 @@ class StrataConfig
          *  \pre NA
          *  \post If the game path is valid then set the game path and return true,
          *  else return false
-        *  \note NA*/
+         *  \throws StrataConfigFilesystemException
+         *  \note NA*/
         bool setGameMediaSourcePath(boost::filesystem::path gameMediaSourcePath);
     
         //!Set the extracted+converted game media assets to the destination directory
@@ -195,6 +196,14 @@ class StrataConfig
          *\post NA
          * \note NA*/
         xmlChar *GetFileHash(boost::filesystem::path filePath);
+    
+        //!Clears the XML Document and XML Parser global variables
+        /*!Clears the current XML document(configuration) in order for
+         *  allowing a new configuration to be loaded.
+         *\pre NA
+         *\post NA
+         * \note NA*/
+        void ClearCurrentConfigurationDocument();
     
         //StrataConfig protected data members
         xmlDoc *configurationDocument;
