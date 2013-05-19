@@ -12,6 +12,8 @@ StrataConfig::StrataConfig()
     gameConfiguration = NULL;
     gameMediaSource = NULL;
     gameMediaDestination = NULL;
+
+   
 }
 
 StrataConfig::~StrataConfig()
@@ -59,7 +61,7 @@ StrataConfig::~StrataConfig()
 
 bool StrataConfig::readConfig()
 {
-    
+    BOOST_LOG_TRIVIAL(trace) << "A trace severity message BLAH!";
     if(!gameConfiguration)
     {
         StrataConfigFilesystemException fileNotFound;

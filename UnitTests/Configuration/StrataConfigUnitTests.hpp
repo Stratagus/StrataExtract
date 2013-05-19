@@ -6,22 +6,34 @@
 
 
 //Set the value to a  valid game media directory
-#define GAMESDIRECTORY "/Users/brad/Games"
-#define GAMEDESTINATIONDIRECTORY "/Users/brad/Desktop/"
-#define GAMECONFIGFILEPATH "../../Docs/SampleConfigs/Stargus.StrataExtract"
+//If Apple OSX
+#ifdef __DARWIN__
+    #define GAMESDIRECTORY "/Users/brad/Games"
+    #define GAMEDESTINATIONDIRECTORY "/Users/brad/Desktop/"
+    #define GAMECONFIGFILEPATH "../../Docs/SampleConfigs/Stargus.StrataExtract"
+    //Set to the UnitTestMedia Junkfile path
+    #define BADGAMECONFIGFILEPATH "../../Docs/UnitTestMedia/junkfile"
 
+#else
+//If the OS is something else
+#define GAMESDIRECTORY "/home/brad/Games"
+#define GAMEDESTINATIONDIRECTORY "/home/brad/Desktop/"
+#define GAMECONFIGFILEPATH "../Docs/SampleConfigs/Stargus.StrataExtract"
 //Set to the UnitTestMedia Junkfile path
-#define BADGAMECONFIGFILEPATH "../../Docs/UnitTestMedia/junkfile"
+#define BADGAMECONFIGFILEPATH "../Docs/UnitTestMedia/junkfile"
+
+#endif
+
+
 
 struct StrataConfigInstance
 {
-    StrataConfig *myConfiguration = NULL;
+    StrataConfig *myConfiguration;
     
     
     StrataConfigInstance()
     {
         BOOST_TEST_MESSAGE("Setup StrataConfiguration Tests");
-        if(!myConfiguration)
             myConfiguration = new StrataConfig;
     }
     

@@ -6,13 +6,17 @@
  *  \date      December 18, 2012
  *  \copyright GPLv2
  */
+#define BOOST_LOG_DYN_LINK
 
 #ifndef StrataConfig_Header
 #define StrataConfig_Header
 
+
 #include <boost/filesystem.hpp>
 #include <boost/thread.hpp>
 #include <boost/uuid/sha1.hpp>
+
+#include <boost/log/trivial.hpp>
 
 #include <fstream>
 #include <string>
