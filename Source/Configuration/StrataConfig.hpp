@@ -15,8 +15,10 @@
 #include <boost/filesystem.hpp>
 #include <boost/thread.hpp>
 #include <boost/uuid/sha1.hpp>
-
+#include <boost/log/core.hpp>
+#include <boost/log/sources/severity_logger.hpp>
 #include <boost/log/trivial.hpp>
+#include <boost/log/expressions.hpp>
 
 #include <fstream>
 #include <string>
@@ -29,9 +31,9 @@
     #include <openssl/sha.h>
 #endif
 
-#include "StrataConfigException.hpp"
-
 #define VERSION 0.1f
+
+#include "StrataConfigException.hpp"
 
 class StrataConfig
 {
@@ -208,11 +210,15 @@ class StrataConfig
          *\post NA
          * \note NA*/
         void ClearCurrentConfigurationDocument();
+
+        //The Configuration logger to help for tracing
+        boost::log::sources::severity_logger_mt<boost::log::trivial::severity_level> configLogger;
     
         //StrataConfig protected data members
         xmlDoc *configurationDocument;
         xmlNodePtr configurationRoot;
         xmlNodePtr gameVersion;
+    
     
         boost::filesystem::path *gameMediaSource;
         boost::filesystem::path *gameMediaDestination;
@@ -229,7 +235,6 @@ class StrataConfig
     
         //Is the GameMediaSource a expansion disc?
         bool isExpansion;
-        int verbosity;
     
     
         std::string gameName;

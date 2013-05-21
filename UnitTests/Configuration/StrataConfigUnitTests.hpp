@@ -7,7 +7,7 @@
 
 //Set the value to a  valid game media directory
 //If Apple OSX
-#ifdef __DARWIN__
+#ifdef __APPLE__
     #define GAMESDIRECTORY "/Users/brad/Games"
     #define GAMEDESTINATIONDIRECTORY "/Users/brad/Desktop/"
     #define GAMECONFIGFILEPATH "../../Docs/SampleConfigs/Stargus.StrataExtract"

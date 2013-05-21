@@ -2,6 +2,7 @@
 
 StrataConfig::StrataConfig()
 {
+    BOOST_LOG_SEV(configLogger, boost::log::trivial::trace) << "Constructing StratConfig Object";
     totalObjects = 0;
     completeObjects = 0;
     configLoaded = false;
@@ -12,12 +13,12 @@ StrataConfig::StrataConfig()
     gameConfiguration = NULL;
     gameMediaSource = NULL;
     gameMediaDestination = NULL;
-
-   
+    BOOST_LOG_SEV(configLogger, boost::log::trivial::trace) << "Finished StratConfig Object";
 }
 
 StrataConfig::~StrataConfig()
 {
+    BOOST_LOG_SEV(configLogger, boost::log::trivial::trace) << "Deconstructing StratConfig Object";
     if(configurationDocument)
     {
         delete configurationDocument;
@@ -57,23 +58,24 @@ StrataConfig::~StrataConfig()
     //Free the global variables that may
     //have been allocated by the parser.
     xmlCleanupParser();
+    BOOST_LOG_SEV(configLogger, boost::log::trivial::trace) << "Deconstructing StratConfig Object";
 }
 
 bool StrataConfig::readConfig()
 {
-    BOOST_LOG_TRIVIAL(trace) << "A trace severity message BLAH!";
     if(!gameConfiguration)
     {
         StrataConfigFilesystemException fileNotFound;
-        fileNotFound.SetErrorMessage("Game configuration file path not set");
+        //fileNotFound.SetErrorMessage("Game configuration file path not set");
         gameConfiguration = new boost::filesystem::path;
         fileNotFound.problemPath = gameConfiguration;
+        BOOST_LOG_SEV(configLogger, boost::log::trivial::debug) << "Game configuration file was not set.";
         BOOST_THROW_EXCEPTION(fileNotFound);
         
     }
     if(!boost::filesystem::exists(*gameConfiguration))
     {
-        std::cerr << "File not found " << gameConfiguration;
+        BOOST_LOG_SEV(configLogger, boost::log::trivial::error) << "Game configuration file was not found.";
     }
     else
     {
@@ -84,20 +86,22 @@ bool StrataConfig::readConfig()
         if(configurationDocument == NULL)
         {
             StrataConfigParsingException parseReadError;
-            parseReadError.SetErrorMessage("Unable to parse the configuration");
+            BOOST_LOG_SEV(configLogger, boost::log::trivial::error) << "Unable to parse the configuration";
             BOOST_THROW_EXCEPTION(parseReadError);
             return false;
         }
         
         //Ensure that the file we read is a valid StrataExtractConfig and not simply a XML file.
+        BOOST_LOG_SEV(configLogger, boost::log::trivial::debug) << "Looking for XML element \"StrataExtractConfig\".";
         if(xmlStrcmp(xmlDocGetRootElement(configurationDocument)->name, (const xmlChar *) "StrataExtractConfig"))
         {
             StrataConfigParsingException notStrataConfig;
-            notStrataConfig.SetErrorMessage("Document is not a StrataExtraction Config");
+            BOOST_LOG_SEV(configLogger, boost::log::trivial::error) << "Document is not a StrataExtraction Config.";
             BOOST_THROW_EXCEPTION(notStrataConfig);
         }
         else
         {
+            BOOST_LOG_SEV(configLogger, boost::log::trivial::debug) << "Setting up XPaths to search through the configuration.";
             configXPathContext = xmlXPathNewContext(configurationDocument);
             configurationRoot = xmlDocGetRootElement(configurationDocument);
         }
@@ -111,6 +115,7 @@ bool StrataConfig::readConfig()
             BOOST_THROW_EXCEPTION(detectionException);
         }
         
+        BOOST_LOG_SEV(configLogger, boost::log::trivial::info) << "Successfully loaded StrataExtract configuration.";
         configLoaded = 1;
         return true;
     }
@@ -123,6 +128,14 @@ xmlNodePtr StrataConfig::FindGameVersion()
     //Jump to the <Versions> entity
     boost::filesystem::path tempSourceGamePath = *gameMediaSource;
     xmlXPathObjectPtr gameVersions = xmlXPathEval((const xmlChar *) "//Version", configXPathContext);
+    
+    if(gameVersions == NULL)
+    {
+        BOOST_LOG_SEV(configLogger, boost::log::trivial::error) << "\"Version\" was not found";
+        StrataConfigParsingException noVersionTag;
+        noVersionTag.SetErrorMessage("No version tag detected");
+        BOOST_THROW_EXCEPTION(noVersionTag);
+    }
     
     bool fileMatch = true;
     
@@ -140,6 +153,8 @@ xmlNodePtr StrataConfig::FindGameVersion()
         {
         #warning Potential logic error (Code Review)
             //Compare the Hash in the current file entity with the method generated hash
+            BOOST_LOG_SEV(configLogger, boost::log::trivial::debug) << "Comparing Hash from Config: " << (char *) xmlGetProp(currentChildPointer, (const xmlChar *) "hash")
+                                                                   << "with Generated Hash: " << (char *) GetFileHash(*gameMediaSource / (char *)xmlGetProp(currentChildPointer, (const xmlChar *) "name")) ;
             if(!xmlStrcmp(xmlGetProp(currentChildPointer, (const xmlChar *) "hash"), GetFileHash(*gameMediaSource / (char *)xmlGetProp(currentChildPointer, (const xmlChar *) "name"))))
             {
                 if(currentChildPointer->next->next == NULL)
@@ -147,10 +162,12 @@ xmlNodePtr StrataConfig::FindGameVersion()
                    //Check if the GameMediaSource is a expansion (We will need additional input)
                    if(!xmlStrcmp(xmlGetProp(currentNodePointer, (const xmlChar *) "expansion"), (xmlChar *) "1"))
                    {
+                       BOOST_LOG_SEV(configLogger, boost::log::trivial::info) << "Game is a Expansion";
                        isExpansion = true;
                    }
                    //If everything checks out and all files are accounted for with the proper SHA1 hashes return
                    //the game version for the configuration
+                    BOOST_LOG_SEV(configLogger, boost::log::trivial::info) << "Game Version is " << (char *)xmlGetProp(gameVersions->nodesetval->nodeTab[numberOfVersions], (const xmlChar *) "name");
                    return gameVersions->nodesetval->nodeTab[numberOfVersions];
                 }
             }
@@ -162,6 +179,7 @@ xmlNodePtr StrataConfig::FindGameVersion()
             currentChildPointer = currentChildPointer->next->next;
         }
     }
+    BOOST_LOG_SEV(configLogger, boost::log::trivial::error) << "No game version detected";
     return NULL;
 }
 
@@ -430,6 +448,7 @@ xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
 #warning Very Wasteful function in memory and time in the way sha1Digest.process_bytes operates!
 xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
 {
+    BOOST_LOG_SEV(configLogger, boost::log::trivial::warning) << "Using Boost's SHA1 hashing, will dramatically increase calculation time.";
     //std::cout << "Passing: " << filePath << '\n';
     boost::uuids::detail::sha1 sha1Digest;
     std::stringstream finalHash;
