@@ -21,7 +21,7 @@ find_path(Magick++_INCLUDE_DIR
 
 # Finally the library itself
 find_library(Magick++_LIBRARY
-  NAMES Magick++
+  NAMES Magick++ Magick++-6.Q16
   PATHS ${Magick++_PKGCONF_LIBRARY_DIRS}
 )
 

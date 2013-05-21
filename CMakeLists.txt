@@ -21,7 +21,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules
 #inputted format maybe to OGG Vorbis(Audio) and OGG Theora(Video).
 #Magick++ (C++ Bindings to ImageMagick) allows for image conversion
 #from whatever the input type to png (Portable Network Graphic)
-find_package(Boost REQUIRED COMPONENTS system thread filesystem exception)
+find_package(Boost REQUIRED COMPONENTS system date_time thread filesystem exception log)
 find_package(LibXml2 REQUIRED)
 find_package(FFMPEG REQUIRED)
 find_package(Magick++ REQUIRED)
@@ -171,6 +171,7 @@ if (APPLE)
     include_directories("/opt/local/include")
     include_directories("/opt/local/include/libxml2")
     include_directories("/opt/local/include/ImageMagick")
+    include_directories("/opt/local/include/ImageMagick-6")
     link_directories("/opt/local/lib")
 else()
     include_directories("/usr/include/libxml2")

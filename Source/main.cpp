@@ -3,7 +3,7 @@
 int main(int numberOfArguments, char **commandArguments)
 {
     //Create a instance of the StrataExtract configuration to accept arguments
-    StrataConfig *mainConfig = StrataConfig::Configuration();
+    StrataConfig *mainConfig = new StrataConfig;
     
     CSimpleOpt commandLineArguments(numberOfArguments, commandArguments, CommandLineOptions);
     
