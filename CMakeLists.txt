@@ -139,7 +139,10 @@ set(StrataExtractImageConversion-UnitTests-Source
     ${IMAGECONVERSION_UNITTESTS_DIR}/ImageMagick/MagickImageUnitTests.hpp
     ${IMAGECONVERSION_UNITTESTS_DIR}/ImageMagick/MagickImageUnitTests.cpp
    )
-
+set(StrataExtractRunner-UnitTests-Source
+    ${RUNNER_UNITTESTS_DIR}/StrataRunnerUnitTests.hpp
+    ${RUNNER_UNITTESTS_DIR}/StrataRunnerUnitTests.cpp
+    )
 
 #Code groupings allow for IDEs to put files into collections
 #instead of simply throwing all files into a pile. This should
@@ -157,6 +160,7 @@ source_group(Conversion\\Video FILES ${StrataExtractVideoConversion-Source})
 
 #UnitTests groupings
 source_group(Main FILES ${StrataExtractMain-UnitTests-Source})
+source_group(RunnerUnitTests FILES ${StrataExtractRunner-UnitTests-Source})
 source_group(ConfigurationUnitTests FILES ${StrataExtractConfiguration-UnitTests-Source})
 source_group(ArchivesUnitTests\\MPQArchiveUnitTests FILES ${StrataExtractArchives-UnitTests-Source})
 source_group(ConversionUnitTests\\ImageUnitTests FILES ${StrataExtractImageConversion-UnitTests-Source})
@@ -251,6 +255,7 @@ if(UNITTESTS)
     ${StrataExtractConfiguration-UnitTests-Source}
     ${StrataExtractArchives-UnitTests-Source}
     ${StrataExtractImageConversion-UnitTests-Source}
+    ${StrataExtractRunner-UnitTests-Source}
     )
   target_link_libraries(StrataExtractUnitTests
                         StrataExtractCore

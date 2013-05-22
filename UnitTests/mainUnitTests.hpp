@@ -15,6 +15,7 @@
 #include <boost/test/unit_test.hpp>
 
 #include "./Configuration/StrataConfigUnitTests.hpp"
+#include "./AssetManager/StrataRunnerUnitTests.hpp"
 
 //Temporary Testing
 #include "../Source/Archives/MPQ/MPQArchive.hpp"
