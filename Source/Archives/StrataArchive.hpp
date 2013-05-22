@@ -5,6 +5,8 @@
 class StrataArchive
 {
     public:
+        StrataArchive();
+        ~StrataArchive();
     protected:
     private:
 };

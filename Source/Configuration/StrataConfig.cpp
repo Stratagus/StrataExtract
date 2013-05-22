@@ -197,6 +197,7 @@ void StrataConfig::ProcessGameAssetLists()
         
         if(xmlGetProp(gameVersionFilePointer, (const xmlChar *) "Copy"))
         {
+            totalObjects++;
             BOOST_LOG_SEV(configLogger, boost::log::trivial::trace) << "Copying file: " << (*gameMediaSource / ((char *) xmlGetProp(gameVersionFilePointer, (const xmlChar *) "name")))
             << " to: " << (*gameMediaDestination / ((char *) xmlGetProp(gameVersionFilePointer, (const xmlChar *) "Copy")));
             if(!gameMediaDestination)
@@ -219,6 +220,8 @@ void StrataConfig::ProcessGameAssetLists()
                     }
                 }
                 boost::filesystem::copy((*gameMediaSource / ((char *) xmlGetProp(gameVersionFilePointer, (const xmlChar *) "name"))), (*gameMediaDestination / ((char *) xmlGetProp(gameVersionFilePointer, (const xmlChar *) "Copy"))));
+                totalObjects++;
+                completeObjects++;
             }
         }
         gameVersionFilePointer = gameVersionFilePointer->next->next;
@@ -251,6 +254,7 @@ void StrataConfig::ProcessArchive(xmlNodePtr archive)
                 {
                     for(int currentAssetTagProcess = 0; currentAssetTagProcess < archiveAssets->nodesetval->nodeNr; currentAssetTagProcess++)
                     {
+                        totalObjects += xmlChildElementCount(archiveAssets->nodesetval->nodeTab[0]);
                        processQueue.push(archiveAssets->nodesetval->nodeTab[currentAssetTagProcess]->children->next);
                     }
                 }

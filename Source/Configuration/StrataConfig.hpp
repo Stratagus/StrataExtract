@@ -229,8 +229,8 @@ class StrataConfig
         xmlXPathContextPtr configXPathContext;
 
     private:
-        int completeObjects;
-        int totalObjects;
+        unsigned long completeObjects;
+        unsigned long totalObjects;
         bool configLoaded;
     
         //Is the GameMediaSource a expansion disc?

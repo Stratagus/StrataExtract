@@ -24,8 +24,10 @@ class StrataRunner
         ~StrataRunner();
         bool SetConfiguration(StrataConfig *targetConfiguration);
     protected:
+        void SpawnThreads();
+    std::list<boost::thread> runnerThreads;
     private:
-        StrataConfig *config;
+        StrataConfig *loadedConfiguration;
 };
 
 #endif
