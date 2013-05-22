@@ -89,6 +89,8 @@ set(StrataExtractConfiguration-Source
 set(StrataExtractRunner-Source
     ${RUNNER_DIR}/StrataRunner.hpp
     ${RUNNER_DIR}/StrataRunner.cpp
+    ${RUNNER_DIR}/StrataRunnerException.hpp
+    ${RUNNER_DIR}/StrataRunnerException.cpp
     )
 set(StrataExtractArchives-Source
     ${ARCHIVES_DIR}/StrataArchive.hpp

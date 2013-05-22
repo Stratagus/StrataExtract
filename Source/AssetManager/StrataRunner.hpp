@@ -6,17 +6,25 @@
 #include <boost/thread.hpp>
 #include <boost/exception/all.hpp>
 
+#include <libxml/parser.h>
+#include <libxml/xpath.h>
+
+#include "StrataRunnerException.hpp"
+
 #include "../Configuration/StrataConfig.hpp"
+#include "../Archives/StrataArchive.hpp"
+#include "../Conversion/Audio/StrataAudio.hpp"
+#include "../Conversion/Image/StrataImage.hpp"
+#include "../Conversion/Video/StrataVideo.hpp"
 
 class StrataRunner
 {
     public:
-        static StrataRunner *Runner();
-        void run();
-    protected:
         StrataRunner();
+        ~StrataRunner();
+        bool SetConfiguration(StrataConfig *targetConfiguration);
+    protected:
     private:
-        static StrataRunner *runnerInstance;
         StrataConfig *config;
 };
 
