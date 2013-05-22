@@ -79,6 +79,21 @@ BOOST_AUTO_TEST_CASE(GameMediaDestinationGOOD)
     BOOST_CHECK(true);
 }
 
+BOOST_AUTO_TEST_CASE(GetUninitializedGamePath)
+{
+    try
+    {
+        boost::filesystem::path newPath = myConfiguration->GameMediaSourcePath();
+        newPath = myConfiguration->GameMediaDestinationPath();
+        newPath = myConfiguration->GameConfigurationPath();
+    }
+    catch(...)
+    {
+        BOOST_CHECK(false);
+    }
+    BOOST_CHECK(true);
+}
+
 BOOST_AUTO_TEST_CASE( ParserReadError )
 {
     //The root directory of the source game
