@@ -40,32 +40,63 @@ BOOST_AUTO_TEST_CASE(GameMediaSourcePathGOOD)
     }
 }
 
-
-BOOST_AUTO_TEST_CASE(FindGameTitleGood)
+BOOST_AUTO_TEST_CASE(GameDestinationPathBAD)
 {
     try
     {
-        myConfiguration->setGameMediaSourcePath(GAMESDIRECTORY);
-        myConfiguration->setGameConfiguration(GAMECONFIGFILEPATH);
-        myConfiguration->readConfig();
-        //BOOST_CHECK_THROW(myConfiguration->readConfig(), StrataConfigParsingException);
-    }
-    catch(StrataConfigException &errorInstance)
-    {
-        //Exceptions base on anything strataconfig
-        std::cout  << '\n' << errorInstance.GetErrorMessage() << '\n';
+        myConfiguration->setGameMediaSourcePath("/some/bad/path");
         BOOST_CHECK(false);
+    }
+    catch (StrataConfigFilesystemException &errorInstance)
+    {
+        //Cout or log the error message with GetErrorMessage()
+        //std::cout << errorInstance.GetErrorMessage();
+        
+        //It is possible to force override the checks here with (thought it's a really bad idea)
+        //Instead call the setter again with the new value.
+        //*errorInstance.problemPath = "/some/new/path";
+        
+        myConfiguration->setGameMediaSourcePath(GAMESDIRECTORY);
+        BOOST_CHECK(true);
+        
+    }
+    catch (...)
+    {
+        BOOST_CHECK(false);
+    }
+}
+
+BOOST_AUTO_TEST_CASE(GameMediaDestinationGOOD)
+{
+    try
+    {
+        myConfiguration->setGameMediaDestinationPath(GAMEDESTINATIONDIRECTORY);
     }
     catch(...)
     {
-        //Catch Anything
-        BOOST_REQUIRE(false);
+        BOOST_CHECK(false);
     }
+    BOOST_CHECK(true);
+}
+
+BOOST_AUTO_TEST_CASE(GetUninitializedGamePath)
+{
+    try
+    {
+        boost::filesystem::path newPath = myConfiguration->GameMediaSourcePath();
+        newPath = myConfiguration->GameMediaDestinationPath();
+        newPath = myConfiguration->GameConfigurationPath();
+    }
+    catch(...)
+    {
+        BOOST_CHECK(false);
+    }
+    BOOST_CHECK(true);
 }
 
 BOOST_AUTO_TEST_CASE( ParserReadError )
 {
-    //The root directory of the soure game
+    //The root directory of the source game
     
     try
     {
@@ -85,4 +116,74 @@ BOOST_AUTO_TEST_CASE( ParserReadError )
     }
 }
 
+BOOST_AUTO_TEST_CASE(FindGameTitleGood)
+{
+    try
+    {
+        myConfiguration->setGameMediaSourcePath(GAMESDIRECTORY);
+        myConfiguration->setGameConfiguration(GAMECONFIGFILEPATH);
+        myConfiguration->readConfig();
+        std::cout << "The Game Version is " << myConfiguration->getGameName() << '\n';
+        BOOST_CHECK(myConfiguration->isConfigLoaded());
+        //BOOST_CHECK_THROW(myConfiguration->readConfig(), StrataConfigParsingException);
+    }
+    catch(StrataConfigException &errorInstance)
+    {
+        //Exceptions base on anything strataconfig
+        std::cout  << '\n' << errorInstance.GetErrorMessage() << '\n';
+        BOOST_CHECK(false);
+    }
+    catch(...)
+    {
+        //Catch Anything
+        BOOST_REQUIRE(false);
+    }
+}
+
+BOOST_AUTO_TEST_CASE(CheckForGoodExpansion)
+{
+    try
+    {
+        myConfiguration->setGameMediaSourcePath(GAMESEXPANSIONDIRECTORY);
+        myConfiguration->setGameConfiguration(GAMECONFIGFILEPATH);
+        myConfiguration->readConfig();
+        BOOST_CHECK(myConfiguration->isExpansionGame());
+
+        //BOOST_CHECK_THROW(myConfiguration->readConfig(), StrataConfigParsingException);
+    }
+    catch(StrataConfigException &errorInstance)
+    {
+        //Exceptions base on anything strataconfig
+        std::cout  << '\n' << errorInstance.GetErrorMessage() << '\n';
+        BOOST_CHECK(false);
+    }
+    catch(...)
+    {
+        //Catch Anything
+        BOOST_REQUIRE(false);
+    }
+}
+
+BOOST_AUTO_TEST_CASE(ProcessGoodArchive)
+{
+    try
+    {
+        myConfiguration->setGameMediaSourcePath(GAMESDIRECTORY);
+        myConfiguration->setGameConfiguration(GAMECONFIGFILEPATH);
+        myConfiguration->setGameMediaDestinationPath(GAMEDESTINATIONDIRECTORY);
+        myConfiguration->readConfig();
+        myConfiguration->ProcessGameAssetLists();
+    }
+    catch(StrataConfigException &errorInstance)
+    {
+        //Exceptions base on anything strataconfig
+        std::cout  << '\n' << errorInstance.GetErrorMessage() << '\n';
+        BOOST_CHECK(false);
+    }
+    catch(...)
+    {
+        //Catch Anything
+        BOOST_REQUIRE(false);
+    }
+}
 BOOST_AUTO_TEST_SUITE_END()

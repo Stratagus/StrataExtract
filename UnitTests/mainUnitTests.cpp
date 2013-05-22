@@ -1,5 +1,6 @@
 #define BOOST_TEST_DYN_LINK
-#define BOOST_TEST_MODULE MyTest
+#define BOOST_TEST_MODULE StrataExtractTests
+
 #include "mainUnitTests.hpp"
 #include <boost/test/unit_test.hpp>
 

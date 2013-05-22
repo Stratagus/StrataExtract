@@ -154,7 +154,7 @@ xmlNodePtr StrataConfig::FindGameVersion()
         #warning Potential logic error (Code Review)
             //Compare the Hash in the current file entity with the method generated hash
             BOOST_LOG_SEV(configLogger, boost::log::trivial::debug) << "Comparing Hash from Config: " << (char *) xmlGetProp(currentChildPointer, (const xmlChar *) "hash")
-                                                                   << "with Generated Hash: " << (char *) GetFileHash(*gameMediaSource / (char *)xmlGetProp(currentChildPointer, (const xmlChar *) "name")) ;
+                                                                   << " with Generated Hash: " << (char *) GetFileHash(*gameMediaSource / (char *)xmlGetProp(currentChildPointer, (const xmlChar *) "name")) ;
             if(!xmlStrcmp(xmlGetProp(currentChildPointer, (const xmlChar *) "hash"), GetFileHash(*gameMediaSource / (char *)xmlGetProp(currentChildPointer, (const xmlChar *) "name"))))
             {
                 if(currentChildPointer->next->next == NULL)
@@ -185,14 +185,41 @@ xmlNodePtr StrataConfig::FindGameVersion()
 
 void StrataConfig::ProcessGameAssetLists()
 {
+    BOOST_LOG_SEV(configLogger, boost::log::trivial::trace) << "ProcessGameAssetLists with GameVersion: " << (char *) xmlGetProp(gameVersion, (const xmlChar *) "name");
     xmlNodePtr gameVersionFilePointer = gameVersion->children->next;
-    std::cout << "Game Version is: " << xmlGetProp(gameVersion, (const xmlChar *) "name") << '\n';
     while(gameVersionFilePointer != NULL)
     {
-        if(xmlGetProp(gameVersionFilePointer, (const xmlChar *) "Archive") != NULL)
+        if(xmlGetProp(gameVersionFilePointer, (const xmlChar *) "Archive"))
         {
-            std::cout << "It's a archive file!!\n";
+            BOOST_LOG_SEV(configLogger, boost::log::trivial::trace) << "Processing Archivefile: " << (char *) xmlGetProp(gameVersionFilePointer, (const xmlChar *) "Archive");
             ProcessArchive(LookupArchive(xmlGetProp(gameVersionFilePointer, (const xmlChar *) "Archive")));
+        }
+        
+        if(xmlGetProp(gameVersionFilePointer, (const xmlChar *) "Copy"))
+        {
+            BOOST_LOG_SEV(configLogger, boost::log::trivial::trace) << "Copying file: " << (*gameMediaSource / ((char *) xmlGetProp(gameVersionFilePointer, (const xmlChar *) "name")))
+            << " to: " << (*gameMediaDestination / ((char *) xmlGetProp(gameVersionFilePointer, (const xmlChar *) "Copy")));
+            if(!gameMediaDestination)
+            {
+                StrataConfigFilesystemException destinationFilePathNotSet;
+                destinationFilePathNotSet.SetErrorMessage("Destination file path not set");
+                destinationFilePathNotSet.problemPath = gameMediaDestination;
+                BOOST_THROW_EXCEPTION(destinationFilePathNotSet);
+            }
+            else
+            {
+                if(!boost::filesystem::exists(*gameMediaDestination))
+                {
+                    if(!boost::filesystem::create_directory(*gameMediaDestination))
+                    {
+                        StrataConfigFilesystemException couldNotCreateDirectory;
+                        couldNotCreateDirectory.SetErrorMessage("Could not create directory");
+                        couldNotCreateDirectory.problemPath = gameMediaDestination;
+                        BOOST_THROW_EXCEPTION(couldNotCreateDirectory);
+                    }
+                }
+                boost::filesystem::copy((*gameMediaSource / ((char *) xmlGetProp(gameVersionFilePointer, (const xmlChar *) "name"))), (*gameMediaDestination / ((char *) xmlGetProp(gameVersionFilePointer, (const xmlChar *) "Copy"))));
+            }
         }
         gameVersionFilePointer = gameVersionFilePointer->next->next;
     }
@@ -201,6 +228,7 @@ void StrataConfig::ProcessGameAssetLists()
 
 void StrataConfig::ProcessArchive(xmlNodePtr archive)
 {
+    BOOST_LOG_SEV(configLogger, boost::log::trivial::trace) << "Entering ProcessArchive with: " << (char *) xmlGetProp(archive, (const xmlChar *) "name");
     //Set the "scope" in which we want to the XPath expression to evaluate
     configXPathContext->node = archive;
     xmlXPathObjectPtr archiveAssets = xmlXPathEval((const xmlChar *) "*", configXPathContext);
@@ -216,10 +244,15 @@ void StrataConfig::ProcessArchive(xmlNodePtr archive)
         archiveAssets = xmlXPathEval(assetTypes[currentAssetType], configXPathContext);
         if(archiveAssets->nodesetval->nodeTab > 0)
         {
-                 std::cout << "Got a for typeset " << assetTypes[currentAssetType] << '\n';
+                 //std::cout << "Got a for typeset " << assetTypes[currentAssetType] << '\n';
+            BOOST_LOG_SEV(configLogger, boost::log::trivial::debug) << "Found Tag " << archiveAssets->nodesetval->nodeNr << " of type " << (char *) assetTypes[currentAssetType] << " with "
+                                                                    << xmlChildElementCount(archiveAssets->nodesetval->nodeTab[0]) << " objects.";
                 if(currentAssetType > 0)
                 {
-                    processQueue.push(archiveAssets->nodesetval->nodeTab[0]->children->next);
+                    for(int currentAssetTagProcess = 0; currentAssetTagProcess < archiveAssets->nodesetval->nodeNr; currentAssetTagProcess++)
+                    {
+                       processQueue.push(archiveAssets->nodesetval->nodeTab[currentAssetTagProcess]->children->next);
+                    }
                 }
                 else
                 {
@@ -229,6 +262,7 @@ void StrataConfig::ProcessArchive(xmlNodePtr archive)
                         preparationProcessQueue.push(LookupArchive(xmlGetProp(archiveAssetLists, (const xmlChar *) "Archive")));
                         ProcessArchive(LookupArchive(xmlGetProp(archiveAssetLists, (const xmlChar *) "Archive")));
                         archiveAssetLists = archiveAssetLists->next->next;
+                        BOOST_LOG_SEV(configLogger, boost::log::trivial::trace) << "Returning ProcessArchive with: " << (char *) xmlGetProp(archive, (const xmlChar *) "name");
                     }
                 }
             
@@ -239,15 +273,18 @@ void StrataConfig::ProcessArchive(xmlNodePtr archive)
 
 xmlNodePtr StrataConfig::LookupArchive(xmlChar* archiveName)
 {
+    BOOST_LOG_SEV(configLogger, boost::log::trivial::trace) << "Searching for Archive Tag: " << (char *) archiveName;
     configXPathContext->node = configurationRoot;
     xmlXPathObjectPtr archiveList = xmlXPathEval((const xmlChar *) "//Archive", configXPathContext);
-    for(int junk = 0; junk < archiveList->nodesetval->nodeNr; junk++)
+    for(int currentArchiveTag = 0; currentArchiveTag < archiveList->nodesetval->nodeNr; currentArchiveTag++)
     {
-        //std::cout << archiveList->nodesetval->nodeTab[junk]->name << '\n';
-        if(!xmlStrcmp(xmlGetProp(archiveList->nodesetval->nodeTab[junk], (const xmlChar *) "name"), archiveName))
+        BOOST_LOG_SEV(configLogger, boost::log::trivial::trace) << "Comparing target: " << (char *) archiveName << " with: "
+                                                                << (char *) xmlGetProp(archiveList->nodesetval->nodeTab[currentArchiveTag], (const xmlChar *) "name");
+        //<< (char *) archiveList->nodesetval->nodeTab[junk]->name;
+        if(!xmlStrcmp(xmlGetProp(archiveList->nodesetval->nodeTab[currentArchiveTag], (const xmlChar *) "name"), archiveName))
         {
-            //printf("%s\n", xmlGetProp(archiveList->nodesetval->nodeTab[junk], (const xmlChar *) "name"));
-            return archiveList->nodesetval->nodeTab[junk];
+            BOOST_LOG_SEV(configLogger, boost::log::trivial::trace) << "Found target: " << (char *) xmlGetProp(archiveList->nodesetval->nodeTab[currentArchiveTag], (const xmlChar *) "name");
+            return archiveList->nodesetval->nodeTab[currentArchiveTag];
         }
         
     }
@@ -333,16 +370,28 @@ bool StrataConfig::setGameMediaDestinationPath(boost::filesystem::path gameMedia
 
 boost::filesystem::path StrataConfig::GameMediaSourcePath()
 {
-    return *gameMediaSource;
+    if(gameMediaSource)
+    {
+        return *gameMediaSource;
+    }
+    return "";
 }
 boost::filesystem::path StrataConfig::GameMediaDestinationPath()
 {
-    return *gameMediaDestination;
+    if(gameMediaDestination)
+    {
+        return *gameMediaDestination;
+    }
+    return "";
 }
 
 boost::filesystem::path StrataConfig::GameConfigurationPath()
 {
-    return *gameConfiguration;
+    if(gameConfiguration)
+    {
+        return *gameConfiguration;
+    }
+    return "";
 }
 
 std::string StrataConfig::getGameName()
@@ -361,8 +410,7 @@ std::string StrataConfig::getGameName()
         parsingError.SetErrorMessage("Incomplete Game Configuration");
         BOOST_THROW_EXCEPTION(parsingError);
     }
-    std::cout << "Test: " << result->nodesetval->nodeTab[0]->name << '\n';
-    return "";
+    return (std::string) ((char *)xmlGetProp(gameVersion, (const xmlChar *) "name"));
 }
 
 int StrataConfig::GetCPUCores()
@@ -491,7 +539,7 @@ xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
 
     for(int i = 0; i < 5; ++i)
     {
-        const char* tmp = reinterpret_cast<char*>(digest);
+        const char* tmp = reinterpret_cast<char *>(digest);
         hash[i*4] = tmp[i*4+3];
         hash[i*4+1] = tmp[i*4+2];
         hash[i*4+2] = tmp[i*4+1];

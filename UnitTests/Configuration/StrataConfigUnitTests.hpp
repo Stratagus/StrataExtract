@@ -1,6 +1,7 @@
 #ifndef StrataConfig_UnitTests_Header
 #define StrataConfig_UnitTests_Header
 
+
 #include <boost/test/unit_test.hpp>
 #include "../../Source/Configuration/StrataConfig.hpp"
 
@@ -9,7 +10,8 @@
 //If Apple OSX
 #ifdef __APPLE__
     #define GAMESDIRECTORY "/Users/brad/Games"
-    #define GAMEDESTINATIONDIRECTORY "/Users/brad/Desktop/"
+    #define GAMESEXPANSIONDIRECTORY "/Users/brad/Games/SCExpansion"
+    #define GAMEDESTINATIONDIRECTORY "/Users/brad/Desktop/Stargus"
     #define GAMECONFIGFILEPATH "../../Docs/SampleConfigs/Stargus.StrataExtract"
     //Set to the UnitTestMedia Junkfile path
     #define BADGAMECONFIGFILEPATH "../../Docs/UnitTestMedia/junkfile"
@@ -17,7 +19,8 @@
 #else
 //If the OS is something else
 #define GAMESDIRECTORY "/home/brad/Games"
-#define GAMEDESTINATIONDIRECTORY "/home/brad/Desktop/"
+#define GAMESEXPANSIONDIRECTORY "/home/brad/Games/SCExpansion"
+#define GAMEDESTINATIONDIRECTORY "/home/brad/Desktop/Stargus"
 #define GAMECONFIGFILEPATH "../Docs/SampleConfigs/Stargus.StrataExtract"
 //Set to the UnitTestMedia Junkfile path
 #define BADGAMECONFIGFILEPATH "../Docs/UnitTestMedia/junkfile"
