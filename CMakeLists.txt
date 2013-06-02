@@ -95,6 +95,8 @@ set(StrataExtractRunner-Source
 set(StrataExtractArchives-Source
     ${ARCHIVES_DIR}/StrataArchive.hpp
     ${ARCHIVES_DIR}/StrataArchive.cpp
+    ${ARCHIVES_DIR}/StrataArchiveException.hpp
+    ${ARCHIVES_DIR}/StrataArchiveException.cpp
     ${ARCHIVES_DIR}/MPQ/MPQArchive.hpp
     ${ARCHIVES_DIR}/MPQ/MPQArchive.cpp
     ${ARCHIVES_DIR}/GZIP/GZIPArchive.hpp
@@ -104,12 +106,16 @@ set(StrataExtractArchives-Source
 set(StrataExtractAudioConversion-Source
     ${AUDIOCONVERSION_DIR}/StrataAudio.hpp
     ${AUDIOCONVERSION_DIR}/StrataAudio.cpp
+    ${AUDIOCONVERSION_DIR}/StrataAudioException.hpp
+    ${AUDIOCONVERSION_DIR}/StrataAudioException.cpp
     ${AUDIOCONVERSION_DIR}/FFmpeg/AudioFFmpeg.hpp
     ${AUDIOCONVERSION_DIR}/FFmpeg/AudioFFmpeg.cpp
    )
 set(StrataExtractImageConversion-Source
     ${IMAGECONVERSION_DIR}/StrataImage.hpp
     ${IMAGECONVERSION_DIR}/StrataImage.cpp
+    ${IMAGECONVERSION_DIR}/StrataImageException.hpp
+    ${IMAGECONVERSION_DIR}/StrataImageException.cpp
     ${IMAGECONVERSION_DIR}/ImageMagick/MagickImage.hpp
     ${IMAGECONVERSION_DIR}/ImageMagick/MagickImage.cpp
     ${IMAGECONVERSION_DIR}/GRPImage/GRPImage.hpp
@@ -118,6 +124,8 @@ set(StrataExtractImageConversion-Source
 set(StrataExtractVideoConversion-Source
     ${VIDEOCONVERSION_DIR}/StrataVideo.hpp
     ${VIDEOCONVERSION_DIR}/StrataVideo.cpp
+    ${VIDEOCONVERSION_DIR}/StrataVideoException.hpp
+    ${VIDEOCONVERSION_DIR}/StrataVideoException.cpp
     ${VIDEOCONVERSION_DIR}/FFmpeg/VideoFFmpeg.hpp
     ${VIDEOCONVERSION_DIR}/FFmpeg/VideoFFmpeg.cpp
    )

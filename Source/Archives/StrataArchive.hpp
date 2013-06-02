@@ -2,11 +2,16 @@
 #define StrataArchive_Header
 #include "MPQ/MPQArchive.hpp"
 #include "GZIP/GZIPArchive.hpp"
+
+#include <libxml/parser.h>
+
+
 class StrataArchive
 {
     public:
         StrataArchive();
         ~StrataArchive();
+        StrataArchive(xmlNodePtr archiveAsset);
         StrataArchive(boost::filesystem::path archiveFilePath);
         bool SetArchivePath(boost::filesystem::path archiveFilePath);
         bool IdentifyFileType();
