@@ -23,9 +23,12 @@ class StrataRunner
         StrataRunner();
         ~StrataRunner();
         bool SetConfiguration(StrataConfig *targetConfiguration);
+        bool SpawnThreads();
     protected:
-        void SpawnThreads();
-    std::list<boost::thread> runnerThreads;
+
+        std::list<boost::thread *> threadPool;
+        //The Configuration logger to help for tracing
+        boost::log::sources::severity_logger_mt<boost::log::trivial::severity_level> runnerLogger;
     private:
         StrataConfig *loadedConfiguration;
 };

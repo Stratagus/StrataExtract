@@ -1,10 +1,13 @@
 #include "StrataRunnerUnitTests.hpp"
 
 
-BOOST_AUTO_TEST_SUITE(StrataRunnerTests)
+BOOST_FIXTURE_TEST_SUITE(StrataRunnerTests, StrataRunnerInstance)
 
-BOOST_AUTO_TEST_CASE(Nothing)
+BOOST_AUTO_TEST_CASE(SpawnThreadsGOOD)
 {
-    //boost::log::core::get()->set_filter(boost::log::trivial::severity > boost::log::trivial::trace);
+	StrataRunner runner;
+	runner.SetConfiguration(myConfiguration);
+	runner.SpawnThreads();
+	BOOST_CHECK(true);
 }
 BOOST_AUTO_TEST_SUITE_END()

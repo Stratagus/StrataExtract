@@ -10,6 +10,8 @@ StrataConfig::StrataConfig()
     configurationDocument = NULL;
     configXPathContext = NULL;
     
+    gameVersion = NULL;
+    configurationRoot = NULL;
     gameConfiguration = NULL;
     gameMediaSource = NULL;
     gameMediaDestination = NULL;
@@ -153,7 +155,9 @@ xmlNodePtr StrataConfig::FindGameVersion()
         {
         #warning Potential logic error (Code Review)
             //Compare the Hash in the current file entity with the method generated hash
-            BOOST_LOG_SEV(configLogger, boost::log::trivial::debug) << "Comparing Hash from Config: " << (char *) xmlGetProp(currentChildPointer, (const xmlChar *) "hash")
+            BOOST_LOG_SEV(configLogger, boost::log::trivial::debug) << "Comparing Hash from Config("
+                                                                    << (char *) xmlGetProp(currentChildPointer, (const xmlChar *) "name") << ')' 
+                                                                    << (char *) xmlGetProp(currentChildPointer, (const xmlChar *) "hash") << '\n'
                                                                    << " with Generated Hash: " << (char *) GetFileHash(*gameMediaSource / (char *)xmlGetProp(currentChildPointer, (const xmlChar *) "name")) ;
             if(!xmlStrcmp(xmlGetProp(currentChildPointer, (const xmlChar *) "hash"), GetFileHash(*gameMediaSource / (char *)xmlGetProp(currentChildPointer, (const xmlChar *) "name"))))
             {
@@ -339,9 +343,10 @@ bool StrataConfig::setGameConfiguration(boost::filesystem::path gameConfiguratio
     
     if(!boost::filesystem::exists(gameConfigurationPath))
     {
+    	 BOOST_LOG_SEV(configLogger, boost::log::trivial::error) << "Configuration file path does not exist or is a directory.";
         StrataConfigFilesystemException fileException;
         fileException.problemPath = gameConfiguration;
-        fileException.SetErrorMessage("File path does not exist or is a directory.");
+        fileException.SetErrorMessage("Configuration file path does not exist or is a directory.");
         
         BOOST_THROW_EXCEPTION(fileException);
         return false;
