@@ -89,10 +89,14 @@ set(StrataExtractConfiguration-Source
 set(StrataExtractRunner-Source
     ${RUNNER_DIR}/StrataRunner.hpp
     ${RUNNER_DIR}/StrataRunner.cpp
+    ${RUNNER_DIR}/StrataRunnerException.hpp
+    ${RUNNER_DIR}/StrataRunnerException.cpp
     )
 set(StrataExtractArchives-Source
     ${ARCHIVES_DIR}/StrataArchive.hpp
     ${ARCHIVES_DIR}/StrataArchive.cpp
+    ${ARCHIVES_DIR}/StrataArchiveException.hpp
+    ${ARCHIVES_DIR}/StrataArchiveException.cpp
     ${ARCHIVES_DIR}/MPQ/MPQArchive.hpp
     ${ARCHIVES_DIR}/MPQ/MPQArchive.cpp
     ${ARCHIVES_DIR}/GZIP/GZIPArchive.hpp
@@ -102,12 +106,16 @@ set(StrataExtractArchives-Source
 set(StrataExtractAudioConversion-Source
     ${AUDIOCONVERSION_DIR}/StrataAudio.hpp
     ${AUDIOCONVERSION_DIR}/StrataAudio.cpp
+    ${AUDIOCONVERSION_DIR}/StrataAudioException.hpp
+    ${AUDIOCONVERSION_DIR}/StrataAudioException.cpp
     ${AUDIOCONVERSION_DIR}/FFmpeg/AudioFFmpeg.hpp
     ${AUDIOCONVERSION_DIR}/FFmpeg/AudioFFmpeg.cpp
    )
 set(StrataExtractImageConversion-Source
     ${IMAGECONVERSION_DIR}/StrataImage.hpp
     ${IMAGECONVERSION_DIR}/StrataImage.cpp
+    ${IMAGECONVERSION_DIR}/StrataImageException.hpp
+    ${IMAGECONVERSION_DIR}/StrataImageException.cpp
     ${IMAGECONVERSION_DIR}/ImageMagick/MagickImage.hpp
     ${IMAGECONVERSION_DIR}/ImageMagick/MagickImage.cpp
     ${IMAGECONVERSION_DIR}/GRPImage/GRPImage.hpp
@@ -116,6 +124,8 @@ set(StrataExtractImageConversion-Source
 set(StrataExtractVideoConversion-Source
     ${VIDEOCONVERSION_DIR}/StrataVideo.hpp
     ${VIDEOCONVERSION_DIR}/StrataVideo.cpp
+    ${VIDEOCONVERSION_DIR}/StrataVideoException.hpp
+    ${VIDEOCONVERSION_DIR}/StrataVideoException.cpp
     ${VIDEOCONVERSION_DIR}/FFmpeg/VideoFFmpeg.hpp
     ${VIDEOCONVERSION_DIR}/FFmpeg/VideoFFmpeg.cpp
    )
@@ -139,7 +149,10 @@ set(StrataExtractImageConversion-UnitTests-Source
     ${IMAGECONVERSION_UNITTESTS_DIR}/ImageMagick/MagickImageUnitTests.hpp
     ${IMAGECONVERSION_UNITTESTS_DIR}/ImageMagick/MagickImageUnitTests.cpp
    )
-
+set(StrataExtractRunner-UnitTests-Source
+    ${RUNNER_UNITTESTS_DIR}/StrataRunnerUnitTests.hpp
+    ${RUNNER_UNITTESTS_DIR}/StrataRunnerUnitTests.cpp
+    )
 
 #Code groupings allow for IDEs to put files into collections
 #instead of simply throwing all files into a pile. This should
@@ -157,6 +170,7 @@ source_group(Conversion\\Video FILES ${StrataExtractVideoConversion-Source})
 
 #UnitTests groupings
 source_group(Main FILES ${StrataExtractMain-UnitTests-Source})
+source_group(RunnerUnitTests FILES ${StrataExtractRunner-UnitTests-Source})
 source_group(ConfigurationUnitTests FILES ${StrataExtractConfiguration-UnitTests-Source})
 source_group(ArchivesUnitTests\\MPQArchiveUnitTests FILES ${StrataExtractArchives-UnitTests-Source})
 source_group(ConversionUnitTests\\ImageUnitTests FILES ${StrataExtractImageConversion-UnitTests-Source})
@@ -251,6 +265,7 @@ if(UNITTESTS)
     ${StrataExtractConfiguration-UnitTests-Source}
     ${StrataExtractArchives-UnitTests-Source}
     ${StrataExtractImageConversion-UnitTests-Source}
+    ${StrataExtractRunner-UnitTests-Source}
     )
   target_link_libraries(StrataExtractUnitTests
                         StrataExtractCore

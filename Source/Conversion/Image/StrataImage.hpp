@@ -5,6 +5,8 @@
 class StrataImage
 {
     public:
+        StrataImage();
+        ~StrataImage();
     protected:
     private:
 };

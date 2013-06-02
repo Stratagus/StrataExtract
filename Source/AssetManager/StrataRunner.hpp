@@ -6,18 +6,36 @@
 #include <boost/thread.hpp>
 #include <boost/exception/all.hpp>
 
+#include <libxml/parser.h>
+#include <libxml/xpath.h>
+
+#include "StrataRunnerException.hpp"
+
 #include "../Configuration/StrataConfig.hpp"
+#include "../Archives/StrataArchive.hpp"
+#include "../Conversion/Audio/StrataAudio.hpp"
+#include "../Conversion/Image/StrataImage.hpp"
+#include "../Conversion/Video/StrataVideo.hpp"
 
 class StrataRunner
 {
     public:
-        static StrataRunner *Runner();
-        void run();
-    protected:
         StrataRunner();
+        ~StrataRunner();
+        bool SetConfiguration(StrataConfig *targetConfiguration);
+        bool SpawnThreads();
+        bool JoinThreads();
+
+        bool ProcessPrerequisites();
+        bool ProcessAssets(xmlNodePtr AssetList);
+
+    protected:
+
+        std::vector<boost::thread *> threadPool;
+        //The Configuration logger to help for tracing
+        boost::log::sources::severity_logger_mt<boost::log::trivial::severity_level> runnerLogger;
     private:
-        static StrataRunner *runnerInstance;
-        StrataConfig *config;
+        StrataConfig *loadedConfiguration;
 };
 
 #endif

@@ -15,6 +15,7 @@
 #include <boost/filesystem.hpp>
 #include <boost/thread.hpp>
 #include <boost/uuid/sha1.hpp>
+
 #include <boost/log/core.hpp>
 #include <boost/log/sources/severity_logger.hpp>
 #include <boost/log/trivial.hpp>
@@ -168,7 +169,10 @@ class StrataConfig
          *  \note*/
         std::string getGameName();
 
-    
+
+        std::queue<xmlNodePtr> preparationProcessQueue;
+        std::queue<xmlNodePtr> processQueue;
+
     protected:
         //!Identifies the game version
         /*!Identifies the game version based on the read configuration
@@ -224,13 +228,11 @@ class StrataConfig
         boost::filesystem::path *gameMediaDestination;
         boost::filesystem::path *gameConfiguration;
     
-        std::queue<xmlNodePtr> preparationProcessQueue;
-        std::queue<xmlNodePtr> processQueue;
         xmlXPathContextPtr configXPathContext;
 
     private:
-        int completeObjects;
-        int totalObjects;
+        unsigned long completeObjects;
+        unsigned long totalObjects;
         bool configLoaded;
     
         //Is the GameMediaSource a expansion disc?
