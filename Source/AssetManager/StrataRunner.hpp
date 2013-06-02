@@ -24,9 +24,14 @@ class StrataRunner
         ~StrataRunner();
         bool SetConfiguration(StrataConfig *targetConfiguration);
         bool SpawnThreads();
+        bool JoinThreads();
+
+        bool ProcessPrerequisites();
+        bool ProcessAssets(xmlNodePtr AssetList);
+
     protected:
 
-        std::list<boost::thread *> threadPool;
+        std::vector<boost::thread *> threadPool;
         //The Configuration logger to help for tracing
         boost::log::sources::severity_logger_mt<boost::log::trivial::severity_level> runnerLogger;
     private:

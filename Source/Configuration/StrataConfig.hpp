@@ -169,7 +169,10 @@ class StrataConfig
          *  \note*/
         std::string getGameName();
 
-    
+
+        std::queue<xmlNodePtr> preparationProcessQueue;
+        std::queue<xmlNodePtr> processQueue;
+
     protected:
         //!Identifies the game version
         /*!Identifies the game version based on the read configuration
@@ -225,8 +228,6 @@ class StrataConfig
         boost::filesystem::path *gameMediaDestination;
         boost::filesystem::path *gameConfiguration;
     
-        std::queue<xmlNodePtr> preparationProcessQueue;
-        std::queue<xmlNodePtr> processQueue;
         xmlXPathContextPtr configXPathContext;
 
     private:

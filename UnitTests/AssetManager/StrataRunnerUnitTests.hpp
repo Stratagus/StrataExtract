@@ -18,6 +18,7 @@ struct StrataRunnerInstance
             myConfiguration->setGameMediaSourcePath(GAMESDIRECTORY);
             myConfiguration->setGameMediaDestinationPath(GAMEDESTINATIONDIRECTORY);
             myConfiguration->readConfig();
+            myConfiguration->ProcessGameAssetLists();
 
     }
 
@@ -26,6 +27,7 @@ struct StrataRunnerInstance
         BOOST_TEST_MESSAGE("Teardown StrataRunner Configuration Object");
         if(myConfiguration)
         {
+        	boost::filesystem::remove(myConfiguration->GameMediaDestinationPath());
             delete myConfiguration;
             myConfiguration = NULL;
         }
