@@ -17,8 +17,6 @@ BOOST_AUTO_TEST_CASE(ProcessPrerequisites)
 	StrataRunner runner;
 	runner.SetConfiguration(myConfiguration);
 	runner.ProcessPrerequisites();
-	runner.SpawnThreads();
-	runner.JoinThreads();
 	BOOST_CHECK(true);
 }
 
