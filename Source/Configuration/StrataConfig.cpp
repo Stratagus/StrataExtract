@@ -289,7 +289,7 @@ xmlNodePtr StrataConfig::LookupArchive(xmlChar* archiveName)
     xmlXPathObjectPtr archiveList = xmlXPathEval((const xmlChar *) xPathQuery.c_str(), configXPathContext);
     BOOST_LOG_SEV(configLogger, boost::log::trivial::trace) << "Searched with query: " << xPathQuery << "with " << archiveList->nodesetval->nodeNr << " results";
     
-    if(archiveList->nodesetval->nodeNr == 1 )
+    if(archiveList->nodesetval->nodeNr == 1)
     {
         return archiveList->nodesetval->nodeTab[0];
     }

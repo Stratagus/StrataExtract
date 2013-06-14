@@ -27,7 +27,8 @@ class StrataRunner
         bool JoinThreads();
 
         bool ProcessPrerequisites();
-        bool ProcessAssets(xmlNodePtr AssetList);
+        bool ProcessAssets(xmlNodePtr assetList);
+        bool ProcessAsset(xmlNodePtr assetObject);
 
     protected:
 
