@@ -281,22 +281,21 @@ void StrataConfig::ProcessArchive(xmlNodePtr archive)
 
 xmlNodePtr StrataConfig::LookupArchive(xmlChar* archiveName)
 {
-    BOOST_LOG_SEV(configLogger, boost::log::trivial::trace) << "Searching for Archive Tag: " << (char *) archiveName;
     configXPathContext->node = configurationRoot;
-    xmlXPathObjectPtr archiveList = xmlXPathEval((const xmlChar *) "//Archive", configXPathContext);
-    for(int currentArchiveTag = 0; currentArchiveTag < archiveList->nodesetval->nodeNr; currentArchiveTag++)
+    std::string xPathQuery = "//Archive[@name='";
+    xPathQuery.append((char *) archiveName);
+    xPathQuery.append("\']");
+
+    xmlXPathObjectPtr archiveList = xmlXPathEval((const xmlChar *) xPathQuery.c_str(), configXPathContext);
+    BOOST_LOG_SEV(configLogger, boost::log::trivial::trace) << "Searched with query: " << xPathQuery << "with " << archiveList->nodesetval->nodeNr << " results";
+    
+    if(archiveList->nodesetval->nodeNr == 1)
     {
-        BOOST_LOG_SEV(configLogger, boost::log::trivial::trace) << "Comparing target: " << (char *) archiveName << " with: "
-                                                                << (char *) xmlGetProp(archiveList->nodesetval->nodeTab[currentArchiveTag], (const xmlChar *) "name");
-        //<< (char *) archiveList->nodesetval->nodeTab[junk]->name;
-        if(!xmlStrcmp(xmlGetProp(archiveList->nodesetval->nodeTab[currentArchiveTag], (const xmlChar *) "name"), archiveName))
-        {
-            BOOST_LOG_SEV(configLogger, boost::log::trivial::trace) << "Found target: " << (char *) xmlGetProp(archiveList->nodesetval->nodeTab[currentArchiveTag], (const xmlChar *) "name");
-            return archiveList->nodesetval->nodeTab[currentArchiveTag];
-        }
-        
+        return archiveList->nodesetval->nodeTab[0];
     }
+#warning Throw error
     return NULL;
+
 }
 
 bool StrataConfig::isExpansionGame()

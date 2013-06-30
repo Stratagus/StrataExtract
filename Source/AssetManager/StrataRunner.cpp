@@ -74,21 +74,28 @@ bool StrataRunner::ProcessPrerequisites()
 															<< " Prerequisite Job(s) to complete";
 	while(loadedConfiguration->preparationProcessQueue.size())
 	{
-		BOOST_LOG_SEV(runnerLogger, boost::log::trivial::trace) << "Compeleted Prerequisite Job";
-		ProcessAssets(loadedConfiguration->preparationProcessQueue.front());
+		ProcessAsset(loadedConfiguration->preparationProcessQueue.front());
 		loadedConfiguration->preparationProcessQueue.pop();
+        BOOST_LOG_SEV(runnerLogger, boost::log::trivial::trace) << "Compeleted Prerequisite Job";
 	}
-
+    
+    return true;
 }
 
-bool StrataRunner::ProcessAssets(xmlNodePtr AssetList)
+bool StrataRunner::ProcessAssets(xmlNodePtr assetList)
 {
-	xmlNodePtr currentProcess = AssetList;
-	std::cout << "Current Asset";
+	xmlNodePtr currentProcess = assetList;
 	while(currentProcess != NULL)
 	{
-		std::cout << "ON:" << (char *) currentProcess->content << '\n';
-		currentProcess = currentProcess->next->next;
+        BOOST_LOG_SEV(runnerLogger, boost::log::trivial::trace) << "Pre-Processing: " << (char *) currentProcess->name;
+		currentProcess = currentProcess->next;
 	}
 	return true;
+}
+
+#warning Feels like a hacky solution, when in truth it's the same as ProcessAssets but only the first object
+bool StrataRunner::ProcessAsset(xmlNodePtr assetObject)
+{
+    //if(xmlStrcmp(xmlGetProp(assetObject, (xmlchar *) "name"), ())
+    return true;
 }

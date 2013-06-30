@@ -1,7 +1,9 @@
 #ifndef StrataArchive_Header
 #define StrataArchive_Header
+#include "StrataArchiveException.hpp"
 #include "MPQ/MPQArchive.hpp"
 #include "GZIP/GZIPArchive.hpp"
+
 
 #include <libxml/parser.h>
 
