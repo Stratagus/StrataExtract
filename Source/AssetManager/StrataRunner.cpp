@@ -74,9 +74,9 @@ bool StrataRunner::ProcessPrerequisites()
 															<< " Prerequisite Job(s) to complete";
 	while(loadedConfiguration->preparationProcessQueue.size())
 	{
-		BOOST_LOG_SEV(runnerLogger, boost::log::trivial::trace) << "Compeleted Prerequisite Job";
 		ProcessAsset(loadedConfiguration->preparationProcessQueue.front());
 		loadedConfiguration->preparationProcessQueue.pop();
+        BOOST_LOG_SEV(runnerLogger, boost::log::trivial::trace) << "Compeleted Prerequisite Job";
 	}
     
     return true;
