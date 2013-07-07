@@ -16,6 +16,12 @@
     
 }
 
+//!Toggles the Log Drawer
+/*!  Toggles whether to show the verbose StrataCore information on the
+ *  bottom of the window
+ *  \pre NA
+ *  \post NA
+ *  \note NA*/
 - (IBAction)ToggleLogDrawer:(id)sender;
 
 
