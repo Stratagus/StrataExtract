@@ -290,6 +290,11 @@ IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     ${GUI_COCOA_DIR}/main.mm
 )
 
+set(Cocoa-MainViewController
+    ${COCOA_VIEWCONTROLLERS}/MainViewController/MainViewController.h
+    ${COCOA_VIEWCONTROLLERS}/MainViewController/MainViewController.mm
+)
+
 set(Cocoa-LogViewController
     ${COCOA_VIEWCONTROLLERS}/LogViewController/LogViewController.h
     ${COCOA_VIEWCONTROLLERS}/LogViewController/LogViewController.mm
@@ -328,11 +333,12 @@ set(MACOSX_BUNDLE_COPYRIGHT "The StrataExtract Team")
 #UnitTests groupings
 source_group(Main FILES ${Cocoa-Source})
 source_group(ViewControllers FILES)
+source_group(ViewControllers\\MainViewController FILES ${Cocoa-MainViewController})
 source_group(ViewControllers\\LogViewController FILES ${Cocoa-LogViewController})
 source_group(Resources FILES ${Cocoa-Resources})
 source_group(Xibs FILES ${Cocoa-Xibs-Source})
 
-add_executable(StrataExtractOSX MACOSX_BUNDLE ${Cocoa-Source} ${Cocoa-LogViewController} ${Cocoa-Resources} ${Cocoa-Xibs-Source})
+add_executable(StrataExtractOSX MACOSX_BUNDLE ${Cocoa-Source} ${Cocoa-MainViewController} ${Cocoa-LogViewController} ${Cocoa-Resources} ${Cocoa-Xibs-Source})
 
 # Probably a better way to set the framework link libraries.
 target_link_libraries(StrataExtractOSX "-framework Cocoa" StrataExtractCore ${Boost_LIBRARIES})

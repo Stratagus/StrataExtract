@@ -12,6 +12,7 @@
 {
     IBOutlet NSWindow *mainWindow;
     IBOutlet NSDrawer *logDrawer;
+    IBOutlet NSTextView *logOutput;
     
 }
 

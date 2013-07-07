@@ -21,6 +21,7 @@
 
 - (void)awakeFromNib
 {
+    [logOutput setString:@"StrataExtract GUI Initialized\n"];
 }
 
 
