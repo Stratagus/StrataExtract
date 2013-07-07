@@ -54,7 +54,8 @@ set (RUNNER_UNITTESTS_DIR ${UNITTEST_DIR}/AssetManager)
 
 #GUI Directories
 set (GUI_DIR ${SOURCE_DIR}/GUIs)
-set (GUI_QUARTZ_DIR ${SOURCE_DIR}/GUIs/Quartz)
+set (GUI_COCOA_DIR ${SOURCE_DIR}/GUIs/Cocoa)
+set (COCOA_VIEWCONTROLLERS ${GUI_COCOA_DIR}/ViewControllers)
 set (GUI_GTKMM_DIR ${SOURCE_DIR}/GUIs/GTKMM)
 
 #Media Directories
@@ -281,31 +282,41 @@ endif()
 #endif()
 
 #GUI Specific Compilation Processes
-#Quartz OSX GUI Target
+#Cocoa OSX GUI Target
 IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-  set(Quartz-Source
-    ${GUI_QUARTZ_DIR}/AppDelegate.h
-    ${GUI_QUARTZ_DIR}/AppDelegate.mm
-    ${GUI_QUARTZ_DIR}/main.mm
+  set(Cocoa-Source
+    ${GUI_COCOA_DIR}/AppDelegate.h
+    ${GUI_COCOA_DIR}/AppDelegate.mm
+    ${GUI_COCOA_DIR}/main.mm
 )
 
-set(Quartz-Resources
+set(Cocoa-MainViewController
+    ${COCOA_VIEWCONTROLLERS}/MainViewController/MainViewController.h
+    ${COCOA_VIEWCONTROLLERS}/MainViewController/MainViewController.mm
+)
+
+set(Cocoa-LogViewController
+    ${COCOA_VIEWCONTROLLERS}/LogViewController/LogViewController.h
+    ${COCOA_VIEWCONTROLLERS}/LogViewController/LogViewController.mm
+)
+
+set(Cocoa-Resources
   "./Credits.rtf"
   #${MEDIA_DIR}/Icons/StrataExtract.icns
 )
 
 set_source_files_properties(
-  ${Quartz-Resources}
+  ${Cocoa-Resources}
   PROPERTIES
   MACOSX_PACKAGE_LOCATION Resources
 )
 #The XIB file locations 
-set(Quartz-Xibs-Source
-  ${GUI_QUARTZ_DIR}/Xibs/Main.xib
+set(Cocoa-Xibs-Source
+  ${GUI_COCOA_DIR}/Xibs/Main.xib
   )
 
 #Set the XIB Files for compile
-set(Quartz-Xibs
+set(Cocoa-Xibs
     Main
 )
 
@@ -320,17 +331,20 @@ set(MACOSX_BUNDLE_BUNDLE_VERSION ${StrataExtractVersion})
 set(MACOSX_BUNDLE_COPYRIGHT "The StrataExtract Team")
 
 #UnitTests groupings
-source_group(Main FILES ${Quartz-Source})
-source_group(Resources FILES ${Quartz-Resources})
-source_group(Xibs FILES ${Quartz-Xibs-Source})
+source_group(Main FILES ${Cocoa-Source})
+source_group(ViewControllers FILES)
+source_group(ViewControllers\\MainViewController FILES ${Cocoa-MainViewController})
+source_group(ViewControllers\\LogViewController FILES ${Cocoa-LogViewController})
+source_group(Resources FILES ${Cocoa-Resources})
+source_group(Xibs FILES ${Cocoa-Xibs-Source})
 
-add_executable(StrataExtractOSX MACOSX_BUNDLE ${Quartz-Source} ${Quartz-Resources} ${Quartz-Xibs-Source})
+add_executable(StrataExtractOSX MACOSX_BUNDLE ${Cocoa-Source} ${Cocoa-MainViewController} ${Cocoa-LogViewController} ${Cocoa-Resources} ${Cocoa-Xibs-Source})
 
 # Probably a better way to set the framework link libraries.
-target_link_libraries(StrataExtractOSX "-framework Cocoa")
+target_link_libraries(StrataExtractOSX "-framework Cocoa" StrataExtractCore ${Boost_LIBRARIES})
 
 # Set a custom plist file for the app bundle
-set_target_properties(StrataExtractOSX PROPERTIES MACOSX_BUNDLE_INFO_PLIST .${GUI_QUARTZ_DIR}/StrataExtract-Info.plist)
+set_target_properties(StrataExtractOSX PROPERTIES MACOSX_BUNDLE_INFO_PLIST .${GUI_COCOA_DIR}/StrataExtract-Info.plist)
 
 
 # Make sure we can find the 'ibtool' program. If we can NOT find it we
@@ -346,12 +360,12 @@ add_custom_command (TARGET StrataExtractOSX PRE_BUILD
                       COMMAND mkdir -p .${EXECUTABLE_OUTPUT_PATH}/\${CONFIGURATION}/StrataExtractOSX.app/Contents/Resources)
                       
 # Compile the .xib files using the 'ibtool' program with the destination being the app package
-foreach(xib ${Quartz-Xibs})
+foreach(xib ${Cocoa-Xibs})
   add_custom_command (TARGET StrataExtractOSX POST_BUILD
                     COMMAND ${IBTOOL} --errors --warnings --notices --output-format human-readable-text
                               --compile .${EXECUTABLE_OUTPUT_PATH}/\${CONFIGURATION}/StrataExtractOSX.app/Contents/Resources/${xib}.nib
-                             .${GUI_QUARTZ_DIR}/Xibs/${xib}.xib)
-                      #COMMENT ("Compiling ${GUI_QUARTZ_DIR}/Xibs/${xib}.xib")
+                             .${GUI_COCOA_DIR}/Xibs/${xib}.xib)
+                      #COMMENT ("Compiling ${GUI_COCOA_DIR}/Xibs/${xib}.xib")
 
 endforeach()
 

@@ -8,14 +8,16 @@ MagickImage::~MagickImage()
     delete graphicImage;
     graphicImage = NULL;
 }
-void MagickImage::ReadImageFromFile(boost::filesystem::path imagePath)
+
+void MagickImage::ReadImageFromFile(boost::filesystem::path const &sourceImagePath)
 {
     if(graphicImage == NULL)
     {
         graphicImage = new Magick::Image;
     }
-    graphicImage->read(imagePath.string());
+    graphicImage->read(sourceImagePath.string());
 }
+
 void MagickImage::ReadImageFromMemory(std::vector<char> *image)
 {
     Magick::Blob Blob;
@@ -26,21 +28,22 @@ void MagickImage::ReadImageFromMemory(std::vector<char> *image)
     }
     graphicImage->read(Blob);
 }
-void MagickImage::WriteImageToFile(boost::filesystem::path destinationPath)
+
+void MagickImage::WriteImageToFile(boost::filesystem::path const &destinationImagePath)
 {
     if(!graphicImage)
     {
         throw "graphicImage not loaded before writing.";
     }
     else
-        graphicImage->write(destinationPath.string());
+        graphicImage->write(destinationImagePath.string());
 }
-void MagickImage::ConvertImageFile(boost::filesystem::path sourcePath, boost::filesystem::path destinationPath)
+void MagickImage::ConvertImageFile(boost::filesystem::path const &sourceImagePath, boost::filesystem::path const &destinationimagePath)
 {
     if(graphicImage == NULL)
     {
         graphicImage = new Magick::Image;
     }
-    graphicImage->read(sourcePath.string());
-    graphicImage->write(sourcePath.string());
+    graphicImage->read(sourceImagePath.string());
+    graphicImage->write(destinationimagePath.string());
 }
