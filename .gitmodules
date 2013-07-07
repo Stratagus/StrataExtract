@@ -1,3 +1,6 @@
 [submodule "Libraries/StormLib"]
 	path = Libraries/StormLib
 	url = https://github.com/stormlib/StormLib.git
+[submodule "Libraries/libgrp"]
+	path = Libraries/libgrp
+	url = https://github.com/bradc6/libgrp.git
