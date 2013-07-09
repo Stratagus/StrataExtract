@@ -29,6 +29,15 @@ RemoveDirectories()
 	rm filetree.tmp2
 }
 
+FilterCharacters()
+{
+	local input
+
+	input=$1
+
+	cat $input | sed -e 's/\.\///'
+}
+
 (
 	cd $dir
 
@@ -46,6 +55,9 @@ RemoveDirectories()
 		fi
 	done
 
+	FilterCharacters filetree.tmp3 > filetree.tmp4
+
 	rm filetree.tmp
-	mv filetree.tmp3 filetree.tmp
+	rm filetree.tmp3
+	mv filetree.tmp4 filetree.tmp
 )
