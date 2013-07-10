@@ -3,24 +3,42 @@
 UPPER="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 LOWER="abcdefghijklmnopqrstuvwxyz"
 
-filename=$1
-tempfile=${filename}.tmp
-xmlfile=${filename}.xml
+file=$1
+xmlfile=${file}.xml
 
-touch $tempfile
 touch $xmlfile
 
-# Clean up the input
-cat $filename | cut -d \, -f 3-4 | cut -d \" -f 2,4 --output-delimiter=, | sed -re 's/\ /\+/g' > $tempfile
+ops=$2
 
 # Create a new XML document
 echo -e '<?xml version="1.0"?>\n<xml>\n</xml>' > $xmlfile
 
-# Determines a file's type from its extension
-setFileType() {
+# Gets the file extension
+GetExtension()
+{
+	local input
+	input=$(echo "$1" | sed -re 'y/"$UPPER"/"$LOWER"/') 	# Convert uppercase to lowercase
 
-	ext=$(echo "$ext" | sed -re 'y/"$UPPER"/"$LOWER"/') # Convert uppercase to lowercase
-	case "$ext" in
+	echo $input | grep -o -E '\.[a-z]{3}$' | grep -o -E '[a-z]{3}'	# Search the end of the string for '.xxx' and output only the letters.
+}
+
+# Gets the tree depth (how many folders deep a file is)
+GetTreeDepth()
+{
+	local input
+	input=$1
+
+	echo "$input" | grep -o / | wc -l						# Search string for '/' and output only the '/'s, one on each line. Then count the number of lines
+}
+
+# Determines a file's type from its extension
+GetFileType()
+{
+	local input
+
+	input=$(echo "$1" | sed -re 'y/"$UPPER"/"$LOWER"/') # Convert uppercase to lowercase
+
+	case "$input" in
 		exe)
 			echo "file"
 			;;
@@ -32,6 +50,9 @@ setFileType() {
 			;;
 		scm)
 			echo "map"
+			;;
+		grp)
+			echo "image"
 			;;
 		pcx)
 			echo "image"
@@ -48,48 +69,26 @@ setFileType() {
 		txt)
 			echo "text"
 			;;
-		grp)
-			echo "grp"
+		*) echo "unknown"
 			;;
-		*) echo ""
-			;;
-	esac;
+	esac
 }
 
-for value in $(cat $tempfile)
+for value in $(cat $file)
 do
-	
-	if echo $value | grep // | grep -v { > /dev/null
+	path=$value
+	destination=$(echo $value | cut -d / -f 1-$(GetTreeDepth $value))
+	ext=$(GetExtension $value)
 
-	# Convert C comments into XML comments
+	# If file has an extension, figure out its type
+	if echo $path | grep '\.' > /dev/null
 	then
-		echo "Comment $value"
-		head -n -1 $xmlfile > ${xmlfile}.tmp  # Grab all but the last line of $xmlfile and output it to new file $xmlfile.tmp
-		# echo "" >> $xmlfile.tmp
-		value=$(echo $value | sed -re 's/\+/\ /g' | sed -re 's/\/\/\ //')	# Replace '+' with ' ', replace '// ' with nothing
-		echo "<!-- $value -->" >> ${xmlfile}.tmp 							# Add the comment to the document
-
-		#  We don't know how many values the input file has, so we append '</xml>' every time. If there's still another value,
-		#+ this ending tag gets cut off above where we call 'head -n -1'. This ensures that we only have one closing '</xml>' tag in the document
-		echo "</xml>" >> ${xmlfile}.tmp
-
-		diff $xmlfile ${xmlfile}.tmp | patch $xmlfile - # Add the new tag to the XML document
-		rm ${xmlfile}.tmp
-
-	# Parse info about files and create XML tags for them
+		filetype=$(GetFileType $ext)
 	else
-		path=$(echo $value | cut -d \, -f 2)								# Use ',' as the delimiter, grab the second field
-		destination=$(echo $value | cut -d \, -f 1 | sed -re 's/\+/\ /g')	# USe ',' as the delimiter, grab the first field, replace '+' with ' '
-		ext=$(echo "$path" | cut -d \. -f 2)								# USe '.' as the delimiter, grab the second field
+		filetype="unknown"
+	fi
 
-		# If file has an extension, figure out its type
-		if echo $path | grep '\.' > /dev/null
-		then
-			filetype=$(setFileType)
-		else
-			filetype="unknown"
-		fi
-
+	if [[ $ops == "-v" ]]; then
 		echo "Value: $value"
 		echo "Destination: $destination"
 		echo "Path: $path"
@@ -97,12 +96,16 @@ do
 		echo "Filetype: $filetype"
 
 		echo "adding element"
-
-		xmlstarlet ed -L -s /xml -t elem -n "$filetype"TMP -v "" \			# Create new XML tag with the name of the filetype (e.g. 'image' for .pcx files). Add 'TMP' to uniquely identify our new tag while we work on it
-		-i //"$filetype"TMP -t attr -n "name" -v "" \						# Add an attribute called 'name', leave it blank
-		-i //"$filetype"TMP -t attr -n "path" -v "$path" \					# Add an attribute called 'path', set it equal to the file's path (e.g. 'path/to/file.ext')
-		-i //"$filetype"TMP -t attr -n "destination" -v "$destination" \	# Add an attribute called 'destination', set it equal to the location where the file will be extracted to
-		-r //"$filetype"TMP -v $filetype \									# We're done, remove the 'TMP' tag
-		$xmlfile
+		echo ""
 	fi
+
+	# xmlstarlet ed -L -s /xml -t elem -n "$filetype"TMP -v "" \			# Create new XML tag with the name of the filetype (e.g. 'image' for .pcx files). Add 'TMP' to uniquely identify our new tag while we work on it
+	# -i //"$filetype"TMP -t attr -n "name" -v "" \							# Add an attribute called 'name', leave it blank
+	# -i //"$filetype"TMP -t attr -n "path" -v "$path" \					# Add an attribute called 'path', set it equal to the file's path (e.g. 'path/to/file.ext')
+	# -i //"$filetype"TMP -t attr -n "destination" -v "$destination" \		# Add an attribute called 'destination', set it equal to the location where the file will be extracted to
+	# -r //"$filetype"TMP -v $filetype \									# We're done, remove the 'TMP' tag
+	# $xmlfile
+
+	xmlstarlet ed -L -s /xml -t elem -n "$filetype"TMP -v "" -i //"$filetype"TMP -t attr -n "name" -v "" -i //"$filetype"TMP -t attr -n "path" -v "$path" -i //"$filetype"TMP -t attr -n "destination" -v "$destination" -r //"$filetype"TMP -v $filetype $xmlfile
+
 done
