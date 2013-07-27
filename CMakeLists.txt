@@ -65,14 +65,17 @@ set (MEDIA_DIR "./Media")
 #a packaged version installed via DEB/RPM/Macports
 set (LIBRARIES_DIR "./Libraries")
 set (STORMLIB_DIR ${LIBRARIES_DIR}/StormLib)
+set (LIBGRP_DIR ${LIBRARIES_DIR}/libgrp)
 set (FFMPEG_DIR ${LIBRARIES_DIR}/FFmpeg)
 
 #Include internal library directories if a package was not found
 #grab versions included with this tool.
 add_subdirectory("${STORMLIB_DIR}")
+add_subdirectory("${LIBGRP_DIR}")
 
 include_directories("${STORMLIB_DIR}/src/"
                     "${STORMLIB_DIR}/include/")
+include_directories("${LIBGRP_DIR}/Source")
 
 #Set the actual Cpp & Hpp files in which are to be included
 #into this tool. The actual code of the tool, not outside libraries.
@@ -119,8 +122,8 @@ set(StrataExtractImageConversion-Source
     ${IMAGECONVERSION_DIR}/StrataImageException.cpp
     ${IMAGECONVERSION_DIR}/ImageMagick/MagickImage.hpp
     ${IMAGECONVERSION_DIR}/ImageMagick/MagickImage.cpp
-    ${IMAGECONVERSION_DIR}/GRPImage/GRPImage.hpp
-    ${IMAGECONVERSION_DIR}/GRPImage/GRPImage.cpp
+    ${IMAGECONVERSION_DIR}/StrataGRPImage/StrataGRPImage.hpp
+    ${IMAGECONVERSION_DIR}/StrataGRPImage/StrataGRPImage.cpp
    )
 set(StrataExtractVideoConversion-Source
     ${VIDEOCONVERSION_DIR}/StrataVideo.hpp
@@ -234,6 +237,7 @@ target_link_libraries(
             ${FFMPEG_LIBSWRESAMPLE_LIBRARIES}
             ${OPENSSL_LIBRARIES}
             storm
+            grp
 )
 
 add_executable(

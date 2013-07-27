@@ -9,7 +9,7 @@ MagickImage::~MagickImage()
     graphicImage = NULL;
 }
 
-void MagickImage::ReadImageFromFile(boost::filesystem::path const &sourceImagePath)
+void MagickImage::ReadImage(boost::filesystem::path const &sourceImagePath)
 {
     if(graphicImage == NULL)
     {
@@ -18,7 +18,7 @@ void MagickImage::ReadImageFromFile(boost::filesystem::path const &sourceImagePa
     graphicImage->read(sourceImagePath.string());
 }
 
-void MagickImage::ReadImageFromMemory(std::vector<char> *image)
+void MagickImage::ReadImage(std::vector<char> *image)
 {
     Magick::Blob Blob;
     Blob.update(&image->at(0), image->size());

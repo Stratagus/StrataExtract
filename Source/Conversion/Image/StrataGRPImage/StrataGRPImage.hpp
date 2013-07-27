@@ -1,26 +1,26 @@
-#ifndef StrataImage_Header
-#define StrataImage_Header
+#ifndef StrataGRPImage_Header
+#define StrataGRPImage_Header
 
-#include "StrataImageException.hpp"
-
+#include "../StrataImage.hpp"
 #include <boost/filesystem/path.hpp>
+#include <libgrp.hpp>
 
-//There is an order of which to call each function, though some
-//functions are not required for image operation
-
-class StrataImage
+class StrataGRPImage : public StrataImage
 {
     public:
+        StrataGRPImage();
+        ~StrataGRPImage();
         virtual void ReadImage(boost::filesystem::path const &sourceImagePath) = 0;
         virtual void ReadImage(std::vector<char> *image) = 0;
         virtual void WriteImageToFile(boost::filesystem::path const &destinationImagePath) = 0;
         virtual void ConvertImageFile(boost::filesystem::path const &sourceImagePath, boost::filesystem::path const &destinationimagePath) = 0;
     
-        virtual void SetColorpalette(boost::filesystem::path colorPaletteFilePath) = 0;
-        virtual void SetColorpalette(std::vector<char> *image) = 0;
-    
+    //Only needed for GRPImages
+    virtual void SetColorpalette(boost::filesystem::path colorPaletteFilePath) = 0;
+    virtual void SetColorpalette(std::vector<char> *image) = 0;
     protected:
-        StrataImage();
+    ColorPalette *currentColorPalette;
+    GRPImage *currentGRPImage;
     private:
 };
 

@@ -28,14 +28,14 @@ public:
      *  \post MagickImage object is created and internal
      *        data structures set to NULL.
      *  \note NA*/
-    virtual void ReadImageFromFile(boost::filesystem::path const &sourceImagePath);
+    virtual void ReadImage(boost::filesystem::path const &sourceImagePath);
     //!MagickImage Constructor
     /*!  MagickImage Object constructor
      *  \pre NA
      *  \post MagickImage object is created and internal
      *        data structures set to NULL.
      *  \note NA*/
-    virtual void ReadImageFromMemory(std::vector<char> *image);
+    virtual void ReadImage(std::vector<char> *image);
     //!MagickImage Constructor
     /*!  MagickImage Object constructor
      *  \pre NA
