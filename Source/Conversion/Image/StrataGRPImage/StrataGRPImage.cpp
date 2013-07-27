@@ -17,6 +17,7 @@ StrataGRPImage::~StrataGRPImage()
         currentColorPalette = NULL;
     }
 }
+
 void StrataGRPImage::ReadImage(boost::filesystem::path const &sourceImagePath)
 {
     if(!currentGRPImage)
@@ -28,6 +29,7 @@ void StrataGRPImage::ReadImage(boost::filesystem::path const &sourceImagePath)
         currentGRPImage->LoadImage(sourceImagePath.string());
     }
 }
+
 void StrataGRPImage::ReadImage(std::vector<char> *image)
 {
     if(!currentGRPImage)
@@ -39,6 +41,7 @@ void StrataGRPImage::ReadImage(std::vector<char> *image)
         currentGRPImage->LoadImage(image);
     }
 }
+
 void StrataGRPImage::WriteImageToFile(boost::filesystem::path const &destinationImagePath)
 {
     if(currentGRPImage)
@@ -49,10 +52,6 @@ void StrataGRPImage::WriteImageToFile(boost::filesystem::path const &destination
     {
         //throw something
     }
-}
-void StrataGRPImage::ConvertImageFile(boost::filesystem::path const &sourceImagePath, boost::filesystem::path const &destinationimagePath)
-{
-    //We don't need this for this Image format
 }
 
 void StrataGRPImage::SetColorpalette(boost::filesystem::path colorPaletteFilePath)
