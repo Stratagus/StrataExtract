@@ -4,3 +4,6 @@
 [submodule "Libraries/libgrp"]
 	path = Libraries/libgrp
 	url = https://github.com/bradc6/libgrp.git
+[submodule "Libraries/libwararch"]
+	path = Libraries/libwararch
+	url = https://github.com/bradc6/libwararch.git
