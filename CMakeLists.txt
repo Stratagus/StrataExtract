@@ -25,6 +25,7 @@ find_package(Boost REQUIRED COMPONENTS system date_time thread filesystem except
 find_package(LibXml2 REQUIRED)
 find_package(FFMPEG REQUIRED)
 find_package(Magick++ REQUIRED)
+find_package(CDParanoia)
 find_package(OpenSSL)
 find_package(PkgConfig)
 pkg_check_modules(GTKMM gtkmm-3.0)
@@ -66,16 +67,19 @@ set (MEDIA_DIR "./Media")
 set (LIBRARIES_DIR "./Libraries")
 set (STORMLIB_DIR ${LIBRARIES_DIR}/StormLib)
 set (LIBGRP_DIR ${LIBRARIES_DIR}/libgrp)
+set (LIBWARARCH_DIR ${LIBRARIES_DIR}/libwararch)
 set (FFMPEG_DIR ${LIBRARIES_DIR}/FFmpeg)
 
 #Include internal library directories if a package was not found
 #grab versions included with this tool.
 add_subdirectory("${STORMLIB_DIR}")
 add_subdirectory("${LIBGRP_DIR}")
+add_subdirectory("${LIBWARARCH_DIR}")
 
 include_directories("${STORMLIB_DIR}/src/"
                     "${STORMLIB_DIR}/include/")
 include_directories("${LIBGRP_DIR}/Source")
+include_directories("${LIBWARARCH_DIR}/Source")
 
 #Set the actual Cpp & Hpp files in which are to be included
 #into this tool. The actual code of the tool, not outside libraries.
@@ -238,6 +242,7 @@ target_link_libraries(
             ${OPENSSL_LIBRARIES}
             storm
             grp
+            wararch
 )
 
 add_executable(
