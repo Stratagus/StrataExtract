@@ -81,6 +81,8 @@ include_directories("${STORMLIB_DIR}/src/"
 include_directories("${LIBGRP_DIR}/Source")
 include_directories("${LIBWARARCH_DIR}/Source")
 
+include_directories(${CDPARANOIA_INCLUDE_DIR})
+
 #Set the actual Cpp & Hpp files in which are to be included
 #into this tool. The actual code of the tool, not outside libraries.
 set(StrataExtractMain-Source
@@ -118,6 +120,8 @@ set(StrataExtractAudioConversion-Source
     ${AUDIOCONVERSION_DIR}/StrataAudioException.cpp
     ${AUDIOCONVERSION_DIR}/FFmpeg/AudioFFmpeg.hpp
     ${AUDIOCONVERSION_DIR}/FFmpeg/AudioFFmpeg.cpp
+    ${AUDIOCONVERSION_DIR}/CDParanoia/CDParanoia.hpp
+    ${AUDIOCONVERSION_DIR}/CDParanoia/CDParanoia.cpp
    )
 set(StrataExtractImageConversion-Source
     ${IMAGECONVERSION_DIR}/StrataImage.hpp
@@ -240,6 +244,7 @@ target_link_libraries(
             ${FFMPEG_LIBAVUTIL_LIBRARIES}
             ${FFMPEG_LIBSWRESAMPLE_LIBRARIES}
             ${OPENSSL_LIBRARIES}
+            ${CDPARANOIA_LIBRARIES}
             storm
             grp
             wararch
