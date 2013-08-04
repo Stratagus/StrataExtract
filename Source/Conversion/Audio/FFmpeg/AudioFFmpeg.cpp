@@ -35,7 +35,6 @@ void AudioFFmpeg::DecodeAudio(std::vector<char> *inputAudio)
     AVCodec *codec;
     AVCodecContext *codecContext = NULL;
     int length;
-    uint8_t audioBuffer[AUDIO_INBUF_SIZE + FF_INPUT_BUFFER_PADDING_SIZE];
     AVPacket audioPacket;
     AVFrame *decodedFrame = NULL;
     
@@ -67,6 +66,9 @@ void AudioFFmpeg::DecodeAudio(std::vector<char> *inputAudio)
     //Attach a pointer from the audioAttributes to the inputAudio
     audioAttributes->pb = avio_alloc_context((unsigned char *) &inputAudio->front(), inputAudio->size(), 0, NULL, NULL, NULL, NULL);
     
+    
+    
+
     if (avformat_open_input(&audioAttributes, "", NULL, NULL) < 0)
     {
         throw "Could not open the audioInput in audioAttributes";
@@ -78,7 +80,13 @@ void AudioFFmpeg::DecodeAudio(std::vector<char> *inputAudio)
     }
     
     //Output the audioAttributes found
-    //av_dump_format(audioAttributes, 0, 0, 0);
+    av_dump_format(audioAttributes, 0, 0, 0);
+    
+    //std::cout << "Codec: " << audioAttributes->streams[0]->codec << '\n';
+    //std::cout << "Sample Rate: " << audioAttributes->streams[0]->codec->sample_rate << '\n';
+    //std::cout << "Sample Format: " << audioAttributes->streams[0]->codec->sample_fmt << '\n';
+    //std::cout<< "Number of Frames: " << audioAttributes->streams[0]->codec_info_nb_frames << '\n';
+    //std::cout<< "Duration: " << audioAttributes->streams[0]->duration << '\n';
     
     
     printf("Audio decoding\n");
@@ -99,9 +107,9 @@ void AudioFFmpeg::DecodeAudio(std::vector<char> *inputAudio)
         exit(1);
     }
     
-    audioPacket.data = audioBuffer;
-    audioPacket.size = AUDIO_INBUF_SIZE;
-    memcpy(audioBuffer, &inputAudio->at(0), AUDIO_INBUF_SIZE);
+    audioPacket.data = (uint8_t *) &inputAudio->front();
+    audioPacket.size = inputAudio->size();
+    //memcpy(audioBuffer, &inputAudio->at(0), AUDIO_INBUF_SIZE);
     
     inputAudioVectorPosition = AUDIO_INBUF_SIZE;
 
@@ -146,7 +154,7 @@ void AudioFFmpeg::DecodeAudio(std::vector<char> *inputAudio)
         audioPacket.size -= length;
         audioPacket.data += length;
         
-        if(audioPacket.size < AUDIO_REFILL_THRESH)
+        /*if(audioPacket.size < AUDIO_REFILL_THRESH)
         {
             memmove(audioBuffer, audioPacket.data, audioPacket.size);
             audioPacket.data = audioBuffer;
@@ -176,7 +184,7 @@ void AudioFFmpeg::DecodeAudio(std::vector<char> *inputAudio)
             {
                 audioPacket.size += length;
             }
-        }
+        }*/
     }
     
     avcodec_close(codecContext);
@@ -201,8 +209,6 @@ void AudioFFmpeg::EncodeAudio()
     int ret, got_output;
     int buffer_size;
     FILE *f;
-    uint16_t *samples;
-    int vectorPosition = 0;
 
     
     printf("Audio encoding\n");
@@ -226,15 +232,16 @@ void AudioFFmpeg::EncodeAudio()
     if (!check_sample_fmt(codec, c->sample_fmt))
     {
         fprintf(stderr, "encoder does not support %s Resampling..\n", av_get_sample_fmt_name(c->sample_fmt));
-        c->sample_fmt = Resample(codec, c);
+        //c->sample_fmt = Resample(codec, c);
         exit(-1);
     }
     
     ///select other audio parameters supported by the encoder 
     #warning use audioSampleRate instead
     c->sample_rate = 22050;
-    c->channel_layout = select_channel_layout(codec);
-    c->channels       = av_get_channel_layout_nb_channels(c->channel_layout);
+    std::cout << "Channel Layout: "  << audioAttributes->streams[0]->codec->channel_layout << " Should be: " << AV_CH_LAYOUT_MONO << '\n';
+    c->channel_layout = AV_CH_LAYOUT_MONO;
+    c->channels       = av_get_channel_layout_nb_channels(audioAttributes->streams[0]->codec->channels);
     c->bits_per_raw_sample = 16;
     
     // open it 
@@ -262,15 +269,14 @@ void AudioFFmpeg::EncodeAudio()
     frame->channel_layout = c->channel_layout;
     
     //the codec gives us the frame size, in samples,
-     // we calculate the size of the samples buffer in bytes 
+     // we calculate the size of the samples buffer in bytes
     buffer_size = av_samples_get_buffer_size(NULL, c->channels, c->frame_size, c->sample_fmt, 0);
-    samples = reinterpret_cast<uint16_t *>(av_malloc(buffer_size));
+    /*samples = reinterpret_cast<uint8_t *>(av_malloc(buffer_size));
     if (!samples) {
         fprintf(stderr, "could not allocate %d bytes for samples buffer\n",
                 buffer_size);
         exit(1);
-    }
-
+    }*/
 
     
     //Get the data and encode
@@ -280,7 +286,7 @@ void AudioFFmpeg::EncodeAudio()
         pkt.data = NULL; // packet data will be allocated by the encoder
         pkt.size = 0;
 
-        ret = avcodec_fill_audio_frame(frame, c->channels, c->sample_fmt, (const uint8_t*)samples, buffer_size, 0);
+        ret = avcodec_fill_audio_frame(frame, c->channels, c->sample_fmt, (const uint8_t*) &audio->at(vectorPosition), audio->size(), 0);
 
         // encode the samples 
         ret = avcodec_encode_audio2(c, &pkt, frame, &got_output);
@@ -298,19 +304,19 @@ void AudioFFmpeg::EncodeAudio()
         //Refill the sample buffer
         if((audio->size() - vectorPosition) < buffer_size)
         {
-            memcpy(samples, &audio->at(vectorPosition), (audio->size() - vectorPosition));
+            //memcpy(samples, &audio->at(vectorPosition), (audio->size() - vectorPosition));
             vectorPosition += (audio->size() - vectorPosition);
         }
         else
         {
-            memcpy(samples, &audio->at(vectorPosition), buffer_size);
+            //memcpy(samples, &audio->at(vectorPosition), buffer_size);
             vectorPosition += buffer_size;
         }
     }
     
     fclose(f);
     
-    av_freep(&samples);
+    //av_freep(&samples);
     avcodec_free_frame(&frame);
     avcodec_close(c);
     av_free(c);
@@ -368,44 +374,6 @@ int AudioFFmpeg::check_sample_fmt(AVCodec *codec, enum AVSampleFormat sample_fmt
     return 0;
 }
 
-// just pick the highest supported samplerate 
-int AudioFFmpeg::select_sample_rate(AVCodec *codec)
-{
-    const int *p;
-    int best_samplerate = 0;
-    
-    if (!codec->supported_samplerates)
-        return 44100;
-    
-    p = codec->supported_samplerates;
-    while (*p) {
-        best_samplerate = FFMAX(*p, best_samplerate);
-        p++;
-    }
-    return best_samplerate;
-}
 
-//select layout with the highest channel count 
-int AudioFFmpeg::select_channel_layout(AVCodec *codec)
-{
-    const uint64_t *p;
-    uint64_t best_ch_layout = 0;
-    int best_nb_channells   = 0;
-    
-    if (!codec->channel_layouts)
-        return AV_CH_LAYOUT_STEREO;
-    
-    p = codec->channel_layouts;
-    while (*p) {
-        int nb_channels = av_get_channel_layout_nb_channels(*p);
-        
-        if (nb_channels > best_nb_channells) {
-            best_ch_layout    = *p;
-            best_nb_channells = nb_channels;
-        }
-        p++;
-    }
-    return best_ch_layout;
-}
 
 

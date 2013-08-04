@@ -3,6 +3,7 @@
 
 
 #include <iostream>
+#include <algorithm>
 #include <boost/filesystem/path.hpp>
 extern "C"
 {
