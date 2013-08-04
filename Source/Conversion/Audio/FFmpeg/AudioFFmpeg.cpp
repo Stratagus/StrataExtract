@@ -209,6 +209,7 @@ void AudioFFmpeg::EncodeAudio()
     int ret, got_output;
     int buffer_size;
     FILE *f;
+    unsigned int vectorPosition = audioAttributes->pb->buf_ptr - audioAttributes->pb->buffer ;
 
     
     printf("Audio encoding\n");
