@@ -209,8 +209,7 @@ void AudioFFmpeg::EncodeAudio()
     int ret, got_output;
     int buffer_size;
     FILE *f;
-    unsigned int vectorPosition = audioAttributes->pb->buf_ptr - audioAttributes->pb->buffer ;
-
+    int vectorPosition = audioAttributes->pb->buf_ptr - audioAttributes->pb->buffer ;
     
     printf("Audio encoding\n");
     
@@ -272,6 +271,7 @@ void AudioFFmpeg::EncodeAudio()
     //the codec gives us the frame size, in samples,
      // we calculate the size of the samples buffer in bytes
     buffer_size = av_samples_get_buffer_size(NULL, c->channels, c->frame_size, c->sample_fmt, 0);
+    
     /*samples = reinterpret_cast<uint8_t *>(av_malloc(buffer_size));
     if (!samples) {
         fprintf(stderr, "could not allocate %d bytes for samples buffer\n",
@@ -281,7 +281,7 @@ void AudioFFmpeg::EncodeAudio()
 
     
     //Get the data and encode
-    while (vectorPosition < audio->size())
+    while (vectorPosition < audio->size() - buffer_size)
     {
         av_init_packet(&pkt);
         pkt.data = NULL; // packet data will be allocated by the encoder
@@ -289,6 +289,7 @@ void AudioFFmpeg::EncodeAudio()
 
         ret = avcodec_fill_audio_frame(frame, c->channels, c->sample_fmt, (const uint8_t*) &audio->at(vectorPosition), audio->size(), 0);
 
+        buffer_size = av_samples_get_buffer_size(NULL, c->channels, c->frame_size, c->sample_fmt, 0);
         // encode the samples 
         ret = avcodec_encode_audio2(c, &pkt, frame, &got_output);
         if (ret < 0)
@@ -302,17 +303,7 @@ void AudioFFmpeg::EncodeAudio()
             av_free_packet(&pkt);
         }
         
-        //Refill the sample buffer
-        if((audio->size() - vectorPosition) < buffer_size)
-        {
-            //memcpy(samples, &audio->at(vectorPosition), (audio->size() - vectorPosition));
-            vectorPosition += (audio->size() - vectorPosition);
-        }
-        else
-        {
-            //memcpy(samples, &audio->at(vectorPosition), buffer_size);
-            vectorPosition += buffer_size;
-        }
+        vectorPosition += buffer_size;
     }
     
     fclose(f);
