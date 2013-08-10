@@ -549,9 +549,35 @@
 					<map name="Station Unrest" path="multimaps/(8)Station Unrest.scm" destination="Maps/8/" />
 					<map name="The Hunters" path="multimaps/(8)The Hunters.scm" destination="Maps/8/" />
 	 	</MapAssets>
-	 	<ImageAssets>
+	 	<ImageAssets convert="png">
 	 		<!-- Could be used for game startup splash -->
 	 		<image name="startupsplash" path="setupdat/images/install.pcx" destination="Images/UI/Startup/" />
+	 		<!-- Terran Campaign Interlude Images -->
+				<image name="1-MarSaraColony" path="glue/palta/terrana.pcx" destination="Campaign/Terran/Original/InterludeImages/"/>
+				<image name="2-AntigaPrimeColony" path="glue/paltb/terranb.pcx" destination="Campaign/Terran/Original/InterludeImages/"/>
+				<image name="3-ShipHyperion" path="glue/paltc/TerranC.pcx" destination="Campaign/Terran/Original/InterludeImages/"/>
+			<!-- Zerg Campaign Interlude Images -->
+				<image name="1-Tarsonis" path="glue/palza/zerga.pcx" destination="Campaign/Zerg/Original/InterludeImages/"/>
+				<image name="2-Char" path="glue/palzb/zergb.pcx" destination="Campaign/Zerg/Original/InterludeImages/"/>
+				<image name="3-InvadeAiur" path="glue/palzc/zergc.pcx" destination="Campaign/Zerg/Original/InterludeImages/"/>
+			<!-- Protoss Campaign Interlude Images -->
+				<image name="1-CitidelofExecutor" path="glue/palpa/protossa.pcx" destination="Campaign/Protoss/Original/InterludeImages/" />
+				<image name="2-OrbitoverChar" path="glue/palpa/protossb.pcx" destination="Campaign/Protoss/Original/InterludeImages/" />
+				<image name="3-OverAiur" path="glue/palpa/protossc.pcx" destination="Campaign/Protoss/Original/InterludeImages/" />
+			<!-- Common UI Images -->
+				<image name="CampaignSelectBackground" path="glue/palcs/backgnd.pcx" destination="Images/UserInterface/" />
+				<image name="SelectPixelForCursor" path="glue/palcs/arrhot.pcx" destination="Images/UserInterface/" />
+				<image name="CancelButtonPane" path="glue/palcs/pcancel.pcx" destination="Images/UserInterface/" />
+				<image name="CampaignSelectMissionPane" path="glue/palcs/pdpopup.pcx" destination="Images/UserInterface/" />
+				<image name="CreateNewProfilePane" path="glue/palcs/pepopup.pcx" destination="Images/UserInterface/" />
+				<image name="ProfileAlreadyExistPane" path="glue/palcs/popopup.pcx" destination="Images/UserInterface/" />
+				<image name="LoadGameInformationPane" path="glue/load/pinfo.pcx" destination="Images/UserInterface/" />
+				<image name="LoadGameFileSelectionPane" path="glue/load/plist.pcx" destination="Images/UserInterface/" />
+				<image name="CreateGameInformationPane" path="glue/create/plist.pcx" destination="Images/UserInterface/" />
+				<image name="CreateGameListMapPane" path="glue/create/plist.pcx" destination="Images/UserInterface/" />
+				<image name="CreateGameListMap2Pane" path="glue/create/plist2.pcx" destination="Images/UserInterface/" />
+				<image name="CreateGameOptionsPane" path="glue/create/poptions.pcx" destination="Images/UserInterface/" />
+				<image name="CreateGamePlayerSlotsPane" path="glue/create/pslots/pcx" destination="Images/UserInterface/"/ >
 	 	</ImageAssets>
 	 	<VideoAssets convert="ogv">
 	 		<video name="blizzardlogo" path="smk/blizzard.smk" destination="Video/Cutscenes/" />
