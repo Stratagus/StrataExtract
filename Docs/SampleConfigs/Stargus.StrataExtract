@@ -203,7 +203,6 @@
 	 					<audio name="ingame-kerrigan-yessir" path="campaign/terran/terran08/staredit/wav/t8m02uke.wav" destination="Campaign/Terran/Original/Mission7/Audio/" />
 	 					<audio name="ingame-kerrigan-psiemmiterinplace" path="campaign/terran/terran08/staredit/wav/t8m40uke.wav" destination="Campaign/Terran/Original/Mission7/Audio/" />
 	 					<audio name="ingame-mengsk-whateverittakes" path="campaign/terran/terran08/staredit/wav/t8m41ume.wav" destination="Campaign/Terran/Original/Mission7/Audio/" />
-
 	 				<!-- Terran Campaign Mission 8 (The Big Push)Dialog -->
 		 				<audio name="1-anjutant-greetings" path="campaign/terran/terran09/staredit/wav/t9b00tad.wav" destination="Campaign/Terran/Original/Mission8/Audio/" />
 		 				<audio name="2-mengsk-breakdefences" path="campaign/terran/terran09/staredit/wav/t9b01ume.wav" destination="Campaign/Terran/Original/Mission8/Audio/" />
@@ -257,22 +256,22 @@
 	 					<audio name="ingame-raynor-shouldnthavelether" path="campaign/terran/terran12/staredit/wav/tcm01ura.wav" destination="Campaign/Terran/Original/Mission10/Audio/" />
 	 			<!-- Zerg Campaign Dialogs -->
 	 				<!-- Zerg Campaign Mission 1 (Among the Ruins) Dialogs -->
-	 				<audio name="1-overmind-iamtheovermind" path="campaign/zerg/zerg01/staredit/wav/z1b00zad.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
-	 				<audio name="2-overmind-benefittheirwisdom" path="campaign/zerg/zerg01/staredit/wav/z1b01zad.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
-	 				<audio name="3-overmind-protectchrysalis" path="campaign/zerg/zerg01/staredit/wav/z1b02zad.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
-	 				<audio name="4-overmind-gonow" path="campaign/zerg/zerg01/staredit/wav/z1b03zad.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
-	 				<audio name="ingame-zasz-greetings" path="campaign/zerg/zerg01/staredit/wav/z1m00uza.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
-	 				<audio name="ingame-zasz-explain-hatchery" path="campaign/zerg/zerg01/staredit/wav/z0m01uda.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
-	 				<audio name="ingame-zasz-explain-gather" path="campaign/zerg/zerg01/staredit/wav/z0m02uda.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
-	 				<audio name="ingame-zasz-explain-overlords" path="campaign/zerg/zerg01/staredit/wav/z0m03uda.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
-	 				<audio name="ingame-zasz-explain-mutationoverlord" path="campaign/zerg/zerg01/staredit/wav/z0m04uda.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
-	 				<audio name="ingame-zasz-generatehive" path="campaign/zerg/zerg01/staredit/wav/z0m05uda.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
-	 				<audio name="ingame-zasz-explain-dronemutation" path="campaign/zerg/zerg01/staredit/wav/z0m06uda.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
-	 				<audio name="ingame-zasz-explain-spawningpool" path="campaign/zerg/zerg01/staredit/wav/z0m07uda.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
-	 				<audio name="ingame-zasz-explain-creep" path="campaign/zerg/zerg01/staredit/wav/z0m08uda.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
-	 				<audio name="ingame-zasz-explain-expandcreep" path="campaign/zerg/zerg01/staredit/wav/z0m09uda.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
-	 				<audio name="zergpowerdown" path="campaign/zerg/zerg01/staredit/wav/zpwrdown.wav" destination="Campaign/Zerg/Original/Common/Audio/" />
-	 				<audio name="zergpowerup" path="campaign/zerg/zerg01/staredit/wav/zpwrup.wav" destination="Campaign/Zerg/Original/Common/Audio/" />
+		 				<audio name="1-overmind-iamtheovermind" path="campaign/zerg/zerg01/staredit/wav/z1b00zad.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
+		 				<audio name="2-overmind-benefittheirwisdom" path="campaign/zerg/zerg01/staredit/wav/z1b01zad.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
+		 				<audio name="3-overmind-protectchrysalis" path="campaign/zerg/zerg01/staredit/wav/z1b02zad.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
+		 				<audio name="4-overmind-gonow" path="campaign/zerg/zerg01/staredit/wav/z1b03zad.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
+		 				<audio name="ingame-zasz-greetings" path="campaign/zerg/zerg01/staredit/wav/z1m00uza.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
+		 				<audio name="ingame-zasz-explain-hatchery" path="campaign/zerg/zerg01/staredit/wav/z0m01uda.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
+		 				<audio name="ingame-zasz-explain-gather" path="campaign/zerg/zerg01/staredit/wav/z0m02uda.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
+		 				<audio name="ingame-zasz-explain-overlords" path="campaign/zerg/zerg01/staredit/wav/z0m03uda.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
+		 				<audio name="ingame-zasz-explain-mutationoverlord" path="campaign/zerg/zerg01/staredit/wav/z0m04uda.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
+		 				<audio name="ingame-zasz-generatehive" path="campaign/zerg/zerg01/staredit/wav/z0m05uda.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
+		 				<audio name="ingame-zasz-explain-dronemutation" path="campaign/zerg/zerg01/staredit/wav/z0m06uda.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
+		 				<audio name="ingame-zasz-explain-spawningpool" path="campaign/zerg/zerg01/staredit/wav/z0m07uda.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
+		 				<audio name="ingame-zasz-explain-creep" path="campaign/zerg/zerg01/staredit/wav/z0m08uda.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
+		 				<audio name="ingame-zasz-explain-expandcreep" path="campaign/zerg/zerg01/staredit/wav/z0m09uda.wav" destination="Campaign/Zerg/Original/Mission1/Audio/" />
+		 				<audio name="zergpowerdown" path="campaign/zerg/zerg01/staredit/wav/zpwrdown.wav" destination="Campaign/Zerg/Original/Common/Audio/" />
+		 				<audio name="zergpowerup" path="campaign/zerg/zerg01/staredit/wav/zpwrup.wav" destination="Campaign/Zerg/Original/Common/Audio/" />
 	 				<!-- Zerg Campaign Mission 2 (Egression) Dialogs -->
 	 					<audio name="1-overmind-wellpleased" path="campaign/zerg/zerg02/staredit/wav/z2b00zad.wav" destination="Campaign/Zerg/Original/Mission2/Audio/" />
 	 					<audio name="2-overmind-exitworld" path="campaign/zerg/zerg02/staredit/wav/z2b01zad.wav" destination="Campaign/Zerg/Original/Mission2/Audio/" />
@@ -372,15 +371,133 @@
 	 					<audio name="ingame-daggoth-crystalharvested" path="campaign/zerg/zerg09/staredit/wav/.wav" destination="Campaign/Zerg/Original/Mission9/Audio/" />
 	 					<!-- Zerg Drone Error -->
 	 					<!-- Zerg Drone Mineral Harvest -->
-	 				<!-- Zerg Campaign Mission 10 (Full Circle) Dialogs-->
-	 					<audio name="1-overmind-welldone" path="campaign/zerg/zerg10/staredit/wav/zab00zad.wav" destination="Campaign/Zerg/Original/Mission10/Audio/" />
+	 				<!-- Zerg Campaign Mission 10 (Full Circle) Dialogs -->
+	 					<audio name="1-overmind-donewell" path="campaign/zerg/zerg10/staredit/wav/zab00zad.wav" destination="Campaign/Zerg/Original/Mission10/Audio/" />
 	 					<audio name="2-overmind-destroytemple" path="campaign/zerg/zerg10/staredit/wav/zab01zad.wav" destination="Campaign/Zerg/Original/Mission10/Audio/" />
 	 					<audio name="3-overmind-setcrystalinplace" path="campaign/zerg/zerg10/staredit/wav/zab02zad.wav" destination="Campaign/Zerg/Original/Mission10/Audio/" />
 	 					<audio name="ingame-daggoth-finaloffense" path="campaign/zerg/zerg10/staredit/wav/zam00uda.wav" destination="Campaign/Zerg/Original/Mission10/Audio/" />
 	 					<audio name="ingame-overmind-setinmotion" path="campaign/zerg/zerg10/staredit/wav/zam20zad.wav" destination="Campaign/Zerg/Original/Mission10/Audio/" />
 	 					<!-- Terran Comm Beep 1 -->
 	 			<!--Protoss Campaign Dialogs -->
-	 					
+	 				<!-- Protoss Campaign Mission 1 (First Strike) -->
+	 					<audio name="1-aldaris-iamaldaris" path="campaign/protoss/protoss01/staredit/wav/p1b00pad.wav" destination="Campaign/Protoss/Original/Mission1/Audio/"/>
+						<audio name="2-aldaris-tassadarfailure" path="campaign/protoss/protoss01/staredit/wav/p1b01pad.wav" destination="Campaign/Protoss/Original/Mission1/Audio/"/>
+						<audio name="3-aldaris-strengthendefenses" path="campaign/protoss/protoss01/staredit/wav/p1b02pad.wav" destination="Campaign/Protoss/Original/Mission1/Audio/"/>
+						<audio name="ingame-fenix-goodtoseeyou" path="campaign/protoss/protoss01/staredit/wav/p1m00ufe.wav" destination="Campaign/Protoss/Original/Mission1/Audio/"/>
+						<audio name="ingame-fenix-overcametagal" path="campaign/protoss/tutorial/staredit/wav/p1m20ufe.wav" destination="Campaign/Protoss/Original/Mission1/Audio/"/>
+						<audio name="ingame-fenix-worthyfoes" path="campaign/protoss/protoss01/staredit/wav/p1m40ufe.wav" destination="Campaign/Protoss/Original/Mission1/Audio/"/>
+						<audio name="ingame-fenix-probeslost" path="campaign/protoss/protoss01/staredit/wav/p1m60ufe.wav" destination="Campaign/Protoss/Original/Mission1/Audio/"/>
+	 					<audio name="ingame-fenix-nophotoncannons" path="campaign/protoss/protoss01/staredit/wav/p1m61ufe.wav" destination="Campaign/Protoss/Original/Mission1/Audio/"/>
+	 					<audio name="ingame-fenix-warpgatenopower" path="campaign/protoss/protoss01/staredit/wav/p1m62ufe.wav" destination="Campaign/Protoss/Original/Mission1/Audio/"/>
+	 				<!-- Protoss Campaign Mission 2 (Into the Flames) -->
+ 					    <!-- Terran Comm Beep 1 -->
+					    <audio name="1-aldaris-restoredfaith" path="campaign/protoss/protoss02/staredit/wav/p2b00pad.wav" destination="Campaign/Protoss/Original/Mission2/Audio"/>
+					    <audio name="2-tassadar-morefaithintemplar" path="campaign/protoss/protoss02/staredit/wav/p2b01uta.wav" destination="Campaign/Protoss/Original/Mission2/Audio"/>
+					    <audio name="3-aldaris-wherehaveyoubeen" path="campaign/protoss/protoss02/staredit/wav/p2b02pad.wav" destination="Campaign/Protoss/Original/Mission2/Audio"/>
+					    <audio name="4-tassadar-compelledtoremain" path="campaign/protoss/protoss02/staredit/wav/p2b03uta.wav" destination="Campaign/Protoss/Original/Mission2/Audio"/>
+					    <audio name="5-tassadar-encounterdarktemplar" path="campaign/protoss/protoss02/staredit/wav/p2b04uta.wav" destination="Campaign/Protoss/Original/Mission2/Audio"/>
+					    <audio name="6-aldaris-heresy" path="campaign/protoss/protoss02/staredit/wav/p2b06pad.wav" destination="Campaign/Protoss/Original/Mission2/Audio"/>
+					    <audio name="7-tassadar-learnedfromzeratul" path="campaign/protoss/protoss02/staredit/wav/p2b07uta.wav" destination="Campaign/Protoss/Original/Mission2/Audio"/>
+					    <audio name="8-tassadar-strikecerebrates" path="campaign/protoss/protoss02/staredit/wav/p2b08uta.wav" destination="Campaign/Protoss/Original/Mission2/Audio"/>
+					    <audio name="9-aldaris-taintoffallenones" path="campaign/protoss/protoss02/staredit/wav/p2b09pad.wav" destination="Campaign/Protoss/Original/Mission2/Audio"/>
+					    <audio name="10-tassadar-returntimeright" path="campaign/protoss/protoss02/staredit/wav/p2b10uta.wav" destination="Campaign/Protoss/Original/Mission2/Audio"/>
+					    <audio name="11-fenix-slaythecerebrate" path="campaign/protoss/protoss02/staredit/wav/p2b11ufe.wav" destination="Campaign/Protoss/Original/Mission2/Audio"/>
+					    <audio name="ingame-fenix-staybehind" path="campaign/protoss/protoss02/staredit/wav/p2m00ufe.wav" destination="Campaign/Protoss/Original/Mission2/Audio"/>
+					    <audio name="ingame-fenix-inposition" path="campaign/protoss/protoss02/staredit/wav/p2m01ufe.wav" destination="Campaign/Protoss/Original/Mission2/Audio"/>
+					<!-- Protoss Campaign Mission 3 (Higher Ground) -->
+					    <audio name="1-fenix-cerebratereincarnate" path="campaign/protoss/protoss03/staredit/wav/p3b00ufe.wav" destination="Campaign/Protoss/Original/Mission3/Audio"/>
+					    <audio name="2-aldaris-tassadarbetrayal" path="campaign/protoss/protoss03/staredit/wav/p3b01pad.wav" destination="Campaign/Protoss/Original/Mission3/Audio"/>
+					    <audio name="3-aldaris-destroyzergscion" path="campaign/protoss/protoss03/staredit/wav/p3b02pad.wav" destination="Campaign/Protoss/Original/Mission3/Audio"/>
+					    <audio name="4-fenix-swiftdeath" path="campaign/protoss/protoss03/staredit/wav/p3b03ufe.wav" destination="Campaign/Protoss/Original/Mission3/Audio"/>
+					    <audio name="ingame-fenix-antiochunderattack" path="campaign/protoss/protoss03/staredit/wav/p3m00ufe.wav" destination="Campaign/Protoss/Original/Mission3/Audio"/>
+					    <audio name="ingame-aldaris-holdposition" path="campaign/protoss/protoss03/staredit/wav/p3m01pad.wav" destination="Campaign/Protoss/Original/Mission3/Audio"/>
+					<!-- Protoss Campaign Mission 4 (The Hunt for Tassadar) -->
+					    <!-- Terran Comm Beep 0 -->
+						<audio name="1-aldaris-grievefenixdeath" path="campaign/protoss/protoss04/staredit/wav/p4b00pad.wav" destination="Campaign/Protoss/Original/Mission4/Audio"/>
+						<audio name="2-aldaris-tassadargreatestthreat" path="campaign/protoss/protoss04/staredit/wav/p4b01pad.wav" destination="Campaign/Protoss/Original/Mission4/Audio"/>
+						<audio name="3-aldaris-findfassadartojudge" path="campaign/protoss/protoss04/staredit/wav/p4b02pad.wav" destination="Campaign/Protoss/Original/Mission4/Audio"/>
+						<audio name="4-aldaris-zergknowarrival" path="campaign/protoss/protoss04/staredit/wav/p4b03pad.wav" destination="Campaign/Protoss/Original/Mission4/Audio"/>
+						<audio name="ingame-tassadar-abandonhoperescue" path="campaign/protoss/protoss04/staredit/wav/p4m00uta.wav" destination="Campaign/Protoss/Original/Mission4/Audio"/>
+						<audio name="ingame-aldaris-arresttassadar" path="campaign/protoss/protoss04/staredit/wav/p4m01pad.wav" destination="Campaign/Protoss/Original/Mission4/Audio"/>
+						<audio name="ingame-tassadar-traveltoarresttassadar" path="campaign/protoss/protoss04/staredit/wav/p4m02uta.wav" destination="Campaign/Protoss/Original/Mission4/Audio"/>
+						<audio name="ingame-raynor-happenedtomeonce" path="campaign/protoss/protoss04/staredit/wav/p4m03ura.wav" destination="Campaign/Protoss/Original/Mission4/Audio"/>
+						<audio name="ingame-aldaris-whoishuman" path="campaign/protoss/protoss04/staredit/wav/p4m04pad.wav" destination="Campaign/Protoss/Original/Mission4/Audio"/>
+						<audio name="ingame-raynor-wontbetalkeddown" path="campaign/protoss/protoss04/staredit/wav/p4m05ura.wav" destination="Campaign/Protoss/Original/Mission4/Audio"/>
+						<audio name="ingame-aldaris-taketassadarintocustody" path="campaign/protoss/protoss04/staredit/wav/p4m06pad.wav" destination="Campaign/Protoss/Original/Mission4/Audio"/>
+						<audio name="ingame-tassadar-helpfindzeratul" path="campaign/protoss/protoss04/staredit/wav/p4m07uta.wav" destination="Campaign/Protoss/Original/Mission4/Audio"/>
+						<audio name="ingame-aldaris-unthinkablesidedarkones" path="campaign/protoss/protoss04/staredit/wav/p4m09pad.wav" destination="Campaign/Protoss/Original/Mission4/Audio"/>
+						<audio name="ingame-tassadar-muchtoexplaintoyoufindzeratul" path="campaign/protoss/protoss04/staredit/wav/p4m10uta.wav" destination="Campaign/Protoss/Original/Mission4/Audio"/>
+						<audio name="ingame-hightemplar-beensurrounded" path="campaign/protoss/protoss04/staredit/wav/p4m11ute.wav" destination="Campaign/Protoss/Original/Mission4/Audio"/>
+						<audio name="ingame-tassadar-thanksfindzeratul" path="campaign/protoss/protoss04/staredit/wav/p4m20uta.wav" destination="Campaign/Protoss/Original/Mission4/Audio"/>
+					<!-- Protoss Campaign Mission 5 (Choosing Sides) -->
+						<audio name="1-aldaris-defyconclave" path="campaign/protoss/protoss05/staredit/wav/p5b00pad.wav" destination="Campaign/Protoss/Original/Mission5/Audio"/>
+						<audio name="2-tassadar-timeactonownaccord" path="campaign/protoss/protoss05/staredit/wav/p5b01uta.wav" destination="Campaign/Protoss/Original/Mission5/Audio"/>
+						<audio name="3-aldaris-tassadarfallensofar" path="campaign/protoss/protoss05/staredit/wav/p5b02pad.wav" destination="Campaign/Protoss/Original/Mission5/Audio"/>
+						<audio name="4-tassadar-priceforsalvation" path="campaign/protoss/protoss05/staredit/wav/p5b03uta.wav" destination="Campaign/Protoss/Original/Mission5/Audio"/>
+						<audio name="5-tassadar-darktemplarenergies" path="campaign/protoss/protoss05/staredit/wav/p5b04uta.wav" destination="Campaign/Protoss/Original/Mission5/Audio"/>
+						<audio name="6-aldaris-adviceuseless" path="campaign/protoss/protoss05/staredit/wav/p5b05pad.wav" destination="Campaign/Protoss/Original/Mission5/Audio"/>
+						<audio name="7-tassadar-energiesuselessagainstcerebate" path="campaign/protoss/protoss05/staredit/wav/p5b06uta.wav" destination="Campaign/Protoss/Original/Mission5/Audio"/>
+						<audio name="8-tassadar-onlydarktemplartrulyharmzerg" path="campaign/protoss/protoss05/staredit/wav/p5b07uta.wav" destination="Campaign/Protoss/Original/Mission5/Audio"/>
+						<audio name="9-aldaris-conclavenotpleased" path="campaign/protoss/protoss05/staredit/wav/p5b08pad.wav" destination="Campaign/Protoss/Original/Mission5/Audio"/>
+						<audio name="ingame-duke-violationairspace" path="campaign/protoss/protoss05/staredit/wav/p5m00udu.wav" destination="Campaign/Protoss/Original/Mission5/Audio"/>
+						<audio name="ingame-tassadar-burnpatheticfleet" path="campaign/protoss/protoss05/staredit/wav/p5m03uta.wav" destination="Campaign/Protoss/Original/Mission5/Audio"/>
+						<audio name="ingame-duke-hostileresponse" path="campaign/protoss/protoss05/staredit/wav/p5m04udu.wav" destination="Campaign/Protoss/Original/Mission5/Audio"/>
+					<!-- Protoss Campaign Mission 6 (Into the Darkness) -->
+					  	<audio name="1-tassadar-sensezeratulnearby" path="campaign/protoss/protoss06/staredit/wav/p6b00uta.wav" destination="Campaign/Protoss/Original/Mission6/Audio"/>
+					  	<audio name="2-raynor-kerriganleadingzerg" path="campaign/protoss/protoss06/staredit/wav/p6b01ura.wav" destination="Campaign/Protoss/Original/Mission6/Audio"/>
+					  	<audio name="3-tassadar-willnothesitate" path="campaign/protoss/protoss06/staredit/wav/p6b02uta.wav" destination="Campaign/Protoss/Original/Mission6/Audio"/>
+					    <audio name="ingame-adjutant-teleportactivated" path="campaign/protoss/protoss06/staredit/wav/p6m00tad.wav" destination="Campaign/Protoss/Original/Mission6/Audio"/>
+					  	<audio name="ingame-tassadar-cometobringhome" path="campaign/protoss/protoss06/staredit/wav/p6m00uta.wav" destination="Campaign/Protoss/Original/Mission6/Audio"/>
+					  	<audio name="ingame-zeratul-learnedtovalueourways" path="campaign/protoss/protoss06/staredit/wav/p6m01uze.wav" destination="Campaign/Protoss/Original/Mission6/Audio"/>
+					  	<audio name="ingame-tassadar-helpsavepeople" path="campaign/protoss/protoss06/staredit/wav/p6m03uta.wav" destination="Campaign/Protoss/Original/Mission6/Audio"/>
+					  	<audio name="ingame-zeratul-willreturn" path="campaign/protoss/protoss06/staredit/wav/p6m04uze.wav" destination="Campaign/Protoss/Original/Mission6/Audio"/>
+					  	<audio name="ingame-marine-mindtotagalong" path="campaign/protoss/protoss06/staredit/wav/p6m20uma.wav" destination="Campaign/Protoss/Original/Mission6/Audio"/>
+					  	<audio name="ingame-marine-whatwasthat" path="campaign/protoss/protoss06/staredit/wav/p6m30uma.wav" destination="Campaign/Protoss/Original/Mission6/Audio"/>
+					  	<audio name="ingame-marine-didyouhearthat" path="campaign/protoss/protoss06/staredit/wav/p6m40uma.wav" destination="Campaign/Protoss/Original/Mission6/Audio"/>
+					<!-- Protoss Campaign Mission 7 (Homeland) -->
+						<audio name="1-fenix-zergredoubledefforts" path="campaign/protoss/protoss07/staredit/wav/p7b00ufd.wav" destination="Campaign/Protoss/Original/Mission7/Audio/"/>
+						<audio name="2-tassadar-fenixhowisityoulive" path="campaign/protoss/protoss07/staredit/wav/p7b01uta.wav" destination="Campaign/Protoss/Original/Mission7/Audio/"/>
+						<audio name="3-fenix-recoveredbody" path="campaign/protoss/protoss07/staredit/wav/p7b02ufd.wav" destination="Campaign/Protoss/Original/Mission7/Audio/"/>
+						<audio name="4-tassadar-nevercametopass" path="campaign/protoss/protoss07/staredit/wav/p7b03uta.wav" destination="Campaign/Protoss/Original/Mission7/Audio/"/>
+						<audio name="5-fenix-nonsensespiritunconquered" path="campaign/protoss/protoss07/staredit/wav/p7b04ufd.wav" destination="Campaign/Protoss/Original/Mission7/Audio/"/>
+						<audio name="6-fenix-brandedastraitors" path="campaign/protoss/protoss07/staredit/wav/p7b05ufd.wav" destination="Campaign/Protoss/Original/Mission7/Audio/"/>
+						<audio name="7-tassadar-clingtofailingtraditions" path="campaign/protoss/protoss07/staredit/wav/p7b06uta.wav" destination="Campaign/Protoss/Original/Mission7/Audio/"/>
+						<audio name="8-fenix-allthemoredangerous" path="campaign/protoss/protoss07/staredit/wav/p7b07ufd.wav" destination="Campaign/Protoss/Original/Mission7/Audio/"/>
+						<audio name="9-tassadar-protectthedarktemplar" path="campaign/protoss/protoss07/staredit/wav/p7b08uta.wav" destination="Campaign/Protoss/Original/Mission7/Audio/"/>
+						<audio name="ingame-aldaris-surrenderselvestoconclave" path="campaign/protoss/protoss07/staredit/wav/p7m00pad.wav" destination="Campaign/Protoss/Original/Mission7/Audio/"/>
+						<audio name="ingame-tassadar-fleetomasters" path="campaign/protoss/protoss07/staredit/wav/p7m01uta.wav" destination="Campaign/Protoss/Original/Mission7/Audio/"/>
+						<audio name="ingame-tassadar-madnessmuststop" path="campaign/protoss/protoss07/staredit/wav/p7m20uta.wav" destination="Campaign/Protoss/Original/Mission7/Audio/"/>
+						<audio name="ingame-aldaris-whatsayyou" path="campaign/protoss/protoss07/staredit/wav/p7m21pad.wav" destination="Campaign/Protoss/Original/Mission7/Audio/"/>
+						<audio name="ingame-tassadar-submitmyself" path="campaign/protoss/protoss07/staredit/wav/p7m23uta.wav" destination="Campaign/Protoss/Original/Mission7/Audio/"/>
+					<!-- Protoss Campaign Mission 8 (The Trial of Tassadar) -->
+					    <audio name="1-fenix-mustfightonfindtassadar" path="campaign/protoss/protoss08/staredit/wav/p8b00ufd.wav" destination="Campaign/Protoss/Original/Mission8/Audio"/>
+					    <audio name="2-fenix-wondermistakentrustdarktemplar" path="campaign/protoss/protoss08/staredit/wav/p8b01ufd.wav" destination="Campaign/Protoss/Original/Mission8/Audio"/>
+					    <audio name="3-raynor-liketohelp" path="campaign/protoss/protoss08/staredit/wav/p8b02ura.wav" destination="Campaign/Protoss/Original/Mission8/Audio"/>
+					    <audio name="4-fenix-youshallboldhuman" path="campaign/protoss/protoss08/staredit/wav/p8b03ufd.wav" destination="Campaign/Protoss/Original/Mission8/Audio"/>
+					    <audio name="ingame-fenix-foundtassadarcell" path="campaign/protoss/protoss08/staredit/wav/p8m00ufd.wav" destination="Campaign/Protoss/Original/Mission8/Audio"/>
+					    <audio name="ingame-aldaris-expectedtoretrievehero" path="campaign/protoss/protoss08/staredit/wav/p8m01pad.wav" destination="Campaign/Protoss/Original/Mission8/Audio"/>
+					    <audio name="ingame-zeratul-calloffguards" path="campaign/protoss/protoss08/staredit/wav/p8m02uze.wav" destination="Campaign/Protoss/Original/Mission8/Audio"/>
+					    <audio name="ingame-aldaris-notbeaddressedbydarktemplar" path="campaign/protoss/protoss08/staredit/wav/p8m03pad.wav" destination="Campaign/Protoss/Original/Mission8/Audio"/>
+					    <audio name="ingame-zeratul-blindedbyreligion" path="campaign/protoss/protoss08/staredit/wav/p8m04uze.wav" destination="Campaign/Protoss/Original/Mission8/Audio"/>
+					    <audio name="ingame-aldaris-whatcouldyouknow" path="campaign/protoss/protoss08/staredit/wav/p8m05pad.wav" destination="Campaign/Protoss/Original/Mission8/Audio"/>
+					    <audio name="ingame-zeratul-youspeakofknowledge" path="campaign/protoss/protoss08/staredit/wav/p8m06uze.wav" destination="Campaign/Protoss/Original/Mission8/Audio"/>
+					    <audio name="ingame-aldaris-weshallsee" path="campaign/protoss/protoss08/staredit/wav/p8m08pad.wav" destination="Campaign/Protoss/Original/Mission8/Audio"/>
+					<!-- Protoss Campaign Mission 9 (Shadow Hunters) -->
+						<audio name="1-tassadar-securedrelease" path="campaign/protoss/protoss09/staredit/wav/p9b00uta.wav" destination="Campaign/Protoss/Original/Mission9/Audio"/>
+						<audio name="2-zeratul-touchedmindswithovermind" path="campaign/protoss/protoss09/staredit/wav/p9b01uze.wav" destination="Campaign/Protoss/Original/Mission9/Audio"/>
+						<audio name="3-zeratul-zergcreatesamebeings" path="campaign/protoss/protoss09/staredit/wav/p9b02uze.wav" destination="Campaign/Protoss/Original/Mission9/Audio"/>
+						<audio name="4-tassadar-fighttosaveallcreation" path="campaign/protoss/protoss09/staredit/wav/p9b03uta.wav" destination="Campaign/Protoss/Original/Mission9/Audio"/>
+						<audio name="5-fenix-engageprimaryhiveclusters" path="campaign/protoss/protoss09/staredit/wav/p9b04ufd.wav" destination="Campaign/Protoss/Original/Mission9/Audio"/>
+					<!-- Protoss Campaign Mission 10 (Eye of the Storm) -->
+						<audio name="1-fenix-planworkedperfectly" path="campaign/protoss/protoss10/staredit/wav/pab00ufd.wav" destination="Campaign/Protoss/Original/Mission10/Audio"/>
+						<audio name="2-tassadar-finalhournotallsurvive" path="campaign/protoss/protoss10/staredit/wav/pab01uta.wav" destination="Campaign/Protoss/Original/Mission10/Audio"/>
+						<audio name="3-tassadar-endoflongjourney" path="campaign/protoss/protoss10/staredit/wav/pab02uta.wav" destination="Campaign/Protoss/Original/Mission10/Audio"/>
+						<audio name="4-zeratul-asdoi" path="campaign/protoss/protoss10/staredit/wav/pab03uze.wav" destination="Campaign/Protoss/Original/Mission10/Audio"/>
+						<audio name="5-raynor-seethisthrough" path="campaign/protoss/protoss10/staredit/wav/pab05ura.wav" destination="Campaign/Protoss/Original/Mission10/Audio"/>
+						<audio name="6-tassadar-letactionsspeakforus" path="campaign/protoss/protoss10/staredit/wav/pab06uta.wav" destination="Campaign/Protoss/Original/Mission10/Audio"/>
+						<audio name="ingame-tassadar-rememberus" path="campaign/protoss/protoss10/staredit/wav/pam00uta.wav" destination="Campaign/Protoss/Original/Mission10/Audio"/>
+						<audio name="ingame-aldaris-conclaveinerror" path="campaign/protoss/protoss10/staredit/wav/p9m00pad.wav" destination="Campaign/Protoss/Original/Mission10/Audio"/>
+						<audio name="ingame-raynor-" path="campaign/protoss/protoss10/staredit/wav/p9m02ura.wav" destination="Campaign/Protoss/Original/Mission10/Audio"/>
  		</AudioAssets>
  	 	<!-- Extract & Convert to Stratagus Map Format -->
 	 	<MapAssets>
