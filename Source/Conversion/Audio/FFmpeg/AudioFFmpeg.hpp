@@ -41,7 +41,7 @@ class AudioFFmpeg
     AVFormatContext *audioAttributes;
     
     bool audioEncoded;
-    std::vector<char> *audio;
+    std::vector<uint8_t> *audio;
     
     private:
 };

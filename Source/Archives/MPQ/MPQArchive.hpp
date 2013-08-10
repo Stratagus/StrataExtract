@@ -1,8 +1,6 @@
 #ifndef MPQArchive_Header
 #define MPQArchive_Header
 
-#define MPQArchiveType
-
 #include <boost/filesystem.hpp>
 #include <StormLib.h>
 
