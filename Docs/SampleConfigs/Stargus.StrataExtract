@@ -565,19 +565,19 @@
 				<image name="2-OrbitoverChar" path="glue/palpa/protossb.pcx" destination="Campaign/Protoss/Original/InterludeImages/" />
 				<image name="3-OverAiur" path="glue/palpa/protossc.pcx" destination="Campaign/Protoss/Original/InterludeImages/" />
 			<!-- Common UI Images -->
-				<image name="CampaignSelectBackground" path="glue/palcs/backgnd.pcx" destination="Images/UserInterface/" />
+				<image name="CampaignSelectBackground" path="glue/palcs/backgnd.pcx" destination="Images/UserInterface/Campaign/" />
 				<image name="SelectPixelForCursor" path="glue/palcs/arrhot.pcx" destination="Images/UserInterface/" />
-				<image name="CancelButtonPane" path="glue/palcs/pcancel.pcx" destination="Images/UserInterface/" />
-				<image name="CampaignSelectMissionPane" path="glue/palcs/pdpopup.pcx" destination="Images/UserInterface/" />
-				<image name="CreateNewProfilePane" path="glue/palcs/pepopup.pcx" destination="Images/UserInterface/" />
-				<image name="ProfileAlreadyExistPane" path="glue/palcs/popopup.pcx" destination="Images/UserInterface/" />
-				<image name="LoadGameInformationPane" path="glue/load/pinfo.pcx" destination="Images/UserInterface/" />
-				<image name="LoadGameFileSelectionPane" path="glue/load/plist.pcx" destination="Images/UserInterface/" />
-				<image name="CreateGameInformationPane" path="glue/create/plist.pcx" destination="Images/UserInterface/" />
-				<image name="CreateGameListMapPane" path="glue/create/plist.pcx" destination="Images/UserInterface/" />
-				<image name="CreateGameListMap2Pane" path="glue/create/plist2.pcx" destination="Images/UserInterface/" />
-				<image name="CreateGameOptionsPane" path="glue/create/poptions.pcx" destination="Images/UserInterface/" />
-				<image name="CreateGamePlayerSlotsPane" path="glue/create/pslots/pcx" destination="Images/UserInterface/"/ >
+				<image name="CancelButtonPane" path="glue/palcs/pcancel.pcx" destination="Images/UserInterface/Campaign/" />
+				<image name="CampaignSelectMissionPane" path="glue/palcs/pdpopup.pcx" destination="Images/UserInterface/Campaign/" />
+				<image name="CreateNewProfilePane" path="glue/palcs/pepopup.pcx" destination="Images/UserInterface/Profile/" />
+				<image name="ProfileAlreadyExistPane" path="glue/palcs/popopup.pcx" destination="Images/UserInterface/Profile/" />
+				<image name="LoadGameInformationPane" path="glue/load/pinfo.pcx" destination="Images/UserInterface/LoadGame/" />
+				<image name="LoadGameFileSelectionPane" path="glue/load/plist.pcx" destination="Images/UserInterface/LoadGame/" />
+				<image name="CreateGameInformationPane" path="glue/create/plist.pcx" destination="Images/UserInterface/CreateGame/" />
+				<image name="CreateGameListMapPane" path="glue/create/plist.pcx" destination="Images/UserInterface/CreateGame/" />
+				<image name="CreateGameListMap2Pane" path="glue/create/plist2.pcx" destination="Images/UserInterface/CreateGame/" />
+				<image name="CreateGameOptionsPane" path="glue/create/poptions.pcx" destination="Images/UserInterface/CreateGame/" />
+				<image name="CreateGamePlayerSlotsPane" path="glue/create/pslots/pcx" destination="Images/UserInterface/CreateGame/" />
 	 	</ImageAssets>
 	 	<VideoAssets convert="ogv">
 	 		<video name="blizzardlogo" path="smk/blizzard.smk" destination="Video/Cutscenes/" />
