@@ -18,7 +18,10 @@ void MPQArchive::CreateArchive(boost::filesystem::path newArchivePath, int maxNu
 {
     if(!SFileCreateArchive(newArchivePath.string().c_str(), MPQArchiveVersion, 1000, &mpqArchive))
     {
-        throw "Failed to create archive";
+        MPQArchiveFailedToCreateArchive failedToCreate;
+        failedToCreate.SetErrorMessage("Failed to create archive");
+        failedToCreate.errorPath = &newArchivePath;
+        throw failedToCreate;
     }
 }
 
@@ -30,7 +33,10 @@ void MPQArchive::OpenArchive(boost::filesystem::path archivePath)
     }
     if(!SFileOpenArchive(archivePath.string().c_str(), 0, 0, &mpqArchive))
     {
-        throw "Failed to open the file";
+        MPQArchiveFailedToOpenArchive failedToOpen;
+        failedToOpen.SetErrorMessage("Failed to open the file");
+        failedToOpen.errorPath = &archivePath;
+        throw failedToOpen;
     }
     
 }
