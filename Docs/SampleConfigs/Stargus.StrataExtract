@@ -707,9 +707,9 @@
 				<audio name="evolution chamber selected" path="sound/zerg/bldg/zevwht00.wav" destination="Audio/SoundEffects/Zerg/Buildings/" />
 				<audio name="creep colony selected" path="sound/zerg/bldg/zfcwht00.wav" destination="Audio/SoundEffects/Zerg/Buildings/" />
 				<audio name="hatchery selected" path="sound/zerg/bldg/zhawht00.wav" destination="Audio/SoundEffects/Zerg/Buildings/" />
-				<audio name="lair selected" path="sound/zerg/bldg/zhiwht00.wav" destination="Audio/SoundEffects/Zerg/Buildings/" />
+				<audio name="lair selected" path="sound/zerg/bldg/zlrwht00.wav" destination="Audio/SoundEffects/Zerg/Buildings/" />
 				<audio name="extractor selected" path="sound/zerg/bldg/zigwht00.wav" destination="Audio/SoundEffects/Zerg/Buildings/" />
-				<audio name="hive selected" path="sound/zerg/bldg/zlrwht00.wav" destination="Audio/SoundEffects/Zerg/Buildings/" />
+				<audio name="hive selected" path="sound/zerg/bldg/zhiwht00.wav" destination="Audio/SoundEffects/Zerg/Buildings/" />
 				<audio name="sunken colony selected" path="sound/zerg/bldg/zluwht00.wav" destination="Audio/SoundEffects/Zerg/Buildings/" />
 				<audio name="greater spire selected" path="sound/zerg/bldg/zmcwht00.wav" destination="Audio/SoundEffects/Zerg/Buildings/" />
 				<audio name="defiler mound selected" path="sound/zerg/bldg/zmhwht00.wav" destination="Audio/SoundEffects/Zerg/Buildings/" />
