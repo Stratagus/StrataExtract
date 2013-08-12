@@ -109,6 +109,8 @@ set(StrataExtractArchives-Source
     ${ARCHIVES_DIR}/StrataArchiveException.cpp
     ${ARCHIVES_DIR}/MPQ/MPQArchive.hpp
     ${ARCHIVES_DIR}/MPQ/MPQArchive.cpp
+    ${ARCHIVES_DIR}/MPQ/MPQArchiveException.hpp
+    ${ARCHIVES_DIR}/MPQ/MPQArchiveException.cpp
     ${ARCHIVES_DIR}/GZIP/GZIPArchive.hpp
     ${ARCHIVES_DIR}/GZIP/GZIPArchive.cpp
    )
