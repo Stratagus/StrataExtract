@@ -18,7 +18,7 @@ void MPQArchive::CreateArchive(boost::filesystem::path newArchivePath, int maxNu
 {
     if(!SFileCreateArchive(newArchivePath.string().c_str(), MPQArchiveVersion, 1000, &mpqArchive))
     {
-        MPQArchiveFailedToCreateArchive failedToCreate;
+        MPQArchiveFailedToCreateException failedToCreate;
         failedToCreate.SetErrorMessage("Failed to create archive");
         failedToCreate.errorPath = &newArchivePath;
         throw failedToCreate;
@@ -29,11 +29,14 @@ void MPQArchive::OpenArchive(boost::filesystem::path archivePath)
 {
     if(mpqArchive)
     {
-        throw "Archive already open";
+        MPQArchiveAlreadyOpenException alreadyOpen;
+        alreadyOpen.SetErrorMessage("Archive already open");
+        alreadyOpen.errorPath = &archivePath;
+        throw alreadyOpen;
     }
     if(!SFileOpenArchive(archivePath.string().c_str(), 0, 0, &mpqArchive))
     {
-        MPQArchiveFailedToOpenArchive failedToOpen;
+        MPQArchiveFailedToOpenException failedToOpen;
         failedToOpen.SetErrorMessage("Failed to open the file");
         failedToOpen.errorPath = &archivePath;
         throw failedToOpen;
@@ -45,11 +48,17 @@ void MPQArchive::OpenArchive(boost::filesystem::path archivePath, boost::filesys
 {
     if(mpqArchive)
     {
-        throw "Archive already open";
+        MPQArchiveAlreadyOpenException alreadyOpen;
+        alreadyOpen.SetErrorMessage("Archive already open");
+        alreadyOpen.errorPath = &archivePath;
+        throw alreadyOpen;
     }
     if(!SFileOpenArchive(archivePath.string().c_str(), MPQ_OPEN_NO_LISTFILE, 0, &mpqArchive))
     {
-        throw "Failed to open the file";
+        MPQArchiveFailedToOpenException failedToOpen;
+        failedToOpen.SetErrorMessage("Failed to open the file");
+        failedToOpen.errorPath = &archivePath;
+        throw failedToOpen;
     }
     
 }
@@ -58,7 +67,9 @@ void MPQArchive::ApplyListFile(boost::filesystem::path listFilePath)
 {
     if(!mpqArchive)
     {
-        throw "Archive not opened";
+        MPQArchiveNotOpenException notOpen;
+        notOpen.SetErrorMessage("Archive not opened");
+        throw notOpen;
     }
     else
     {
@@ -70,7 +81,10 @@ std::vector<char> *MPQArchive::ReadFile(boost::filesystem::path archiveFilePath)
 {
     if(!mpqArchive)
     {
-        throw "Archive not opened";
+        MPQArchiveNotOpenException notOpen;
+        notOpen.SetErrorMessage("Archive not opened");
+        notOpen.errorPath = &archiveFilePath;
+        throw notOpen;
 
     }
     else
@@ -80,16 +94,23 @@ std::vector<char> *MPQArchive::ReadFile(boost::filesystem::path archiveFilePath)
         HANDLE fileHandle;
         if(!SFileOpenFileEx(mpqArchive, archiveFilePath.string().c_str(), SFILE_OPEN_FROM_MPQ, &fileHandle))
         {
-            throw "failed to open file in mpqArchive";
+            MPQArchiveFailedToOpenFileException unableToOpen;
+            unableToOpen.SetErrorMessage("failed to open file in mpqArchive");
+            throw unableToOpen;
+            
         }
         fileBuffer->resize(SFileGetFileSize(fileHandle, NULL));
         if (!SFileReadFile(fileHandle, &fileBuffer->at(0), SFileGetFileSize(fileHandle, NULL), NULL, NULL))
         {
-            throw "failed to read file to memory";
+            MPQARchiveFailedToReadFileException unableToRead;
+            unableToRead.SetErrorMessage("failed to read file to memory");
+            throw unableToRead;
         }
         if(!SFileCloseFile(fileHandle))
         {
-            throw "failed to close file";
+            MPQArchiveFailedToCloseException failedToClose;
+            failedToClose.SetErrorMessage("failed to close file");
+            throw failedToClose;
         }
         return fileBuffer;
 

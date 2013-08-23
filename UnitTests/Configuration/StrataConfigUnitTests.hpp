@@ -9,9 +9,9 @@
 //Set the value to a  valid game media directory
 //If Apple OSX
 #ifdef __APPLE__
-    #define GAMESDIRECTORY "/Users/brad/Games"
-    #define GAMESEXPANSIONDIRECTORY "/Users/brad/Games/SCExpansion"
-    #define GAMEDESTINATIONDIRECTORY "/Users/brad/Desktop/Stargus"
+    #define GAMESDIRECTORY "/Users/ben/Games"
+    #define GAMESEXPANSIONDIRECTORY "/Users/ben/Games/SCExpansion"
+    #define GAMEDESTINATIONDIRECTORY "/Users/ben/Desktop/Stargus"
     #define GAMECONFIGFILEPATH "../../Docs/SampleConfigs/Stargus.StrataExtract"
     //Set to the UnitTestMedia Junkfile path
     #define BADGAMECONFIGFILEPATH "../../Docs/UnitTestMedia/junkfile"
