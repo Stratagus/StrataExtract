@@ -1,0 +1,47 @@
+<StrataExtractConfig>
+ 	<title>War1gus</title>
+ 	<Versions>
+ 	</Versions>
+
+ <Archive name="MainData" type="WAR">
+	<TextAssets>
+		<!-- Orc Mission Briefings -->
+		<text name="Briefing" destination="Campaign/Orc/Mission1/" archiveIndex=432 />
+		<text name="Briefing" destination="Campaign/Orc/Mission2/" archiveIndex=433 />
+		<text name="Briefing" destination="Campaign/Orc/Mission3/" archiveIndex=434 />
+		<text name="Briefing" destination="Campaign/Orc/Mission4/" archiveIndex=435 />
+		<text name="Briefing" destination="Campaign/Orc/Mission5/" archiveIndex=436 />
+		<text name="Briefing" destination="Campaign/Orc/Mission6/" archiveIndex=437 />
+		<text name="Briefing" destination="Campaign/Orc/Mission7/" archiveIndex=438 />
+		<text name="Briefing" destination="Campaign/Orc/Mission8/" archiveIndex=439 />
+		<text name="Briefing" destination="Campaign/Orc/Mission9/" archiveIndex=440 />
+		<text name="Briefing" destination="Campaign/Orc/Mission10/" archiveIndex=441 />
+		<text name="Briefing" destination="Campaign/Orc/Mission11/" archiveIndex=442 />
+		<text name="Briefing" destination="Campaign/Orc/Mission12/" archiveIndex=443 />
+		
+		<!-- Human Mission Briefings -->
+		<text name="Briefing" destination="Campaign/Human/Mission1/" archiveIndex=444 />
+		<text name="Briefing" destination="Campaign/Human/Mission2/" archiveIndex=445 />
+		<text name="Briefing" destination="Campaign/Human/Mission3/" archiveIndex=446 />
+		<text name="Briefing" destination="Campaign/Human/Mission4/" archiveIndex=447 />
+		<text name="Briefing" destination="Campaign/Human/Mission5/" archiveIndex=448 />
+		<text name="Briefing" destination="Campaign/Human/Mission6/" archiveIndex=449 />
+		<text name="Briefing" destination="Campaign/Human/Mission7/" archiveIndex=450 />
+		<text name="Briefing" destination="Campaign/Human/Mission8/" archiveIndex=451 />
+		<text name="Briefing" destination="Campaign/Human/Mission9/" archiveIndex=452 />
+		<text name="Briefing" destination="Campaign/Human/Mission10/" archiveIndex=453 />
+		<text name="Briefing" destination="Campaign/Human/Mission11/" archiveIndex=454 />
+		<text name="Briefing" destination="Campaign/Human/Mission12/" archiveIndex=455 />
+		
+		<!-- Endings -->
+		<text name="OrcEnding1" destination="Campaign/Endings/" archiveIndex=462 />
+		<text name="OrcEnding2" destination="Campaign/Endings/" archiveIndex=464 />
+		<text name="HumanEnding1" destination="Campaign/Endings/" archiveIndex=461 />
+		<text name="HumanEnding2" destination="Campaign/Endings/" archiveIndex=463 />
+		<text name="Credits" destination="Campaign/" archiveIndex=465 />
+
+		<!-- Mission End Dialogs -->
+
+	</TextAssets>
+ </Archive>
+</StrataExtractConfig>
