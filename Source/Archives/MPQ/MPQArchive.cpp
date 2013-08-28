@@ -29,7 +29,9 @@ void MPQArchive::OpenArchive(boost::filesystem::path archivePath)
 {
     if(mpqArchive)
     {
-        throw "Archive already open";
+        MPQArchiveFailedToOpenArchive failedOpenArchive;
+        failedOpenArchive.SetErrorMessage("Archive already open");
+        throw failedOpenArchive;
     }
     if(!SFileOpenArchive(archivePath.string().c_str(), 0, 0, &mpqArchive))
     {
@@ -45,11 +47,17 @@ void MPQArchive::OpenArchive(boost::filesystem::path archivePath, boost::filesys
 {
     if(mpqArchive)
     {
-        throw "Archive already open";
+        MPQArchiveFailedAlreadyOpen alreadyOpen;
+        alreadyOpen.SetErrorMessage("Archive already open");
+        alreadyOpen.errorPath = &archivePath;
+        throw alreadyOpen;
     }
     if(!SFileOpenArchive(archivePath.string().c_str(), MPQ_OPEN_NO_LISTFILE, 0, &mpqArchive))
     {
-        throw "Failed to open the file";
+        MPQArchiveFailedToOpenArchive failedArchiveOpen;
+        failedArchiveOpen.SetErrorMessage("Failed to open the specified archive");
+        failedArchiveOpen.errorPath = &archivePath;
+        throw failedArchiveOpen;
     }
     
 }
@@ -58,7 +66,9 @@ void MPQArchive::ApplyListFile(boost::filesystem::path listFilePath)
 {
     if(!mpqArchive)
     {
-        throw "Archive not opened";
+        MPQArchiveNoArchiveOpen noArchiveOpen;
+        noArchiveOpen.SetErrorMessage("No MPQ Archive open");
+        throw noArchiveOpen;
     }
     else
     {
@@ -70,8 +80,9 @@ std::vector<char> *MPQArchive::ReadFile(boost::filesystem::path archiveFilePath)
 {
     if(!mpqArchive)
     {
-        throw "Archive not opened";
-
+        MPQArchiveNoArchiveOpen noArchiveOpen;
+        noArchiveOpen.SetErrorMessage("No MPQ Archive open");
+        throw noArchiveOpen;
     }
     else
     {
@@ -80,16 +91,22 @@ std::vector<char> *MPQArchive::ReadFile(boost::filesystem::path archiveFilePath)
         HANDLE fileHandle;
         if(!SFileOpenFileEx(mpqArchive, archiveFilePath.string().c_str(), SFILE_OPEN_FROM_MPQ, &fileHandle))
         {
-            throw "failed to open file in mpqArchive";
+            MPQArchiveFailedToOpenFile failedFileOpen;
+            failedFileOpen.SetErrorMessage("No file found in MPQ Archive");
+            throw failedFileOpen;
         }
         fileBuffer->resize(SFileGetFileSize(fileHandle, NULL));
         if (!SFileReadFile(fileHandle, &fileBuffer->at(0), SFileGetFileSize(fileHandle, NULL), NULL, NULL))
         {
-            throw "failed to read file to memory";
+            MPQArchiveNoFreeMemory noMemory;
+            noMemory.SetErrorMessage("Not enough memory to load target file");
+            throw noMemory;
         }
         if(!SFileCloseFile(fileHandle))
         {
-            throw "failed to close file";
+            MPQArchiveFailedToCloseFile failedFileClose;
+            failedFileClose.SetErrorMessage("Failed to close file in archive");
+            throw failedFileClose;
         }
         return fileBuffer;
 
@@ -101,7 +118,9 @@ unsigned long MPQArchive::GetFileLength(boost::filesystem::path archiveFilePath)
 {
     if(!mpqArchive)
     {
-        throw "Archive not opened";
+        MPQArchiveNoArchiveOpen noArchiveOpen;
+        noArchiveOpen.SetErrorMessage("No archive open");
+        throw noArchiveOpen;
     }
     else
     {
@@ -109,12 +128,16 @@ unsigned long MPQArchive::GetFileLength(boost::filesystem::path archiveFilePath)
         HANDLE fileHandle;
         if(!SFileOpenFileEx(mpqArchive, archiveFilePath.string().c_str(), SFILE_OPEN_FROM_MPQ, &fileHandle))
         {
-            throw "failed to open file in mpqArchive";
+            MPQArchiveFailedToOpenFile failedFileOpen;
+            failedFileOpen.SetErrorMessage("No file found in MPQ Archive");
+            throw failedFileOpen;
         }
          fileLength = SFileGetFileSize(fileHandle, NULL);
         if(!SFileCloseFile(fileHandle))
         {
-            throw "could no close file";
+            MPQArchiveFailedToCloseFile failedFileClose;
+            failedFileClose.SetErrorMessage("Failed to close file in archive");
+            throw failedFileClose;
         }
         return fileLength;
     }
@@ -124,13 +147,17 @@ void MPQArchive::ExtractRaw(boost::filesystem::path archiveFilePath, boost::file
 {
     if(!mpqArchive)
     {
-        throw "Archive not opened";
+        MPQArchiveNoArchiveOpen noArchiveOpen;
+        noArchiveOpen.SetErrorMessage("No MPQ Archive open");
+        throw noArchiveOpen;
     }
     else
     {
         if(!SFileExtractFile(mpqArchive, archiveFilePath.string().c_str(), destinationPath.string().c_str(), SFILE_OPEN_FROM_MPQ))
         {
-           throw "Failed to extract file";
+            MPQArchiveFailedFileExtraction fileExtractionFailed;
+            fileExtractionFailed.SetErrorMessage("Failed to extract file from MPQArchive");
+            throw fileExtractionFailed;
         }
     }
 }
@@ -139,7 +166,9 @@ void MPQArchive::CloseArchive()
 {
     if (!mpqArchive)
     {
-        throw "No MPQArchive to close";
+        MPQArchiveFailedToCloseArchive failedCloseArchive;
+        failedCloseArchive.SetErrorMessage("Failed to close MPQArchive");
+        throw failedCloseArchive;
     }
     else
     {

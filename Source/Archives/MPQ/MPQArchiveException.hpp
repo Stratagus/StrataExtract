@@ -10,9 +10,24 @@ public:
     boost::filesystem::path *errorPath;
 };
 
-class MPQArchiveFailedToCreateArchive : public MPQArchiveException{};
+class MPQArchiveFailedToCreateArchive : public MPQArchiveException {};
 
-class MPQArchiveFailedToOpenArchive : public MPQArchiveException{};
+class MPQArchiveFailedToOpenArchive : public MPQArchiveException {};
+
+class MPQArchiveFailedToCloseArchive : public MPQArchiveException {};
+
+class MPQArchiveFailedAlreadyOpen : public MPQArchiveException {};
+
+class MPQArchiveFailedToOpenFile : public MPQArchiveException {};
+
+class MPQArchiveFailedToCloseFile : public MPQArchiveException {};
+
+class MPQArchiveFailedFileExtraction : public MPQArchiveException {};
+
+class MPQArchiveNoArchiveOpen : public MPQArchiveException {};
+
+class MPQArchiveNoFreeMemory : public MPQArchiveException {};
+
 
 
 #endif
