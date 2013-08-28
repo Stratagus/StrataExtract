@@ -29,9 +29,10 @@ void MPQArchive::OpenArchive(boost::filesystem::path archivePath)
 {
     if(mpqArchive)
     {
-        MPQArchiveFailedToOpenArchive failedOpenArchive;
-        failedOpenArchive.SetErrorMessage("Archive already open");
-        throw failedOpenArchive;
+        MPQArchiveFailedAlreadyOpen alreadyOpen;
+        alreadyOpen.SetErrorMessage("Archive already open");
+        alreadyOpen.errorPath = &archivePath;
+        throw alreadyOpen;
     }
     if(!SFileOpenArchive(archivePath.string().c_str(), 0, 0, &mpqArchive))
     {
@@ -66,12 +67,20 @@ void MPQArchive::ApplyListFile(boost::filesystem::path listFilePath)
 {
     if(!mpqArchive)
     {
-        MPQArchiveNoArchiveOpen noArchiveOpen;
-        noArchiveOpen.SetErrorMessage("No MPQ Archive open");
-        throw noArchiveOpen;
+        MPQArchiveNoArchiveOpen notOpen;
+        notOpen.SetErrorMessage("Archive not opened");
+        throw notOpen;
     }
     else
     {
+        if (!boost::filesystem::exists(listFilePath))
+        {
+            MPQArchiveFailedtoOpenListfile noListFile;
+            noListFile.SetErrorMessage("Failed to open the MPQArchive list file");
+            noListFile.errorPath = & listFilePath;
+            throw noListFile;
+        }
+        
         SFileAddListFile(mpqArchive, listFilePath.string().c_str());
     }
 }
@@ -98,9 +107,9 @@ std::vector<char> *MPQArchive::ReadFile(boost::filesystem::path archiveFilePath)
         fileBuffer->resize(SFileGetFileSize(fileHandle, NULL));
         if (!SFileReadFile(fileHandle, &fileBuffer->at(0), SFileGetFileSize(fileHandle, NULL), NULL, NULL))
         {
-            MPQArchiveNoFreeMemory noMemory;
-            noMemory.SetErrorMessage("Not enough memory to load target file");
-            throw noMemory;
+            MPQARchiveFailedToReadFile failedReadFile;
+            failedReadFile.SetErrorMessage("Not enough memory to load target file");
+            throw failedReadFile;
         }
         if(!SFileCloseFile(fileHandle))
         {
