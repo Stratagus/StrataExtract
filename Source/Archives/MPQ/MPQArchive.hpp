@@ -3,6 +3,7 @@
 
 #include <boost/filesystem.hpp>
 #include <StormLib.h>
+#include "MPQArchiveException.hpp"
 
 
 class MPQArchive
