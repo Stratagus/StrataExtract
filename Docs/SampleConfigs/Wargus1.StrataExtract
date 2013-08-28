@@ -4,44 +4,89 @@
  	</Versions>
 
  <Archive name="MainData" type="WAR">
+ 	<MidiAssets convert="ogg">
+ 		<midi name="InGameSwamp1" type="xmi" destination="Music/" archiveIndex=0 />
+ 		<midi name="InGameSwamp2" type="xmi" destination="Music/" archiveIndex=1 />
+ 		<midi name="InGameSwamp3" type="xmi" destination="Music/" archiveIndex=2 />
+ 		<midi name="InGameForrest1" type="xmi" destination="Music/" archiveIndex=3 />
+ 		<midi name="HumanDefeat" type="xmi" destination="Music/" archiveIndex=4 />
+ 		<midi name="OrcDefeat" type="xmi" destination="Music/" archiveIndex=5 />
+ 		<midi name="HumanMissionVictory" type="xmi" destination="Music/" archiveIndex=6 />
+ 		<midi name="OrcMissionVictory" type="xmi" destination="Music/" archiveIndex=7 />
+ 		<midi name="HumanCampaignVictory" type="xmi" destination="Music/" archiveIndex=8 />
+ 		<midi name="OrcCampaignVictory" type="xmi" destination="Music/" archiveIndex=9 />
+ 		<midi name="Introduction" type="xmi" destination="Music/" archiveIndex=10 />
+ 		<midi name="Briefing" type="xmi" destination="Music/" archiveIndex=11 />
+ 		<!-- Introduction Copy 12 -->
+ 		<!-- Briefing Copy 13 -->
+ 		<midi name="MainMenu" type="xmi" destination="Music/" archiveIndex=14 />
+ 		<midi name="IngameForrest2" type="xmi" destination="Music/" archiveIndex=15 />
+ 		<midi name="IngameForrest3" type="xmi" destination="Music/" archiveIndex=16 />
+ 		<!-- ADDITIONAL MIDIS AVAILBIE TO INDEX 0 TO 44 --> 		
+ 	</MidiAssets>
+ 	<AudioAssets convert="ogg">
+ 		<audio name="BlizzardLogo" type="wav" destination="Audio/UI" archiveIndex=472 />
+ 		<audio name="Chime" type="voc" destination="Audio/UI" archiveIndex=484 />
+		<audio name="Click" type="wav" destination="Audio/UI" archiveIndex=485 />
+		<audio name="Cancel" type="voc" destination="Audio/UI" archiveIndex=486 />
+
+ 		<audio name="IntroDoor" type="wav" destination="Audio/Intro/" archiveIndex=473 />
+
+ 		<audio name="Explosion" type="voc" destination="Audio/Neutral/" archiveIndex=475 />
+ 		<audio name="CatapultFire" type="voc" destination="Audio/Neutral/Attacks/Catapult" archiveIndex=476 />
+
+ 		
+ 		<audio name="TreeChop1" type="voc" destination="Audio/Neutral/WorkerTreeChop/" archiveIndex=477 />
+ 		<audio name="TreeChop2" type="voc" destination="Audio/Neutral/WorkerTreeChop/" archiveIndex=478 />
+ 		<audio name="TreeChop3" type="voc" destination="Audio/Neutral/WorkerTreeChop/" archiveIndex=479 />
+ 		<audio name="TreeChop4" type="voc" destination="Audio/Neutral/WorkerTreeChop/" archiveIndex=480 />
+ 		<audio name="Building" type="voc" destination="Audio/Neutral/Building" archiveIndex=474 />
+ 		<audio name="BuildingCollapse1" type="voc" destination="Audio/Neutral/Building" archiveIndex=481 />
+ 		<audio name="BuildingCollapse2" type="voc" destination="Audio/Neutral/Building" archiveIndex=482 />
+ 		<audio name="BuildingCollapse3" type="voc" destination="Audio/Neutral/Building" archiveIndex=483 />
+
+ 	</AudioAssets>
 	<TextAssets>
 		<!-- Orc Mission Briefings -->
-		<text name="Briefing" destination="Campaign/Orc/Mission1/" archiveIndex=432 />
-		<text name="Briefing" destination="Campaign/Orc/Mission2/" archiveIndex=433 />
-		<text name="Briefing" destination="Campaign/Orc/Mission3/" archiveIndex=434 />
-		<text name="Briefing" destination="Campaign/Orc/Mission4/" archiveIndex=435 />
-		<text name="Briefing" destination="Campaign/Orc/Mission5/" archiveIndex=436 />
-		<text name="Briefing" destination="Campaign/Orc/Mission6/" archiveIndex=437 />
-		<text name="Briefing" destination="Campaign/Orc/Mission7/" archiveIndex=438 />
-		<text name="Briefing" destination="Campaign/Orc/Mission8/" archiveIndex=439 />
-		<text name="Briefing" destination="Campaign/Orc/Mission9/" archiveIndex=440 />
-		<text name="Briefing" destination="Campaign/Orc/Mission10/" archiveIndex=441 />
-		<text name="Briefing" destination="Campaign/Orc/Mission11/" archiveIndex=442 />
-		<text name="Briefing" destination="Campaign/Orc/Mission12/" archiveIndex=443 />
+		<text name="Briefing" type="txt" destination="Campaign/Orc/Mission1/" archiveIndex=432 />
+		<text name="Briefing" type="txt" destination="Campaign/Orc/Mission2/" archiveIndex=433 />
+		<text name="Briefing" type="txt" destination="Campaign/Orc/Mission3/" archiveIndex=434 />
+		<text name="Briefing" type="txt" destination="Campaign/Orc/Mission4/" archiveIndex=435 />
+		<text name="Briefing" type="txt" destination="Campaign/Orc/Mission5/" archiveIndex=436 />
+		<text name="Briefing" type="txt" destination="Campaign/Orc/Mission6/" archiveIndex=437 />
+		<text name="Briefing" type="txt" destination="Campaign/Orc/Mission7/" archiveIndex=438 />
+		<text name="Briefing" type="txt" destination="Campaign/Orc/Mission8/" archiveIndex=439 />
+		<text name="Briefing" type="txt" destination="Campaign/Orc/Mission9/" archiveIndex=440 />
+		<text name="Briefing" type="txt" destination="Campaign/Orc/Mission10/" archiveIndex=441 />
+		<text name="Briefing" type="txt" destination="Campaign/Orc/Mission11/" archiveIndex=442 />
+		<text name="Briefing" type="txt" destination="Campaign/Orc/Mission12/" archiveIndex=443 />
 		
 		<!-- Human Mission Briefings -->
-		<text name="Briefing" destination="Campaign/Human/Mission1/" archiveIndex=444 />
-		<text name="Briefing" destination="Campaign/Human/Mission2/" archiveIndex=445 />
-		<text name="Briefing" destination="Campaign/Human/Mission3/" archiveIndex=446 />
-		<text name="Briefing" destination="Campaign/Human/Mission4/" archiveIndex=447 />
-		<text name="Briefing" destination="Campaign/Human/Mission5/" archiveIndex=448 />
-		<text name="Briefing" destination="Campaign/Human/Mission6/" archiveIndex=449 />
-		<text name="Briefing" destination="Campaign/Human/Mission7/" archiveIndex=450 />
-		<text name="Briefing" destination="Campaign/Human/Mission8/" archiveIndex=451 />
-		<text name="Briefing" destination="Campaign/Human/Mission9/" archiveIndex=452 />
-		<text name="Briefing" destination="Campaign/Human/Mission10/" archiveIndex=453 />
-		<text name="Briefing" destination="Campaign/Human/Mission11/" archiveIndex=454 />
-		<text name="Briefing" destination="Campaign/Human/Mission12/" archiveIndex=455 />
+		<text name="Briefing" type="txt" destination="Campaign/Human/Mission1/" archiveIndex=444 />
+		<text name="Briefing" type="txt" destination="Campaign/Human/Mission2/" archiveIndex=445 />
+		<text name="Briefing" type="txt" destination="Campaign/Human/Mission3/" archiveIndex=446 />
+		<text name="Briefing" type="txt" destination="Campaign/Human/Mission4/" archiveIndex=447 />
+		<text name="Briefing" type="txt" destination="Campaign/Human/Mission5/" archiveIndex=448 />
+		<text name="Briefing" type="txt" destination="Campaign/Human/Mission6/" archiveIndex=449 />
+		<text name="Briefing" type="txt" destination="Campaign/Human/Mission7/" archiveIndex=450 />
+		<text name="Briefing" type="txt" destination="Campaign/Human/Mission8/" archiveIndex=451 />
+		<text name="Briefing" type="txt" destination="Campaign/Human/Mission9/" archiveIndex=452 />
+		<text name="Briefing" type="txt" destination="Campaign/Human/Mission10/" archiveIndex=453 />
+		<text name="Briefing" type="txt" destination="Campaign/Human/Mission11/" archiveIndex=454 />
+		<text name="Briefing" type="txt" destination="Campaign/Human/Mission12/" archiveIndex=455 />
 		
 		<!-- Endings -->
-		<text name="OrcEnding1" destination="Campaign/Endings/" archiveIndex=462 />
-		<text name="OrcEnding2" destination="Campaign/Endings/" archiveIndex=464 />
-		<text name="HumanEnding1" destination="Campaign/Endings/" archiveIndex=461 />
-		<text name="HumanEnding2" destination="Campaign/Endings/" archiveIndex=463 />
-		<text name="Credits" destination="Campaign/" archiveIndex=465 />
+		<text name="OrcEnding1" type="txt" destination="Campaign/Endings/" archiveIndex=462 />
+		<text name="OrcEnding2" type="txt" destination="Campaign/Endings/" archiveIndex=464 />
+		<text name="HumanEnding1" type="txt" destination="Campaign/Endings/" archiveIndex=461 />
+		<text name="HumanEnding2" type="txt" destination="Campaign/Endings/" archiveIndex=463 />
+		<text name="Credits" type="txt" destination="Campaign/" archiveIndex=465 />
 
 		<!-- Mission End Dialogs -->
-
+		<text name="VictoryDialog1" type="txt" destination="Subtitles/MissionEndings" archiveIndex=466 />
+		<text name="VictoryDialog2" type="txt" destination="Subtitles/MissionEndings" archiveIndex=467 />
+		<text name="DefeatDialog1" type="txt" destination="Subtitles/MissionEndings" archiveIndex=468 />
+		<text name="DefeatDialog2" type="txt" destination="Subtitles/MissionEndings" archiveIndex=469 />
 	</TextAssets>
  </Archive>
 </StrataExtractConfig>
