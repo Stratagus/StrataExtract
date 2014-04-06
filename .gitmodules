@@ -3,7 +3,7 @@
 	url = https://github.com/stormlib/StormLib.git
 [submodule "Libraries/libgrp"]
 	path = Libraries/libgrp
-	url = https://github.com/bradc6/libgrp.git
+url=https://github.com/Stratagus/libgrp.git
 [submodule "Libraries/libwararch"]
 	path = Libraries/libwararch
 	url = https://github.com/bradc6/libwararch.git
