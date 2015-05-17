@@ -31,7 +31,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules
 #from whatever the input type to png (Portable Network Graphic)
 find_package(Boost REQUIRED COMPONENTS system date_time thread filesystem exception log)
 find_package(LibXml2 REQUIRED)
-find_package(FFMPEG REQUIRED)
+find_package(FFMPEG)
 find_package(ImageMagick COMPONENTS Magick++ MagickCore MagickWand REQUIRED)
 find_package(CDParanoia)
 find_package(OpenSSL)
@@ -92,6 +92,11 @@ include_directories("${LIBWARARCH_DIR}/Source")
 include_directories(${CDPARANOIA_INCLUDE_DIR})
 include_directories(${ImageMagick_INCLUDE_DIRS})
 include_directories(${LIBXML2_INCLUDE_DIR})
+
+#HACK for Travis CI and Ubuntu 12.04
+if(${FFMPEG_FOUND})
+  add_definitions(-DHASFFMPEG=1)
+endif()
 
 #Set the actual Cpp & Hpp files in which are to be included
 #into this tool. The actual code of the tool, not outside libraries.

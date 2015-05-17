@@ -1,5 +1,6 @@
 #include "AudioFFmpeg.hpp"
 
+#if DHASFFMPEG == 1
 AudioFFmpeg::AudioFFmpeg()
 {
     audio = nullptr;
@@ -295,6 +296,4 @@ int AudioFFmpeg::check_sample_fmt(AVCodec *codec, enum AVSampleFormat sample_fmt
     return 0;
 }
 
-
-
-
+#endif

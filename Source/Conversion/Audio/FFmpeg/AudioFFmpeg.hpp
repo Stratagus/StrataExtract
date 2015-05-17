@@ -1,5 +1,6 @@
 #pragma once
 
+#if DHASFFMPEG == 1
 
 #include <iostream>
 #include <algorithm>
@@ -44,3 +45,5 @@ class AudioFFmpeg
     
     private:
 };
+
+#endif
