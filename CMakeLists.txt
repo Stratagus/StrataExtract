@@ -2,7 +2,7 @@
 #be well documented. If you have any questions be it in
 #design or general inquiry visit the homepage @
 #https://github.com/bradc6/StrataExtract
-cmake_minimum_required (VERSION 2.6)
+cmake_minimum_required(VERSION 2.8.7)
 project (StrataExtract)
 set(StrataExtractVersion "0.1")
 
@@ -24,7 +24,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules
 find_package(Boost REQUIRED COMPONENTS system date_time thread filesystem exception log)
 find_package(LibXml2 REQUIRED)
 find_package(FFMPEG REQUIRED)
-find_package(Magick++ REQUIRED)
+find_package(ImageMagick COMPONENTS Magick++ MagickCore MagickWand REQUIRED)
 find_package(CDParanoia)
 find_package(OpenSSL)
 find_package(PkgConfig)
@@ -82,6 +82,8 @@ include_directories("${LIBGRP_DIR}/Source")
 include_directories("${LIBWARARCH_DIR}/Source")
 
 include_directories(${CDPARANOIA_INCLUDE_DIR})
+include_directories(${ImageMagick_INCLUDE_DIRS})
+include_directories(${LIBXML2_INCLUDE_DIR})
 
 #Set the actual Cpp & Hpp files in which are to be included
 #into this tool. The actual code of the tool, not outside libraries.
@@ -196,14 +198,6 @@ source_group(ConversionUnitTests\\ImageUnitTests FILES ${StrataExtractImageConve
 set(EXTRA_LIBS "")
 if (APPLE)
     set(EXTRA_LIBS ${EXTRA_LIBS} "-framework Cocoa")
-    include_directories("/opt/local/include")
-    include_directories("/opt/local/include/libxml2")
-    include_directories("/opt/local/include/ImageMagick")
-    include_directories("/opt/local/include/ImageMagick-6")
-    link_directories("/opt/local/lib")
-else()
-    include_directories("/usr/include/libxml2")
-    include_directories("/usr/include/ImageMagick")
 endif()
 
     #Temporary Includes
