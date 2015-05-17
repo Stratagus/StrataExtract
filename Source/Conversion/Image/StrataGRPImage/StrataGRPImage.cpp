@@ -6,40 +6,23 @@ StrataGRPImage::StrataGRPImage()
 }
 StrataGRPImage::~StrataGRPImage()
 {
-    if(currentGRPImage)
-    {
-        delete currentGRPImage;
-        currentGRPImage = nullptr;
-    }
-    if(currentColorPalette)
-    {
-        delete currentColorPalette;
-        currentColorPalette = nullptr;
-    }
+
 }
 
 void StrataGRPImage::ReadImage(boost::filesystem::path const &sourceImagePath)
 {
     if(!currentGRPImage)
-    {
-        currentGRPImage = new GRPImage(sourceImagePath.string());
-    }
+        currentGRPImage = std::make_unique<GRPImage>(sourceImagePath.string());
     else
-    {
         currentGRPImage->LoadImage(sourceImagePath.string());
-    }
 }
 
 void StrataGRPImage::ReadImage(std::vector<char> *image)
 {
     if(!currentGRPImage)
-    {
-        currentGRPImage = new GRPImage(image);
-    }
+        currentGRPImage = std::make_unique<GRPImage>(image);
     else
-    {
         currentGRPImage->LoadImage(image);
-    }
 }
 
 void StrataGRPImage::WriteImageToFile(boost::filesystem::path const &destinationImagePath)
@@ -57,17 +40,15 @@ void StrataGRPImage::WriteImageToFile(boost::filesystem::path const &destination
 void StrataGRPImage::SetColorpalette(boost::filesystem::path colorPaletteFilePath)
 {
     if(!currentColorPalette)
-    {
-        currentColorPalette = new ColorPalette;
-    }
+        currentColorPalette = std::make_unique<ColorPalette>();
+
     currentColorPalette->LoadPalette(colorPaletteFilePath.string());
 }
 
 void StrataGRPImage::SetColorpalette(std::vector<char> *image)
 {
     if(!currentColorPalette)
-    {
-        currentColorPalette = new ColorPalette;
-    }
+        currentColorPalette = std::make_unique<ColorPalette>();
+
     currentColorPalette->LoadPalette(image);
 }
