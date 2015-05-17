@@ -2,17 +2,17 @@
 
 AudioFFmpeg::AudioFFmpeg()
 {
-    audio = NULL;
-    audioAttributes = NULL;
+    audio = nullptr;
+    audioAttributes = nullptr;
     audioEncoded = false;
 }
 AudioFFmpeg::~AudioFFmpeg()
 {
     delete audio;
-    audio = NULL;
+    audio = nullptr;
     if(audioAttributes)
         delete audioAttributes;
-    audioAttributes = NULL;
+    audioAttributes = nullptr;
 }
 void AudioFFmpeg::ConvertAudio(boost::filesystem::path sourceFilePath, boost::filesystem::path destinationFilePath)
 {
@@ -39,10 +39,10 @@ void AudioFFmpeg::DecodeAudio(std::vector<char> *inputAudio)
     unsigned int audioVectorPosition = 0;
     
     AVCodec *codec;
-    AVCodecContext *decoderProperties = NULL;
+    AVCodecContext *decoderProperties = nullptr;
     int length;
     AVPacket audioPacket;
-    AVFrame *decodedFrame = NULL;
+    AVFrame *decodedFrame = nullptr;
     
     av_init_packet(&audioPacket);
     
@@ -67,11 +67,11 @@ void AudioFFmpeg::DecodeAudio(std::vector<char> *inputAudio)
     }
     
     //Attach a pointer from the audioAttributes to the inputAudio
-    audioAttributes->pb = avio_alloc_context((unsigned char *) &inputAudio->front(), inputAudio->size(), 0, NULL, NULL, NULL, NULL);
+    audioAttributes->pb = avio_alloc_context((unsigned char *) &inputAudio->front(), inputAudio->size(), 0, nullptr, nullptr, nullptr, nullptr);
 
     
 
-    if (avformat_open_input(&audioAttributes, "", NULL, NULL) < 0)
+    if (avformat_open_input(&audioAttributes, "", nullptr, nullptr) < 0)
     {
         throw "Could not open the audioInput in audioAttributes";
     }
@@ -95,7 +95,7 @@ void AudioFFmpeg::DecodeAudio(std::vector<char> *inputAudio)
     
     decoderProperties->channels = audioAttributes->streams[0]->codec->channels;
     
-    if (avcodec_open2(decoderProperties, codec, NULL) < 0) {
+    if (avcodec_open2(decoderProperties, codec, nullptr) < 0) {
         fprintf(stderr, "could not open codec\n");
         exit(1);
     }
@@ -133,7 +133,7 @@ void AudioFFmpeg::DecodeAudio(std::vector<char> *inputAudio)
         }
         if(got_frame_mem )
         {
-            int data_size_mem = av_samples_get_buffer_size(NULL, decoderProperties->channels, decodedFrame->nb_samples, decoderProperties->sample_fmt, 1);
+            int data_size_mem = av_samples_get_buffer_size(nullptr, decoderProperties->channels, decodedFrame->nb_samples, decoderProperties->sample_fmt, 1);
             
             
             audio->resize((audio->size() + data_size_mem));
@@ -166,7 +166,7 @@ void AudioFFmpeg::EncodeAudio()
     avcodec_register_all();
     
     AVCodec *codec;
-    AVCodecContext *c= NULL;
+    AVCodecContext *c= nullptr;
     AVFrame *frame;
     AVPacket pkt;
     int ret, got_output;
@@ -208,7 +208,7 @@ void AudioFFmpeg::EncodeAudio()
     c->bits_per_raw_sample = 16;
     
     // open it 
-    if (avcodec_open2(c, codec, NULL) < 0) {
+    if (avcodec_open2(c, codec, nullptr) < 0) {
         fprintf(stderr, "could not open codec\n");
         exit(1);
     }
@@ -233,7 +233,7 @@ void AudioFFmpeg::EncodeAudio()
     
     //the codec gives us the frame size, in samples,
      // we calculate the size of the samples buffer in bytes
-    buffer_size = av_samples_get_buffer_size(NULL, c->channels, c->frame_size, c->sample_fmt, 0);
+    buffer_size = av_samples_get_buffer_size(nullptr, c->channels, c->frame_size, c->sample_fmt, 0);
     
     /*samples = reinterpret_cast<uint8_t *>(av_malloc(buffer_size));
     if (!samples) {
@@ -247,12 +247,12 @@ void AudioFFmpeg::EncodeAudio()
     while (vectorPosition < audio->size() - buffer_size)
     {
         av_init_packet(&pkt);
-        pkt.data = NULL; // packet data will be allocated by the encoder
+        pkt.data = nullptr; // packet data will be allocated by the encoder
         pkt.size = 0;
 
         ret = avcodec_fill_audio_frame(frame, c->channels, c->sample_fmt, (const uint8_t*) &audio->at(vectorPosition), audio->size(), 0);
 
-        buffer_size = av_samples_get_buffer_size(NULL, c->channels, c->frame_size, c->sample_fmt, 0);
+        buffer_size = av_samples_get_buffer_size(nullptr, c->channels, c->frame_size, c->sample_fmt, 0);
         // encode the samples 
         ret = avcodec_encode_audio2(c, &pkt, frame, &got_output);
         if (ret < 0)

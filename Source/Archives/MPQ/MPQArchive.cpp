@@ -2,14 +2,14 @@
 
 MPQArchive::MPQArchive()
 {
-    mpqArchive = NULL;
+    mpqArchive = nullptr;
 }
 MPQArchive::~MPQArchive()
 {
     if(mpqArchive)
     {
         this->CloseArchive();
-        mpqArchive = NULL;
+        mpqArchive = nullptr;
     }
     
 }
@@ -104,8 +104,8 @@ std::vector<char> *MPQArchive::ReadFile(boost::filesystem::path archiveFilePath)
             failedFileOpen.SetErrorMessage("No file found in MPQ Archive");
             throw failedFileOpen;
         }
-        fileBuffer->resize(SFileGetFileSize(fileHandle, NULL));
-        if (!SFileReadFile(fileHandle, &fileBuffer->at(0), SFileGetFileSize(fileHandle, NULL), NULL, NULL))
+        fileBuffer->resize(SFileGetFileSize(fileHandle, nullptr));
+        if (!SFileReadFile(fileHandle, &fileBuffer->at(0), SFileGetFileSize(fileHandle, nullptr), nullptr, nullptr))
         {
             MPQARchiveFailedToReadFile failedReadFile;
             failedReadFile.SetErrorMessage("Not enough memory to load target file");
@@ -141,7 +141,7 @@ unsigned long MPQArchive::GetFileLength(boost::filesystem::path archiveFilePath)
             failedFileOpen.SetErrorMessage("No file found in MPQ Archive");
             throw failedFileOpen;
         }
-         fileLength = SFileGetFileSize(fileHandle, NULL);
+         fileLength = SFileGetFileSize(fileHandle, nullptr);
         if(!SFileCloseFile(fileHandle))
         {
             MPQArchiveFailedToCloseFile failedFileClose;
@@ -182,6 +182,6 @@ void MPQArchive::CloseArchive()
     else
     {
         SFileCloseArchive(mpqArchive);
-        mpqArchive = NULL;
+        mpqArchive = nullptr;
     }
 }

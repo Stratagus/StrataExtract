@@ -1,20 +1,20 @@
 #include "StrataGRPImage.hpp"
 StrataGRPImage::StrataGRPImage()
 {
-    currentColorPalette = NULL;
-    currentGRPImage = NULL;
+    currentColorPalette = nullptr;
+    currentGRPImage = nullptr;
 }
 StrataGRPImage::~StrataGRPImage()
 {
     if(currentGRPImage)
     {
         delete currentGRPImage;
-        currentGRPImage = NULL;
+        currentGRPImage = nullptr;
     }
     if(currentColorPalette)
     {
         delete currentColorPalette;
-        currentColorPalette = NULL;
+        currentColorPalette = nullptr;
     }
 }
 

@@ -6,6 +6,14 @@ cmake_minimum_required(VERSION 2.8.7)
 project (StrataExtract)
 set(StrataExtractVersion "0.1")
 
+#Use C++11 if possible (or the most recent that we can use
+include(CheckCXXCompilerFlag)
+CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
+if(COMPILER_SUPPORTS_CXX11)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+else()
+        message(FATAL "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
+endif()
 
 #Sets the directory for cmake to find Cmake configration packages,
 #these packages allow for cmake to find libraries that are not included

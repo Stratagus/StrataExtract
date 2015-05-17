@@ -2,7 +2,7 @@
 
 StrataRunner::StrataRunner()
 {
-    loadedConfiguration = NULL;
+    loadedConfiguration = nullptr;
 }
 
 StrataRunner::~StrataRunner()
@@ -85,7 +85,7 @@ bool StrataRunner::ProcessPrerequisites()
 bool StrataRunner::ProcessAssets(xmlNodePtr assetList)
 {
 	xmlNodePtr currentProcess = assetList;
-	while(currentProcess != NULL)
+	while(currentProcess != nullptr)
 	{
         BOOST_LOG_SEV(runnerLogger, boost::log::trivial::trace) << "Pre-Processing: " << (char *) currentProcess->name;
 		currentProcess = currentProcess->next;

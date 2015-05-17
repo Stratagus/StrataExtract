@@ -13,7 +13,7 @@ class MPQArchive
         /*!  MPQArchive Object constructor
          *  \pre NA
          *  \post MPQArchive object is created and internal
-         *        data structures set to NULL.
+         *        data structures set to nullptr.
          *  \note NA*/
         MPQArchive();
         //!MPQArchive DeConstructor

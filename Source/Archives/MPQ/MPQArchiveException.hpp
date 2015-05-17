@@ -7,7 +7,7 @@
 class MPQArchiveException : public StrataArchiveException
 {
 public:
-    boost::filesystem::path *errorPath = NULL;
+    boost::filesystem::path *errorPath = nullptr;
 };
 
 //Archive file operation errors

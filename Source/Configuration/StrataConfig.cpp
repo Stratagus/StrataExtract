@@ -7,14 +7,14 @@ StrataConfig::StrataConfig()
     completeObjects = 0;
     configLoaded = false;
     isExpansion = false;
-    configurationDocument = NULL;
-    configXPathContext = NULL;
+    configurationDocument = nullptr;
+    configXPathContext = nullptr;
     
-    gameVersion = NULL;
-    configurationRoot = NULL;
-    gameConfiguration = NULL;
-    gameMediaSource = NULL;
-    gameMediaDestination = NULL;
+    gameVersion = nullptr;
+    configurationRoot = nullptr;
+    gameConfiguration = nullptr;
+    gameMediaSource = nullptr;
+    gameMediaDestination = nullptr;
     BOOST_LOG_SEV(configLogger, boost::log::trivial::trace) << "Finished StratConfig Object";
 }
 
@@ -24,37 +24,37 @@ StrataConfig::~StrataConfig()
     if(configurationDocument)
     {
         delete configurationDocument;
-        configurationDocument = NULL;
+        configurationDocument = nullptr;
     }
     
     if (configXPathContext)
     {
         delete configXPathContext;
-        configXPathContext = NULL;
+        configXPathContext = nullptr;
     }
     
     if(gameConfiguration)
     {
         delete gameConfiguration;
-        gameConfiguration = NULL;
+        gameConfiguration = nullptr;
     }
     
     if(gameMediaSource)
     {
         delete gameMediaSource;
-        gameMediaSource = NULL;
+        gameMediaSource = nullptr;
     }
     
     if(gameMediaDestination)
     {
         delete gameMediaDestination;
-        gameMediaDestination = NULL;
+        gameMediaDestination = nullptr;
     }
     
     if(configurationDocument)
     {
         xmlFreeDoc(configurationDocument);
-        configurationDocument = NULL;
+        configurationDocument = nullptr;
     }
     
     //Free the global variables that may
@@ -85,7 +85,7 @@ bool StrataConfig::readConfig()
         
         //The root of our configuration tree
         configurationDocument = xmlReadFile(gameConfiguration->string().c_str(), NULL, NULL);
-        if(configurationDocument == NULL)
+        if(configurationDocument == nullptr)
         {
             StrataConfigParsingException parseReadError;
             BOOST_LOG_SEV(configLogger, boost::log::trivial::error) << "Unable to parse the configuration";
@@ -131,7 +131,7 @@ xmlNodePtr StrataConfig::FindGameVersion()
     boost::filesystem::path tempSourceGamePath = *gameMediaSource;
     xmlXPathObjectPtr gameVersions = xmlXPathEval((const xmlChar *) "//Version", configXPathContext);
     
-    if(gameVersions == NULL)
+    if(gameVersions == nullptr)
     {
         BOOST_LOG_SEV(configLogger, boost::log::trivial::error) << "\"Version\" was not found";
         StrataConfigParsingException noVersionTag;
@@ -151,7 +151,7 @@ xmlNodePtr StrataConfig::FindGameVersion()
         fileMatch = true;
         
         //Start checking the <file> hashes with those in this version, if ANY fail break out
-        while(currentChildPointer != NULL && fileMatch)
+        while(currentChildPointer != nullptr && fileMatch)
         {
         #warning Potential logic error (Code Review)
             //Compare the Hash in the current file entity with the method generated hash
@@ -161,7 +161,7 @@ xmlNodePtr StrataConfig::FindGameVersion()
                                                                    << " with Generated Hash: " << (char *) GetFileHash(*gameMediaSource / (char *)xmlGetProp(currentChildPointer, (const xmlChar *) "name")) ;
             if(!xmlStrcmp(xmlGetProp(currentChildPointer, (const xmlChar *) "hash"), GetFileHash(*gameMediaSource / (char *)xmlGetProp(currentChildPointer, (const xmlChar *) "name"))))
             {
-                if(currentChildPointer->next->next == NULL)
+                if(currentChildPointer->next->next == nullptr)
                 {
                    //Check if the GameMediaSource is a expansion (We will need additional input)
                    if(!xmlStrcmp(xmlGetProp(currentNodePointer, (const xmlChar *) "expansion"), (xmlChar *) "1"))
@@ -184,14 +184,14 @@ xmlNodePtr StrataConfig::FindGameVersion()
         }
     }
     BOOST_LOG_SEV(configLogger, boost::log::trivial::error) << "No game version detected";
-    return NULL;
+    return nullptr;
 }
 
 void StrataConfig::ProcessGameAssetLists()
 {
     BOOST_LOG_SEV(configLogger, boost::log::trivial::trace) << "ProcessGameAssetLists with GameVersion: " << (char *) xmlGetProp(gameVersion, (const xmlChar *) "name");
     xmlNodePtr gameVersionFilePointer = gameVersion->children->next;
-    while(gameVersionFilePointer != NULL)
+    while(gameVersionFilePointer != nullptr)
     {
         if(xmlGetProp(gameVersionFilePointer, (const xmlChar *) "Archive"))
         {
@@ -265,7 +265,7 @@ void StrataConfig::ProcessArchive(xmlNodePtr archive)
                 else
                 {
                     xmlNodePtr archiveAssetLists = archiveAssets->nodesetval->nodeTab[0]->children->next;
-                    while (archiveAssetLists != NULL)
+                    while (archiveAssetLists != nullptr)
                     {
                         preparationProcessQueue.push(LookupArchive(xmlGetProp(archiveAssetLists, (const xmlChar *) "Archive")));
                         ProcessArchive(LookupArchive(xmlGetProp(archiveAssetLists, (const xmlChar *) "Archive")));
@@ -294,7 +294,7 @@ xmlNodePtr StrataConfig::LookupArchive(xmlChar* archiveName)
         return archiveList->nodesetval->nodeTab[0];
     }
 #warning Throw error
-    return NULL;
+    return nullptr;
 
 }
 
@@ -412,7 +412,7 @@ std::string StrataConfig::getGameName()
     }
     configXPathContext->node = configurationRoot;
     xmlXPathObjectPtr result = xmlXPathEval((xmlChar *) "title", configXPathContext);
-    if(result == NULL)
+    if(result == nullptr)
     {
         StrataConfigParsingException parsingError;
         parsingError.SetErrorMessage("Incomplete Game Configuration");
@@ -444,7 +444,7 @@ void StrataConfig::ClearCurrentConfigurationDocument()
     if(configurationDocument)
     {
         xmlFreeDoc(configurationDocument);
-        configurationDocument = NULL;
+        configurationDocument = nullptr;
     }
     xmlCleanupParser();
 }
@@ -463,7 +463,7 @@ xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
     std::stringstream finalHash;
     
     f = fopen(filePath.string().c_str(), "rb");
-    if (f == NULL)
+    if (f == nullptr)
     {
         //StrataConfigFilesystemException fileNotFoundError;
         //fileNotFoundError.SetErrorMessage("Unable to open file.");
@@ -514,14 +514,14 @@ xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
     
     std::ifstream targetFile(filePath.string().c_str(),std::ios::binary);
 
-    //If the file could not be opened return NULL
+    //If the file could not be opened return nullptr
     if(!targetFile.good())
     {
         //StrataConfigFilesystemException fileNotFoundError;
         //fileNotFoundError.SetErrorMessage("Unable to open file.");
         //fileNotFoundError.problemPath = &filePath;
         //BOOST_THROW_EXCEPTION(fileNotFoundError);
-        return NULL;
+        return nullptr;
     }
     
     while(targetFile.good())
@@ -537,7 +537,7 @@ xmlChar* StrataConfig::GetFileHash(boost::filesystem::path filePath)
         fileIOError.SetErrorMessage("Unknown IO Error");
         fileIOError.problemPath = &filePath;
         BOOST_THROW_EXCEPTION(fileIOError);
-        return NULL;
+        return nullptr;
     }
 
     //Now that we have the file processed into the digest, close the file
