@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../StrataImage.hpp"
+#include <memory>
 #include <Magick++.h>
 
 
@@ -51,6 +52,6 @@ public:
     virtual void ConvertImageFile(boost::filesystem::path const &sourceImagePath, boost::filesystem::path  const &destinationimagePath);
 
 protected:
-    Magick::Image *graphicImage;
+    std::unique_ptr<Magick::Image> graphicImage;
 private:
 };

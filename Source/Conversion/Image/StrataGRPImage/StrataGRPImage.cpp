@@ -1,8 +1,7 @@
 #include "StrataGRPImage.hpp"
 StrataGRPImage::StrataGRPImage()
 {
-    currentColorPalette = nullptr;
-    currentGRPImage = nullptr;
+
 }
 StrataGRPImage::~StrataGRPImage()
 {
