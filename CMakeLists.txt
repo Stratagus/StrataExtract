@@ -420,4 +420,4 @@ target_link_libraries(GStrataExtract
 ENDIF()
 
 #Tell the developer the current build options
-message("\n\nlibgrp Compile Options\n Unit Tests: ${UNITTESTS} [-DUNITESTS=${UNITTESTS}] \n")
+message("\n\nStrataExtract Compile Options\n Unit Tests: ${UNITTESTS} [-DUNITESTS=${UNITTESTS}]")

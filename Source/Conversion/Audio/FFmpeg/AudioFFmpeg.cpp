@@ -1,16 +1,13 @@
 #include "AudioFFmpeg.hpp"
 
-#if DHASFFMPEG == 1
+#if HASFFMPEG == 1
 AudioFFmpeg::AudioFFmpeg()
 {
-    audio = nullptr;
     audioAttributes = nullptr;
     audioEncoded = false;
 }
 AudioFFmpeg::~AudioFFmpeg()
 {
-    delete audio;
-    audio = nullptr;
     if(audioAttributes)
         delete audioAttributes;
     audioAttributes = nullptr;
@@ -49,14 +46,8 @@ void AudioFFmpeg::DecodeAudio(std::vector<char> *inputAudio)
     
     //Lazy instantiation
     if(!audio)
-    {
-        audio = new std::vector<uint8_t>;
-    }
-    else
-    {
-        delete audio;
-        audio = new std::vector<uint8_t>;
-    }
+        audio = std::make_unique<std::vector<uint8_t>>();
+
     if(!audioAttributes)
     {
         audioAttributes = avformat_alloc_context();

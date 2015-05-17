@@ -1,9 +1,10 @@
 #pragma once
 
-#if DHASFFMPEG == 1
+#if HASFFMPEG == 1
 
 #include <iostream>
 #include <algorithm>
+#include <memory>
 #include <boost/filesystem/path.hpp>
 extern "C"
 {
@@ -24,24 +25,24 @@ extern "C"
 class AudioFFmpeg
 {
     public:
-    AudioFFmpeg();
-    ~AudioFFmpeg();
-    void ConvertAudio(boost::filesystem::path sourceFilePath, boost::filesystem::path destinationFilePath);
-    void EncodeAudio();
-    void DecodeAudio(std::vector<char> *inputAudio);
+        AudioFFmpeg();
+        ~AudioFFmpeg();
+        void ConvertAudio(boost::filesystem::path sourceFilePath, boost::filesystem::path destinationFilePath);
+        void EncodeAudio();
+        void DecodeAudio(std::vector<char> *inputAudio);
     
-    int check_sample_fmt(AVCodec *codec, enum AVSampleFormat sample_fmt);
-    int select_sample_rate(AVCodec *codec);
-    int select_channel_layout(AVCodec *codec);
-    bool isEncoded();
+        int check_sample_fmt(AVCodec *codec, enum AVSampleFormat sample_fmt);
+        int select_sample_rate(AVCodec *codec);
+        int select_channel_layout(AVCodec *codec);
+        bool isEncoded();
 
 
     protected:
-    AVSampleFormat Resample(AVCodec *avCodec, AVCodecContext *avCodecContext);
-    AVFormatContext *audioAttributes;
+        AVSampleFormat Resample(AVCodec *avCodec, AVCodecContext *avCodecContext);
+        AVFormatContext *audioAttributes;
     
-    bool audioEncoded;
-    std::vector<uint8_t> *audio;
+        bool audioEncoded;
+        std::unique_ptr<std::vector<uint8_t>> audio;
     
     private:
 };
