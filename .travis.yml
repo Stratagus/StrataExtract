@@ -25,7 +25,7 @@ before_script:
   - cd build
   - cmake ..
 
-script: make
+script: make -j
 
 after_success:
   - echo "Add Automated Unit Test!!!"
