@@ -248,16 +248,23 @@ target_link_libraries(
             ${Boost_LIBRARIES}
             ${LIBXML2_LIBRARIES}
             ${Magick++_LIBRARIES}
-            ${FFMPEG_LIBAVCODEC_LIBRARIES}
-            ${FFMPEG_LIBAVFORMAT_LIBRARIES}
-            ${FFMPEG_LIBAVUTIL_LIBRARIES}
-            ${FFMPEG_LIBSWRESAMPLE_LIBRARIES}
             ${OPENSSL_LIBRARIES}
             ${CDPARANOIA_LIBRARIES}
             storm
             grp
             wararch
 )
+
+if(${FFMPEG_FOUND})
+target_link_libraries(
+            StrataExtractCore
+            ${FFMPEG_LIBAVCODEC_LIBRARIES}
+            ${FFMPEG_LIBAVFORMAT_LIBRARIES}
+            ${FFMPEG_LIBAVUTIL_LIBRARIES}
+            ${FFMPEG_LIBSWRESAMPLE_LIBRARIES}
+)
+endif()
+
 
 add_executable(
 	StrataExtractCLI
