@@ -1,5 +1,4 @@
-#ifndef MPQArchive_Header
-#define MPQArchive_Header
+#pragma once
 
 #include <boost/filesystem.hpp>
 #include <StormLib.h>
@@ -107,5 +106,3 @@ class MPQArchive
     private:
         HANDLE mpqArchive;
 };
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef StrataGRPImage_Header
-#define StrataGRPImage_Header
+#pragma once
 
 #include "../StrataImage.hpp"
 #include <boost/filesystem/path.hpp>
@@ -23,5 +22,3 @@ class StrataGRPImage : public StrataImage
     GRPImage *currentGRPImage;
     private:
 };
-
-#endif

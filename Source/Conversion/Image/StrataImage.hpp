@@ -1,5 +1,4 @@
-#ifndef StrataImage_Header
-#define StrataImage_Header
+#pragma once
 
 #include "StrataImageException.hpp"
 
@@ -23,5 +22,3 @@ class StrataImage
         StrataImage();
     private:
 };
-
-#endif

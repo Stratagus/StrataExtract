@@ -1,5 +1,4 @@
-#ifndef StrataAudio_Header
-#define StrataAudio_Header
+#pragma once
 class StrataAudio
 {
 public:
@@ -8,4 +7,3 @@ public:
 protected:
 private:
 };
-#endif

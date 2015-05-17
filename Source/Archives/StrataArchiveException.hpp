@@ -1,5 +1,4 @@
-#ifndef StrataArchiveException_Header
-#define StrataArchiveException_Header
+#pragma once
 
 #include <boost/exception/all.hpp>
 #include <boost/filesystem/path.hpp>
@@ -21,6 +20,3 @@ public:
 protected:
     std::string humanReadableError;
 };
-
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef StrataRunner_Header
-#define StrataRunner_Header
+#pragma once
 
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
@@ -38,5 +37,3 @@ class StrataRunner
     private:
         StrataConfig *loadedConfiguration;
 };
-
-#endif

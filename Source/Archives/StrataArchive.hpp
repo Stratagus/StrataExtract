@@ -1,5 +1,5 @@
-#ifndef StrataArchive_Header
-#define StrataArchive_Header
+#pragma once
+
 #include "StrataArchiveException.hpp"
 #include "MPQ/MPQArchive.hpp"
 #include "GZIP/GZIPArchive.hpp"
@@ -24,4 +24,3 @@ class StrataArchive
     protected:
     private:
 };
-#endif

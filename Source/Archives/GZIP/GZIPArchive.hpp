@@ -1,5 +1,4 @@
-#ifndef GZIPArchive_Header
-#define GZIPArchive_Header
+#pragma once
 
 #include <boost/filesystem/path.hpp>
 #include <boost/filesystem/fstream.hpp>
@@ -16,5 +15,3 @@ class GZIPArchive
     protected:
     private:
 };
-
-#endif

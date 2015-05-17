@@ -1,5 +1,4 @@
-#ifndef MagickImage_Header
-#define MagickImage_Header
+#pragma once
 
 #include "../StrataImage.hpp"
 #include <Magick++.h>
@@ -55,5 +54,3 @@ protected:
     Magick::Image *graphicImage;
 private:
 };
-
-#endif

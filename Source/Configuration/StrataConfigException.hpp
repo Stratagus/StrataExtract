@@ -1,5 +1,4 @@
-#ifndef StrataConfigException_Header
-#define StrataConfigException_Header
+#pragma once
 
 #include <boost/exception/all.hpp>
 #include <boost/filesystem/path.hpp>
@@ -47,4 +46,3 @@ class StrataConfigFilesystemException : public StrataConfigException
         boost::filesystem::path *problemPath;
     
 };
-#endif

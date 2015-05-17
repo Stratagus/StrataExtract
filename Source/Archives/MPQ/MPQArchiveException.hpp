@@ -1,5 +1,4 @@
-#ifndef MPQArchiveException_Header
-#define MPQArchiveException_Header
+#pragma once
 
 #include "../StrataArchiveException.hpp"
 #include <boost/filesystem/path.hpp>
@@ -26,4 +25,3 @@ class MPQARchiveFailedToReadFile : public MPQArchiveException{};
 
 //Listfile options
 class MPQArchiveFailedtoOpenListfile : public MPQArchiveException {};
-#endif

@@ -1,5 +1,4 @@
-#ifndef AudioFFmpeg_Header
-#define AudioFFmpeg_Header
+#pragma once
 
 
 #include <iostream>
@@ -45,4 +44,3 @@ class AudioFFmpeg
     
     private:
 };
-#endif

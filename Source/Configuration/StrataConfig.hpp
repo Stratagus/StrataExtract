@@ -8,9 +8,7 @@
  */
 #define BOOST_LOG_DYN_LINK
 
-#ifndef StrataConfig_Header
-#define StrataConfig_Header
-
+#pragma once
 
 #include <boost/filesystem.hpp>
 #include <boost/thread.hpp>
@@ -241,5 +239,3 @@ class StrataConfig
     
         std::string gameName;
 };
-
-#endif

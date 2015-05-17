@@ -1,5 +1,4 @@
-#ifndef StrataRunnerException_Header
-#define StrataRunnerException_Header
+#pragma once
 
 #include <boost/exception/all.hpp>
 
@@ -19,5 +18,3 @@ public:
 protected:
     std::string humanReadableError;
 };
-
-#endif
