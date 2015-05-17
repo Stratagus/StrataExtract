@@ -3,15 +3,6 @@
 
 - (void)ToggleLogDrawer:(id)sender
 {
-    NSDrawerState state = [logDrawer state];
-    if (NSDrawerOpeningState == state || NSDrawerOpenState == state)
-    {
-        [logDrawer close];
-    }
-    else
-    {
-        [logDrawer openOnEdge:NSMinYEdge];
-    }
 }
 
 - (void)windowDidResize:(NSNotification *)notification
