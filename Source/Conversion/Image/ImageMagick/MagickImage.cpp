@@ -10,7 +10,7 @@ MagickImage::~MagickImage()
 
 void MagickImage::ReadImage(boost::filesystem::path const &sourceImagePath)
 {
-    if(graphicImage)
+    if(!graphicImage)
         graphicImage = std::make_unique<Magick::Image>();
     
     graphicImage->read(sourceImagePath.string());
@@ -21,7 +21,7 @@ void MagickImage::ReadImage(std::vector<char> *image)
     Magick::Blob Blob;
     Blob.update(&image->at(0), image->size());
     
-    if(graphicImage)
+    if(!graphicImage)
         graphicImage = std::make_unique<Magick::Image>();
         
     graphicImage->read(Blob);
@@ -38,7 +38,7 @@ void MagickImage::WriteImageToFile(boost::filesystem::path const &destinationIma
 }
 void MagickImage::ConvertImageFile(boost::filesystem::path const &sourceImagePath, boost::filesystem::path const &destinationimagePath)
 {
-    if(graphicImage)
+    if(!graphicImage)
         graphicImage = std::make_unique<Magick::Image>();
 
     graphicImage->read(sourceImagePath.string());
